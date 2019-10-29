@@ -1,0 +1,7 @@
+*.cache*
+*.log
+*.jou
+*.wdb
+*.bat
+*behav*
+minesweeper/minesweeper.runs/*
