@@ -2,7 +2,9 @@
 
 module mouse_renderer
 	#(	parameter SCREEN_WIDTH=1024, 
-		parameter SCREEN_HEIGHT=768)
+		parameter SCREEN_HEIGHT=768,
+		parameter MOUSE_INNER_COLOR = 'hFFF,
+		parameter MOUSE_OUTER_COLOR = 'h000)
 	(	
 	input [10:0] mouse_x,	// Mouse X coord.
 	input [9:0] mouse_y,	// Mouse Y coord.
@@ -22,13 +24,74 @@ module mouse_renderer
 	output [11:0] pixel_out	// pixel r=11:8, g=7:4, b=3:0 (output with buffering)
 	);
 
+	//This module is pipelined by N clocks
+
+	logic [10:0] hcount [1:0] ;
+	logic [9:0] vcount [1:0] ;
+	logic hsync [1:0] ;
+	logic vsync [1:0] ;
+	logic blank [1:0] ;
+
+	logic [11:0] pixel;
+
 	//TODO: replace with real logic
-	assign hcount_out = hcount_in;
-	assign vcount_out = vcount_in;
-	assign hsync_out = hsync_in;
-	assign vsync_out = vsync_in;
-	assign blank_out = blank_in;
-	assign pixel_out = pixel_in;
+	assign hcount_out = hcount[1];
+	assign vcount_out = vcount[1];
+	assign hsync_out = hsync[1];
+	assign vsync_out = vsync[1];
+	assign blank_out = blank[1];
+
+	signed logic [10:0] relative_x;
+	signed logic [9:0] relative_y;
+	assign relative_x = hcount_in - mouse_x;
+	assign relative_y = vcount_in - mouse_y;
+
+	logic [3:0] mouse_pixel_x;
+	logic [4:0] mouse_pixel_y;
+	logic in_box;
+
+	always_ff @(posedge clk_65mhz) begin
+
+		//2 stage delay
+		hcount[1] <= hcount[0];
+		vcount[1] <= vcount[0];
+		hsync[1] <= hsync[0];
+		vsync[1] <= vsync[0];
+		blank[1] <= blank[0];
+
+		hcount[1] <= hcount_in;
+		vcount[1] <= vcount_in;
+		hsync[1] <= hsync_in;
+		vsync[1] <= vsync_in;
+		blank[1] <= blank_in;
+		pixel <= pixel_in;
+
+		//pipeline stage 0
+		in_box <= (relative_x>=0) && (relative_x<=11) && (relative_y>=0) && (relative_y<=18);
+		x <= relative_x[3:0]; // mouse icon pixel offset
+		y <= relative_y[4:0];
+
+		//pipeline stage 1
+		if (in_box) begin
+			if () 
+				pixel_out <= MOUSE_OUTER_COLOR;
+			else if (
+					(y <= 12 && x<=y) ||
+					(y == 13 && x < 7) ||
+					(y == 14 && (x==1||x==2||x==6||x==7)) ||
+					(y == 15 && (x==1||x==6||x==7)) ||
+					((y==16||y==17) && (x==7||x==8))
+				)
+				pixel_out <= MOUSE_INNER_COLOR;
+			else
+				pixel_out <= pixel;
+
+		end else begin
+			pixel_out <= pixel
+		end
+
+	end
+
 
 endmodule
 
