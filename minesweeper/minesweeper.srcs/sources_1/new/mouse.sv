@@ -24,7 +24,7 @@ module mouse_renderer
 	output [11:0] pixel_out	// pixel r=11:8, g=7:4, b=3:0 (output with buffering)
 	);
 
-	//This module is pipelined by N clocks
+	//This module is pipelined by 2 clocks. Probably could be 1 but doesn't hurt the final product and also probably makes compile easier.
 
 	logic [10:0] hcount [1:0] ;
 	logic [9:0] vcount [1:0] ;
@@ -73,7 +73,17 @@ module mouse_renderer
 
 		//pipeline stage 1
 		if (in_box) begin
-			if () 
+			if (
+					(y==x) || 
+					(y<=16 && x==0) ||
+					(y==12 && x>=7) ||
+					(y==13 && (x==4||x==7)) ||
+					(y==14 && (x==3||x==5||x==8)) ||
+					(y==15 && (x==2||x==5||x==8)) ||
+					(y==16 && (x==1||x==6||x==9)) ||
+					(y==17 && (x==6||x==9)) ||
+					(y==18 && (x==7||x==8))
+				) 
 				pixel_out <= MOUSE_OUTER_COLOR;
 			else if (
 					(y <= 12 && x<=y) ||
