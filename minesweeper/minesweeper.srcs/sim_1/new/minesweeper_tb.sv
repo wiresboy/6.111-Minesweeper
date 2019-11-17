@@ -13,15 +13,12 @@ module minesweeper_tb;
    end
    initial begin
     clk = 0;
-    #40;
 	mouse_left_click=1;
 	mouse_x=480;
 	mouse_y=400;
-	#15;
+	#30;
 	//mouse_left_click = 0;
-    #40;
+    #150;
     $finish;
    end
-   
-       
 endmodule

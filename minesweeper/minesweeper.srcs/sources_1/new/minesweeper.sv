@@ -40,19 +40,22 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;
 
-	logic bomb_locations [GAME_SIZE-1:0] [GAME_SIZE-1:0]; // if 1, there is a bomb, if 0, no bomb
-	logic tile_status [GAME_SIZE-1:0] [GAME_SIZE-1:0]; //Game board for the tile status, if 0 tile has not been cleared, if 1 tile has been cleared succesfully
+	logic  [GAME_SIZE-1:0] bomb_locations  [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
+	logic [GAME_SIZE-1:0] tile_status  [0:GAME_SIZE-1]; //Game board for the tile status, if 0 tile has not been cleared, if 1 tile has been cleared succesfully
 
 	logic[7:0] mouse_bin;
 	logic[3:0] x_bin, y_bin;
 
-	logic [2:0] state; //states for resetting game and choosing difficulty
+	logic [2:0] state=3'b00;; //states for resetting game and choosing difficulty
 	parameter IDLE = 3'b0;
 	parameter IN_GAME = 3'b10;
 	parameter GAME_OVER = 3'b011;
 
+	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
+
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
+
 
 	always_ff @(posedge clk_65mhz) begin
 		if(mouse_left_click) begin //process a user action
@@ -68,13 +71,13 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 					state <= IN_GAME;
 				end
 				IN_GAME: begin
-					//if(mouse_x&mouse_y on reset button, reset game
+					if(mouse_x>=1000) begin//on reset button, reset game
 						state <= IDLE;
+					end
 					//Do game logic!
-					//iterate through game array? associate mouse_x, mouse_y with a grid position and process?
-					//if(tile_clicked == bomb)
-							//state <= GAME_OVER;
-					//end
+					if(bomb_locations[mouse_bin[3:0]][mouse_bin[7:4]]) begin
+						state <= GAME_OVER;
+					end
 				end
 				GAME_OVER: begin
 					//make sure screen shows that game is over
