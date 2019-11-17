@@ -24,12 +24,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	input vsync_in,			// XVGA vertical sync signal (active low)
 	input blank_in,			// XVGA blanking (1 means output black pixel)
 
-	output [10:0] hcount_out,	// horizontal index of current pixel, with buffering
-	output [9:0] vcount_out,	// vertical index of current pixel, with buffering
-	output hsync_out,			// horizontal sync (output with buffering)
-	output vsync_out,			// vertical sync (output with buffering)
-	output blank_out,			// blanking (output with buffering)
-	output [11:0] pixel_out,	// pixel r=11:8, g=7:4, b=3:0 (output with buffering)
+	output [11:0] pixel_out,	// pixel r=11:8, g=7:4, b=3:0 
 
 	output [31:0] seven_seg_out,	// seven segment display. Each nibble is 1 7 segment output
 
@@ -37,19 +32,65 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	output sound_effect_start			//start the selected sound effect. Strobe for only 1 clock.
 
 	);
-
+	parameter GAME_SIZE = 3'd4;
 
 
 	//TODO: replace with real logic
-	assign hcount_out = hcount_in;
-	assign vcount_out = vcount_in;
-	assign hsync_out = hsync_in;
-	assign vsync_out = vsync_in;
-	assign blank_out = blank_in;
-	assign pixel_out = pixel_in;
 	assign seven_seg_out = 0;
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;
 
+	logic bomb_locations [GAME_SIZE-1:0] [GAME_SIZE-1:0]; // if 1, there is a bomb, if 0, no bomb
+	logic tile_status [GAME_SIZE-1:0] [GAME_SIZE-1:0]; //Game board for the tile status, if 0 tile has not been cleared, if 1 tile has been cleared succesfully
 
+	logic[7:0] mouse_bin;
+	logic[3:0] x_bin, y_bin;
+
+	logic [2:0] state; //states for resetting game and choosing difficulty
+	parameter IDLE = 3'b0;
+	parameter IN_GAME = 3'b10;
+	parameter GAME_OVER = 3'b011;
+
+	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
+	logic [11:0] grid_pixel;
+
+	always_ff @(posedge clk_65mhz) begin
+		if(mouse_left_click) begin //process a user action
+			//first "bin" which tile the click occured in
+			x_bin <= mouse_x/256;
+			y_bin <= mouse_y/192;
+			mouse_bin <= {x_bin,y_bin};
+
+
+			case(state)
+				IDLE: begin
+					//if (user clicks start game)
+					state <= IN_GAME;
+				end
+				IN_GAME: begin
+					//if(mouse_x&mouse_y on reset button, reset game
+						state <= IDLE;
+					//Do game logic!
+					//iterate through game array? associate mouse_x, mouse_y with a grid position and process?
+					//if(tile_clicked == bomb)
+							//state <= GAME_OVER;
+					//end
+				end
+				GAME_OVER: begin
+					//make sure screen shows that game is over
+					//after some time transition to idle state?
+					//state <= IDLE;
+				end
+			endcase
+		end
+		//Draw game board
+		//First draw grid lines	starting with 4x4
+		if((hcount_in%256==0)||(vcount_in%192==0)) begin
+			grid_pixel <= 12'hFFF;
+        end
+			
+		//pixel_out <= grid_pixel;
+	end
 endmodule
+
+

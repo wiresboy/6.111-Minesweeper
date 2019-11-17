@@ -8,6 +8,7 @@ module mouse_renderer
 	(	
 	input [10:0] mouse_x,	// Mouse X coord.
 	input [9:0] mouse_y,	// Mouse Y coord.
+	input clk_65mhz,
 
 	input [10:0] hcount_in,	// horizontal index of current pixel (0..1023)
 	input [9:0] vcount_in,	// vertical index of current pixel (0..767)
@@ -41,8 +42,8 @@ module mouse_renderer
 	assign vsync_out = vsync[1];
 	assign blank_out = blank[1];
 
-	signed logic [10:0] relative_x;
-	signed logic [9:0] relative_y;
+//	signed logic [10:0] relative_x;
+//	signed logic [9:0] relative_y;
 	assign relative_x = hcount_in - mouse_x;
 	assign relative_y = vcount_in - mouse_y;
 
@@ -68,37 +69,37 @@ module mouse_renderer
 
 		//pipeline stage 0
 		in_box <= (relative_x>=0) && (relative_x<=11) && (relative_y>=0) && (relative_y<=18);
-		x <= relative_x[3:0]; // mouse icon pixel offset
-		y <= relative_y[4:0];
+//		x <= relative_x[3:0]; // mouse icon pixel offset
+//		y <= relative_y[4:0];
 
-		//pipeline stage 1
-		if (in_box) begin
-			if (
-					(y==x) || 
-					(y<=16 && x==0) ||
-					(y==12 && x>=7) ||
-					(y==13 && (x==4||x==7)) ||
-					(y==14 && (x==3||x==5||x==8)) ||
-					(y==15 && (x==2||x==5||x==8)) ||
-					(y==16 && (x==1||x==6||x==9)) ||
-					(y==17 && (x==6||x==9)) ||
-					(y==18 && (x==7||x==8))
-				) 
-				pixel_out <= MOUSE_OUTER_COLOR;
-			else if (
-					(y <= 12 && x<=y) ||
-					(y == 13 && x < 7) ||
-					(y == 14 && (x==1||x==2||x==6||x==7)) ||
-					(y == 15 && (x==1||x==6||x==7)) ||
-					((y==16||y==17) && (x==7||x==8))
-				)
-				pixel_out <= MOUSE_INNER_COLOR;
-			else
-				pixel_out <= pixel;
+//		//pipeline stage 1
+//		if (in_box) begin
+//			if (
+//					(y==x) || 
+//					(y<=16 && x==0) ||
+//					(y==12 && x>=7) ||
+//					(y==13 && (x==4||x==7)) ||
+//					(y==14 && (x==3||x==5||x==8)) ||
+//					(y==15 && (x==2||x==5||x==8)) ||
+//					(y==16 && (x==1||x==6||x==9)) ||
+//					(y==17 && (x==6||x==9)) ||
+//					(y==18 && (x==7||x==8))
+//				) 
+//				pixel_out <= MOUSE_OUTER_COLOR;
+//			else if (
+//					(y <= 12 && x<=y) ||
+//					(y == 13 && x < 7) ||
+//					(y == 14 && (x==1||x==2||x==6||x==7)) ||
+//					(y == 15 && (x==1||x==6||x==7)) ||
+//					((y==16||y==17) && (x==7||x==8))
+//				)
+//				pixel_out <= MOUSE_INNER_COLOR;
+//			else
+//				pixel_out <= pixel;
 
-		end else begin
-			pixel_out <= pixel
-		end
+//		end else begin
+//			pixel_out <= pixel
+//		end
 
 	end
 
