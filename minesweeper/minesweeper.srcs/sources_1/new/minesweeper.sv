@@ -40,16 +40,16 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;
 
-	logic  [GAME_SIZE-1:0] bomb_locations  [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
-	logic [GAME_SIZE-1:0] tile_status  [0:GAME_SIZE-1]; //Game board for the tile status, if 0 tile has not been cleared, if 1 tile has been cleared succesfully
+	logic [GAME_SIZE-1:0] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
+	logic [GAME_SIZE-1:0] tile_status [0:GAME_SIZE-1]; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
 
 	logic[7:0] mouse_bin;
 	logic[3:0] x_bin, y_bin;
 
-	logic [2:0] state=3'b00;; //states for resetting game and choosing difficulty
-	parameter IDLE = 3'b0;
-	parameter IN_GAME = 3'b10;
+	parameter IDLE = 3'b000;
+	parameter IN_GAME = 3'b010;
 	parameter GAME_OVER = 3'b011;
+	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
 
@@ -58,27 +58,33 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 
 	always_ff @(posedge clk_65mhz) begin
+//		if() begin //At each upper left corner of a tile, determine what .coe file the tile should have
+		//end
 		if(mouse_left_click) begin //process a user action
 			//first "bin" which tile the click occured in
 			x_bin <= mouse_x/256;
 			y_bin <= mouse_y/192;
 			mouse_bin <= {x_bin,y_bin};
 
-
 			case(state)
 				IDLE: begin
 					//if (user clicks start game)
 					state <= IN_GAME;
+					tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
 				end
+				
 				IN_GAME: begin
 					if(mouse_x>=1000) begin//on reset button, reset game
 						state <= IDLE;
 					end
+
 					//Do game logic!
+					tile_status[mouse_bin[3:0]][mouse_bin[7:4]] <= 1'b1; //Update tile with mouse location
 					if(bomb_locations[mouse_bin[3:0]][mouse_bin[7:4]]) begin
 						state <= GAME_OVER;
 					end
 				end
+
 				GAME_OVER: begin
 					//make sure screen shows that game is over
 					//after some time transition to idle state?
@@ -86,14 +92,81 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				end
 			endcase
 		end
+
 		//Draw game board
 		//First draw grid lines	starting with 4x4
 		if((hcount_in%256==0)||(vcount_in%192==0)) begin
 			grid_pixel <= 12'hFFF;
         end
-			
-		//pixel_out <= grid_pixel;
 	end
+
+	one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
+	fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
+
+
+	assign pixel_out = grid_pixel;
 endmodule
 
+module fd_blob 
+   #(parameter WIDTH = 256,     // default picture width
+               HEIGHT = 192)    // default picture height
+   (input pixel_clk_in,
+    input [10:0] x_in,hcount_in,
+    input [9:0] y_in,vcount_in,
+    output logic [11:0] pixel_out);
+
+   logic [15:0] image_addr;   // num of bits for 256*240 ROM
+   logic [7:0] image_bits, red_mapped, green_mapped, blue_mapped;
+
+   // calculate rom address and read the location
+   assign image_addr = (hcount_in-x_in) + (vcount_in-y_in) * WIDTH;
+   facing_down_image_rom  rom(.clka(pixel_clk_in), .addra(image_addr), .douta(image_bits));
+
+   // use color map to create 4 bits R, 4 bits G, 4 bits B
+   // since the image is greyscale, just replicate the red pixels
+   // and not bother with the other two color maps.
+   facing_down_color_map rcm (.clka(pixel_clk_in), .addra(image_bits), .douta(red_mapped));
+   //green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
+   //blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
+   // note the one clock cycle delay in pixel!
+   always @ (posedge pixel_clk_in) begin
+     if ((hcount_in >= x_in && hcount_in < (x_in+WIDTH)) &&
+          (vcount_in >= y_in && vcount_in < (y_in+HEIGHT)))
+        // use MSB 4 bits
+        pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
+        //pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
+        else pixel_out <= 0;
+   end
+endmodule
+module one_blob 
+   #(parameter WIDTH = 256,     // default picture width
+               HEIGHT = 192)    // default picture height
+   (input pixel_clk_in,
+    input [10:0] x_in,hcount_in,
+    input [9:0] y_in,vcount_in,
+    output logic [11:0] pixel_out);
+
+   logic [15:0] image_addr;   // num of bits for 256*240 ROM
+   logic [7:0] image_bits, red_mapped, green_mapped, blue_mapped;
+
+   // calculate rom address and read the location
+   assign image_addr = (hcount_in-x_in) + (vcount_in-y_in) * WIDTH;
+   one_image_rom  rom(.clka(pixel_clk_in), .addra(image_addr), .douta(image_bits));
+
+   // use color map to create 4 bits R, 4 bits G, 4 bits B
+   // since the image is greyscale, just replicate the red pixels
+   // and not bother with the other two color maps.
+   one_color_map rcm (.clka(pixel_clk_in), .addra(image_bits), .douta(red_mapped));
+   //green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
+   //blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
+   // note the one clock cycle delay in pixel!
+   always @ (posedge pixel_clk_in) begin
+     if ((hcount_in >= x_in && hcount_in < (x_in+WIDTH)) &&
+          (vcount_in >= y_in && vcount_in < (y_in+HEIGHT)))
+        // use MSB 4 bits
+        pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
+        //pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
+        else pixel_out <= 0;
+   end
+endmodule
 
