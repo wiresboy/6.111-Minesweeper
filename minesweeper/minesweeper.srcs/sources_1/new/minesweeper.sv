@@ -185,14 +185,15 @@ module one_blob
    // since the image is greyscale, just replicate the red pixels
    // and not bother with the other two color maps.
    one_color_map rcm (.clka(pixel_clk_in), .addra(image_bits), .douta(red_mapped));
-   //green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
-   //blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
+   green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
+   blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
    // note the one clock cycle delay in pixel!
    always @ (posedge pixel_clk_in) begin
      if ((hcount_in >= x_in && hcount_in < (x_in+WIDTH)) &&
           (vcount_in >= y_in && vcount_in < (y_in+HEIGHT)))
         // use MSB 4 bits
-        pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
+        pixel_out <= {red_mapped[7:4], green_mapped[7:4], blue_mapped[7:4]}; // greyscale
+        //pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
         //pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
         else pixel_out <= 0;
    end

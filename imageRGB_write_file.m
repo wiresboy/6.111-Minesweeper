@@ -119,7 +119,7 @@ title('Another way to see the color table')
 %You can extend what we did for 8-bit bitmaps to even more compressed 
 %forms, such as this 4-bit bitmap.  Now we only have 16 colors to work with
 %though, and our image quality is significantly reduced:
-[picture, color_table] = imread('tiger4.bmp');
+[picture, color_table] = imread('./Images/1.bmp');
 
 figure
 image(picture)
@@ -161,7 +161,60 @@ output(rows,(columns+1)) = ';';
 dlmwrite(output_name,output,'-append','delimiter','', 'newline', 'pc');
 
 % create color table for green (2)  and blue (3) and you're done!
+green = color_table(:,1);             %grabs the red part of the colortable
+scaled_data = green*255;              %scales the floats back to 0-255
+rounded_data = round(scaled_data);  %rounds them down
+data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
+%open a file
+output_name = './Images/1_color_green.coe';
+file = fopen(output_name,'w');
+
+%write the header info
+fprintf(file,'memory_initialization_radix=2;\n');
+fprintf(file,'memory_initialization_vector=\n');
+fclose(file);
+
+%put commas in the data
+rowxcolumn = size(data);    
+rows = rowxcolumn(1);
+columns = rowxcolumn(2);
+output = data;
+for i = 1:(rows-1)
+    output(i,(columns+1)) = ',';
+end
+output(rows,(columns+1)) = ';';
+
+%append the numeric values to the file
+dlmwrite(output_name,output,'-append','delimiter','', 'newline', 'pc');
+
+%Blue
+blue = color_table(:,3);             %grabs the red part of the colortable
+scaled_data = blue*255;              %scales the floats back to 0-255
+rounded_data = round(scaled_data);  %rounds them down
+data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
+
+%open a file
+output_name = './Images/1_color_blue.coe';
+file = fopen(output_name,'w');
+
+%write the header info
+fprintf(file,'memory_initialization_radix=2;\n');
+fprintf(file,'memory_initialization_vector=\n');
+fclose(file);
+
+%put commas in the data
+rowxcolumn = size(data);    
+rows = rowxcolumn(1);
+columns = rowxcolumn(2);
+output = data;
+for i = 1:(rows-1)
+    output(i,(columns+1)) = ',';
+end
+output(rows,(columns+1)) = ';';
+
+%append the numeric values to the file
+dlmwrite(output_name,output,'-append','delimiter','', 'newline', 'pc');
 %% Turning a 2D image into a 1D memory array
 %The code above is all well and good for the color table, since it's 1-D
 %(well, at least you can break it into 3 1-D arrays).  But what about a 2D

@@ -1,0 +1,2 @@
+green_coe.v,verilog,xil_defaultlib,../../../../minesweeper.srcs/sources_1/ip/green_coe/sim/green_coe.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
