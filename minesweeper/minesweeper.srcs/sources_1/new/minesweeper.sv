@@ -30,7 +30,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	output [2:0] sound_effect_select,	//indices and meanings TBD
 	output sound_effect_start			//start the selected sound effect. Strobe for only 1 clock.
-
 	);
 	parameter GAME_SIZE = 3'd4;
 
@@ -42,6 +41,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	logic [GAME_SIZE-1:0] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
 	logic [GAME_SIZE-1:0] tile_status [0:GAME_SIZE-1]; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
+	//logic [GAME_SIZE-1:0] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
+	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic[7:0] mouse_bin;
 	logic[3:0] x_bin, y_bin;
@@ -52,14 +53,18 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
+	assign tile_numbers = '{'{2,5,0,8},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
+	logic [2:0] curr_tile;
 
 
 	always_ff @(posedge clk_65mhz) begin
-//		if() begin //At each upper left corner of a tile, determine what .coe file the tile should have
-		//end
+		if((hcount_in%256==0)&&(vcount_in%192==0)) begin //At each upper left corner of a tile, determine what .coe file the tile should have
+			//Given that we're on a tile, need to index into the tile_numbers array
+			curr_tile <= tile_numbers[vcount_in/192][hcount_in/256];
+		end
 		if(mouse_left_click) begin //process a user action
 			//first "bin" which tile the click occured in
 			x_bin <= mouse_x/256;
@@ -100,8 +105,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
         end
 	end
 
-	one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
-	fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
+	//one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
+	//fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(ds_pixel_out),.x_in(ds_x),.y_in(ds_y));
 
 
 	assign pixel_out = grid_pixel;
@@ -138,6 +143,7 @@ module fd_blob
         else pixel_out <= 0;
    end
 endmodule
+
 module one_blob 
    #(parameter WIDTH = 256,     // default picture width
                HEIGHT = 192)    // default picture height
