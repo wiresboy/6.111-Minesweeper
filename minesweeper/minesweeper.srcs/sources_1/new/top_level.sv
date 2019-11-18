@@ -51,10 +51,10 @@ module top_level(
 	logic [10:0] mouse_x;
 	logic [9:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
-	mouse mouse(.ps2_clk(ps2_clk), .ps2_data(ps2_data),
-				.mouse_x(mouse_x), .mouse_y(mouse_y),
-				.mouse_left_click(mouse_left_click),
-				.mouse_right_click(mouse_right_click));
+//	mouse mouse(.ps2_clk(ps2_clk), .ps2_data(ps2_data),
+//				.mouse_x(mouse_x), .mouse_y(mouse_y),
+//				.mouse_left_click(mouse_left_click),
+//				.mouse_right_click(mouse_right_click));
 
 
 	// ***** VGA Gen *****
@@ -81,8 +81,6 @@ module top_level(
 			//TODO random
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
-			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
-			.hsync_out(ms_hsync),.vsync_out(ms_vsync),.blank_out(ms_blank),
 			.pixel_out(ms_pixel),
 			.seven_seg_out(ms_seven_segment_data)
 			//,  TODO sound
@@ -94,28 +92,28 @@ module top_level(
 	wire [10:0] mouse_hcount; 
 	wire [9:0] mouse_vcount;
 	wire [11:0] mouse_pixel;
-	mouse_renderer mouse_renderer(
-			.mouse_x(mouse_x),.mouse_y(mouse_y),
-			.hcount_in(ms_hcount),.vcount_in(ms_vcount),
-			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
-			.hcount_out(mouse_hcount),.vcount_out(mouse_vcount),
-			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
-			.pixel_out(mouse_pixel));
+//	mouse_renderer mouse_renderer(
+//			.mouse_x(mouse_x),.mouse_y(mouse_y),
+//			.hcount_in(ms_hcount),.vcount_in(ms_vcount),
+//			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
+//			.hcount_out(mouse_hcount),.vcount_out(mouse_vcount),
+//			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
+//			.pixel_out(mouse_pixel));
 
 
 	// ***** VIDEO OUT *****
 	reg [11:0] rgb;    
+	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
-		hs <= mouse_hsync;
-		vs <= mouse_vsync;
-		b <= mouse_blank;
-		rgb <= mouse_pixel;
+		hs <= hsync;
+		vs <= vsync;
+		b <= blank;
+		rgb <= ms_pixel;
 	end
+
 	assign vga_r = ~b ? rgb[11:8]: 0;
 	assign vga_g = ~b ? rgb[7:4] : 0;
 	assign vga_b = ~b ? rgb[3:0] : 0;
 	assign vga_hs = ~hs;
 	assign vga_vs = ~vs;
-	
-	
-endmodule;
+endmodule //top_level
