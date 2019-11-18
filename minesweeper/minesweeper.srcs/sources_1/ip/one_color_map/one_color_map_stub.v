@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
-// Date        : Sun Nov 17 19:08:08 2019
+// Date        : Mon Nov 18 13:44:59 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub {c:/Users/Rod Bayliss
-//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_color_map/one_color_map_stub.v}
+// Command     : write_verilog -force -mode synth_stub -rename_top one_color_map -prefix
+//               one_color_map_ one_color_map_stub.v
 // Design      : one_color_map
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1
@@ -15,8 +15,8 @@
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
 (* x_core_info = "blk_mem_gen_v8_4_3,Vivado 2019.1" *)
 module one_color_map(clka, addra, douta)
-/* synthesis syn_black_box black_box_pad_pin="clka,addra[15:0],douta[7:0]" */;
+/* synthesis syn_black_box black_box_pad_pin="clka,addra[4:0],douta[7:0]" */;
   input clka;
-  input [15:0]addra;
+  input [4:0]addra;
   output [7:0]douta;
 endmodule

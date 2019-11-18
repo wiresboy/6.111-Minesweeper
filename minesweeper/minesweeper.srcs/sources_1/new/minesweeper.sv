@@ -59,27 +59,16 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
-	logic [11:0] tile_pixel;
-	logic [2:0] curr_tile; //0-7 are possible tile numbers, 8 is flag
+	logic [11:0] tile_pixel,tile_pixel_2;
+	
 
 
 	always_ff @(posedge clk_65mhz) begin
 		//Draw game board
-		if((hcount_in%256==0)&&(vcount_in%192==0)) begin //At each upper left corner of a tile, determine what .coe file the tile should have
-			//Given that we're on a tile, need to index into the tile_numbers array
-			if(!tile_status[vcount_in/192][hcount_in/256]) begin//if tile has not been cleared, draw uncleared tile symbol
-			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				curr_tile <= tile_numbers[vcount_in/192][hcount_in/256];
-				case(curr_tile)
-					0: begin
-					end
-				endcase
-			end
-		end
 
 		if(mouse_left_click) begin //process a user action
 			//first "bin" which tile the click occured in
-			x_bin <= mouse_x/256;
+			x_bin <= mouse_x/192;
 			y_bin <= mouse_y/192;
 			mouse_bin <= {x_bin,y_bin};
 
@@ -111,15 +100,42 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 	end
 
-	//one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
-	fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
+	one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
+	fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel_2),.x_in(192),.y_in(0));
 
 
-    assign pixel_out = tile_pixel;
+    assign pixel_out = tile_pixel|tile_pixel_2;
 endmodule
 
+module tile_drawer
+   (input pixel_clk_in,
+    input [10:0] x_in,hcount_in,
+    input [9:0] y_in,vcount_in,
+	input [0:3] [2:0] tile_numbers[0:3],
+	logic [0:3] tile_status [0:3],
+    output logic [11:0] pixel_out);
+    
+    logic [2:0] curr_tile; //0-7 are possible tile numbers, 8 is flag
+	//Given the tile_numbers and tile_status array, draws the tiles
+    always_ff @(posedge pixel_clk_in) begin
+		if((hcount_in%192==0)&&(vcount_in%192==0)) begin //At each upper left corner of a tile, determine what .coe file the tile should have
+			//Given that we're on a tile, need to index into the tile_numbers array
+			if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
+					
+			end else begin //if tile has been cleared, draw the number of surrounding bombs
+				curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
+				case(curr_tile)
+					0: begin
+					end
+				endcase
+			end
+		end
+	end
+endmodule //tile_drawer
+
+
 module fd_blob 
-   #(parameter WIDTH = 256,     // default picture width
+   #(parameter WIDTH = 192,     // default picture width
                HEIGHT = 192)    // default picture height
    (input pixel_clk_in,
     input [10:0] x_in,hcount_in,
@@ -151,7 +167,7 @@ module fd_blob
 endmodule
 
 module one_blob 
-   #(parameter WIDTH = 256,     // default picture width
+   #(parameter WIDTH = 192,     // default picture width
                HEIGHT = 192)    // default picture height
    (input pixel_clk_in,
     input [10:0] x_in,hcount_in,

@@ -10,7 +10,7 @@
 %% Getting 24 bit data
 %So when you look at a 24 bit bitmap file, the file specifies three 8 bit 
 %values for each color, 8 each for red, green, and blue.
-[picture] = imread('./Images/facing_down.bmp');
+[picture] = imread('./Images/1.bmp');
 
 %% View the image
 %This command image will draw the picture you just loaded
@@ -59,7 +59,7 @@ title('Red values in 24 bit bitmap')
 %table where each index specifies an r, g, and b value separately.
 %
 %Because of this, now we need to load both the image and it's colormap.
-[picture, color_table] = imread('./Images/facingDown.bmp');
+[picture, color_table] = imread('./Images/1.bmp');
 
 %% Displaying without the color table
 %If we try to display the picture without the colormap, the image does not
@@ -139,7 +139,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/facing_down_color.coe';
+output_name = './Images/1_color.coe';
 file = fopen(output_name,'w');
 
 %write the header info
@@ -184,7 +184,7 @@ rounded_data = round(pixel_columns);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/facing_down.coe';
+output_name = './Images/1.coe';
 file = fopen(output_name,'w');
 
 %write the header info
