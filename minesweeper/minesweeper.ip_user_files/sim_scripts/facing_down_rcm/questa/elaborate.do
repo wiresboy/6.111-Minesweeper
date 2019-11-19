@@ -1,1 +1,0 @@
-vopt -64 +acc -l elaborate.log -L xil_defaultlib -L xpm -L blk_mem_gen_v8_4_3 -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.facing_down_rcm xil_defaultlib.glbl -o facing_down_rcm_opt
