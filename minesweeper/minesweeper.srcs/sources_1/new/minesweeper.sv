@@ -56,6 +56,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
 	assign tile_numbers = '{'{2,5,0,7},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
+	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
@@ -76,7 +77,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				IDLE: begin
 					//if (user clicks start game)
 					state <= IN_GAME;
-					tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
+					//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+					//tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
 				end
 				
 				IN_GAME: begin
@@ -153,31 +155,33 @@ module tile_drawer
 	
     always_ff @(posedge pixel_clk_in) begin
 		if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
-			//pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
-			pixel_out <= 12'hEEE;
+			pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
+			//pixel_out <= 12'hEEE;
 		end else begin //if tile has been cleared, draw the number of surrounding bombs
 			
 			curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
 			case(curr_tile)
 				0: begin
-					//pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
-					pixel_out <= 12'h000; //Sim test
+					pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
+					//pixel_out <= 12'h000; //Sim test
 				end
 				1: begin
-					//pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
-					pixel_out <= 12'h111; //sim test
+					pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
+					//pixel_out <= 12'h111; //sim test
 				end
+				/*
 				2: begin
-					//pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
-					pixel_out <= 12'h222; //sim test
+					pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
+					//pixel_out <= 12'h222; //sim test
 				end
 				3: begin
-					//pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
-					pixel_out <= 12'h333; //sim test
+					pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
+					//pixel_out <= 12'h333; //sim test
 				end
+				*/
 				default: begin
-					//pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
-					pixel_out <= 12'h000; //sim test
+					pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 
+					//pixel_out <= 12'h000; //sim test
 				end
 			endcase
 		end
