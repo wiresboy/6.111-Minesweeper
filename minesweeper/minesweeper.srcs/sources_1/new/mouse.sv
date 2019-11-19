@@ -106,45 +106,6 @@ module mouse_renderer
 endmodule
 
 
-module mouse_ps2(
-	input clk_65mhz, 
-	input rst_n,
-	inout ps2_clk, ps2_data,
-	output logic received_packet,
-	output logic [32:0] packet);
-
-	logic [32:0] packet_buf;
-	logic [3:0] state;
-
-	parameter STATE_INIT = 0;
-	parameter STATE_WAITING = 1; //data == 1, waiting for start of next packet
-	parameter STATE_RECIEVING = 2; 
-	parameter STATE_DONE = 3;
-	parameter STATE_INITIAL_DELAY = 4;
-	parameter STATE_SETUP = 5; //Todo will be split into multiple probably.
-
-	always_ff @(posedge clk_65mhz or negedge rst_n) begin : proc_state
-		if(~rst_n) begin
-			state <= 0;
-		end else begin
-			case (state)
-				STATE_INIT: begin
-					received_packet <= 0;
-					packet <= 0;
-				end
-				STATE_WAITING: 
-					received_packet <= 0;
-					if (ps2_data == 0 && )
-
-				default: state <= 0; //Should not be reachable!
-			endcase // state
-		end
-	end
-
-
-endmodule
-
-
 module mouse
 	#(	parameter SCREEN_WIDTH=1024, 
 		parameter SCREEN_HEIGHT=768)
@@ -158,42 +119,68 @@ module mouse
 	output logic mouse_right_click = 0	// Mouse right button clicked. Not edge triggered.
 	);
 
-	logic received_packet;
-	logic [32:0] packet;
+
+	
+	logic data_ready;
+
+	logic [8:0] dx;
+	logic [8:0] dy;
 	logic [7:0] p_dx;
 	logic [7:0] p_dy;
 	logic p_l, p_r;
 	logic p_xs, p_ys;
 	logic p_valid;
 
-	logic [7:0] new_x_inc; //Holds new x,y locations assuming increase or decrease, includes the max limit functionality.
-	logic [7:0] new_x_dec;
-	logic [7:0] new_y_inc;
-	logic [7:0] new_y_dec;
+	logic [10:0] new_x_inc; //Holds new x,y deltas assuming increase or decrease, includes the max limit functionality.
+	logic [10:0] new_x_dec;
+	logic [9:0] new_y_inc;
+	logic [9:0] new_y_dec;
 
-	assign mouse_left_click = 0;
-	assign mouse_right_click = 0;
-	assign p_valid = (~packet[32]) && (~^packet[31:24] == packet[23]) && (packet[22]) &&
-					 (~packet[21]) && (~^packet[20:13] == packet[12]) && (packet[11]) &&
-					 (~packet[10]) && (~^packet[9:2] == packet[1]) && (packet[0]);
-	assign p_dy = packet[9:2];
-	assign p_dx = packet[20:13];
-	assign p_l = packet[31];
-	assign p_r = packet[30];
-	assign p_xs = packet[27];
-	assign p_ys = packet[26];
+	assign p_xs = dx[8];
+	assign p_ys = dy[8];
+	assign p_dx = dx[7:0];
+	assign p_dy = dy[7:0];
 
 	assign new_x_inc = ( SCREEN_WIDTH - mouse_x < p_dx) ? SCREEN_WIDTH : mouse_x + p_dx;
 	assign new_x_dec = ( mouse_x < p_dx) ? 0 : mouse_x - p_dx;
 	assign new_y_inc = ( SCREEN_HEIGHT - mouse_y < p_dy) ? SCREEN_HEIGHT : mouse_y + p_dy;
 	assign new_y_dec = ( mouse_y < p_dy) ? 0 : mouse_y + p_dy;
 
+
+
+	// using ps2_mouse Verilog from Opencore / from 111 data repository  
+
+	// divide the clk by a factor of two ot that it works with 65mhz and the original timing
+	// parameters in the open core source.
+	// if the Verilog doesn't work the user should update the timing parameters. This  Verilog assumes
+	// 50Mhz clock; seems to work with 32.5mhz without problems. GPH  11/23/2008 with 
+	// assist from BG
+
+	ps2_mouse_interface  
+		#(.WATCHDOG_TIMER_VALUE_PP(26000),
+		.WATCHDOG_TIMER_BITS_PP(15),
+		.DEBOUNCE_TIMER_VALUE_PP(246),
+		.DEBOUNCE_TIMER_BITS_PP(8))
+		m1(
+			.clk(clk_65mhz),
+			.reset(~rst_n),
+			.ps2_clk(ps2_clk),
+			.ps2_data(ps2_data),
+			.left_button(p_l),
+			.right_button(p_r),
+			.x_increment(p_dx),
+			.y_increment(p_dy),
+			.data_ready(data_ready),
+			.read(1'b1)  // force continuous reads
+		);
+
+
 	always_ff @(posedge clk_65mhz or negedge rst_n) begin : proc_mouse
 		if(~rst_n) begin
 			mouse_x <= SCREEN_WIDTH/2;
 			mouse_y <= SCREEN_HEIGHT/2;
 		end else begin
-			if (received_packet && p_valid) begin
+			if (data_ready) begin
 				mouse_x <= (p_xs) ? new_x_dec : new_x_inc;
 				mouse_y <= (p_ys) ? new_y_dec : new_y_inc;
 				mouse_left_click <= p_l;
@@ -203,6 +190,9 @@ module mouse
 	end
 
 endmodule
+
+
+
 
 
 
