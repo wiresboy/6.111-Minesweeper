@@ -55,7 +55,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
-	assign tile_numbers = '{'{2,5,0,7},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
+	assign tile_numbers = '{'{2,1,0,7},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
 	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
@@ -123,7 +123,7 @@ module tile_drawer
     logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	assign image_addr = (hcount_in-hcount_in/192) + (vcount_in-vcount_in/192) * WIDTH; //determine where top left corner of each pixel is for image_addr
+	assign image_addr = (hcount_in-(hcount_in/192)*192) + (vcount_in-192*(vcount_in/192)) * WIDTH; //determine where top left corner of each pixel is for image_addr
 
 	//ROM Instantiations
 	
@@ -151,39 +151,43 @@ module tile_drawer
 	
 
 	//Given the tile_numbers and tile_status array, draws the tiles
-	//
 	
     always_ff @(posedge pixel_clk_in) begin
-		if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
-			pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
-			//pixel_out <= 12'hEEE;
-		end else begin //if tile has been cleared, draw the number of surrounding bombs
-			
-			curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
-			case(curr_tile)
-				0: begin
-					pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
-					//pixel_out <= 12'h000; //Sim test
-				end
-				1: begin
-					pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
-					//pixel_out <= 12'h111; //sim test
-				end
-				/*
-				2: begin
-					pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
-					//pixel_out <= 12'h222; //sim test
-				end
-				3: begin
-					pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
-					//pixel_out <= 12'h333; //sim test
-				end
-				*/
-				default: begin
-					pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 
-					//pixel_out <= 12'h000; //sim test
-				end
-			endcase
+		if(hcount_in<=768) begin //only draw in the game tile region
+			if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
+				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
+				//pixel_out <= 12'hEEE;
+			end else begin //if tile has been cleared, draw the number of surrounding bombs
+				
+				curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
+				case(curr_tile)
+					0: begin
+						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
+						//pixel_out <= 12'h000; //Sim test
+					end
+					1: begin
+						pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
+						//pixel_out <= 12'h111; //sim test
+					end
+					/*
+					2: begin
+						pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
+						//pixel_out <= 12'h222; //sim test
+					end
+					3: begin
+						pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
+						//pixel_out <= 12'h333; //sim test
+					end
+					*/
+					default: begin
+						pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]};  //greyscale
+						//pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 
+						//pixel_out <= 12'h000; //sim test
+					end
+				endcase
+			end
+		end else begin
+			pixel_out <= 12'h000;
 		end
 	end
 endmodule //tile_drawer
