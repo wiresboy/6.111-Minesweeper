@@ -139,9 +139,9 @@ module ps2_mouse_interface (
 // Parameters
 
 // The timer value can be up to (2^bits) inclusive.
-parameter WATCHDOG_TIMER_VALUE_PP = 19660; // Number of sys_clks for 400usec.
+parameter WATCHDOG_TIMER_VALUE_PP = 26000; // Number of sys_clks for 400usec.
 parameter WATCHDOG_TIMER_BITS_PP  = 15;    // Number of bits needed for timer
-parameter DEBOUNCE_TIMER_VALUE_PP = 186;   // Number of sys_clks for debounce
+parameter DEBOUNCE_TIMER_VALUE_PP = 240;   // Number of sys_clks for debounce
 parameter DEBOUNCE_TIMER_BITS_PP  = 8;     // Number of bits needed for timer
 
 
