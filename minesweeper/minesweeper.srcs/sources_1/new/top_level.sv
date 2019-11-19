@@ -105,7 +105,7 @@ module top_level(
 			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
 			.hcount_out(mouse_hcount),.vcount_out(mouse_vcount),
 			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
-			.pixel_out(mouse_pixel));
+			.pixel_in(ms_pixel),.pixel_out(mouse_pixel));
 
 
 	// ***** VIDEO OUT *****
