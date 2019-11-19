@@ -106,6 +106,45 @@ module mouse_renderer
 endmodule
 
 
+module mouse_ps2(
+	input clk_65mhz, 
+	input rst_n,
+	inout ps2_clk, ps2_data,
+	output logic received_packet,
+	output logic [32:0] packet);
+
+	logic [32:0] packet_buf;
+	logic [3:0] state;
+
+	parameter STATE_INIT = 0;
+	parameter STATE_WAITING = 1; //data == 1, waiting for start of next packet
+	parameter STATE_RECIEVING = 2; 
+	parameter STATE_DONE = 3;
+	parameter STATE_INITIAL_DELAY = 4;
+	parameter STATE_SETUP = 5; //Todo will be split into multiple probably.
+
+	always_ff @(posedge clk_65mhz or negedge rst_n) begin : proc_state
+		if(~rst_n) begin
+			state <= 0;
+		end else begin
+			case (state)
+				STATE_INIT: begin
+					received_packet <= 0;
+					packet <= 0;
+				end
+				STATE_WAITING: 
+					received_packet <= 0;
+					if (ps2_data == 0 && )
+
+				default: state <= 0; //Should not be reachable!
+			endcase // state
+		end
+	end
+
+
+endmodule
+
+
 module mouse
 	#(	parameter SCREEN_WIDTH=1024, 
 		parameter SCREEN_HEIGHT=768)
