@@ -110,15 +110,60 @@ module mouse
 	#(	parameter SCREEN_WIDTH=1024, 
 		parameter SCREEN_HEIGHT=768)
 	(
+	input clk_65mhz,
+	input rst_n,
 	inout ps2_clk, ps2_data, 	// physical connections 
-	output [10:0] mouse_x,		// Mouse X coord.
-	output [9:0] mouse_y,		// Mouse Y coord.
-	output mouse_left_click,	// Mouse left button clicked. Debounced, but not edge triggered.
-	output mouse_right_click	// Mouse right button clicked. Debounced, but not edge triggered.
+	output logic [10:0] mouse_x = 0,	// Mouse X coord.
+	output logic [9:0] mouse_y = 0,		// Mouse Y coord.
+	output logic mouse_left_click = 0,	// Mouse left button clicked. Not edge triggered.
+	output logic mouse_right_click = 0	// Mouse right button clicked. Not edge triggered.
 	);
-	assign mouse_x = SCREEN_WIDTH/2;
-	assign mouse_y = SCREEN_HEIGHT/2;
+
+	logic received_packet;
+	logic [32:0] packet;
+	logic [7:0] p_dx;
+	logic [7:0] p_dy;
+	logic p_l, p_r;
+	logic p_xs, p_ys;
+	logic p_valid;
+
+	logic [7:0] new_x_inc; //Holds new x,y locations assuming increase or decrease, includes the max limit functionality.
+	logic [7:0] new_x_dec;
+	logic [7:0] new_y_inc;
+	logic [7:0] new_y_dec;
+
 	assign mouse_left_click = 0;
 	assign mouse_right_click = 0;
+	assign p_valid = (~packet[32]) && (~^packet[31:24] == packet[23]) && (packet[22]) &&
+					 (~packet[21]) && (~^packet[20:13] == packet[12]) && (packet[11]) &&
+					 (~packet[10]) && (~^packet[9:2] == packet[1]) && (packet[0]);
+	assign p_dy = packet[9:2];
+	assign p_dx = packet[20:13];
+	assign p_l = packet[31];
+	assign p_r = packet[30];
+	assign p_xs = packet[27];
+	assign p_ys = packet[26];
+
+	assign new_x_inc = ( SCREEN_WIDTH - mouse_x < p_dx) ? SCREEN_WIDTH : mouse_x + p_dx;
+	assign new_x_dec = ( mouse_x < p_dx) ? 0 : mouse_x - p_dx;
+	assign new_y_inc = ( SCREEN_HEIGHT - mouse_y < p_dy) ? SCREEN_HEIGHT : mouse_y + p_dy;
+	assign new_y_dec = ( mouse_y < p_dy) ? 0 : mouse_y + p_dy;
+
+	always_ff @(posedge clk_65mhz or negedge rst_n) begin : proc_mouse
+		if(~rst_n) begin
+			mouse_x <= SCREEN_WIDTH/2;
+			mouse_y <= SCREEN_HEIGHT/2;
+		end else begin
+			if (received_packet && p_valid) begin
+				mouse_x <= (p_xs) ? new_x_dec : new_x_inc;
+				mouse_y <= (p_ys) ? new_y_dec : new_y_inc;
+				mouse_left_click <= p_l;
+				mouse_right_click <= p_r;
+			end
+		end
+	end
 
 endmodule
+
+
+
