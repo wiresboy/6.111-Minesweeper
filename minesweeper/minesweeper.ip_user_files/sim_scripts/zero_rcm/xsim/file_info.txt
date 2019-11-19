@@ -1,0 +1,2 @@
+zero_rcm.v,verilog,xil_defaultlib,../../../../minesweeper.srcs/sources_1/ip/zero_rcm/sim/zero_rcm.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

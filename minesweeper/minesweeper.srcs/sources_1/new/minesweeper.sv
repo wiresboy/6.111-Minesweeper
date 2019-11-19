@@ -55,7 +55,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
-	assign tile_numbers = '{'{2,5,0,8},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
+	assign tile_numbers = '{'{2,5,0,7},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
@@ -100,40 +100,92 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 	end
 
-	one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
-	fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel_2),.x_in(192),.y_in(0));
+	//one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
+	//fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel_2),.x_in(192),.y_in(0));
 
 
-    assign pixel_out = tile_pixel|tile_pixel_2;
+    //assign pixel_out = tile_pixel|tile_pixel_2;
+	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
 endmodule
 
 module tile_drawer
-   (input pixel_clk_in,
-    input [10:0] x_in,hcount_in,
-    input [9:0] y_in,vcount_in,
+	#(parameter WIDTH = 192, HEIGHT = 192)
+	(input pixel_clk_in,
+    input [10:0] hcount_in,
+    input [9:0] vcount_in,
 	input [0:3] [2:0] tile_numbers[0:3],
 	logic [0:3] tile_status [0:3],
-    output logic [11:0] pixel_out);
+    output logic [11:0] pixel_out
+	);
     
-    logic [2:0] curr_tile; //0-7 are possible tile numbers, 8 is flag
+    logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
+	//ROM vars
+	logic [15:0] image_addr;
+	assign image_addr = (hcount_in-hcount_in/192) + (vcount_in-vcount_in/192) * WIDTH; //determine where top left corner of each pixel is for image_addr
+
+	//ROM Instantiations
+	
+	//Facing Down tile ROMs
+	logic [15:0] fd_pixel_out;
+	logic [7:0] fd_image_bits, fd_red_mapped, fd_green_mapped, fd_blue_mapped;
+	facing_down_image_rom  fd_img_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(fd_image_bits));
+	facing_down_rcm fd_rcm (.clka(pixel_clk_in), .addra(fd_image_bits), .douta(fd_red_mapped));
+	
+	//Zero tile ROMs
+	logic[15:0] zero_pixel_out;
+	logic [7:0] zero_image_bits, zero_red_mapped, zero_green_mapped, zero_blue_mapped;
+	zero_image_rom  zero_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(zero_image_bits));
+	zero_rcm zero_rcm (.clka(pixel_clk_in), .addra(zero_image_bits), .douta(zero_red_mapped));
+	zero_gcm zero_gcm (.clka(pixel_clk_in), .addra(zero_image_bits), .douta(zero_green_mapped));
+	zero_bcm zero_bcm (.clka(pixel_clk_in), .addra(zero_image_bits), .douta(zero_blue_mapped));
+
+	//One tile ROMs
+	logic[15:0] one_pixel_out;
+	logic [7:0] one_image_bits, one_red_mapped, one_green_mapped, one_blue_mapped;
+	one_image_rom  one_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(one_image_bits));
+	one_rcm one_rcm (.clka(pixel_clk_in), .addra(one_image_bits), .douta(one_red_mapped));
+	one_gcm one_gcm (.clka(pixel_clk_in), .addra(one_image_bits), .douta(one_green_mapped));
+	one_bcm one_bcm (.clka(pixel_clk_in), .addra(one_image_bits), .douta(one_blue_mapped));
+	
+
 	//Given the tile_numbers and tile_status array, draws the tiles
+	//
+	
     always_ff @(posedge pixel_clk_in) begin
-		if((hcount_in%192==0)&&(vcount_in%192==0)) begin //At each upper left corner of a tile, determine what .coe file the tile should have
-			//Given that we're on a tile, need to index into the tile_numbers array
-			if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
-					
-			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
-				case(curr_tile)
-					0: begin
-					end
-				endcase
-			end
+		if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
+			//pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
+			pixel_out <= 12'hEEE;
+		end else begin //if tile has been cleared, draw the number of surrounding bombs
+			
+			curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
+			case(curr_tile)
+				0: begin
+					//pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
+					pixel_out <= 12'h000; //Sim test
+				end
+				1: begin
+					//pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
+					pixel_out <= 12'h111; //sim test
+				end
+				2: begin
+					//pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
+					pixel_out <= 12'h222; //sim test
+				end
+				3: begin
+					//pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
+					pixel_out <= 12'h333; //sim test
+				end
+				default: begin
+					//pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
+					pixel_out <= 12'h000; //sim test
+				end
+			endcase
 		end
 	end
 endmodule //tile_drawer
 
 
+/*
 module fd_blob 
    #(parameter WIDTH = 192,     // default picture width
                HEIGHT = 192)    // default picture height
@@ -198,4 +250,4 @@ module one_blob
         else pixel_out <= 0;
    end
 endmodule
-
+*/
