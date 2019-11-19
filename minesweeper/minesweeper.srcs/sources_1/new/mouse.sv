@@ -182,7 +182,7 @@ module mouse
 		end else begin
 			if (data_ready) begin
 				mouse_x <= (p_xs) ? new_x_dec : new_x_inc;
-				mouse_y <= (p_ys) ? new_y_dec : new_y_inc;
+				mouse_y <= (p_ys) ? new_y_inc : new_y_dec;
 				mouse_left_click <= p_l;
 				mouse_right_click <= p_r;
 			end
