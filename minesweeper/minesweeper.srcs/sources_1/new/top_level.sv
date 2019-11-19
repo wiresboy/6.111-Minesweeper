@@ -3,7 +3,7 @@
 module top_level(
 	input clk_100mhz,
 	input[15:0] sw,
-	input btnc, btnu, btnl, btnr, btnd, reset, 
+	input btnc, btnu, btnl, btnr, btnd, reset_n, //reset is active low 
 	output[15:0] led,
 	output[3:0] vga_r,
 	output[3:0] vga_b,
@@ -22,6 +22,9 @@ module top_level(
 	wire clk_65mhz;
 	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
 	clk_wiz_lab3 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_65mhz));
+	
+	wire reset;
+	assign reset = ~reset_n;
 	
 
 	// ***** SEVEN SEGMENT *****
