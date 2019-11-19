@@ -46,7 +46,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign hsync_out = hsync_in;
 	assign vsync_out = vsync_in;
 	assign blank_out = blank_in;
-	assign pixel_out = pixel_in;
+	assign pixel_out = 12'b000011110000;
 	assign seven_seg_out = 0;
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;

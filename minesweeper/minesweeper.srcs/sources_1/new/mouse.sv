@@ -6,6 +6,9 @@ module mouse_renderer
 		parameter MOUSE_INNER_COLOR = 'hFFF,
 		parameter MOUSE_OUTER_COLOR = 'h000)
 	(	
+	input clk_65mhz,
+	input reset,
+	
 	input [10:0] mouse_x,	// Mouse X coord.
 	input [9:0] mouse_y,	// Mouse Y coord.
 
@@ -16,12 +19,12 @@ module mouse_renderer
 	input blank_in,			// XVGA blanking (1 means output black pixel)
 	input [11:0] pixel_in,	// input pixel to pass through if not under cursor.
 
-	input [10:0] hcount_out,// horizontal index of current pixel (buffered)
-	input [9:0] vcount_out,	// vertical index of current pixel (buffered)
+	output [10:0] hcount_out,// horizontal index of current pixel (buffered)
+	output [9:0] vcount_out,	// vertical index of current pixel (buffered)
 	output hsync_out,		// horizontal sync (output with buffering)
 	output vsync_out,		// vertical sync (output with buffering)
 	output blank_out,		// blanking (output with buffering)
-	output [11:0] pixel_out	// pixel r=11:8, g=7:4, b=3:0 (output with buffering)
+	output logic [11:0] pixel_out	// pixel r=11:8, g=7:4, b=3:0 (output with buffering)
 	);
 
 	//This module is pipelined by 2 clocks. Probably could be 1 but doesn't hurt the final product and also probably makes compile easier.
@@ -35,29 +38,29 @@ module mouse_renderer
 	logic [11:0] pixel;
 
 	//TODO: replace with real logic
-	assign hcount_out = hcount[1];
-	assign vcount_out = vcount[1];
-	assign hsync_out = hsync[1];
-	assign vsync_out = vsync[1];
-	assign blank_out = blank[1];
+	assign hcount_out = hcount[0];
+	assign vcount_out = vcount[0];
+	assign hsync_out = hsync[0];
+	assign vsync_out = vsync[0];
+	assign blank_out = blank[0];
 
-	signed logic [10:0] relative_x;
-	signed logic [9:0] relative_y;
+	logic signed [10:0] relative_x;
+	logic signed [9:0] relative_y;
 	assign relative_x = hcount_in - mouse_x;
 	assign relative_y = vcount_in - mouse_y;
 
-	logic [3:0] mouse_pixel_x;
-	logic [4:0] mouse_pixel_y;
+	logic [3:0] x; //mouse pixel x
+	logic [4:0] y; //mouse pixel y
 	logic in_box;
 
 	always_ff @(posedge clk_65mhz) begin
 
 		//2 stage delay
-		hcount[1] <= hcount[0];
-		vcount[1] <= vcount[0];
-		hsync[1] <= hsync[0];
-		vsync[1] <= vsync[0];
-		blank[1] <= blank[0];
+		hcount[0] <= hcount[1];
+		vcount[0] <= vcount[1];
+		hsync[0] <= hsync[1];
+		vsync[0] <= vsync[1];
+		blank[0] <= blank[1];
 
 		hcount[1] <= hcount_in;
 		vcount[1] <= vcount_in;
@@ -97,7 +100,7 @@ module mouse_renderer
 				pixel_out <= pixel;
 
 		end else begin
-			pixel_out <= pixel
+			pixel_out <= pixel;
 		end
 
 	end
@@ -111,7 +114,7 @@ module mouse
 		parameter SCREEN_HEIGHT=768)
 	(
 	input clk_65mhz,
-	input rst_n,
+	input rst,
 	inout ps2_clk, ps2_data, 	// physical connections 
 	output logic [10:0] mouse_x = 0,	// Mouse X coord.
 	output logic [9:0] mouse_y = 0,		// Mouse Y coord.
@@ -122,6 +125,7 @@ module mouse
 
 	
 	logic data_ready;
+	logic error_no_ack;
 
 	logic [8:0] dx;
 	logic [8:0] dy;
@@ -163,22 +167,25 @@ module mouse
 		.DEBOUNCE_TIMER_BITS_PP(8))
 		m1(
 			.clk(clk_65mhz),
-			.reset(~rst_n),
+			.reset(rst),
 			.ps2_clk(ps2_clk),
 			.ps2_data(ps2_data),
 			.left_button(p_l),
 			.right_button(p_r),
-			.x_increment(p_dx),
-			.y_increment(p_dy),
+			.x_increment(dx),
+			.y_increment(dy),
 			.data_ready(data_ready),
-			.read(1'b1)  // force continuous reads
+			.read(1'b1),  // force continuous reads
+			.error_no_ack(error_no_ack)
 		);
 
 
-	always_ff @(posedge clk_65mhz or negedge rst_n) begin : proc_mouse
-		if(~rst_n) begin
+	always_ff @(posedge clk_65mhz or posedge rst) begin : proc_mouse
+		if(rst) begin
 			mouse_x <= SCREEN_WIDTH/2;
 			mouse_y <= SCREEN_HEIGHT/2;
+			mouse_left_click <= 0;
+			mouse_right_click <= 0;
 		end else begin
 			if (data_ready) begin
 				mouse_x <= (p_xs) ? new_x_dec : new_x_inc;

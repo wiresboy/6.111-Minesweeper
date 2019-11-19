@@ -31,7 +31,7 @@ module top_level(
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
 	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
-	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
+	//assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
 	assign led = sw;		// turn leds on based on switches
@@ -51,11 +51,12 @@ module top_level(
 	logic [10:0] mouse_x;
 	logic [9:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
-	mouse mouse(.ps2_clk(ps2_clk), .ps2_data(ps2_data),
+	mouse mouse(.clk_65mhz(clk_65mhz), .rst(reset),
+				.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 				.mouse_x(mouse_x), .mouse_y(mouse_y),
 				.mouse_left_click(mouse_left_click),
 				.mouse_right_click(mouse_right_click));
-
+	assign seven_segment_data = {mouse_x, 6'b0, mouse_y}; 
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
@@ -95,6 +96,7 @@ module top_level(
 	wire [9:0] mouse_vcount;
 	wire [11:0] mouse_pixel;
 	mouse_renderer mouse_renderer(
+			.clk_65mhz(clk_65mhz),.reset(reset),
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.hcount_in(ms_hcount),.vcount_in(ms_vcount),
 			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
@@ -105,6 +107,7 @@ module top_level(
 
 	// ***** VIDEO OUT *****
 	reg [11:0] rgb;    
+	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
 		hs <= mouse_hsync;
 		vs <= mouse_vsync;
@@ -118,4 +121,4 @@ module top_level(
 	assign vga_vs = ~vs;
 	
 	
-endmodule;
+endmodule
