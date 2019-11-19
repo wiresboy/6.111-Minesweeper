@@ -24,6 +24,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	input vsync_in,			// XVGA vertical sync signal (active low)
 	input blank_in,			// XVGA blanking (1 means output black pixel)
 
+	input [15:0] sw,
+
 	output [11:0] pixel_out,	// pixel r=11:8, g=7:4, b=3:0 
 
 	output [31:0] seven_seg_out,	// seven segment display. Each nibble is 1 7 segment output
@@ -107,7 +109,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 
     //assign pixel_out = tile_pixel|tile_pixel_2;
-	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
+	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),
+		.sw(sw),.pixel_out(pixel_out));
 endmodule
 
 module tile_drawer
@@ -117,6 +120,7 @@ module tile_drawer
     input [9:0] vcount_in,
 	input [0:3] [2:0] tile_numbers[0:3],
 	logic [0:3] tile_status [0:3],
+	input [15:0] sw,
     output logic [11:0] pixel_out
 	);
     
@@ -158,8 +162,8 @@ module tile_drawer
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
 				//pixel_out <= 12'hEEE;
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				
 				curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
+				//curr_tile <= sw[2:0];
 				case(curr_tile)
 					0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
