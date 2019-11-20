@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 // Date        : Tue Nov 19 20:01:57 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub {c:/Users/Rod Bayliss
-//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_image_rom/six_image_rom_stub.v}
+// Command     : write_verilog -force -mode synth_stub -rename_top six_image_rom -prefix
+//               six_image_rom_ six_image_rom_stub.v
 // Design      : six_image_rom
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1

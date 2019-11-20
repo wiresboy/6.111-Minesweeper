@@ -1,6 +1,8 @@
 %6.111 Image Color Table MATLAB deme
 %Edgar Twigg bwayr@mit.edu
 %4/1/2008 (But I swear this file isn't a joke)
+close all
+Number = '1';
 
 %% How to use this file
 %Notice how %% divides up sections?  If you hit ctrl+enter, then MATLAB 
@@ -10,7 +12,7 @@
 %% Getting 24 bit data
 %So when you look at a 24 bit bitmap file, the file specifies three 8 bit 
 %values for each color, 8 each for red, green, and blue.
-[picture] = imread('./Images/1.bmp');
+[picture] = imread(strcat('./Images/',Number,'.bmp'));
 
 %% View the image
 %This command image will draw the picture you just loaded
@@ -59,7 +61,7 @@ title('Red values in 24 bit bitmap')
 %table where each index specifies an r, g, and b value separately.
 %
 %Because of this, now we need to load both the image and it's colormap.
-[picture, color_table] = imread('./Images/bomb.bmp');
+[picture, color_table] = imread(strcat('./Images/',Number,'.bmp'));
 
 %% Displaying without the color table
 %If we try to display the picture without the colormap, the image does not
@@ -119,13 +121,13 @@ title('Another way to see the color table')
 %You can extend what we did for 8-bit bitmaps to even more compressed 
 %forms, such as this 4-bit bitmap.  Now we only have 16 colors to work with
 %though, and our image quality is significantly reduced:
-[picture, color_table] = imread('./Images/3.bmp');
-
-figure
-image(picture)
-colormap(color_table)
-colorbar                                  
-title('4 bit bitmap displayed using color table')
+% [picture, color_table] = imread('./Images/3.bmp');
+% 
+% figure
+% image(picture)
+% colormap(color_table)
+% colorbar                                  
+% title('4 bit bitmap displayed using color table')
 
 %% Writing data to coe files for putting them on the fpga
 %You can instantiate BRAMs to take their values from a file you feed them
@@ -139,7 +141,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/bomb_rcm.coe';
+output_name = strcat('./Images/',Number,'_rcm.coe');
 file = fopen(output_name,'w');
 
 %write the header info
@@ -161,13 +163,13 @@ output(rows,(columns+1)) = ';';
 dlmwrite(output_name,output,'-append','delimiter','', 'newline', 'pc');
 
 % create color table for green (2)  and blue (3) and you're done!
-green = color_table(:,1);             %grabs the red part of the colortable
+green = color_table(:,2);             %grabs the red part of the colortable
 scaled_data = green*255;              %scales the floats back to 0-255
 rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/bomb_gcm.coe';
+output_name = strcat('./Images/',Number,'_gcm.coe');
 file = fopen(output_name,'w');
 
 %write the header info
@@ -195,7 +197,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/bomb_bcm.coe';
+output_name = strcat('./Images/',Number,'_bcm.coe');
 file = fopen(output_name,'w');
 
 %write the header info
@@ -237,7 +239,7 @@ rounded_data = round(pixel_columns);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/bomb.coe';
+output_name = strcat('./Images/',Number,'.coe');
 file = fopen(output_name,'w');
 
 %write the header info

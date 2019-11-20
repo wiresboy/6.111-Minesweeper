@@ -1,9 +1,9 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Tue Nov 19 20:13:58 2019
+// Date        : Tue Nov 19 21:35:26 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {c:/Users/Rod Bayliss
+// Command     : write_verilog -force -mode funcsim {C:/Users/Rod Bayliss
 //               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_gcm/bomb_gcm_sim_netlist.v}
 // Design      : bomb_gcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified

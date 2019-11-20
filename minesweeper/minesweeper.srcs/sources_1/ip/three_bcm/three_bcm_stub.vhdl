@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 -- Date        : Tue Nov 19 19:10:29 2019
 -- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub {c:/Users/Rod Bayliss
---               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_bcm/three_bcm_stub.vhdl}
+-- Command     : write_vhdl -force -mode synth_stub -rename_top three_bcm -prefix
+--               three_bcm_ three_bcm_stub.vhdl
 -- Design      : three_bcm
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1
