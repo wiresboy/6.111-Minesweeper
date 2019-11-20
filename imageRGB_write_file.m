@@ -59,7 +59,7 @@ title('Red values in 24 bit bitmap')
 %table where each index specifies an r, g, and b value separately.
 %
 %Because of this, now we need to load both the image and it's colormap.
-[picture, color_table] = imread('./Images/0.bmp');
+[picture, color_table] = imread('./Images/bomb.bmp');
 
 %% Displaying without the color table
 %If we try to display the picture without the colormap, the image does not
@@ -119,7 +119,7 @@ title('Another way to see the color table')
 %You can extend what we did for 8-bit bitmaps to even more compressed 
 %forms, such as this 4-bit bitmap.  Now we only have 16 colors to work with
 %though, and our image quality is significantly reduced:
-[picture, color_table] = imread('./Images/1.bmp');
+[picture, color_table] = imread('./Images/3.bmp');
 
 figure
 image(picture)
@@ -139,7 +139,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/0_rcm.coe';
+output_name = './Images/bomb_rcm.coe';
 file = fopen(output_name,'w');
 
 %write the header info
@@ -167,7 +167,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/0_gcm.coe';
+output_name = './Images/bomb_gcm.coe';
 file = fopen(output_name,'w');
 
 %write the header info
@@ -195,7 +195,7 @@ rounded_data = round(scaled_data);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/0_bcm.coe';
+output_name = './Images/bomb_bcm.coe';
 file = fopen(output_name,'w');
 
 %write the header info
@@ -237,7 +237,7 @@ rounded_data = round(pixel_columns);  %rounds them down
 data = dec2bin(rounded_data,8);     %convert the binary data to 8 bit binary #s
 
 %open a file
-output_name = './Images/0.coe';
+output_name = './Images/bomb.coe';
 file = fopen(output_name,'w');
 
 %write the header info

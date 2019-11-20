@@ -57,7 +57,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
-	assign tile_numbers = '{'{2,1,0,7},'{0,1,6,3},'{7,1,0,1},'{5,2,1,0}};
+	assign tile_numbers = '{'{2,1,0,4},'{0,1,6,3},'{5,1,0,1},'{5,2,1,0}};
 	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
@@ -114,7 +114,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 endmodule
 
 module tile_drawer
-	#(parameter WIDTH = 192, HEIGHT = 192)
+	#(parameter WIDTH = 48, HEIGHT = 48)
 	(input pixel_clk_in,
     input [10:0] hcount_in,
     input [9:0] vcount_in,
@@ -127,8 +127,7 @@ module tile_drawer
     logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	assign image_addr = (hcount_in-(hcount_in/192)*192) + (vcount_in-192*(vcount_in/192)) * WIDTH; //determine where top left corner of each pixel is for image_addr
-
+	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
 	//Facing Down tile ROMs
@@ -136,6 +135,8 @@ module tile_drawer
 	logic [7:0] fd_image_bits, fd_red_mapped, fd_green_mapped, fd_blue_mapped;
 	facing_down_image_rom  fd_img_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(fd_image_bits));
 	facing_down_rcm fd_rcm (.clka(pixel_clk_in), .addra(fd_image_bits), .douta(fd_red_mapped));
+	facing_down_gcm fd_gcm (.clka(pixel_clk_in), .addra(fd_image_bits), .douta(fd_green_mapped));
+	facing_down_bcm fd_bcm (.clka(pixel_clk_in), .addra(fd_image_bits), .douta(fd_blue_mapped));
 	
 	//Zero tile ROMs
 	logic[15:0] zero_pixel_out;
@@ -153,40 +154,98 @@ module tile_drawer
 	one_gcm one_gcm (.clka(pixel_clk_in), .addra(one_image_bits), .douta(one_green_mapped));
 	one_bcm one_bcm (.clka(pixel_clk_in), .addra(one_image_bits), .douta(one_blue_mapped));
 	
+	//Two tile ROMs
+	logic[15:0] two_pixel_out;
+	logic [7:0] two_image_bits, two_red_mapped, two_green_mapped, two_blue_mapped;
+	two_image_rom  two_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(two_image_bits));
+	two_rcm two_rcm (.clka(pixel_clk_in), .addra(two_image_bits), .douta(two_red_mapped));
+	two_gcm two_gcm (.clka(pixel_clk_in), .addra(two_image_bits), .douta(two_green_mapped));
+	two_bcm two_bcm (.clka(pixel_clk_in), .addra(two_image_bits), .douta(two_blue_mapped));
+	
+	//Three tile ROMs
+	logic[15:0] three_pixel_out;
+	logic [7:0] three_image_bits, three_red_mapped, three_green_mapped, three_blue_mapped;
+	three_image_rom  three_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(three_image_bits));
+	three_rcm three_rcm (.clka(pixel_clk_in), .addra(three_image_bits), .douta(three_red_mapped));
+	three_gcm three_gcm (.clka(pixel_clk_in), .addra(three_image_bits), .douta(three_green_mapped));
+	three_bcm three_bcm (.clka(pixel_clk_in), .addra(three_image_bits), .douta(three_blue_mapped));
+	
+	//Four tile ROMs
+	logic[15:0] four_pixel_out;
+	logic [7:0] four_image_bits, four_red_mapped, four_green_mapped, four_blue_mapped;
+	four_image_rom  four_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(four_image_bits));
+	four_rcm four_rcm (.clka(pixel_clk_in), .addra(four_image_bits), .douta(four_red_mapped));
+	four_gcm four_gcm (.clka(pixel_clk_in), .addra(four_image_bits), .douta(four_green_mapped));
+	four_bcm four_bcm (.clka(pixel_clk_in), .addra(four_image_bits), .douta(four_blue_mapped));
+	
+	//Five tile ROMs
+	logic[15:0] five_pixel_out;
+	logic [7:0] five_image_bits, five_red_mapped, five_green_mapped, five_blue_mapped;
+	five_image_rom  five_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(five_image_bits));
+	five_rcm five_rcm (.clka(pixel_clk_in), .addra(five_image_bits), .douta(five_red_mapped));
+	five_gcm five_gcm (.clka(pixel_clk_in), .addra(five_image_bits), .douta(five_green_mapped));
+	five_bcm five_bcm (.clka(pixel_clk_in), .addra(five_image_bits), .douta(five_blue_mapped));
+	
+	//Six tile ROMs
+	logic[15:0] six_pixel_out;
+	logic [7:0] six_image_bits, six_red_mapped, six_green_mapped, six_blue_mapped;
+	six_image_rom  six_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(six_image_bits));
+	six_rcm six_rcm (.clka(pixel_clk_in), .addra(six_image_bits), .douta(six_red_mapped));
+	six_gcm six_gcm (.clka(pixel_clk_in), .addra(six_image_bits), .douta(six_green_mapped));
+	six_bcm six_bcm (.clka(pixel_clk_in), .addra(six_image_bits), .douta(six_blue_mapped));
+	
+	//flag tile ROMs
+	logic[15:0] flag_pixel_out;
+	logic [7:0] flag_image_bits, flag_red_mapped, flag_green_mapped, flag_blue_mapped;
+	flag_image_rom  flag_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(flag_image_bits));
+	flag_rcm flag_rcm (.clka(pixel_clk_in), .addra(flag_image_bits), .douta(flag_red_mapped));
+	flag_gcm flag_gcm (.clka(pixel_clk_in), .addra(flag_image_bits), .douta(flag_green_mapped));
+	flag_bcm flag_bcm (.clka(pixel_clk_in), .addra(flag_image_bits), .douta(flag_blue_mapped));
+	
+	//Bomb tile ROMs
+	logic[15:0] bomb_pixel_out;
+	logic [7:0] bomb_image_bits, bomb_red_mapped, bomb_green_mapped, bomb_blue_mapped;
+	bomb_image_rom  bomb_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(bomb_image_bits));
+	bomb_rcm bomb_rcm (.clka(pixel_clk_in), .addra(bomb_image_bits), .douta(bomb_red_mapped));
+	bomb_gcm bomb_gcm (.clka(pixel_clk_in), .addra(bomb_image_bits), .douta(bomb_green_mapped));
+	bomb_bcm bomb_bcm (.clka(pixel_clk_in), .addra(bomb_image_bits), .douta(bomb_blue_mapped));
+	
 
 	//Given the tile_numbers and tile_status array, draws the tiles
 	
     always_ff @(posedge pixel_clk_in) begin
-		if(hcount_in<=768) begin //only draw in the game tile region
-			if(!tile_status[vcount_in/192][hcount_in/192]) begin//if tile has not been cleared, draw uncleared tile symbol
+		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
+			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
-				//pixel_out <= 12'hEEE;
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				curr_tile <= tile_numbers[vcount_in/192][hcount_in/192];
-				//curr_tile <= sw[2:0];
+				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; //curr_tile <= sw[2:0];
 				case(curr_tile)
 					0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
-						//pixel_out <= 12'h000; //Sim test
 					end
 					1: begin
 						pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
-						//pixel_out <= 12'h111; //sim test
 					end
-					/*
 					2: begin
 						pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
-						//pixel_out <= 12'h222; //sim test
 					end
 					3: begin
 						pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
-						//pixel_out <= 12'h333; //sim test
 					end
-					*/
+					4: begin
+						pixel_out <= {four_red_mapped[7:4], four_green_mapped[7:4], four_blue_mapped[7:4]}; 
+					end
+					5: begin
+						pixel_out <= {five_red_mapped[7:4], five_green_mapped[7:4], five_blue_mapped[7:4]}; 
+					end
+					6: begin
+						pixel_out <= {six_red_mapped[7:4], six_green_mapped[7:4], six_blue_mapped[7:4]}; 
+					end
+					7: begin
+						pixel_out <= {flag_red_mapped[7:4], flag_green_mapped[7:4], flag_blue_mapped[7:4]}; 
+					end
 					default: begin
-						pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]};  //greyscale
-						//pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 
-						//pixel_out <= 12'h000; //sim test
+						pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 
 					end
 				endcase
 			end
@@ -195,71 +254,3 @@ module tile_drawer
 		end
 	end
 endmodule //tile_drawer
-
-
-/*
-module fd_blob 
-   #(parameter WIDTH = 192,     // default picture width
-               HEIGHT = 192)    // default picture height
-   (input pixel_clk_in,
-    input [10:0] x_in,hcount_in,
-    input [9:0] y_in,vcount_in,
-    output logic [11:0] pixel_out);
-
-   logic [15:0] image_addr;   // num of bits for 256*240 ROM
-   logic [7:0] image_bits, red_mapped, green_mapped, blue_mapped;
-
-   // calculate rom address and read the location
-   assign image_addr = (hcount_in-x_in) + (vcount_in-y_in) * WIDTH;
-   facing_down_image_rom  rom(.clka(pixel_clk_in), .addra(image_addr), .douta(image_bits));
-
-   // use color map to create 4 bits R, 4 bits G, 4 bits B
-   // since the image is greyscale, just replicate the red pixels
-   // and not bother with the other two color maps.
-   facing_down_color_map rcm (.clka(pixel_clk_in), .addra(image_bits), .douta(red_mapped));
-   //green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
-   //blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
-   // note the one clock cycle delay in pixel!
-   always @ (posedge pixel_clk_in) begin
-     if ((hcount_in >= x_in && hcount_in < (x_in+WIDTH)) &&
-          (vcount_in >= y_in && vcount_in < (y_in+HEIGHT)))
-        // use MSB 4 bits
-        pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
-        //pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
-        else pixel_out <= 0;
-   end
-endmodule
-
-module one_blob 
-   #(parameter WIDTH = 192,     // default picture width
-               HEIGHT = 192)    // default picture height
-   (input pixel_clk_in,
-    input [10:0] x_in,hcount_in,
-    input [9:0] y_in,vcount_in,
-    output logic [11:0] pixel_out);
-
-   logic [15:0] image_addr;   // num of bits for 256*240 ROM
-   logic [7:0] image_bits, red_mapped, green_mapped, blue_mapped;
-
-   // calculate rom address and read the location
-   assign image_addr = (hcount_in-x_in) + (vcount_in-y_in) * WIDTH;
-   one_image_rom  rom(.clka(pixel_clk_in), .addra(image_addr), .douta(image_bits));
-
-   // use color map to create 4 bits R, 4 bits G, 4 bits B
-   // since the image is greyscale, just replicate the red pixels
-   // and not bother with the other two color maps.
-   one_color_map rcm (.clka(pixel_clk_in), .addra(image_bits), .douta(red_mapped));
-   green_coe gcm (.clka(pixel_clk_in), .addra(image_bits), .douta(green_mapped));
-   blue_coe bcm (.clka(pixel_clk_in), .addra(image_bits), .douta(blue_mapped));
-   // note the one clock cycle delay in pixel!
-   always @ (posedge pixel_clk_in) begin
-     if ((hcount_in >= x_in && hcount_in < (x_in+WIDTH)) &&
-          (vcount_in >= y_in && vcount_in < (y_in+HEIGHT)))
-        // use MSB 4 bits
-        pixel_out <= {red_mapped[7:4], green_mapped[7:4], blue_mapped[7:4]}; // greyscale
-        //pixel_out <= {red_mapped[7:4], red_mapped[7:4], red_mapped[7:4]}; // greyscale
-        //pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
-        else pixel_out <= 0;
-   end
-endmodule
-*/

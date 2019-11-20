@@ -1,7 +1,7 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Tue Nov 19 10:45:00 2019
+-- Date        : Tue Nov 19 18:40:23 2019
 -- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim {C:/Users/Rod Bayliss
 --               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_gcm/zero_gcm_sim_netlist.vhdl}
@@ -18,7 +18,7 @@ entity zero_gcm_blk_mem_gen_prim_wrapper_init is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of zero_gcm_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
@@ -68,8 +68,8 @@ begin
       INITP_05 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_06 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INITP_07 => X"0000000000000000000000000000000000000000000000000000000000000000",
-      INIT_00 => X"0202030102020101010303020103030101030300010301020103010101030100",
-      INIT_01 => X"0000000000000000020302030203020202030201020300000202030302020302",
+      INIT_00 => X"0000000000000000000000000000000002030201020202020201030201030101",
+      INIT_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_03 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_04 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -159,11 +159,11 @@ begin
       WRITE_WIDTH_B => 18
     )
         port map (
-      ADDRARDADDR(13 downto 9) => B"00000",
-      ADDRARDADDR(8 downto 5) => addra(3 downto 0),
+      ADDRARDADDR(13 downto 8) => B"000000",
+      ADDRARDADDR(7 downto 5) => addra(2 downto 0),
       ADDRARDADDR(4 downto 0) => B"00000",
-      ADDRBWRADDR(13 downto 9) => B"00000",
-      ADDRBWRADDR(8 downto 5) => addra(3 downto 0),
+      ADDRBWRADDR(13 downto 8) => B"000000",
+      ADDRBWRADDR(7 downto 5) => addra(2 downto 0),
       ADDRBWRADDR(4 downto 0) => B"10000",
       CLKARDCLK => clka,
       CLKBWRCLK => clka,
@@ -223,7 +223,7 @@ entity zero_gcm_blk_mem_gen_prim_width is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of zero_gcm_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
@@ -233,7 +233,7 @@ architecture STRUCTURE of zero_gcm_blk_mem_gen_prim_width is
 begin
 \prim_init.ram\: entity work.zero_gcm_blk_mem_gen_prim_wrapper_init
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
+      addra(2 downto 0) => addra(2 downto 0),
       clka => clka,
       douta(7 downto 0) => douta(7 downto 0)
     );
@@ -246,7 +246,7 @@ entity zero_gcm_blk_mem_gen_generic_cstr is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of zero_gcm_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
@@ -256,7 +256,7 @@ architecture STRUCTURE of zero_gcm_blk_mem_gen_generic_cstr is
 begin
 \ramloop[0].ram.r\: entity work.zero_gcm_blk_mem_gen_prim_width
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
+      addra(2 downto 0) => addra(2 downto 0),
       clka => clka,
       douta(7 downto 0) => douta(7 downto 0)
     );
@@ -269,7 +269,7 @@ entity zero_gcm_blk_mem_gen_top is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of zero_gcm_blk_mem_gen_top : entity is "blk_mem_gen_top";
@@ -279,7 +279,7 @@ architecture STRUCTURE of zero_gcm_blk_mem_gen_top is
 begin
 \valid.cstr\: entity work.zero_gcm_blk_mem_gen_generic_cstr
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
+      addra(2 downto 0) => addra(2 downto 0),
       clka => clka,
       douta(7 downto 0) => douta(7 downto 0)
     );
@@ -292,7 +292,7 @@ entity zero_gcm_blk_mem_gen_v8_4_4_synth is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 )
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
   attribute ORIG_REF_NAME of zero_gcm_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
@@ -302,7 +302,7 @@ architecture STRUCTURE of zero_gcm_blk_mem_gen_v8_4_4_synth is
 begin
 \gnbram.gnativebmg.native_blk_mem_gen\: entity work.zero_gcm_blk_mem_gen_top
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
+      addra(2 downto 0) => addra(2 downto 0),
       clka => clka,
       douta(7 downto 0) => douta(7 downto 0)
     );
@@ -318,7 +318,7 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
     ena : in STD_LOGIC;
     regcea : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clkb : in STD_LOGIC;
@@ -326,7 +326,7 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
     enb : in STD_LOGIC;
     regceb : in STD_LOGIC;
     web : in STD_LOGIC_VECTOR ( 0 to 0 );
-    addrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addrb : in STD_LOGIC_VECTOR ( 2 downto 0 );
     dinb : in STD_LOGIC_VECTOR ( 7 downto 0 );
     doutb : out STD_LOGIC_VECTOR ( 7 downto 0 );
     injectsbiterr : in STD_LOGIC;
@@ -334,7 +334,7 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
     eccpipece : in STD_LOGIC;
     sbiterr : out STD_LOGIC;
     dbiterr : out STD_LOGIC;
-    rdaddrecc : out STD_LOGIC_VECTOR ( 3 downto 0 );
+    rdaddrecc : out STD_LOGIC_VECTOR ( 2 downto 0 );
     sleep : in STD_LOGIC;
     deepsleep : in STD_LOGIC;
     shutdown : in STD_LOGIC;
@@ -375,12 +375,12 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
     s_axi_injectdbiterr : in STD_LOGIC;
     s_axi_sbiterr : out STD_LOGIC;
     s_axi_dbiterr : out STD_LOGIC;
-    s_axi_rdaddrecc : out STD_LOGIC_VECTOR ( 3 downto 0 )
+    s_axi_rdaddrecc : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
   attribute C_ADDRA_WIDTH : integer;
-  attribute C_ADDRA_WIDTH of zero_gcm_blk_mem_gen_v8_4_4 : entity is 4;
+  attribute C_ADDRA_WIDTH of zero_gcm_blk_mem_gen_v8_4_4 : entity is 3;
   attribute C_ADDRB_WIDTH : integer;
-  attribute C_ADDRB_WIDTH of zero_gcm_blk_mem_gen_v8_4_4 : entity is 4;
+  attribute C_ADDRB_WIDTH of zero_gcm_blk_mem_gen_v8_4_4 : entity is 3;
   attribute C_ALGORITHM : integer;
   attribute C_ALGORITHM of zero_gcm_blk_mem_gen_v8_4_4 : entity is 1;
   attribute C_AXI_ID_WIDTH : integer;
@@ -474,9 +474,9 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
   attribute C_PRIM_TYPE : integer;
   attribute C_PRIM_TYPE of zero_gcm_blk_mem_gen_v8_4_4 : entity is 1;
   attribute C_READ_DEPTH_A : integer;
-  attribute C_READ_DEPTH_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is 16;
+  attribute C_READ_DEPTH_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is 6;
   attribute C_READ_DEPTH_B : integer;
-  attribute C_READ_DEPTH_B of zero_gcm_blk_mem_gen_v8_4_4 : entity is 16;
+  attribute C_READ_DEPTH_B of zero_gcm_blk_mem_gen_v8_4_4 : entity is 6;
   attribute C_READ_LATENCY_A : integer;
   attribute C_READ_LATENCY_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is 1;
   attribute C_READ_LATENCY_B : integer;
@@ -514,9 +514,9 @@ entity zero_gcm_blk_mem_gen_v8_4_4 is
   attribute C_WEB_WIDTH : integer;
   attribute C_WEB_WIDTH of zero_gcm_blk_mem_gen_v8_4_4 : entity is 1;
   attribute C_WRITE_DEPTH_A : integer;
-  attribute C_WRITE_DEPTH_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is 16;
+  attribute C_WRITE_DEPTH_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is 6;
   attribute C_WRITE_DEPTH_B : integer;
-  attribute C_WRITE_DEPTH_B of zero_gcm_blk_mem_gen_v8_4_4 : entity is 16;
+  attribute C_WRITE_DEPTH_B of zero_gcm_blk_mem_gen_v8_4_4 : entity is 6;
   attribute C_WRITE_MODE_A : string;
   attribute C_WRITE_MODE_A of zero_gcm_blk_mem_gen_v8_4_4 : entity is "WRITE_FIRST";
   attribute C_WRITE_MODE_B : string;
@@ -545,7 +545,6 @@ begin
   doutb(2) <= \<const0>\;
   doutb(1) <= \<const0>\;
   doutb(0) <= \<const0>\;
-  rdaddrecc(3) <= \<const0>\;
   rdaddrecc(2) <= \<const0>\;
   rdaddrecc(1) <= \<const0>\;
   rdaddrecc(0) <= \<const0>\;
@@ -561,7 +560,6 @@ begin
   s_axi_bresp(0) <= \<const0>\;
   s_axi_bvalid <= \<const0>\;
   s_axi_dbiterr <= \<const0>\;
-  s_axi_rdaddrecc(3) <= \<const0>\;
   s_axi_rdaddrecc(2) <= \<const0>\;
   s_axi_rdaddrecc(1) <= \<const0>\;
   s_axi_rdaddrecc(0) <= \<const0>\;
@@ -590,7 +588,7 @@ GND: unisim.vcomponents.GND
     );
 inst_blk_mem_gen: entity work.zero_gcm_blk_mem_gen_v8_4_4_synth
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
+      addra(2 downto 0) => addra(2 downto 0),
       clka => clka,
       douta(7 downto 0) => douta(7 downto 0)
     );
@@ -602,7 +600,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity zero_gcm is
   port (
     clka : in STD_LOGIC;
-    addra : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    addra : in STD_LOGIC_VECTOR ( 2 downto 0 );
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 )
   );
   attribute NotValidForBitStream : boolean;
@@ -629,17 +627,17 @@ architecture STRUCTURE of zero_gcm is
   signal NLW_U0_s_axi_wready_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_sbiterr_UNCONNECTED : STD_LOGIC;
   signal NLW_U0_doutb_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
-  signal NLW_U0_rdaddrecc_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_U0_rdaddrecc_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_U0_s_axi_bid_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_U0_s_axi_bresp_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
-  signal NLW_U0_s_axi_rdaddrecc_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal NLW_U0_s_axi_rdaddrecc_UNCONNECTED : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal NLW_U0_s_axi_rdata_UNCONNECTED : STD_LOGIC_VECTOR ( 7 downto 0 );
   signal NLW_U0_s_axi_rid_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_U0_s_axi_rresp_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute C_ADDRA_WIDTH : integer;
-  attribute C_ADDRA_WIDTH of U0 : label is 4;
+  attribute C_ADDRA_WIDTH of U0 : label is 3;
   attribute C_ADDRB_WIDTH : integer;
-  attribute C_ADDRB_WIDTH of U0 : label is 4;
+  attribute C_ADDRB_WIDTH of U0 : label is 3;
   attribute C_ALGORITHM : integer;
   attribute C_ALGORITHM of U0 : label is 1;
   attribute C_AXI_ID_WIDTH : integer;
@@ -733,9 +731,9 @@ architecture STRUCTURE of zero_gcm is
   attribute C_PRIM_TYPE : integer;
   attribute C_PRIM_TYPE of U0 : label is 1;
   attribute C_READ_DEPTH_A : integer;
-  attribute C_READ_DEPTH_A of U0 : label is 16;
+  attribute C_READ_DEPTH_A of U0 : label is 6;
   attribute C_READ_DEPTH_B : integer;
-  attribute C_READ_DEPTH_B of U0 : label is 16;
+  attribute C_READ_DEPTH_B of U0 : label is 6;
   attribute C_READ_LATENCY_A : integer;
   attribute C_READ_LATENCY_A of U0 : label is 1;
   attribute C_READ_LATENCY_B : integer;
@@ -773,9 +771,9 @@ architecture STRUCTURE of zero_gcm is
   attribute C_WEB_WIDTH : integer;
   attribute C_WEB_WIDTH of U0 : label is 1;
   attribute C_WRITE_DEPTH_A : integer;
-  attribute C_WRITE_DEPTH_A of U0 : label is 16;
+  attribute C_WRITE_DEPTH_A of U0 : label is 6;
   attribute C_WRITE_DEPTH_B : integer;
-  attribute C_WRITE_DEPTH_B of U0 : label is 16;
+  attribute C_WRITE_DEPTH_B of U0 : label is 6;
   attribute C_WRITE_MODE_A : string;
   attribute C_WRITE_MODE_A of U0 : label is "WRITE_FIRST";
   attribute C_WRITE_MODE_B : string;
@@ -796,8 +794,8 @@ architecture STRUCTURE of zero_gcm is
 begin
 U0: entity work.zero_gcm_blk_mem_gen_v8_4_4
      port map (
-      addra(3 downto 0) => addra(3 downto 0),
-      addrb(3 downto 0) => B"0000",
+      addra(2 downto 0) => addra(2 downto 0),
+      addrb(2 downto 0) => B"000",
       clka => clka,
       clkb => '0',
       dbiterr => NLW_U0_dbiterr_UNCONNECTED,
@@ -811,7 +809,7 @@ U0: entity work.zero_gcm_blk_mem_gen_v8_4_4
       enb => '0',
       injectdbiterr => '0',
       injectsbiterr => '0',
-      rdaddrecc(3 downto 0) => NLW_U0_rdaddrecc_UNCONNECTED(3 downto 0),
+      rdaddrecc(2 downto 0) => NLW_U0_rdaddrecc_UNCONNECTED(2 downto 0),
       regcea => '0',
       regceb => '0',
       rsta => '0',
@@ -841,7 +839,7 @@ U0: entity work.zero_gcm_blk_mem_gen_v8_4_4
       s_axi_dbiterr => NLW_U0_s_axi_dbiterr_UNCONNECTED,
       s_axi_injectdbiterr => '0',
       s_axi_injectsbiterr => '0',
-      s_axi_rdaddrecc(3 downto 0) => NLW_U0_s_axi_rdaddrecc_UNCONNECTED(3 downto 0),
+      s_axi_rdaddrecc(2 downto 0) => NLW_U0_s_axi_rdaddrecc_UNCONNECTED(2 downto 0),
       s_axi_rdata(7 downto 0) => NLW_U0_s_axi_rdata_UNCONNECTED(7 downto 0),
       s_axi_rid(3 downto 0) => NLW_U0_s_axi_rid_UNCONNECTED(3 downto 0),
       s_axi_rlast => NLW_U0_s_axi_rlast_UNCONNECTED,
