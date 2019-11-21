@@ -19,8 +19,8 @@ module minesweeper_tb;
     clk = 0;
 	#40;
 	mouse_left_click=1;
-	mouse_x=480;
-	mouse_y=400;
+	mouse_x=8;
+	mouse_y=200;
 	hcount_in = 600;
 	vcount_in = 200; //
 	#30;

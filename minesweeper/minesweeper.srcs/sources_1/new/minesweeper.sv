@@ -45,19 +45,17 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
 	logic [0:GAME_SIZE-1] tile_status [0:GAME_SIZE-1]; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
-	//logic [GAME_SIZE-1:0] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
-	logic[7:0] mouse_bin;
 	logic[3:0] x_bin, y_bin;
 
 	parameter IDLE = 3'b000;
 	parameter IN_GAME = 3'b010;
 	parameter GAME_OVER = 3'b011;
-	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
+	logic [2:0] state=IN_GAME;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
-	assign tile_numbers = '{'{2,1,7,4},'{0,1,6,3},'{5,1,0,1},'{5,2,1,0}};
+	assign tile_numbers = '{'{1,2,7,1},'{7,5,4,3},'{7,7,7,7},'{2,3,3,2}};
 	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
@@ -68,12 +66,15 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	always_ff @(posedge clk_65mhz) begin
 		//Draw game board
+		if(reset) begin
+			state <= IDLE;
+			tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+		end
 
 		if(mouse_left_click) begin //process a user action
 			//first "bin" which tile the click occured in
-			x_bin <= mouse_x/192;
-			y_bin <= mouse_y/192;
-			mouse_bin <= {x_bin,y_bin};
+			x_bin <= mouse_x/48;
+			y_bin <= mouse_y/48;
 
 			case(state)
 				IDLE: begin
@@ -84,14 +85,34 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				end
 				
 				IN_GAME: begin
-					if(mouse_x>=1000) begin//on reset button, reset game
+					if(mouse_x>192) begin//on reset button, reset game
 						state <= IDLE;
 					end
-
 					//Do game logic!
-					tile_status[mouse_bin[3:0]][mouse_bin[7:4]] <= 1'b1; //Update tile with mouse location
-					if(bomb_locations[mouse_bin[3:0]][mouse_bin[7:4]]) begin
+					if(bomb_locations[y_bin][x_bin]) begin
 						state <= GAME_OVER;
+					end
+					tile_status[y_bin][x_bin] <= 1'b1; //Update tile with mouse location
+					if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
+						if(y_bin>0) begin
+							tile_status[y_bin-1][x_bin] <= 1;
+							if(x_bin>0) begin
+								tile_status[y_bin-1][x_bin-1] <= 1;
+								tile_status[y_bin][x_bin-1] <= 1;
+							end else if(x_bin<GAME_SIZE-1) begin
+								tile_status[y_bin-1][x_bin+1] <= 1;
+								tile_status[y_bin][x_bin+1] <= 1;
+							end
+						end else if(y_bin<3) begin
+							tile_status[_bin+1][x_bin] <= 1;
+							if(x_bin>0) begin
+								tile_status[y_bin+1][x_bin-1] <= 1;
+								tile_status[y_bin][x_bin-1] <= 1;
+							end else if(x_bin<GAME_SIZE-1) begin
+								tile_status[y_bin+1][x_bin+1] <= 1;
+								tile_status[y_bin][x_bin+1] <= 1;
+							end
+						end
 					end
 				end
 
