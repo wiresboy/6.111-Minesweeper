@@ -88,7 +88,7 @@ module top_level(
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
-			//TODO random
+			.random(random),
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
