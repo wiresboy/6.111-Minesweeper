@@ -37,7 +37,7 @@ module top_level(
 	//assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	assign led = sw;		// turn leds on based on switches
+	//assign led = sw;		// turn leds on based on switches
 
 
 	// ***** Button Debounce *****
@@ -50,6 +50,11 @@ module top_level(
 	debounce db5(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnr),.clean_out(right_pressed));
 
 
+	// ***** Random *****
+	logic [15:0] random_number;
+	random random(clk_65mhz, reset, random_number);
+	
+
 	// ***** Mouse *****
 	logic [10:0] mouse_x;
 	logic [9:0] mouse_y;
@@ -60,6 +65,7 @@ module top_level(
 				.mouse_left_click(mouse_left_click),
 				.mouse_right_click(mouse_right_click));
 	assign seven_segment_data = {mouse_x, 6'b0, mouse_y}; 
+	assign led = {1'b0, 1'b1, mouse_left_click, mouse_right_click, ~ps2_clk, ~ps2_data, mouse_x, mouse_y};
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
