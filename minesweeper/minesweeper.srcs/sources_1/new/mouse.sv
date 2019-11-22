@@ -108,7 +108,7 @@ module mouse_renderer
 
 endmodule
 
-
+/*
 module mouse
 	#(	parameter SCREEN_WIDTH=1024, 
 		parameter SCREEN_HEIGHT=768)
@@ -198,7 +198,7 @@ module mouse
 
 endmodule
 
-
+*/
 
 
 

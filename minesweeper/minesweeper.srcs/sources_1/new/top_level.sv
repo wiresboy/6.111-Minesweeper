@@ -56,15 +56,20 @@ module top_level(
 	
 
 	// ***** Mouse *****
-	logic [10:0] mouse_x;
-	logic [9:0] mouse_y;
+	logic [11:0] mouse_x;
+	logic [11:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
-	mouse mouse(.clk_65mhz(clk_65mhz), .rst(reset),
+	/*mouse mouse(.clk_65mhz(clk_65mhz), .rst(reset),
 				.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 				.mouse_x(mouse_x), .mouse_y(mouse_y),
 				.mouse_left_click(mouse_left_click),
-				.mouse_right_click(mouse_right_click));
-	assign seven_segment_data = {mouse_x, 6'b0, mouse_y}; 
+				.mouse_right_click(mouse_right_click));*/
+	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
+						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
+						.xpos(mouse_x), .ypos(mouse_y),
+						.left(mouse_left_click), .right(moues_right_click)
+						);
+	assign seven_segment_data = {mouse_x, 4'b0, mouse_y}; 
 	assign led = {1'b0, 1'b1, mouse_left_click, mouse_right_click, ~ps2_clk, ~ps2_data, mouse_x, mouse_y};
 
 	// ***** VGA Gen *****
@@ -88,7 +93,7 @@ module top_level(
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
-			.random(random),
+			.random(random_number),
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
