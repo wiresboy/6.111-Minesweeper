@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Tue Nov 19 19:56:46 2019
--- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top five_image_rom -prefix
---               five_image_rom_ five_image_rom_stub.vhdl
+-- Date        : Thu Nov 21 20:02:11 2019
+-- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_image_rom/five_image_rom_stub.vhdl
 -- Design      : five_image_rom
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

@@ -37,7 +37,7 @@ module top_level(
 	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	assign led = sw;		// turn leds on based on switches
+	//assign led = sw;		// turn leds on based on switches
 
 
 	// ***** Button Debounce *****
@@ -68,8 +68,9 @@ module top_level(
 	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
 						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 						.xpos(mouse_x), .ypos(mouse_y),
-						.left(mouse_left_click), .right(moues_right_click)
+						.left(mouse_left_click), .right(mouse_right_click)
 						);
+	assign led = {mouse_left_click, mouse_right_click};
 	//assign seven_segment_data = {mouse_x, 4'b0, mouse_y}; 
 
 	// ***** VGA Gen *****
@@ -109,6 +110,11 @@ module top_level(
 	wire [9:0] mouse_vcount;
 	wire [11:0] mouse_pixel;
 
+	assign ms_hsync = hsync;
+	assign ms_vsync = vsync;
+	assign ms_blank = blank;
+	assign ms_vcount = vcount;
+	assign ms_hcount = hcount;
 	mouse_renderer mouse_renderer(
 			.clk_65mhz(clk_65mhz),.reset(reset),
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
@@ -123,10 +129,10 @@ module top_level(
 	reg [11:0] rgb;    
 	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
-		hs <= hsync;
-		vs <= vsync;
-		b <= blank;
-		rgb <= ms_pixel;
+		hs <= mouse_hsync;
+		vs <= mouse_vsync;
+		b <= mouse_blank;
+		rgb <= mouse_pixel;
 	end
 
 	assign vga_r = ~b ? rgb[11:8]: 0;

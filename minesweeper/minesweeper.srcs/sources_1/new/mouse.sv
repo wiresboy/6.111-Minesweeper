@@ -11,7 +11,6 @@ module mouse_renderer
 	
 	input [10:0] mouse_x,	// Mouse X coord.
 	input [9:0] mouse_y,	// Mouse Y coord.
-	input clk_65mhz,
 
 	input [10:0] hcount_in,	// horizontal index of current pixel (0..1023)
 	input [9:0] vcount_in,	// vertical index of current pixel (0..767)

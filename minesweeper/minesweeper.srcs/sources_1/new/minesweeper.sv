@@ -56,7 +56,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
 	assign tile_numbers = '{'{1,2,7,1},'{7,5,4,3},'{7,7,7,7},'{2,3,3,2}};
-	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+	assign tile_status = {{4'h0},{4'h0},{4'h0},{4'h0}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;

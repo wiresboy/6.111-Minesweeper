@@ -199,7 +199,7 @@ endmodule
 // blob: generate rectangle on screen
 //
 //////////////////////////////////////////////////////////////////////
-module blob
+/*module blob
    #(parameter WIDTH = 64,            // default width: 64 pixels
                HEIGHT = 64,           // default height: 64 pixels
                COLOR = 12'hFFF)  // default color: white
@@ -213,7 +213,7 @@ module blob
 			pixel_out = COLOR;
 		else pixel_out = 0;
 	end
-endmodule
+endmodule*/
 
 
 ////////////////////////////////////////////////////
@@ -221,7 +221,7 @@ endmodule
 // picture_blob: display a picture
 //
 //////////////////////////////////////////////////
-module picture_blob
+/*module picture_blob
 	#(parameter WIDTH = 256,     // default picture width
            HEIGHT = 240)    // default picture height
 	(input pixel_clk_in,
@@ -251,4 +251,4 @@ module picture_blob
 			//pixel_out <= {red_mapped[7:4], 8h'0}; // only red hues
 		else pixel_out <= 0;
 	end
-endmodule
+endmodule*/

@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Tue Nov 19 20:13:08 2019
-// Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top bomb_rcm -prefix
-//               bomb_rcm_ bomb_rcm_stub.v
+// Date        : Thu Nov 21 19:59:46 2019
+// Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode synth_stub
+//               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm_stub.v
 // Design      : bomb_rcm
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1
