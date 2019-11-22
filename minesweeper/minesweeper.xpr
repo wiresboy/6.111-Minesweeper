@@ -3,7 +3,6 @@
 <!--                                                         -->
 <!-- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.   -->
 
-
 <Project Version="7" Minor="44" Path="D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
@@ -90,13 +89,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/utils.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/new/random.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -125,7 +117,6 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/top_level.sv">
         <FileInfo>
-          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -941,382 +932,344 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="facing_down_image_rom_synth_1" Type="Ft3:Synth" SrcSet="facing_down_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/facing_down_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="facing_down_image_rom_synth_1" Type="Ft3:Synth" SrcSet="facing_down_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="zero_bcm_synth_1" Type="Ft3:Synth" SrcSet="zero_bcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/zero_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="zero_bcm_synth_1" Type="Ft3:Synth" SrcSet="zero_bcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="facing_down_rcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_rcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/facing_down_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="facing_down_rcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_rcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="zero_gcm_synth_1" Type="Ft3:Synth" SrcSet="zero_gcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/zero_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="zero_gcm_synth_1" Type="Ft3:Synth" SrcSet="zero_gcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="zero_rcm_synth_1" Type="Ft3:Synth" SrcSet="zero_rcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/zero_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="zero_rcm_synth_1" Type="Ft3:Synth" SrcSet="zero_rcm" Part="xc7a100tcsg324-1" ConstrsSet="zero_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="zero_image_rom_synth_1" Type="Ft3:Synth" SrcSet="zero_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="zero_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/zero_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="zero_image_rom_synth_1" Type="Ft3:Synth" SrcSet="zero_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="zero_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="one_gcm_synth_1" Type="Ft3:Synth" SrcSet="one_gcm" Part="xc7a100tcsg324-1" ConstrsSet="one_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/one_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="one_gcm_synth_1" Type="Ft3:Synth" SrcSet="one_gcm" Part="xc7a100tcsg324-1" ConstrsSet="one_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="one_image_rom_synth_1" Type="Ft3:Synth" SrcSet="one_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="one_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/one_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="one_image_rom_synth_1" Type="Ft3:Synth" SrcSet="one_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="one_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="facing_down_gcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_gcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/facing_down_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="facing_down_gcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_gcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="facing_down_bcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_bcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/facing_down_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="facing_down_bcm_synth_1" Type="Ft3:Synth" SrcSet="facing_down_bcm" Part="xc7a100tcsg324-1" ConstrsSet="facing_down_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="two_image_rom_synth_1" Type="Ft3:Synth" SrcSet="two_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="two_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/two_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="two_image_rom_synth_1" Type="Ft3:Synth" SrcSet="two_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="two_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="two_rcm_synth_1" Type="Ft3:Synth" SrcSet="two_rcm" Part="xc7a100tcsg324-1" ConstrsSet="two_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/two_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="two_rcm_synth_1" Type="Ft3:Synth" SrcSet="two_rcm" Part="xc7a100tcsg324-1" ConstrsSet="two_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="two_gcm_synth_1" Type="Ft3:Synth" SrcSet="two_gcm" Part="xc7a100tcsg324-1" ConstrsSet="two_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/two_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="two_gcm_synth_1" Type="Ft3:Synth" SrcSet="two_gcm" Part="xc7a100tcsg324-1" ConstrsSet="two_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="two_bcm_synth_1" Type="Ft3:Synth" SrcSet="two_bcm" Part="xc7a100tcsg324-1" ConstrsSet="two_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/two_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="two_bcm_synth_1" Type="Ft3:Synth" SrcSet="two_bcm" Part="xc7a100tcsg324-1" ConstrsSet="two_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="three_image_rom_synth_1" Type="Ft3:Synth" SrcSet="three_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="three_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/three_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="three_image_rom_synth_1" Type="Ft3:Synth" SrcSet="three_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="three_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="three_rcm_synth_1" Type="Ft3:Synth" SrcSet="three_rcm" Part="xc7a100tcsg324-1" ConstrsSet="three_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/three_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="three_rcm_synth_1" Type="Ft3:Synth" SrcSet="three_rcm" Part="xc7a100tcsg324-1" ConstrsSet="three_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="three_gcm_synth_1" Type="Ft3:Synth" SrcSet="three_gcm" Part="xc7a100tcsg324-1" ConstrsSet="three_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/three_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="three_gcm_synth_1" Type="Ft3:Synth" SrcSet="three_gcm" Part="xc7a100tcsg324-1" ConstrsSet="three_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="three_bcm_synth_1" Type="Ft3:Synth" SrcSet="three_bcm" Part="xc7a100tcsg324-1" ConstrsSet="three_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/three_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="three_bcm_synth_1" Type="Ft3:Synth" SrcSet="three_bcm" Part="xc7a100tcsg324-1" ConstrsSet="three_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="four_image_rom_synth_1" Type="Ft3:Synth" SrcSet="four_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="four_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/four_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="four_image_rom_synth_1" Type="Ft3:Synth" SrcSet="four_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="four_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="four_rcm_synth_1" Type="Ft3:Synth" SrcSet="four_rcm" Part="xc7a100tcsg324-1" ConstrsSet="four_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/four_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="four_rcm_synth_1" Type="Ft3:Synth" SrcSet="four_rcm" Part="xc7a100tcsg324-1" ConstrsSet="four_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="four_gcm_synth_1" Type="Ft3:Synth" SrcSet="four_gcm" Part="xc7a100tcsg324-1" ConstrsSet="four_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/four_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="four_gcm_synth_1" Type="Ft3:Synth" SrcSet="four_gcm" Part="xc7a100tcsg324-1" ConstrsSet="four_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="four_bcm_synth_1" Type="Ft3:Synth" SrcSet="four_bcm" Part="xc7a100tcsg324-1" ConstrsSet="four_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/four_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="four_bcm_synth_1" Type="Ft3:Synth" SrcSet="four_bcm" Part="xc7a100tcsg324-1" ConstrsSet="four_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="five_image_rom_synth_1" Type="Ft3:Synth" SrcSet="five_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="five_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/five_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="five_image_rom_synth_1" Type="Ft3:Synth" SrcSet="five_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="five_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="five_rcm_synth_1" Type="Ft3:Synth" SrcSet="five_rcm" Part="xc7a100tcsg324-1" ConstrsSet="five_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/five_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="five_rcm_synth_1" Type="Ft3:Synth" SrcSet="five_rcm" Part="xc7a100tcsg324-1" ConstrsSet="five_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="five_gcm_synth_1" Type="Ft3:Synth" SrcSet="five_gcm" Part="xc7a100tcsg324-1" ConstrsSet="five_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/five_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="five_gcm_synth_1" Type="Ft3:Synth" SrcSet="five_gcm" Part="xc7a100tcsg324-1" ConstrsSet="five_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="five_bcm_synth_1" Type="Ft3:Synth" SrcSet="five_bcm" Part="xc7a100tcsg324-1" ConstrsSet="five_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/five_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="five_bcm_synth_1" Type="Ft3:Synth" SrcSet="five_bcm" Part="xc7a100tcsg324-1" ConstrsSet="five_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="six_image_rom_synth_1" Type="Ft3:Synth" SrcSet="six_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="six_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/six_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="six_image_rom_synth_1" Type="Ft3:Synth" SrcSet="six_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="six_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="six_rcm_synth_1" Type="Ft3:Synth" SrcSet="six_rcm" Part="xc7a100tcsg324-1" ConstrsSet="six_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/six_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="six_rcm_synth_1" Type="Ft3:Synth" SrcSet="six_rcm" Part="xc7a100tcsg324-1" ConstrsSet="six_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="six_gcm_synth_1" Type="Ft3:Synth" SrcSet="six_gcm" Part="xc7a100tcsg324-1" ConstrsSet="six_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/six_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="six_gcm_synth_1" Type="Ft3:Synth" SrcSet="six_gcm" Part="xc7a100tcsg324-1" ConstrsSet="six_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="six_bcm_synth_1" Type="Ft3:Synth" SrcSet="six_bcm" Part="xc7a100tcsg324-1" ConstrsSet="six_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/six_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="six_bcm_synth_1" Type="Ft3:Synth" SrcSet="six_bcm" Part="xc7a100tcsg324-1" ConstrsSet="six_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="flag_image_rom_synth_1" Type="Ft3:Synth" SrcSet="flag_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="flag_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/flag_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="flag_image_rom_synth_1" Type="Ft3:Synth" SrcSet="flag_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="flag_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="flag_rcm_synth_1" Type="Ft3:Synth" SrcSet="flag_rcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/flag_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="flag_rcm_synth_1" Type="Ft3:Synth" SrcSet="flag_rcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="flag_gcm_synth_1" Type="Ft3:Synth" SrcSet="flag_gcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/flag_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="flag_gcm_synth_1" Type="Ft3:Synth" SrcSet="flag_gcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="flag_bcm_synth_1" Type="Ft3:Synth" SrcSet="flag_bcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/flag_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="flag_bcm_synth_1" Type="Ft3:Synth" SrcSet="flag_bcm" Part="xc7a100tcsg324-1" ConstrsSet="flag_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="bomb_image_rom_synth_1" Type="Ft3:Synth" SrcSet="bomb_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="bomb_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bomb_image_rom_synth_1" IncludeInArchive="true">
+    <Run Id="bomb_image_rom_synth_1" Type="Ft3:Synth" SrcSet="bomb_image_rom" Part="xc7a100tcsg324-1" ConstrsSet="bomb_image_rom" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="bomb_rcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_rcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bomb_rcm_synth_1" IncludeInArchive="true">
+    <Run Id="bomb_rcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_rcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_rcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="bomb_gcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_gcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bomb_gcm_synth_1" IncludeInArchive="true">
+    <Run Id="bomb_gcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_gcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_gcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="bomb_bcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_bcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bomb_bcm_synth_1" IncludeInArchive="true">
+    <Run Id="bomb_bcm_synth_1" Type="Ft3:Synth" SrcSet="bomb_bcm" Part="xc7a100tcsg324-1" ConstrsSet="bomb_bcm" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
         <Step Id="synth_design"/>
       </Strategy>
-      <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
       <ReportStrategy Name="Vivado Synthesis Default Reports" Flow="Vivado Synthesis 2019"/>
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
