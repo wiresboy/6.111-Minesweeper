@@ -34,10 +34,10 @@ module top_level(
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
 	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
-	//assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
+	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	//assign led = sw;		// turn leds on based on switches
+	assign led = sw;		// turn leds on based on switches
 
 
 	// ***** Button Debounce *****
@@ -69,8 +69,7 @@ module top_level(
 						.xpos(mouse_x), .ypos(mouse_y),
 						.left(mouse_left_click), .right(moues_right_click)
 						);
-	assign seven_segment_data = {mouse_x, 4'b0, mouse_y}; 
-	assign led = {1'b0, 1'b1, mouse_left_click, mouse_right_click, ~ps2_clk, ~ps2_data, mouse_x, mouse_y};
+	//assign seven_segment_data = {mouse_x, 4'b0, mouse_y}; 
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
