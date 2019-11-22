@@ -1,0 +1,1011 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Thu Nov 21 14:49:33 2019
+# Process ID: 30444
+# Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1
+# Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
+# Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/top_level.vds
+# Journal file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top_level.tcl -notrace
+Command: synth_design -top top_level -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 18848 
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:36]
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:37]
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:38]
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:52]
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:53]
+WARNING: [Synth 8-2507] parameter declaration becomes local in minesweeper with formal parameter declaration list [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:54]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 881.117 ; gain = 239.297
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'top_level' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_lab3' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/imports/6.111/clk_wiz_lab3.v:67]
+INFO: [Synth 8-6157] synthesizing module 'IBUF' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IFD_DELAY_VALUE bound to: AUTO - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'IBUF' (1#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:32937]
+INFO: [Synth 8-6157] synthesizing module 'MMCME2_ADV' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39940]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT_F bound to: 50.375000 - type: double 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKFBOUT_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKIN1_PERIOD bound to: 10.000000 - type: double 
+	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: double 
+	Parameter CLKOUT0_DIVIDE_F bound to: 15.500000 - type: double 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT0_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT1_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT1_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT2_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT3_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT4_CASCADE bound to: FALSE - type: string 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT4_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT5_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter CLKOUT6_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT6_DUTY_CYCLE bound to: 0.500000 - type: double 
+	Parameter CLKOUT6_PHASE bound to: 0.000000 - type: double 
+	Parameter CLKOUT6_USE_FINE_PS bound to: FALSE - type: string 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 5 - type: integer 
+	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
+	Parameter IS_PSEN_INVERTED bound to: 1'b0 
+	Parameter IS_PSINCDEC_INVERTED bound to: 1'b0 
+	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: double 
+	Parameter REF_JITTER2 bound to: 0.010000 - type: double 
+	Parameter SS_EN bound to: FALSE - type: string 
+	Parameter SS_MODE bound to: CENTER_HIGH - type: string 
+	Parameter SS_MOD_PERIOD bound to: 10000 - type: integer 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-6155] done synthesizing module 'MMCME2_ADV' (2#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:39940]
+INFO: [Synth 8-6157] synthesizing module 'BUFG' [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'BUFG' (3#1) [C:/Xilinx/Vivado/2019.2/scripts/rt/data/unisim_comp.v:1075]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_lab3' (4#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/imports/6.111/clk_wiz_lab3.v:67]
+INFO: [Synth 8-6157] synthesizing module 'display_8hex' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:46]
+	Parameter bits bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'display_8hex' (5#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:46]
+INFO: [Synth 8-6157] synthesizing module 'debounce' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:21]
+INFO: [Synth 8-6155] done synthesizing module 'debounce' (6#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:21]
+INFO: [Synth 8-6157] synthesizing module 'xvga' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:144]
+	Parameter DISPLAY_WIDTH bound to: 1024 - type: integer 
+	Parameter DISPLAY_HEIGHT bound to: 768 - type: integer 
+	Parameter H_FP bound to: 24 - type: integer 
+	Parameter H_SYNC_PULSE bound to: 136 - type: integer 
+	Parameter H_BP bound to: 160 - type: integer 
+	Parameter V_FP bound to: 3 - type: integer 
+	Parameter V_SYNC_PULSE bound to: 6 - type: integer 
+	Parameter V_BP bound to: 29 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'xvga' (7#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:144]
+INFO: [Synth 8-6157] synthesizing module 'minesweeper' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:3]
+	Parameter SCREEN_WIDTH bound to: 1024 - type: integer 
+	Parameter SCREEN_HEIGHT bound to: 768 - type: integer 
+	Parameter GAME_SIZE bound to: 3'b100 
+	Parameter HORIZ_DIV bound to: 256 - type: integer 
+	Parameter VERT_DIV bound to: 192 - type: integer 
+	Parameter IDLE bound to: 3'b000 
+	Parameter IN_GAME bound to: 3'b010 
+	Parameter GAME_OVER bound to: 3'b011 
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:79]
+INFO: [Synth 8-6157] synthesizing module 'tile_drawer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:137]
+	Parameter WIDTH bound to: 48 - type: integer 
+	Parameter HEIGHT bound to: 48 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_image_rom' (8#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:157]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_rcm' (9#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:158]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_gcm' (10#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:159]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_bcm' (11#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:160]
+INFO: [Synth 8-6157] synthesizing module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_image_rom' (12#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:165]
+INFO: [Synth 8-6157] synthesizing module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_rcm' (13#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:166]
+INFO: [Synth 8-6157] synthesizing module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_gcm' (14#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:167]
+INFO: [Synth 8-6157] synthesizing module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_bcm' (15#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:168]
+INFO: [Synth 8-6157] synthesizing module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_image_rom' (16#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:173]
+INFO: [Synth 8-6157] synthesizing module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_rcm' (17#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:174]
+INFO: [Synth 8-6157] synthesizing module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_gcm' (18#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:175]
+INFO: [Synth 8-6157] synthesizing module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_bcm' (19#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:176]
+INFO: [Synth 8-6157] synthesizing module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_image_rom' (20#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:181]
+INFO: [Synth 8-6157] synthesizing module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_rcm' (21#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:182]
+INFO: [Synth 8-6157] synthesizing module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_gcm' (22#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:183]
+INFO: [Synth 8-6157] synthesizing module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_bcm' (23#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:184]
+INFO: [Synth 8-6157] synthesizing module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_image_rom' (24#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:189]
+INFO: [Synth 8-6157] synthesizing module 'three_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_rcm' (25#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'three_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_gcm' (26#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'three_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_bcm' (27#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_image_rom' (28#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:197]
+INFO: [Synth 8-6157] synthesizing module 'four_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_rcm' (29#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_gcm' (30#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_bcm' (31#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_image_rom' (32#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:205]
+INFO: [Synth 8-6157] synthesizing module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_rcm' (33#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:206]
+INFO: [Synth 8-6157] synthesizing module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_gcm' (34#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:207]
+INFO: [Synth 8-6157] synthesizing module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_bcm' (35#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:208]
+INFO: [Synth 8-6157] synthesizing module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_image_rom' (36#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:213]
+WARNING: [Synth 8-689] width (8) of port connection 'douta' does not match port width (16) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:213]
+INFO: [Synth 8-6157] synthesizing module 'six_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_rcm' (37#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'six_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_gcm' (38#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'six_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_bcm' (39#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_image_rom' (40#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:221]
+INFO: [Synth 8-6157] synthesizing module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_rcm' (41#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:222]
+INFO: [Synth 8-6157] synthesizing module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_gcm' (42#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:223]
+INFO: [Synth 8-6157] synthesizing module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_bcm' (43#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:224]
+INFO: [Synth 8-6157] synthesizing module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_image_rom' (44#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:229]
+INFO: [Synth 8-6157] synthesizing module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_rcm' (45#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:230]
+INFO: [Synth 8-6157] synthesizing module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_gcm' (46#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:231]
+INFO: [Synth 8-6157] synthesizing module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_bcm' (47#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-30444-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:232]
+INFO: [Synth 8-226] default block is never used [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:243]
+INFO: [Synth 8-6155] done synthesizing module 'tile_drawer' (48#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:137]
+INFO: [Synth 8-6155] done synthesizing module 'minesweeper' (49#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:3]
+WARNING: [Synth 8-7023] instance 'minesweeper' of module 'minesweeper' has 22 connections declared, but only 19 given [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:73]
+WARNING: [Synth 8-3848] Net aud_pwm in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:17]
+WARNING: [Synth 8-3848] Net aud_sd in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:17]
+WARNING: [Synth 8-3848] Net mouse_x in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:51]
+WARNING: [Synth 8-3848] Net mouse_y in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:52]
+WARNING: [Synth 8-3848] Net mouse_left_click in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:53]
+WARNING: [Synth 8-3848] Net mouse_right_click in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:53]
+INFO: [Synth 8-6155] done synthesizing module 'top_level' (50#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:3]
+WARNING: [Synth 8-3917] design top_level has port dp driven by constant 0
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[15]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[14]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[13]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[12]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[11]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[10]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[9]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[8]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[7]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[6]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[5]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[4]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[3]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[2]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[1]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[0]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port center_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port up_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port down_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port left_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port right_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port mouse_right_click
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[15]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[14]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[13]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[12]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[11]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[10]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[9]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[8]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[7]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[6]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[5]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[4]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[3]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[2]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[1]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[0]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port hsync_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port vsync_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port blank_in
+WARNING: [Synth 8-3331] design top_level has unconnected port aud_pwm
+WARNING: [Synth 8-3331] design top_level has unconnected port aud_sd
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_reset
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_cd
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_sck
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_cmd
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[3]
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[2]
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[1]
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[0]
+WARNING: [Synth 8-3331] design top_level has unconnected port ps2_clk
+WARNING: [Synth 8-3331] design top_level has unconnected port ps2_data
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 936.570 ; gain = 294.750
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 936.570 ; gain = 294.750
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 936.570 ; gain = 294.750
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 936.570 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm/one_bcm_in_context.xdc] for cell 'minesweeper/td/one_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm/one_bcm_in_context.xdc] for cell 'minesweeper/td/one_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_rcm/one_rcm/one_rcm_in_context.xdc] for cell 'minesweeper/td/one_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_rcm/one_rcm/one_rcm_in_context.xdc] for cell 'minesweeper/td/one_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_image_rom/facing_down_image_rom/facing_down_image_rom_in_context.xdc] for cell 'minesweeper/td/fd_img_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_image_rom/facing_down_image_rom/facing_down_image_rom_in_context.xdc] for cell 'minesweeper/td/fd_img_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_bcm/zero_bcm/zero_bcm_in_context.xdc] for cell 'minesweeper/td/zero_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_bcm/zero_bcm/zero_bcm_in_context.xdc] for cell 'minesweeper/td/zero_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_rcm/facing_down_rcm/facing_down_rcm_in_context.xdc] for cell 'minesweeper/td/fd_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_rcm/facing_down_rcm/facing_down_rcm_in_context.xdc] for cell 'minesweeper/td/fd_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_gcm/zero_gcm/zero_gcm_in_context.xdc] for cell 'minesweeper/td/zero_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_gcm/zero_gcm/zero_gcm_in_context.xdc] for cell 'minesweeper/td/zero_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_rcm/zero_rcm/zero_rcm_in_context.xdc] for cell 'minesweeper/td/zero_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_rcm/zero_rcm/zero_rcm_in_context.xdc] for cell 'minesweeper/td/zero_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_image_rom/zero_image_rom/zero_image_rom_in_context.xdc] for cell 'minesweeper/td/zero_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_image_rom/zero_image_rom/zero_image_rom_in_context.xdc] for cell 'minesweeper/td/zero_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_gcm/one_gcm/one_gcm_in_context.xdc] for cell 'minesweeper/td/one_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_gcm/one_gcm/one_gcm_in_context.xdc] for cell 'minesweeper/td/one_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_image_rom_2/one_image_rom/one_image_rom_in_context.xdc] for cell 'minesweeper/td/one_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_image_rom_2/one_image_rom/one_image_rom_in_context.xdc] for cell 'minesweeper/td/one_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm/facing_down_gcm_in_context.xdc] for cell 'minesweeper/td/fd_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm/facing_down_gcm_in_context.xdc] for cell 'minesweeper/td/fd_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_bcm/facing_down_bcm/facing_down_bcm_in_context.xdc] for cell 'minesweeper/td/fd_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_bcm/facing_down_bcm/facing_down_bcm_in_context.xdc] for cell 'minesweeper/td/fd_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_image_rom/two_image_rom/two_image_rom_in_context.xdc] for cell 'minesweeper/td/two_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_image_rom/two_image_rom/two_image_rom_in_context.xdc] for cell 'minesweeper/td/two_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_rcm/two_rcm/two_rcm_in_context.xdc] for cell 'minesweeper/td/two_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_rcm/two_rcm/two_rcm_in_context.xdc] for cell 'minesweeper/td/two_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_gcm/two_gcm/two_gcm_in_context.xdc] for cell 'minesweeper/td/two_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_gcm/two_gcm/two_gcm_in_context.xdc] for cell 'minesweeper/td/two_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_bcm/two_bcm/two_bcm_in_context.xdc] for cell 'minesweeper/td/two_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_bcm/two_bcm/two_bcm_in_context.xdc] for cell 'minesweeper/td/two_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_image_rom/three_image_rom/three_image_rom_in_context.xdc] for cell 'minesweeper/td/three_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_image_rom/three_image_rom/three_image_rom_in_context.xdc] for cell 'minesweeper/td/three_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_rcm/three_rcm/three_rcm_in_context.xdc] for cell 'minesweeper/td/three_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_rcm/three_rcm/three_rcm_in_context.xdc] for cell 'minesweeper/td/three_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_gcm/three_gcm/three_gcm_in_context.xdc] for cell 'minesweeper/td/three_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_gcm/three_gcm/three_gcm_in_context.xdc] for cell 'minesweeper/td/three_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_bcm/three_bcm/three_bcm_in_context.xdc] for cell 'minesweeper/td/three_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_bcm/three_bcm/three_bcm_in_context.xdc] for cell 'minesweeper/td/three_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_image_rom/four_image_rom/four_image_rom_in_context.xdc] for cell 'minesweeper/td/four_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_image_rom/four_image_rom/four_image_rom_in_context.xdc] for cell 'minesweeper/td/four_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_rcm/four_rcm/four_rcm_in_context.xdc] for cell 'minesweeper/td/four_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_rcm/four_rcm/four_rcm_in_context.xdc] for cell 'minesweeper/td/four_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_gcm/four_gcm/four_gcm_in_context.xdc] for cell 'minesweeper/td/four_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_gcm/four_gcm/four_gcm_in_context.xdc] for cell 'minesweeper/td/four_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_bcm/four_bcm/four_bcm_in_context.xdc] for cell 'minesweeper/td/four_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_bcm/four_bcm/four_bcm_in_context.xdc] for cell 'minesweeper/td/four_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_image_rom/five_image_rom/five_image_rom_in_context.xdc] for cell 'minesweeper/td/five_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_image_rom/five_image_rom/five_image_rom_in_context.xdc] for cell 'minesweeper/td/five_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_rcm/five_rcm/five_rcm_in_context.xdc] for cell 'minesweeper/td/five_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_rcm/five_rcm/five_rcm_in_context.xdc] for cell 'minesweeper/td/five_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_gcm/five_gcm/five_gcm_in_context.xdc] for cell 'minesweeper/td/five_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_gcm/five_gcm/five_gcm_in_context.xdc] for cell 'minesweeper/td/five_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_bcm/five_bcm/five_bcm_in_context.xdc] for cell 'minesweeper/td/five_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_bcm/five_bcm/five_bcm_in_context.xdc] for cell 'minesweeper/td/five_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_image_rom/six_image_rom/six_image_rom_in_context.xdc] for cell 'minesweeper/td/six_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_image_rom/six_image_rom/six_image_rom_in_context.xdc] for cell 'minesweeper/td/six_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_rcm/six_rcm/six_rcm_in_context.xdc] for cell 'minesweeper/td/six_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_rcm/six_rcm/six_rcm_in_context.xdc] for cell 'minesweeper/td/six_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_gcm/six_gcm/six_gcm_in_context.xdc] for cell 'minesweeper/td/six_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_gcm/six_gcm/six_gcm_in_context.xdc] for cell 'minesweeper/td/six_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_bcm/six_bcm/six_bcm_in_context.xdc] for cell 'minesweeper/td/six_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_bcm/six_bcm/six_bcm_in_context.xdc] for cell 'minesweeper/td/six_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_image_rom/flag_image_rom/flag_image_rom_in_context.xdc] for cell 'minesweeper/td/flag_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_image_rom/flag_image_rom/flag_image_rom_in_context.xdc] for cell 'minesweeper/td/flag_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_rcm/flag_rcm/flag_rcm_in_context.xdc] for cell 'minesweeper/td/flag_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_rcm/flag_rcm/flag_rcm_in_context.xdc] for cell 'minesweeper/td/flag_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_gcm/flag_gcm/flag_gcm_in_context.xdc] for cell 'minesweeper/td/flag_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_gcm/flag_gcm/flag_gcm_in_context.xdc] for cell 'minesweeper/td/flag_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_bcm/flag_bcm/flag_bcm_in_context.xdc] for cell 'minesweeper/td/flag_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_bcm/flag_bcm/flag_bcm_in_context.xdc] for cell 'minesweeper/td/flag_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_image_rom/bomb_image_rom/bomb_image_rom_in_context.xdc] for cell 'minesweeper/td/bomb_rom'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_image_rom/bomb_image_rom/bomb_image_rom_in_context.xdc] for cell 'minesweeper/td/bomb_rom'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm/bomb_rcm_in_context.xdc] for cell 'minesweeper/td/bomb_rcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm/bomb_rcm_in_context.xdc] for cell 'minesweeper/td/bomb_rcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_gcm/bomb_gcm/bomb_gcm_in_context.xdc] for cell 'minesweeper/td/bomb_gcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_gcm/bomb_gcm/bomb_gcm_in_context.xdc] for cell 'minesweeper/td/bomb_gcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm/bomb_bcm_in_context.xdc] for cell 'minesweeper/td/bomb_bcm'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm/bomb_bcm_in_context.xdc] for cell 'minesweeper/td/bomb_bcm'
+Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]
+WARNING: [Vivado 12-584] No ports matched 'm_clk'. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc:210]
+WARNING: [Vivado 12-584] No ports matched 'm_data'. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc:211]
+WARNING: [Vivado 12-584] No ports matched 'm_lrsel'. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc:212]
+Finished Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/top_level_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_level_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/top_level_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/dont_touch.xdc]
+INFO: [Timing 38-2] Deriving generated clocks
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1058.703 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.017 . Memory (MB): peak = 1058.703 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/fd_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/fd_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/fd_img_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/fd_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/five_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/five_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/five_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/five_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/flag_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/flag_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/flag_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/flag_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/four_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/four_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/four_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/four_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/one_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/one_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/one_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/one_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/six_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/six_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/six_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/six_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/three_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/three_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/three_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/three_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/two_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/two_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/two_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/two_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1058.703 ; gain = 416.883
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1058.703 ; gain = 416.883
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for minesweeper/td/one_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/one_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/fd_img_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/zero_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/fd_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/zero_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/zero_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/zero_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/one_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/one_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/fd_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/fd_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/two_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/two_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/two_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/two_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/three_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/three_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/three_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/three_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/four_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/four_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/four_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/four_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/five_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/five_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/five_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/five_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/six_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/six_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/six_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/six_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/flag_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/flag_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/flag_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/flag_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/bomb_rom. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/bomb_rcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/bomb_gcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/td/bomb_bcm. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1058.703 ; gain = 416.883
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'minesweeper'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 IN_GAME |                               00 |                              010
+               GAME_OVER |                               01 |                              011
+                    IDLE |                               10 |                              000
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'minesweeper'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 1058.703 ; gain = 416.883
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 2     
++---Registers : 
+	               12 Bit    Registers := 2     
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 6     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 18    
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 2     
+	   8 Input      8 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 151   
+	   3 Input      4 Bit        Muxes := 8     
+	   4 Input      3 Bit        Muxes := 8     
+	   7 Input      3 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 25    
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module top_level 
+Detailed RTL Component Info : 
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 3     
+Module display_8hex 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                7 Bit    Registers := 1     
++---Muxes : 
+	   8 Input      8 Bit        Muxes := 1     
+Module debounce 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 4     
+Module xvga 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     11 Bit       Adders := 1     
+	   2 Input     10 Bit       Adders := 1     
++---Registers : 
+	               11 Bit    Registers := 1     
+	               10 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module tile_drawer 
+Detailed RTL Component Info : 
++---Registers : 
+	               12 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     12 Bit        Muxes := 2     
+	   4 Input      4 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 5     
+Module minesweeper 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 2     
++---Registers : 
+	                4 Bit    Registers := 6     
++---Muxes : 
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 148   
+	   3 Input      4 Bit        Muxes := 8     
+	   7 Input      3 Bit        Muxes := 1     
+	   4 Input      3 Bit        Muxes := 3     
+	   6 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+DSP Report: Generating DSP image_addr, operation Mode is: C+A*(B:0x30).
+DSP Report: operator image_addr is absorbed into DSP image_addr.
+DSP Report: operator image_addr0 is absorbed into DSP image_addr.
+WARNING: [Synth 8-3917] design top_level has port dp driven by constant 0
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[15]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[14]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[13]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[12]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[11]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[10]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[9]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[8]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[7]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[6]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[5]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[4]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[3]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[2]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[1]
+WARNING: [Synth 8-3331] design tile_drawer has unconnected port sw[0]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port center_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port up_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port down_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port left_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port right_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port mouse_right_click
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[15]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[14]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[13]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[12]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[11]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[10]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[9]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[8]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[7]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[6]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[5]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[4]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[3]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[2]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[1]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port random[0]
+WARNING: [Synth 8-3331] design minesweeper has unconnected port hsync_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port vsync_in
+WARNING: [Synth 8-3331] design minesweeper has unconnected port blank_in
+WARNING: [Synth 8-3331] design top_level has unconnected port aud_pwm
+WARNING: [Synth 8-3331] design top_level has unconnected port aud_sd
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_reset
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_cd
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_sck
+WARNING: [Synth 8-3331] design top_level has unconnected port sd_cmd
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\display/seg_out_reg[6] )
+INFO: [Synth 8-3886] merging instance 'display/seg_out_reg[5]' (FD) to 'display/seg_out_reg[4]'
+INFO: [Synth 8-3886] merging instance 'display/seg_out_reg[4]' (FD) to 'display/seg_out_reg[3]'
+INFO: [Synth 8-3886] merging instance 'display/seg_out_reg[3]' (FD) to 'display/seg_out_reg[2]'
+INFO: [Synth 8-3886] merging instance 'display/seg_out_reg[2]' (FD) to 'display/seg_out_reg[1]'
+INFO: [Synth 8-3886] merging instance 'display/seg_out_reg[1]' (FD) to 'display/seg_out_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\display/seg_out_reg[0] )
+WARNING: [Synth 8-3332] Sequential element (minesweeper/FSM_sequential_state_reg[1]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (minesweeper/FSM_sequential_state_reg[0]) is unused and will be removed from module top_level.
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [0] with 1st driver pin 'minesweeper/tile_status_reg[0][0]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [0] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[0] [0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [1] with 1st driver pin 'minesweeper/tile_status_reg[0][1]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [1] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[0] [1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [2] with 1st driver pin 'minesweeper/tile_status_reg[0][2]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [2] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[0] [2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [3] with 1st driver pin 'minesweeper/tile_status_reg[0][3]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[0] [3] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[0] [3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [0] with 1st driver pin 'minesweeper/tile_status_reg[1][0]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [0] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[1] [0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [1] with 1st driver pin 'minesweeper/tile_status_reg[1][1]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [1] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[1] [1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [2] with 1st driver pin 'minesweeper/tile_status_reg[1][2]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [2] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[1] [2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [3] with 1st driver pin 'minesweeper/tile_status_reg[1][3]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[1] [3] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[1] [3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [0] with 1st driver pin 'minesweeper/tile_status_reg[2][0]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [0] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[2] [0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [1] with 1st driver pin 'minesweeper/tile_status_reg[2][1]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [1] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[2] [1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [2] with 1st driver pin 'minesweeper/tile_status_reg[2][2]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [2] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[2] [2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [3] with 1st driver pin 'minesweeper/tile_status_reg[2][3]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[2] [3] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[2] [3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [0] with 1st driver pin 'minesweeper/tile_status_reg[3][0]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [0] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[3] [0] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [1] with 1st driver pin 'minesweeper/tile_status_reg[3][1]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [1] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[3] [1] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [2] with 1st driver pin 'minesweeper/tile_status_reg[3][2]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [2] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[3] [2] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [3] with 1st driver pin 'minesweeper/tile_status_reg[3][3]/Q' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin \tile_status[3] [3] with 2nd driver pin 'VCC' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net \tile_status[3] [3] is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:59]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1058.703 ; gain = 416.883
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping	Report (see note below)
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping  | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|tile_drawer | C+A*(B:0x30) | 12     | 6      | 11     | -      | 12     | 0    | 0    | 0    | -    | -     | 0    | 0    | 
++------------+--------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1077.051 ; gain = 435.230
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1104.246 ; gain = 462.426
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1112.543 ; gain = 470.723
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------------+----------+
+|      |BlackBox name         |Instances |
++------+----------------------+----------+
+|1     |facing_down_image_rom |         1|
+|2     |facing_down_rcm       |         1|
+|3     |facing_down_gcm       |         1|
+|4     |facing_down_bcm       |         1|
+|5     |zero_image_rom        |         1|
+|6     |zero_rcm              |         1|
+|7     |zero_gcm              |         1|
+|8     |zero_bcm              |         1|
+|9     |one_image_rom         |         1|
+|10    |one_rcm               |         1|
+|11    |one_gcm               |         1|
+|12    |one_bcm               |         1|
+|13    |two_image_rom         |         1|
+|14    |two_rcm               |         1|
+|15    |two_gcm               |         1|
+|16    |two_bcm               |         1|
+|17    |three_image_rom       |         1|
+|18    |three_rcm             |         1|
+|19    |three_gcm             |         1|
+|20    |three_bcm             |         1|
+|21    |four_image_rom        |         1|
+|22    |four_rcm              |         1|
+|23    |four_gcm              |         1|
+|24    |four_bcm              |         1|
+|25    |five_image_rom        |         1|
+|26    |five_rcm              |         1|
+|27    |five_gcm              |         1|
+|28    |five_bcm              |         1|
+|29    |six_image_rom         |         1|
+|30    |six_rcm               |         1|
+|31    |six_gcm               |         1|
+|32    |six_bcm               |         1|
+|33    |flag_image_rom        |         1|
+|34    |flag_rcm              |         1|
+|35    |flag_gcm              |         1|
+|36    |flag_bcm              |         1|
+|37    |bomb_image_rom        |         1|
+|38    |bomb_rcm              |         1|
+|39    |bomb_gcm              |         1|
+|40    |bomb_bcm              |         1|
++------+----------------------+----------+
+
+Report Cell Usage: 
++------+----------------------+------+
+|      |Cell                  |Count |
++------+----------------------+------+
+|1     |bomb_bcm              |     1|
+|2     |bomb_gcm              |     1|
+|3     |bomb_image_rom        |     1|
+|4     |bomb_rcm              |     1|
+|5     |facing_down_bcm       |     1|
+|6     |facing_down_gcm       |     1|
+|7     |facing_down_image_rom |     1|
+|8     |facing_down_rcm       |     1|
+|9     |five_bcm              |     1|
+|10    |five_gcm              |     1|
+|11    |five_image_rom        |     1|
+|12    |five_rcm              |     1|
+|13    |flag_bcm              |     1|
+|14    |flag_gcm              |     1|
+|15    |flag_image_rom        |     1|
+|16    |flag_rcm              |     1|
+|17    |four_bcm              |     1|
+|18    |four_gcm              |     1|
+|19    |four_image_rom        |     1|
+|20    |four_rcm              |     1|
+|21    |one_bcm               |     1|
+|22    |one_gcm               |     1|
+|23    |one_image_rom         |     1|
+|24    |one_rcm               |     1|
+|25    |six_bcm               |     1|
+|26    |six_gcm               |     1|
+|27    |six_image_rom         |     1|
+|28    |six_rcm               |     1|
+|29    |three_bcm             |     1|
+|30    |three_gcm             |     1|
+|31    |three_image_rom       |     1|
+|32    |three_rcm             |     1|
+|33    |two_bcm               |     1|
+|34    |two_gcm               |     1|
+|35    |two_image_rom         |     1|
+|36    |two_rcm               |     1|
+|37    |zero_bcm              |     1|
+|38    |zero_gcm              |     1|
+|39    |zero_image_rom        |     1|
+|40    |zero_rcm              |     1|
+|41    |BUFG                  |     2|
+|42    |CARRY4                |    37|
+|43    |DSP48E1_1             |     1|
+|44    |LUT1                  |    13|
+|45    |LUT2                  |    57|
+|46    |LUT3                  |    66|
+|47    |LUT4                  |    46|
+|48    |LUT5                  |    40|
+|49    |LUT6                  |    66|
+|50    |MMCME2_ADV            |     1|
+|51    |FDRE                  |    75|
+|52    |FDSE                  |     5|
+|53    |IBUF                  |    17|
+|54    |OBUF                  |    46|
+|55    |OBUFT                 |     2|
++------+----------------------+------+
+
+Report Instance Areas: 
++------+--------------+-------------+------+
+|      |Instance      |Module       |Cells |
++------+--------------+-------------+------+
+|1     |top           |             |   802|
+|2     |  clkdivider  |clk_wiz_lab3 |     4|
+|3     |  display     |display_8hex |    37|
+|4     |  minesweeper |minesweeper  |   513|
+|5     |    td        |tile_drawer  |   513|
+|6     |  xvga1       |xvga         |   155|
++------+--------------+-------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 48 critical warnings and 56 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:35 . Memory (MB): peak = 1118.340 ; gain = 354.387
+Synthesis Optimization Complete : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1118.340 ; gain = 476.520
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 1118.340 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1127.289 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+127 Infos, 193 Warnings, 48 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 1127.289 ; gain = 787.094
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1127.289 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/top_level.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 21 14:50:28 2019...
