@@ -104,7 +104,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 								tile_status[y_bin][x_bin+1] <= 1;
 							end
 						end else if(y_bin<3) begin
-							tile_status[_bin+1][x_bin] <= 1;
+							tile_status[y_bin+1][x_bin] <= 1;
 							if(x_bin>0) begin
 								tile_status[y_bin+1][x_bin-1] <= 1;
 								tile_status[y_bin][x_bin-1] <= 1;
