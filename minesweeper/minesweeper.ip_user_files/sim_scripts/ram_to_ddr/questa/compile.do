@@ -8,46 +8,13 @@ vmap xpm questa_lib/msim/xpm
 vmap xil_defaultlib questa_lib/msim/xil_defaultlib
 
 vlog -work xpm -64 -sv \
+"C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv" \
 "C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -64 -93 \
 "C:/Xilinx/Vivado/2019.2/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work xil_defaultlib -64 \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_addr_decode.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_read.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_reg.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_reg_bank.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_top.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_ctrl_write.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_ar_channel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_aw_channel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_b_channel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_cmd_arbiter.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_cmd_fsm.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_cmd_translator.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_fifo.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_incr_cmd.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_r_channel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_simple_fifo.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_wrap_cmd.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_wr_cmd_fsm.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_axi_mc_w_channel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_axic_register_slice.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_axi_register_slice.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_axi_upsizer.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_a_upsizer.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_carry_and.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_carry_latch_and.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_carry_latch_or.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_carry_or.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_command_fifo.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_comparator.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_comparator_sel.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_comparator_sel_static.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_r_upsizer.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/mig_7series_v4_2_ddr_w_upsizer.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/clocking/mig_7series_v4_2_clk_ibuf.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/clocking/mig_7series_v4_2_infrastructure.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/clocking/mig_7series_v4_2_iodelay_ctrl.v" \
@@ -72,7 +39,7 @@ vlog -work xil_defaultlib -64 \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ecc/mig_7series_v4_2_ecc_gen.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ecc/mig_7series_v4_2_ecc_merge_enc.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ecc/mig_7series_v4_2_fi_xor.v" \
-"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ip_top/mig_7series_v4_2_memc_ui_top_axi.v" \
+"../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ip_top/mig_7series_v4_2_memc_ui_top_std.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ip_top/mig_7series_v4_2_mem_intfc.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/phy/mig_7series_v4_2_ddr_byte_group_io.v" \
 "../../../../minesweeper.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/phy/mig_7series_v4_2_ddr_byte_lane.v" \

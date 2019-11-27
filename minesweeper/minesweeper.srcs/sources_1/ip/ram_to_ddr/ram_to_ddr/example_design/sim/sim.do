@@ -84,7 +84,7 @@ vlog  -incr ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design
 vlog  -incr ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ip_top/*.v
 vlog  -incr ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/phy/*.v
 vlog  -incr ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ui/*.v
-vlog -incr ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/*
+
 
 
 vlog  example_top.v

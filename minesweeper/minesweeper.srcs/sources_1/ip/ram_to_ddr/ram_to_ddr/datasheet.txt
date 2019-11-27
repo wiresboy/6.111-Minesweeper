@@ -34,7 +34,7 @@ Controller Options :
 
    Memory                        : DDR2_SDRAM
 
-   Interface                     : AXI
+   Interface                     : NATIVE
 
    Design Clock Frequency        : 5000 ps (  0.00 MHz)
 

@@ -82,7 +82,7 @@ ncvlog -work worklib -messages -sv ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr
 ncvlog -work worklib -messages -sv ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ip_top/*.v >> ies_sim.log
 ncvlog -work worklib -messages -sv ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/phy/*.v >> ies_sim.log
 ncvlog -work worklib -messages -sv ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ui/*.v >> ies_sim.log
-ncvlog -sv -work worklib -messages ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/*.v >> ies_sim.log 
+
 
 
 ncvlog -sv -work worklib -messages example_top.v >> ies_sim.log

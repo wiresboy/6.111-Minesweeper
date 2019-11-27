@@ -89,58 +89,26 @@ module ram_to_ddr (
    // Single-ended system clock
    input                                        sys_clk_i,
    // user interface signals
-   output                                       ui_clk,
-   output                                       ui_clk_sync_rst,
-   output                                       mmcm_locked,
-   input                                        aresetn,
+   input [26:0]                       app_addr,
+   input [2:0]                                  app_cmd,
+   input                                        app_en,
+   input [63:0]    app_wdf_data,
+   input                                        app_wdf_end,
+   input [7:0]  app_wdf_mask,
+   input                                        app_wdf_wren,
+   output [63:0]   app_rd_data,
+   output                                       app_rd_data_end,
+   output                                       app_rd_data_valid,
+   output                                       app_rdy,
+   output                                       app_wdf_rdy,
    input                                        app_sr_req,
    input                                        app_ref_req,
    input                                        app_zq_req,
    output                                       app_sr_active,
    output                                       app_ref_ack,
    output                                       app_zq_ack,
-   // Slave Interface Write Address Ports
-   input  [3:0]                s_axi_awid,
-   input  [26:0]              s_axi_awaddr,
-   input  [7:0]                                 s_axi_awlen,
-   input  [2:0]                                 s_axi_awsize,
-   input  [1:0]                                 s_axi_awburst,
-   input  [0:0]                                 s_axi_awlock,
-   input  [3:0]                                 s_axi_awcache,
-   input  [2:0]                                 s_axi_awprot,
-   input  [3:0]                                 s_axi_awqos,
-   input                                        s_axi_awvalid,
-   output                                       s_axi_awready,
-   // Slave Interface Write Data Ports
-   input  [63:0]              s_axi_wdata,
-   input  [7:0]            s_axi_wstrb,
-   input                                        s_axi_wlast,
-   input                                        s_axi_wvalid,
-   output                                       s_axi_wready,
-   // Slave Interface Write Response Ports
-   input                                        s_axi_bready,
-   output [3:0]                s_axi_bid,
-   output [1:0]                                 s_axi_bresp,
-   output                                       s_axi_bvalid,
-   // Slave Interface Read Address Ports
-   input  [3:0]                s_axi_arid,
-   input  [26:0]              s_axi_araddr,
-   input  [7:0]                                 s_axi_arlen,
-   input  [2:0]                                 s_axi_arsize,
-   input  [1:0]                                 s_axi_arburst,
-   input  [0:0]                                 s_axi_arlock,
-   input  [3:0]                                 s_axi_arcache,
-   input  [2:0]                                 s_axi_arprot,
-   input  [3:0]                                 s_axi_arqos,
-   input                                        s_axi_arvalid,
-   output                                       s_axi_arready,
-   // Slave Interface Read Data Ports
-   input                                        s_axi_rready,
-   output [3:0]                s_axi_rid,
-   output [63:0]              s_axi_rdata,
-   output [1:0]                                 s_axi_rresp,
-   output                                       s_axi_rlast,
-   output                                       s_axi_rvalid,
+   output                                       ui_clk,
+   output                                       ui_clk_sync_rst,
    output                                       init_calib_complete,
   input			sys_rst
   );
@@ -166,58 +134,28 @@ module ram_to_ddr (
     .ddr2_dm                        (ddr2_dm),
     .ddr2_odt                       (ddr2_odt),
     // Application interface ports
-    .ui_clk                         (ui_clk),
-    .ui_clk_sync_rst                (ui_clk_sync_rst),
-    .mmcm_locked                    (mmcm_locked),
-    .aresetn                        (aresetn),
+    .app_addr                       (app_addr),
+    .app_cmd                        (app_cmd),
+    .app_en                         (app_en),
+    .app_wdf_data                   (app_wdf_data),
+    .app_wdf_end                    (app_wdf_end),
+    .app_wdf_wren                   (app_wdf_wren),
+    .app_rd_data                    (app_rd_data),
+    .app_rd_data_end                (app_rd_data_end),
+    .app_rd_data_valid              (app_rd_data_valid),
+    .app_rdy                        (app_rdy),
+    .app_wdf_rdy                    (app_wdf_rdy),
     .app_sr_req                     (app_sr_req),
     .app_ref_req                    (app_ref_req),
     .app_zq_req                     (app_zq_req),
     .app_sr_active                  (app_sr_active),
     .app_ref_ack                    (app_ref_ack),
     .app_zq_ack                     (app_zq_ack),
-    // Slave Interface Write Address Ports
-    .s_axi_awid                     (s_axi_awid),
-    .s_axi_awaddr                   (s_axi_awaddr),
-    .s_axi_awlen                    (s_axi_awlen),
-    .s_axi_awsize                   (s_axi_awsize),
-    .s_axi_awburst                  (s_axi_awburst),
-    .s_axi_awlock                   (s_axi_awlock),
-    .s_axi_awcache                  (s_axi_awcache),
-    .s_axi_awprot                   (s_axi_awprot),
-    .s_axi_awqos                    (s_axi_awqos),
-    .s_axi_awvalid                  (s_axi_awvalid),
-    .s_axi_awready                  (s_axi_awready),
-    // Slave Interface Write Data Ports
-    .s_axi_wdata                    (s_axi_wdata),
-    .s_axi_wstrb                    (s_axi_wstrb),
-    .s_axi_wlast                    (s_axi_wlast),
-    .s_axi_wvalid                   (s_axi_wvalid),
-    .s_axi_wready                   (s_axi_wready),
-    // Slave Interface Write Response Ports
-    .s_axi_bid                      (s_axi_bid),
-    .s_axi_bresp                    (s_axi_bresp),
-    .s_axi_bvalid                   (s_axi_bvalid),
-    .s_axi_bready                   (s_axi_bready),
-    // Slave Interface Read Address Ports
-    .s_axi_arid                     (s_axi_arid),
-    .s_axi_araddr                   (s_axi_araddr),
-    .s_axi_arlen                    (s_axi_arlen),
-    .s_axi_arsize                   (s_axi_arsize),
-    .s_axi_arburst                  (s_axi_arburst),
-    .s_axi_arlock                   (s_axi_arlock),
-    .s_axi_arcache                  (s_axi_arcache),
-    .s_axi_arprot                   (s_axi_arprot),
-    .s_axi_arqos                    (s_axi_arqos),
-    .s_axi_arvalid                  (s_axi_arvalid),
-    .s_axi_arready                  (s_axi_arready),
-    // Slave Interface Read Data Ports
-    .s_axi_rid                      (s_axi_rid),
-    .s_axi_rdata                    (s_axi_rdata),
-    .s_axi_rresp                    (s_axi_rresp),
-    .s_axi_rlast                    (s_axi_rlast),
-    .s_axi_rvalid                   (s_axi_rvalid),
-    .s_axi_rready                   (s_axi_rready),
+    .ui_clk                         (ui_clk),
+    .ui_clk_sync_rst                (ui_clk_sync_rst),
+      
+    .app_wdf_mask                   (app_wdf_mask),
+      
     // System Clock Ports
     .sys_clk_i                       (sys_clk_i),
     .sys_rst                        (sys_rst)

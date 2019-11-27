@@ -82,7 +82,7 @@ vlogan -sverilog ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_d
 vlogan -sverilog ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/phy/*.v >> vcs_sim.log
 vlogan -sverilog ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/ui/*.v >> vcs_sim.log
 
-vlogan -sverilog ../ram_to_ddr_ex.srcs/sources_1/ip/ram_to_ddr/ram_to_ddr/user_design/rtl/axi/*.v >> vcs_sim.log
+
 
 
 vlogan -sverilog example_top.v >> vcs_sim.log
