@@ -20,8 +20,10 @@ module top_level(
 
 	// ***** CLOCK *****
 	wire clk_65mhz;
+	wire clk_200mhz;
 	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
-	clk_wiz_lab3 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_65mhz));
+	// create 200mhz clock for ddram
+	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_200mhz), .clk_out2(clk_65mhz));
 	
 	wire reset;
 	assign reset = ~reset_n;

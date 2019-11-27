@@ -1,4 +1,5 @@
-// file: clk_wiz_lab3.v
+
+// file: clk_wiz_0.v
 // 
 // (c) Copyright 2008 - 2013 Xilinx, Inc. All rights reserved.
 // 
@@ -55,7 +56,8 @@
 //  Output     Output      Phase    Duty Cycle   Pk-to-Pk     Phase
 //   Clock     Freq (MHz)  (degrees)    (%)     Jitter (ps)  Error (ps)
 //----------------------------------------------------------------------------
-// CLK_OUT1____65.000______0.000______50.0______254.866____297.890
+// clk_out1__200.00000______0.000______50.0______114.140_____99.281
+// clk_out2__65.00000______0.000______50.0______142.278_____99.281
 //
 //----------------------------------------------------------------------------
 // Input Clock   Freq (MHz)    Input Jitter (UI)
@@ -64,18 +66,24 @@
 
 `timescale 1ps/1ps
 
-module clk_wiz_lab3 
- (// Clock in ports
-  input         clk_in1,
-  // Clock out ports
-  output        clk_out1
- );
+module clk_wiz_0_clk_wiz 
 
+ (// Clock in ports
+  // Clock out ports
+  output        clk_out1,
+  output        clk_out2,
+  // Status and control signals
+  input         reset,
+  input         clk_in1
+ );
   // Input buffering
   //------------------------------------
+wire clk_in1_clk_wiz_0;
+wire clk_in2_clk_wiz_0;
   IBUF clkin1_ibufg
    (.O (clk_in1_clk_wiz_0),
     .I (clk_in1));
+
 
 
 
@@ -85,6 +93,15 @@ module clk_wiz_lab3
   // Instantiation of the MMCM PRIMITIVE
   //    * Unused inputs are tied off
   //    * Unused outputs are labeled unused
+
+  wire        clk_out1_clk_wiz_0;
+  wire        clk_out2_clk_wiz_0;
+  wire        clk_out3_clk_wiz_0;
+  wire        clk_out4_clk_wiz_0;
+  wire        clk_out5_clk_wiz_0;
+  wire        clk_out6_clk_wiz_0;
+  wire        clk_out7_clk_wiz_0;
+
   wire [15:0] do_unused;
   wire        drdy_unused;
   wire        psdone_unused;
@@ -93,7 +110,6 @@ module clk_wiz_lab3
   wire        clkfbout_buf_clk_wiz_0;
   wire        clkfboutb_unused;
     wire clkout0b_unused;
-   wire clkout1_unused;
    wire clkout1b_unused;
    wire clkout2_unused;
    wire clkout2b_unused;
@@ -104,21 +120,26 @@ module clk_wiz_lab3
   wire        clkout6_unused;
   wire        clkfbstopped_unused;
   wire        clkinstopped_unused;
+  wire        reset_high;
 
   MMCME2_ADV
   #(.BANDWIDTH            ("OPTIMIZED"),
     .CLKOUT4_CASCADE      ("FALSE"),
     .COMPENSATION         ("ZHOLD"),
     .STARTUP_WAIT         ("FALSE"),
-    .DIVCLK_DIVIDE        (5),
-    .CLKFBOUT_MULT_F      (50.375),
+    .DIVCLK_DIVIDE        (1),
+    .CLKFBOUT_MULT_F      (9.750),
     .CLKFBOUT_PHASE       (0.000),
     .CLKFBOUT_USE_FINE_PS ("FALSE"),
-    .CLKOUT0_DIVIDE_F     (15.500),
+    .CLKOUT0_DIVIDE_F     (4.875),
     .CLKOUT0_PHASE        (0.000),
     .CLKOUT0_DUTY_CYCLE   (0.500),
     .CLKOUT0_USE_FINE_PS  ("FALSE"),
-    .CLKIN1_PERIOD        (10.0))
+    .CLKOUT1_DIVIDE       (15),
+    .CLKOUT1_PHASE        (0.000),
+    .CLKOUT1_DUTY_CYCLE   (0.500),
+    .CLKOUT1_USE_FINE_PS  ("FALSE"),
+    .CLKIN1_PERIOD        (10.000))
   mmcm_adv_inst
     // Output clocks
    (
@@ -126,7 +147,7 @@ module clk_wiz_lab3
     .CLKFBOUTB           (clkfboutb_unused),
     .CLKOUT0             (clk_out1_clk_wiz_0),
     .CLKOUT0B            (clkout0b_unused),
-    .CLKOUT1             (clkout1_unused),
+    .CLKOUT1             (clk_out2_clk_wiz_0),
     .CLKOUT1B            (clkout1b_unused),
     .CLKOUT2             (clkout2_unused),
     .CLKOUT2B            (clkout2b_unused),
@@ -159,11 +180,12 @@ module clk_wiz_lab3
     .CLKINSTOPPED        (clkinstopped_unused),
     .CLKFBSTOPPED        (clkfbstopped_unused),
     .PWRDWN              (1'b0),
-    .RST                 (1'b0));
+    .RST                 (reset_high));
+  assign reset_high = reset; 
 
-
-
-  // Output buffering
+// Clock Monitor clock assigning
+//--------------------------------------
+ // Output buffering
   //-----------------------------------
 
   BUFG clkf_buf
@@ -172,10 +194,17 @@ module clk_wiz_lab3
 
 
 
+
+
+
   BUFG clkout1_buf
    (.O   (clk_out1),
     .I   (clk_out1_clk_wiz_0));
 
+
+  BUFG clkout2_buf
+   (.O   (clk_out2),
+    .I   (clk_out2_clk_wiz_0));
 
 
 
