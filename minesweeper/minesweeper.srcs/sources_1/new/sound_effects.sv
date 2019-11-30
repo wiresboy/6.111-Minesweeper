@@ -1,28 +1,13 @@
 
+module sound_effect_manager (
+	input clk_100mhz,
+	input reset,
+	input [2:0] sound_effect_select,	//indices and meanings TBD
+	input sound_effect_start,			//start the selected sound effect. Strobe for only 1 clock.
+	output logic aud_pwm,
+	output logic aud_sd);
 
-module sound_effect_player
-	(
-		input clk_100mhz,
-		input [2:0] sound_effect_select,	//indices and meanings TBD
-		input sound_effect_start,			//start the selected sound effect. Strobe for only 1 clock.
-		input [2:0] vol_in,
-		output logic aud_pwm,
-		output logic aud_sd
-	);
-	parameter SAMPLE_COUNT = 2082;//gets approximately (will generate audio at approx 48 kHz sample rate.
 
-	logic [15:0] sample_counter;
-	logic sample_trigger;
-
-	logic [7:0] audio;
-
-	assign sample_trigger = (sample_counter == SAMPLE_COUNT);
-	always_ff @(posedge clk_100mhz) begin
-		if (sample_counter == SAMPLE_COUNT)
-			sample_counter <= 0;
-		else
-			sample_counter <= sample_counter + 1;
-	end
 
 
 	volume_control vc (.vol_in(sw[15:13]),
@@ -31,6 +16,62 @@ module sound_effect_player
 	assign aud_pwm = pwm_val?1'bZ:1'b0;
 	assign aud_sd = 1;
 
+endmodule
+
+
+
+module sound_effect_player#(parameter DURATION_SAMPLES = 48000, parameter LOOP = 0);
+	(
+		input clk_100mhz,
+		input reset,
+		input sound_effect_start,			//start the selected sound effect. Strobe for only 1 clock.
+		input sample_trigger,
+
+		output logic [25:0] data_request_offset, //~20 minutes of audio!
+		output logic data_request_flag, //1 for next data needed
+		input [7:0] data_request_result,
+		input data_ready_strobe, //1 for 1 cycle indicating data is available
+
+		output logic signed [7:0] audio
+	);
+
+	logic [15:0] sample_counter;
+	logic playing = 0;
+
+	logic [7:0] audio;
+
+	always_ff @(posedge clk_in) begin : proc_sample_counter
+		if (reset) begin
+			sample_counter <= 0;
+		end else begin
+			if (sample_counter == DURATION_SAMPLES)
+				sample_counter <= 0;
+			else if (playing && sample_trigger)
+				sample_counter <= sample_counter + 1;
+		end
+	end
+
+	always_ff @(posedge clk_in) begin : proc_playing
+		if (reset) begin
+			playing <= 0;
+		end else begin
+			if (sound_effect_start)
+				playing <= 1;
+			else if (sample_counter == DURATION_SAMPLES)
+				playing <= LOOP; //stop playing unless this sample loops?
+		end
+	end
+
+	always_ff @(posedge clk_in) begin : proc_audio
+		if (reset) begin
+			audio <= 0;
+		end else begin
+			if (playing) begin
+				audio <= 0;//todo: how to get audio value?
+			end else
+				audio <= 0;
+		end
+	end
 endmodule
 
 
