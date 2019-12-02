@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="two_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1574216919">
+<GenRun Id="two_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575231662">
   <File Type="PA-TCL" Name="two_gcm.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="two_gcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="two_gcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="two_gcm.vds"/>
   <File Type="RDS-UTIL" Name="two_gcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="two_gcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="two_gcm.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="two_gcm_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="two_gcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/two_gcm">
     <File Path="$PSRCDIR/sources_1/ip/two_gcm/two_gcm.xci">
       <FileInfo>

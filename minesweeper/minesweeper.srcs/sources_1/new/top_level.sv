@@ -83,6 +83,8 @@ module top_level(
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.pixel_out(ms_pixel),
+			.hsync_out(ms_hsync),.vsync_out(ms_vsync),.blank_out(ms_blank),
+			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
 			.seven_seg_out(ms_seven_segment_data)
 			//,  TODO sound
 			);
@@ -106,9 +108,9 @@ module top_level(
 	reg [11:0] rgb;    
 	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
-		hs <= hsync;
-		vs <= vsync;
-		b <= blank;
+		hs <= ms_hsync;
+		vs <= ms_vsync;
+		b <= ms_blank;
 		rgb <= ms_pixel;
 	end
 

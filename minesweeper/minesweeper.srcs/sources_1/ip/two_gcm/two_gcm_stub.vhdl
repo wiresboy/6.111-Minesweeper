@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 -- Date        : Tue Nov 19 21:32:10 2019
 -- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub {C:/Users/Rod Bayliss
---               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_gcm/two_gcm_stub.vhdl}
+-- Command     : write_vhdl -force -mode synth_stub -rename_top two_gcm -prefix
+--               two_gcm_ two_gcm_stub.vhdl
 -- Design      : two_gcm
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

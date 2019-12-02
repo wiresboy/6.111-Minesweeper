@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="zero_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1574206720">
+<GenRun Id="zero_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575231657">
   <File Type="PA-TCL" Name="zero_gcm.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="zero_gcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="zero_gcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="zero_gcm.vds"/>
   <File Type="RDS-UTIL" Name="zero_gcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="zero_gcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="zero_gcm.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="zero_gcm_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="zero_gcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/zero_gcm">
     <File Path="$PSRCDIR/sources_1/ip/zero_gcm/zero_gcm.xci">
       <FileInfo>

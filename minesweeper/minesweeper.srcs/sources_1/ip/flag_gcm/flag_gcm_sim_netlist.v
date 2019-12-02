@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
 // Date        : Tue Nov 19 21:35:07 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {C:/Users/Rod Bayliss
-//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_gcm/flag_gcm_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top flag_gcm -prefix
+//               flag_gcm_ flag_gcm_sim_netlist.v
 // Design      : flag_gcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -188,7 +188,6 @@ module flag_gcm
         .web(1'b0));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module flag_gcm_blk_mem_gen_generic_cstr
    (douta,
     clka,
@@ -207,7 +206,6 @@ module flag_gcm_blk_mem_gen_generic_cstr
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module flag_gcm_blk_mem_gen_prim_width
    (douta,
     clka,
@@ -226,7 +224,6 @@ module flag_gcm_blk_mem_gen_prim_width
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module flag_gcm_blk_mem_gen_prim_wrapper_init
    (douta,
     clka,
@@ -393,7 +390,6 @@ module flag_gcm_blk_mem_gen_prim_wrapper_init
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module flag_gcm_blk_mem_gen_top
    (douta,
     clka,
@@ -437,7 +433,7 @@ endmodule
 (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) (* C_WRITE_DEPTH_A = "69" *) 
 (* C_WRITE_DEPTH_B = "69" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "8" *) (* C_WRITE_WIDTH_B = "8" *) (* C_XDEVICEFAMILY = "artix7" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module flag_gcm_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -633,7 +629,6 @@ module flag_gcm_blk_mem_gen_v8_4_4
         .douta(douta));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module flag_gcm_blk_mem_gen_v8_4_4_synth
    (douta,
     clka,

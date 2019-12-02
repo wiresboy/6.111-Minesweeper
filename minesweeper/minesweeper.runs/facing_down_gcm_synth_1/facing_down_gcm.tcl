@@ -17,9 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
-set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 set_param project.vivado.isBlockSynthRun true
 set_msg_config -msgmgr_mode ooc_run
 create_project -in_memory -part xc7a100tcsg324-1
@@ -36,7 +33,7 @@ set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
 set_property ip_output_repo {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.cache/ip} [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_ooc.xdc}}]
 
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -92,32 +89,32 @@ write_checkpoint -force -noxdef facing_down_gcm.dcp
 create_report "facing_down_gcm_synth_1_synth_report_utilization_0" "report_utilization -file facing_down_gcm_utilization_synth.rpt -pb facing_down_gcm_utilization_synth.pb"
 
 if { [catch {
-  file copy -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm.dcp} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.dcp}
+  file copy -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm.dcp} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.dcp}
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  write_verilog -force -mode synth_stub {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}
+  write_verilog -force -mode synth_stub {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode synth_stub {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}
+  write_vhdl -force -mode synth_stub {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_verilog -force -mode funcsim {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.v}
+  write_verilog -force -mode funcsim {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  write_vhdl -force -mode funcsim {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.vhdl}
+  write_vhdl -force -mode funcsim {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -127,32 +124,32 @@ if { [catch {
 
 
 if { [catch {
-  file copy -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm.dcp} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.dcp}
+  file copy -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm.dcp} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.dcp}
 } _RESULT ] } { 
   send_msg_id runtcl-3 error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
   error "ERROR: Unable to successfully create or copy the sub-design checkpoint file."
 }
 
 if { [catch {
-  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_stub.v} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}
+  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_stub.v} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a Verilog synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_stub.vhdl} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}
+  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_stub.vhdl} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create a VHDL synthesis stub for the sub-design. This may lead to errors in top level synthesis of the design. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_sim_netlist.v} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.v}
+  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_sim_netlist.v} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.v}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the Verilog functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
 
 if { [catch {
-  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_sim_netlist.vhdl} {c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.vhdl}
+  file rename -force {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/facing_down_gcm_synth_1/facing_down_gcm_sim_netlist.vhdl} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_sim_netlist.vhdl}
 } _RESULT ] } { 
   puts "CRITICAL WARNING: Unable to successfully create the VHDL functional simulation sub-design file. Post-Synthesis Functional Simulation with this file may not be possible or may give incorrect results. Error reported: $_RESULT"
 }
@@ -161,13 +158,13 @@ if { [catch {
 
 if {[file isdir {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}]} {
   catch { 
-    file copy -force {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}
+    file copy -force {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.v}} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}
   }
 }
 
 if {[file isdir {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}]} {
   catch { 
-    file copy -force {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}
+    file copy -force {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}} {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.ip_user_files/ip/facing_down_gcm}
   }
 }
 file delete __synthesis_is_running__

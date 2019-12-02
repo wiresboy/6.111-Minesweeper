@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="flag_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1574216926">
+<GenRun Id="flag_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575231671">
   <File Type="PA-TCL" Name="flag_gcm.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="flag_gcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="flag_gcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="flag_gcm.vds"/>
   <File Type="RDS-UTIL" Name="flag_gcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="flag_gcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="flag_gcm.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="flag_gcm_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="flag_gcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/flag_gcm">
     <File Path="$PSRCDIR/sources_1/ip/flag_gcm/flag_gcm.xci">
       <FileInfo>

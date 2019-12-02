@@ -24,6 +24,13 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	input vsync_in,			// XVGA vertical sync signal (active low)
 	input blank_in,			// XVGA blanking (1 means output black pixel)
 
+	output [10:0] hcount_out,    // buffered hindex
+	output [9:0] vcount_out,     // buffered vindex
+	output hsync_out,	     //buff hsync
+	output vsync_out,		 //buff vsync 
+	output blank_out,		 // buff blank
+
+
 	input [15:0] sw,
 
 	output [11:0] pixel_out,	// pixel r=11:8, g=7:4, b=3:0 
@@ -62,9 +69,31 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [11:0] grid_pixel;
 	logic [11:0] tile_pixel,tile_pixel_2;
 	
+	//VGA Buffer vars
+	logic vsync[1:0], hsync[1:0], blank [1:0];
+	logic [10:0] hcount[1:0];
+	logic [9:0] vcount[1:0]; 
+	//buffering
+	assign hcount_out = hcount[0];
+	assign vcount_out = vcount[0];
+	assign hsync_out = hsync[0];    //Buffer VGA timing signals by one clock cycle
+	assign vsync_out = vsync[0];
+	assign blank_out = blank[0];
 
 
 	always_ff @(posedge clk_65mhz) begin
+		//Buffer VGA timing signals for ROM access
+		vsync[1] <= vsync_in;
+		hsync[1] <= hsync_in;
+		blank[1] <= blank_in;
+		hcount[1] <= hcount_in;
+		vcount[1] <= vcount_in;
+
+		vsync[0] <= vsync[1];
+		hsync[0] <= hsync[1];
+		blank[0] <= blank[1];
+		hcount[0] <= hcount[1];
+		vcount[0] <= vcount[1];
 		//Draw game board
 		if(reset) begin
 			state <= IDLE;
@@ -125,11 +154,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 	end
 
-	//one_blob one(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel),.x_in(0),.y_in(0));
-	//fd_blob fd(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.pixel_out(tile_pixel_2),.x_in(192),.y_in(0));
-
-
-    //assign pixel_out = tile_pixel|tile_pixel_2;
 	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),
 		.sw(sw),.pixel_out(pixel_out));
 endmodule
@@ -148,7 +172,8 @@ module tile_drawer
     logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
+	logic [15:0] image_addr_buf; //buffer for 2 clock cycles
+	//assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
 	//Facing Down tile ROMs
@@ -235,6 +260,9 @@ module tile_drawer
 	//Given the tile_numbers and tile_status array, draws the tiles
 	
     always_ff @(posedge pixel_clk_in) begin
+		//Buffer image address by two clock cycles, VGA signals are buffered by two cycles in minesweeper module, reading ROM takes 2 cycles
+		image_addr_buf <= (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr,
+		image_addr <= image_addr_buf;
 		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
