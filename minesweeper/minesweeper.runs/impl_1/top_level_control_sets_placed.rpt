@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Sun Dec  1 17:32:04 2019
+| Date         : Sun Dec  1 19:01:24 2019
 | Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
 | Design       : top_level
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     7 |
-|    Minimum number of control sets                        |     7 |
+| Total control sets                                       |    26 |
+|    Minimum number of control sets                        |    26 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    37 |
+| Unused register locations in slices containing registers |    87 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     7 |
-| >= 0 to < 4        |     2 |
-| >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     1 |
-| >= 10 to < 12      |     1 |
-| >= 12 to < 14      |     1 |
-| >= 14 to < 16      |     0 |
-| >= 16              |     1 |
+| Total control sets |    26 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     4 |
+| >= 8 to < 10       |     4 |
+| >= 10 to < 12      |     5 |
+| >= 12 to < 14      |     3 |
+| >= 14 to < 16      |     1 |
+| >= 16              |     4 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,28 +58,47 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              69 |           29 |
-| No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              28 |           11 |
-| Yes          | No                    | No                     |               9 |            3 |
-| Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               1 |            1 |
+| No           | No                    | No                     |             188 |           76 |
+| No           | No                    | Yes                    |              59 |           18 |
+| No           | Yes                   | No                     |              96 |           30 |
+| Yes          | No                    | No                     |              62 |           18 |
+| Yes          | No                    | Yes                    |              22 |            5 |
+| Yes          | Yes                   | No                     |              46 |           18 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+---------------+-------------------------------+------------------+----------------+
-|     Clock Signal     | Enable Signal |        Set/Reset Signal       | Slice Load Count | Bel Load Count |
-+----------------------+---------------+-------------------------------+------------------+----------------+
-|  clkdivider/clk_out1 |               | display/strobe_out[0]_i_1_n_0 |                1 |              1 |
-|  clkdivider/clk_out1 | xvga1/hreset  | xvga1/vcount_out0             |                1 |              1 |
-|  clkdivider/clk_out1 |               | display/p_0_in__0[1]          |                2 |              4 |
-|  clkdivider/clk_out1 | xvga1/hreset  |                               |                3 |              9 |
-|  clkdivider/clk_out1 |               | xvga1/hreset                  |                5 |             11 |
-|  clkdivider/clk_out1 |               | xvga1/hcount_out_reg[7]_2     |                3 |             12 |
-|  clkdivider/clk_out1 |               |                               |               29 |             72 |
-+----------------------+---------------+-------------------------------+------------------+----------------+
++----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|     Clock Signal     |                      Enable Signal                      |                     Set/Reset Signal                    | Slice Load Count | Bel Load Count |
++----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|  clkdivider/clk_out1 |                                                         | display/strobe_out[0]_i_1_n_0                           |                1 |              1 |
+|  clkdivider/clk_out1 |                                                         | display/p_0_in[1]                                       |                1 |              4 |
+|  clkdivider/clk_out1 |                                                         | MouseCtl/Inst_Ps2Interface/clk_inter0                   |                1 |              4 |
+|  clkdivider/clk_out1 |                                                         | MouseCtl/Inst_Ps2Interface/data_inter0                  |                1 |              4 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/shift_frame                  | MouseCtl/Inst_Ps2Interface/reset_bit_count              |                1 |              4 |
+|  clkdivider/clk_out1 | MouseCtl/E[0]                                           |                                                         |                2 |              6 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_1    | reset_IBUF                                              |                1 |              6 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/reset                        |                                                         |                3 |              7 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                3 |              7 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/load_rx_data                 |                                                         |                2 |              8 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_0[0] | reset_IBUF                                              |                3 |              8 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/E[0]                         | reset_IBUF                                              |                1 |              8 |
+|  clkdivider/clk_out1 | MouseCtl/tx_data[7]_i_1_n_0                             |                                                         |                2 |              8 |
+|  clkdivider/clk_out1 | xvga1/hreset                                            | xvga1/vcount_out0                                       |                5 |             10 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                         |                2 |             10 |
+|  clkdivider/clk_out1 |                                                         | xvga1/hreset                                            |                4 |             11 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                5 |             11 |
+|  clkdivider/clk_out1 | MouseCtl/x_new_reg_n_0                                  |                                                         |                3 |             11 |
+|  clkdivider/clk_out1 |                                                         | mouse_renderer/pixel_out[11]_i_1__0_n_0                 |                4 |             12 |
+|  clkdivider/clk_out1 |                                                         | xvga1/vcount_out_reg[6]_0                               |                6 |             12 |
+|  clkdivider/clk_out1 | MouseCtl/y_new_reg_n_0                                  |                                                         |                4 |             12 |
+|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/clear                        |                4 |             14 |
+|  clkdivider/clk_out1 |                                                         | MouseCtl/reset_timeout_cnt_reg_n_0                      |                7 |             23 |
+|  clkdivider/clk_out1 |                                                         | MouseCtl/reset_periodic_check_cnt__0                    |                5 |             25 |
+|  clkdivider/clk_out1 |                                                         | reset_IBUF                                              |               18 |             59 |
+|  clkdivider/clk_out1 |                                                         |                                                         |               76 |            191 |
++----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
 
 

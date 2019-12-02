@@ -34,8 +34,6 @@ module top_level(
 	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	assign led = sw;		// turn leds on based on switches
-
 
 	// ***** Button Debounce *****
 	// all button uses are TBD
@@ -51,11 +49,13 @@ module top_level(
 	logic [10:0] mouse_x;
 	logic [9:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
-//	mouse mouse(.ps2_clk(ps2_clk), .ps2_data(ps2_data),
-//				.mouse_x(mouse_x), .mouse_y(mouse_y),
-//				.mouse_left_click(mouse_left_click),
-//				.mouse_right_click(mouse_right_click));
 
+	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
+						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
+						.xpos(mouse_x), .ypos(mouse_y),
+						.left(mouse_left_click), .right(mouse_right_click)
+						);
+	assign led = {mouse_left_click, mouse_right_click};
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
@@ -95,23 +95,25 @@ module top_level(
 	wire [10:0] mouse_hcount; 
 	wire [9:0] mouse_vcount;
 	wire [11:0] mouse_pixel;
-//	mouse_renderer mouse_renderer(
-//			.mouse_x(mouse_x),.mouse_y(mouse_y),
-//			.hcount_in(ms_hcount),.vcount_in(ms_vcount),
-//			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
-//			.hcount_out(mouse_hcount),.vcount_out(mouse_vcount),
-//			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
-//			.pixel_out(mouse_pixel));
+
+	mouse_renderer mouse_renderer(
+			.clk_65mhz(clk_65mhz),.reset(reset),
+			.mouse_x(mouse_x),.mouse_y(mouse_y),
+			.hcount_in(ms_hcount),.vcount_in(ms_vcount),
+			.hsync_in(ms_hsync),.vsync_in(ms_vsync),.blank_in(ms_blank),
+			.hcount_out(mouse_hcount),.vcount_out(mouse_vcount),
+			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
+			.pixel_in(ms_pixel),.pixel_out(mouse_pixel));
 
 
 	// ***** VIDEO OUT *****
 	reg [11:0] rgb;    
 	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
-		hs <= ms_hsync;
-		vs <= ms_vsync;
-		b <= ms_blank;
-		rgb <= ms_pixel;
+		hs <= mouse_hsync;
+		vs <= mouse_vsync;
+		b <= mouse_blank;
+		rgb <= mouse_pixel;
 	end
 
 	assign vga_r = ~b ? rgb[11:8]: 0;

@@ -51,7 +51,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign sound_effect_start = 0;
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
-	logic [0:GAME_SIZE-1] tile_status [0:GAME_SIZE-1]; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
+	logic [0:GAME_SIZE-1] tile_status [0:GAME_SIZE-1]={{4'b0},{4'b0},{4'b0},{4'b0}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic[3:0] x_bin, y_bin;
@@ -59,11 +59,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	parameter IDLE = 3'b000;
 	parameter IN_GAME = 3'b010;
 	parameter GAME_OVER = 3'b011;
-	logic [2:0] state=IN_GAME;; //states for resetting game and choosing difficulty
+	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
 	assign tile_numbers = '{'{1,2,7,1},'{7,5,4,3},'{7,7,7,7},'{2,3,3,2}};
-	assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+	//assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
 	logic [11:0] grid_pixel;
@@ -79,6 +79,25 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign hsync_out = hsync[0];    //Buffer VGA timing signals by one clock cycle
 	assign vsync_out = vsync[0];
 	assign blank_out = blank[0];
+
+	//Mouse debouncing module
+	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
+
+
+    //clean&!old_clean is a signal that indicates a "rising edge":
+    assign mouse_left_edge = mouse_left_click & !left_old_clean;
+    assign mouse_right_edge = mouse_right_click & !right_old_clean;
+
+
+    always_ff @(posedge clk_65mhz)begin
+        if (reset)begin
+            left_old_clean <= 1'b0;
+            right_old_clean <= 1'b0;
+        end else begin
+            left_old_clean <= mouse_left_click;
+            right_old_clean <= mouse_right_click;
+        end
+    end
 
 
 	always_ff @(posedge clk_65mhz) begin
@@ -97,10 +116,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		//Draw game board
 		if(reset) begin
 			state <= IDLE;
-			tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+			tile_status <= {{4'h0},{4'h0},{4'h0},{4'h0}}; 
+			//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 		end
 
-		if(mouse_left_click) begin //process a user action
+		if(mouse_left_edge) begin //process a user action
 			//first "bin" which tile the click occured in
 			x_bin <= mouse_x/48;
 			y_bin <= mouse_y/48;
@@ -110,7 +130,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 					//if (user clicks start game)
 					state <= IN_GAME;
 					//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
-					//tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
+					tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
 				end
 				
 				IN_GAME: begin

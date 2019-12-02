@@ -207,9 +207,9 @@ set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { vga_vs
 
 ##Omnidirectional Microphone
 
-set_property -dict { PACKAGE_PIN J5    IOSTANDARD LVCMOS33 } [get_ports { m_clk }]; #IO_25_35 Sch=m_clk
-set_property -dict { PACKAGE_PIN H5    IOSTANDARD LVCMOS33 } [get_ports { m_data }]; #IO_L24N_T3_35 Sch=m_data
-set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { m_lrsel }]; #IO_0_35 Sch=m_lrsel
+#set_property -dict { PACKAGE_PIN J5    IOSTANDARD LVCMOS33 } [get_ports { m_clk }]; #IO_25_35 Sch=m_clk
+#set_property -dict { PACKAGE_PIN H5    IOSTANDARD LVCMOS33 } [get_ports { m_data }]; #IO_L24N_T3_35 Sch=m_data
+#set_property -dict { PACKAGE_PIN F5    IOSTANDARD LVCMOS33 } [get_ports { m_lrsel }]; #IO_0_35 Sch=m_lrsel
 
 
 ##PWM Audio Amplifier

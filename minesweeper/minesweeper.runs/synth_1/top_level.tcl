@@ -74,10 +74,15 @@ add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_gcm.coe}}
 add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_bcm.coe}}
 read_verilog -library xil_defaultlib -sv {
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv}
+  {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv}
 }
 read_verilog -library xil_defaultlib {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/imports/6.111/clk_wiz_lab3.v}}
+read_vhdl -library xil_defaultlib {
+  {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/Ps2Interface.vhd}
+  {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse_ctl.vhd}
+}
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm_ooc.xdc}}]
 

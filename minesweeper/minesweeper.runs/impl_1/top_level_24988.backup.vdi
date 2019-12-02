@@ -2,11 +2,20 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Sun Dec  1 19:00:37 2019
-# Process ID: 28564
+# Start of session at: Sun Dec  1 18:59:11 2019
+# Process ID: 24988
 # Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/impl_1
 # Command line: vivado.exe -log top_level.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top_level.tcl -notrace
 # Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/impl_1/top_level.vdi
 # Journal file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
 source top_level.tcl -notrace
+
+*** Halting run - EA reset detected ***
+
+
+
+    while executing
+"start_step init_design"
+    (file "top_level.tcl" line 64)
+INFO: [Common 17-206] Exiting Vivado at Sun Dec  1 18:59:14 2019...
