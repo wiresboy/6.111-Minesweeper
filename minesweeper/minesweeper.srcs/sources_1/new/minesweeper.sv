@@ -70,9 +70,9 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [11:0] tile_pixel,tile_pixel_2;
 	
 	//VGA Buffer vars
-	logic vsync[1:0], hsync[1:0], blank [1:0];
-	logic [10:0] hcount[1:0];
-	logic [9:0] vcount[1:0]; 
+	logic vsync[3:0], hsync[3:0], blank [3:0];
+	logic [10:0] hcount[3:0];
+	logic [9:0] vcount[3:0]; 
 	//buffering
 	assign hcount_out = hcount[0];
 	assign vcount_out = vcount[0];
@@ -97,16 +97,25 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
             left_old_clean <= mouse_left_click;
             right_old_clean <= mouse_right_click;
         end
-    end
-
-
-	always_ff @(posedge clk_65mhz) begin
+		//
 		//Buffer VGA timing signals for ROM access
-		vsync[1] <= vsync_in;
-		hsync[1] <= hsync_in;
-		blank[1] <= blank_in;
-		hcount[1] <= hcount_in;
-		vcount[1] <= vcount_in;
+		vsync[3] <= vsync_in;
+		hsync[3] <= hsync_in;
+		blank[3] <= blank_in;
+		hcount[3] <= hcount_in;
+		vcount[3] <= vcount_in;
+
+		vsync[2] <= vsync[3];
+		hsync[2] <= hsync[3];
+		blank[2] <= blank[3];
+		hcount[2] <= hcount[3];
+		vcount[2] <= vcount[3];
+
+		vsync[1] <= vsync[2];
+		hsync[1] <= hsync[2];
+		blank[1] <= blank[2];
+		hcount[1] <= hcount[2];
+		vcount[1] <= vcount[2];
 
 		vsync[0] <= vsync[1];
 		hsync[0] <= hsync[1];
@@ -168,7 +177,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				GAME_OVER: begin
 					//make sure screen shows that game is over
 					//after some time transition to idle state?
-					//state <= IDLE;
+					state <= IDLE;
 				end
 			endcase
 		end
@@ -192,8 +201,8 @@ module tile_drawer
     logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	logic [15:0] image_addr_buf; //buffer for 2 clock cycles
-	//assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
+	logic [15:0] image_addr_buf[3:0]; //buffer for 4 clock cycles
+	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
 	//Facing Down tile ROMs
@@ -281,8 +290,12 @@ module tile_drawer
 	
     always_ff @(posedge pixel_clk_in) begin
 		//Buffer image address by two clock cycles, VGA signals are buffered by two cycles in minesweeper module, reading ROM takes 2 cycles
-		image_addr_buf <= (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr,
-		image_addr <= image_addr_buf;
+		////determine where top left corner of each pixel is for image_addr,
+		image_addr_buf[3] <= (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; 		
+		image_addr_buf[2] <= image_addr_buf[3];
+		image_addr_buf[1] <= image_addr_buf[2];
+		image_addr_buf[0] <= image_addr_buf[1];
+
 		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale

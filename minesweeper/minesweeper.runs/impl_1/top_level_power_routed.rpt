@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Sun Dec  1 19:02:04 2019
+| Date             : Tue Dec  3 17:02:10 2019
 | Host             : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -53,14 +53,14 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.003 |        5 |       --- |             --- |
-| Slice Logic             |     0.001 |     1501 |       --- |             --- |
-|   LUT as Logic          |     0.001 |      632 |     63400 |            1.00 |
+| Slice Logic             |     0.001 |     1477 |       --- |             --- |
+|   LUT as Logic          |     0.001 |      635 |     63400 |            1.00 |
 |   CARRY4                |    <0.001 |       84 |     15850 |            0.53 |
-|   Register              |    <0.001 |      473 |    126800 |            0.37 |
+|   Register              |    <0.001 |      428 |    126800 |            0.34 |
+|   LUT as Shift Register |    <0.001 |       16 |     19000 |            0.08 |
 |   F7/F8 Muxes           |    <0.001 |       13 |     63400 |            0.02 |
-|   LUT as Shift Register |    <0.001 |        3 |     19000 |            0.02 |
 |   Others                |     0.000 |      116 |       --- |             --- |
-| Signals                 |     0.003 |     1187 |       --- |             --- |
+| Signals                 |     0.003 |     1148 |       --- |             --- |
 | Block RAM               |     0.027 |     21.5 |       135 |           15.93 |
 | MMCM                    |     0.122 |        1 |         6 |           16.67 |
 | DSPs                    |    <0.001 |        1 |       240 |            0.42 |
@@ -76,7 +76,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.048 |       0.032 |      0.016 |
+| Vccint    |       1.000 |     0.049 |       0.032 |      0.016 |
 | Vccaux    |       1.800 |     0.086 |       0.068 |      0.018 |
 | Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -157,7 +157,7 @@ Table of Contents
 |       flag_rom   |     0.001 |
 |       four_rom   |     0.001 |
 |       one_rom    |     0.001 |
-|       three_rom  |     0.002 |
+|       three_rom  |     0.001 |
 |       two_rom    |     0.001 |
 |       zero_rom   |     0.001 |
 +------------------+-----------+

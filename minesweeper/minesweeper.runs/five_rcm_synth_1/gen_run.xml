@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="five_rcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575231666">
   <File Type="PA-TCL" Name="five_rcm.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="five_rcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="five_rcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="five_rcm.vds"/>
-  <File Type="RDS-UTIL" Name="five_rcm_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="five_rcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="five_rcm.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="five_rcm_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="five_rcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/five_rcm">
     <File Path="$PSRCDIR/sources_1/ip/five_rcm/five_rcm.xci">
       <FileInfo>
