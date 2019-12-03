@@ -11,8 +11,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	input left_in,			// unused?
 	input right_in,			// unused?
 
-	input [10:0] mouse_x,	// Mouse X coord.
-	input [9:0] mouse_y,	// Mouse Y coord.
+	input [11:0] mouse_x,	// Mouse X coord.
+	input [11:0] mouse_y,	// Mouse Y coord.
 	input mouse_left_click,	// Mouse left button clicked. Debounced, but not edge triggered.
 	input mouse_right_click,// Mouse right button clicked. Debounced, but not edge triggered.
 
@@ -151,6 +151,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 						state <= GAME_OVER;
 					end
 					tile_status[y_bin][x_bin] <= 1'b1; //Update tile with mouse location
+
 					if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
 						if(y_bin>0) begin
 							tile_status[y_bin-1][x_bin] <= 1;
@@ -172,6 +173,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 							end
 						end
 					end
+
 				end
 
 				GAME_OVER: begin

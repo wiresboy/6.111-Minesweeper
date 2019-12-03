@@ -2,8 +2,8 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Sun Dec  1 12:26:36 2019
-# Process ID: 4304
+# Start of session at: Tue Dec  3 17:26:11 2019
+# Process ID: 6060
 # Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/flag_image_rom_synth_1
 # Command line: vivado.exe -log flag_image_rom.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source flag_image_rom.tcl
 # Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/flag_image_rom_synth_1/flag_image_rom.vds
@@ -11,4 +11,4 @@
 #-----------------------------------------------------------
 source flag_image_rom.tcl -notrace
 INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP flag_image_rom, cache-ID = 3d1c3833daa7229b.
-INFO: [Common 17-206] Exiting Vivado at Sun Dec  1 12:26:49 2019...
+INFO: [Common 17-206] Exiting Vivado at Tue Dec  3 17:26:25 2019...

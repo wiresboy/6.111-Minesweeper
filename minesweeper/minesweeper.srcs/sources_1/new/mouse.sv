@@ -101,8 +101,12 @@ module mouse_renderer
 				pixel_out <= MOUSE_INNER_COLOR;
 			else
 				pixel_out <= pixel;
+
 		end else begin
 			pixel_out <= pixel;
 		end
+
 	end
+
+
 endmodule

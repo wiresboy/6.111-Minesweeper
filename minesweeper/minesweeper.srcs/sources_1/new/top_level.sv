@@ -3,7 +3,7 @@
 module top_level(
 	input clk_100mhz,
 	input[15:0] sw,
-	input btnc, btnu, btnl, btnr, btnd, reset, 
+	input btnc, btnu, btnl, btnr, btnd, reset_n, 
 	output[15:0] led,
 	output[3:0] vga_r,
 	output[3:0] vga_b,
@@ -23,6 +23,8 @@ module top_level(
 	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
 	clk_wiz_lab3 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_65mhz));
 	
+	wire reset;
+assign reset = ~reset_n;	
 
 	// ***** SEVEN SEGMENT *****
 	wire [31:0] ms_seven_segment_data;	// data from minesweeper module
@@ -46,8 +48,8 @@ module top_level(
 
 
 	// ***** Mouse *****
-	logic [10:0] mouse_x;
-	logic [9:0] mouse_y;
+	logic [11:0] mouse_x;
+	logic [11:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
 
 	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),

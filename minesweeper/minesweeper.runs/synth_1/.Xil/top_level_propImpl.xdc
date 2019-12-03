@@ -98,7 +98,7 @@ set_property -dict { PACKAGE_PIN K2    IOSTANDARD LVCMOS33 } [get_ports { an[6] 
 set_property src_info {type:XDC file:1 line:82 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN U13   IOSTANDARD LVCMOS33 } [get_ports { an[7] }]; #IO_L23N_T3_A02_D18_14 Sch=an[7]
 set_property src_info {type:XDC file:1 line:87 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN C12   IOSTANDARD LVCMOS33 } [get_ports { reset }]; #IO_L3P_T0_DQS_AD1P_15 Sch=cpu_resetn
+set_property -dict { PACKAGE_PIN C12   IOSTANDARD LVCMOS33 } [get_ports { reset_n }]; #IO_L3P_T0_DQS_AD1P_15 Sch=cpu_resetn
 set_property src_info {type:XDC file:1 line:89 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN N17   IOSTANDARD LVCMOS33 } [get_ports { btnc }]; #IO_L9P_T1_DQS_14 Sch=btnc
 set_property src_info {type:XDC file:1 line:90 export:INPUT save:INPUT read:READ} [current_design]
