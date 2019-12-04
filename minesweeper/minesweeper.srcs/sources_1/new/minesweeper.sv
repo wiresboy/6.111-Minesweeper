@@ -41,8 +41,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	output sound_effect_start			//start the selected sound effect. Strobe for only 1 clock.
 	);
 	parameter GAME_SIZE = 3'd4;
-	parameter HORIZ_DIV = 1024/GAME_SIZE;
-	parameter VERT_DIV = 768/GAME_SIZE;
+	//parameter HORIZ_DIV = 1024/GAME_SIZE;
+	//parameter VERT_DIV = 768/GAME_SIZE;
 
 
 	//TODO: replace with real logic
@@ -51,7 +51,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign sound_effect_start = 0;
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
-	logic [0:GAME_SIZE-1] tile_status [0:GAME_SIZE-1]={{4'b0},{4'b0},{4'b0},{4'b0}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully
+	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1]='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully, 2'b11 if flagged
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic[3:0] x_bin, y_bin;
@@ -125,11 +125,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		//Draw game board
 		if(reset) begin
 			state <= IDLE;
-			tile_status <= {{4'h0},{4'h0},{4'h0},{4'h0}}; 
+			tile_status <='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; 
 			//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 		end
 
-		if(mouse_left_edge) begin //process a user action
+		if(mouse_left_edge||mouse_right_edge) begin //process a user action
 			//first "bin" which tile the click occured in
 			x_bin = mouse_x/48;
 			y_bin = mouse_y/48;
@@ -138,42 +138,45 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				IDLE: begin
 					//if (user clicks start game)
 					state <= IN_GAME;
-					//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
-					tile_status <= {{4'b0},{4'b0},{4'b0},{4'b0}}; //set all tiles to not be cleared
+					tile_status <= '{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //set all tiles to not be cleared
 				end
 				
 				IN_GAME: begin
-					if(mouse_x>192) begin//on reset button, reset game
-						state <= IDLE;
-					end
-					//Do game logic!
-					if(bomb_locations[y_bin][x_bin]) begin
-						state <= GAME_OVER;
-					end
-					tile_status[y_bin][x_bin] <= 1'b1; //Update tile with mouse location
+					if(mouse_left_edge) begin
+						if(mouse_x>192) begin//on reset button, reset game
+							state <= IDLE;
+						end
+						//Do game logic!
+						if(bomb_locations[y_bin][x_bin]) begin
+							state <= GAME_OVER;
+						end
+						tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
 
-					if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
-						if(y_bin>0) begin
-							tile_status[y_bin-1][x_bin] <= 1;
-							if(x_bin>0) begin
-								tile_status[y_bin-1][x_bin-1] <= 1;
-								tile_status[y_bin][x_bin-1] <= 1;
-							end else if(x_bin<GAME_SIZE-1) begin
-								tile_status[y_bin-1][x_bin+1] <= 1;
-								tile_status[y_bin][x_bin+1] <= 1;
-							end
-						end else if(y_bin<3) begin
-							tile_status[y_bin+1][x_bin] <= 1;
-							if(x_bin>0) begin
-								tile_status[y_bin+1][x_bin-1] <= 1;
-								tile_status[y_bin][x_bin-1] <= 1;
-							end else if(x_bin<GAME_SIZE-1) begin
-								tile_status[y_bin+1][x_bin+1] <= 1;
-								tile_status[y_bin][x_bin+1] <= 1;
+						if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
+							if(y_bin>0) begin
+								tile_status[y_bin-1][x_bin] <= 1;
+								if(x_bin>0) begin
+									tile_status[y_bin-1][x_bin-1] <= 1;
+									tile_status[y_bin][x_bin-1] <= 1;
+								end else if(x_bin<GAME_SIZE-1) begin
+									tile_status[y_bin-1][x_bin+1] <= 1;
+									tile_status[y_bin][x_bin+1] <= 1;
+								end
+							end else if(y_bin<3) begin
+								tile_status[y_bin+1][x_bin] <= 1;
+								if(x_bin>0) begin
+									tile_status[y_bin+1][x_bin-1] <= 1;
+									tile_status[y_bin][x_bin-1] <= 1;
+								end else if(x_bin<GAME_SIZE-1) begin
+									tile_status[y_bin+1][x_bin+1] <= 1;
+									tile_status[y_bin][x_bin+1] <= 1;
+								end
 							end
 						end
 					end
-
+					else begin //process user right click
+						tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
+					end
 				end
 
 				GAME_OVER: begin
@@ -190,17 +193,17 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 endmodule
 
 module tile_drawer
-	#(parameter WIDTH = 48, HEIGHT = 48)
+	#(parameter WIDTH = 48, HEIGHT = 48,GAME_SIZE = 4)
 	(input pixel_clk_in,
     input [10:0] hcount_in,
     input [9:0] vcount_in,
 	input [0:3] [2:0] tile_numbers[0:3],
-	logic [0:3] tile_status [0:3],
+	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1],
 	input [15:0] sw,
     output logic [11:0] pixel_out
 	);
     
-    logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is flag, temporary variable for indexing into tile_numbers array
+    logic [2:0] curr_tile; //0-6 are possible tile numbers, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
 	logic [15:0] image_addr_buf[3:0]; //buffer for 4 clock cycles
@@ -301,6 +304,8 @@ module tile_drawer
 		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
+			end else if (tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]==2'b11) begin //draw flag if flagged
+				pixel_out <= {flag_red_mapped[7:4], flag_green_mapped[7:4], flag_blue_mapped[7:4]}; 
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
 				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; //curr_tile <= sw[2:0];
 				case(curr_tile)
@@ -324,9 +329,6 @@ module tile_drawer
 					end
 					6: begin
 						pixel_out <= {six_red_mapped[7:4], six_green_mapped[7:4], six_blue_mapped[7:4]}; 
-					end
-					7: begin
-						pixel_out <= {flag_red_mapped[7:4], flag_green_mapped[7:4], flag_blue_mapped[7:4]}; 
 					end
 					default: begin
 						pixel_out <= {fd_red_mapped[7:4], fd_green_mapped[7:4], fd_blue_mapped[7:4]}; 

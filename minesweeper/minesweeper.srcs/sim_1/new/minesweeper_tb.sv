@@ -19,19 +19,28 @@ module minesweeper_tb;
    initial begin
     clk = 0;
 	reset = 0;
-	#40;
+	#45;
 	reset = 1;
 	mouse_left_click=1;
 	mouse_right_click=1;
 	mouse_x=8;
 	mouse_y=200;
 	hcount_in = 600;
-	vcount_in = 200; //
+	vcount_in = 200; 
 	#30;
+	//mouse_left_click = 0;
+	mouse_right_click = 0;
 	reset = 0;
 	#30;
-	hcount_in = 0;
-	vcount_in = 0; //expect tile_number of 2, should draw 0's bits
+	hcount_in = 10;
+	vcount_in = 0;
+	mouse_right_click = 1;
+	mouse_left_click = 1;
+	#30;
+	mouse_right_click = 0;
+	mouse_left_click = 0;
+	#150;
+	mouse_right_click = 1;
     #150;
     $finish;
    end
