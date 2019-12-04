@@ -46,7 +46,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 
 	//TODO: replace with real logic
-	assign seven_seg_out = 0;
+	assign seven_seg_out = {x_bin,4'b0,y_bin};
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;
 
@@ -131,8 +131,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 		if(mouse_left_edge) begin //process a user action
 			//first "bin" which tile the click occured in
-			x_bin <= mouse_x/48;
-			y_bin <= mouse_y/48;
+			x_bin = mouse_x/48;
+			y_bin = mouse_y/48;
 
 			case(state)
 				IDLE: begin

@@ -58,6 +58,7 @@ assign reset = ~reset_n;
 						.left(mouse_left_click), .right(mouse_right_click)
 						);
 	assign led = {mouse_left_click, mouse_right_click};
+	//assign seven_segment_data = {mouse_x,4'b0,mouse_y};
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
