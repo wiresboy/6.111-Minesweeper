@@ -46,7 +46,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 
 	//TODO: replace with real logic
-	assign seven_seg_out = {x_bin,4'b0,y_bin};
 	assign sound_effect_select = 0;
 	assign sound_effect_start = 0;
 
@@ -55,6 +54,9 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic[3:0] x_bin, y_bin;
+	assign x_bin = mouse_x/48;
+	assign y_bin = mouse_y/48;
+	assign seven_seg_out = {x_bin,4'b0,y_bin};
 
 	parameter IDLE = 3'b000;
 	parameter IN_GAME = 3'b010;
@@ -85,8 +87,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 
     //clean&!old_clean is a signal that indicates a "rising edge":
-    assign mouse_left_edge = mouse_left_click & !left_old_clean;
-    assign mouse_right_edge = mouse_right_click & !right_old_clean;
+    //assign mouse_left_edge = mouse_left_click & !left_old_clean;
+    //assign mouse_right_edge = mouse_right_click & !right_old_clean;
 
 
     always_ff @(posedge clk_65mhz)begin
@@ -96,6 +98,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
         end else begin
             left_old_clean <= mouse_left_click;
             right_old_clean <= mouse_right_click;
+			mouse_left_edge <= mouse_left_click & !left_old_clean;
+			mouse_right_edge <= mouse_right_click & !right_old_clean;
         end
 		//
 		//Buffer VGA timing signals for ROM access
@@ -130,10 +134,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
-			//first "bin" which tile the click occured in
-			x_bin = mouse_x/48;
-			y_bin = mouse_y/48;
-
 			case(state)
 				IDLE: begin
 					//if (user clicks start game)
@@ -173,8 +173,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 								end
 							end
 						end
-					end
-					else begin //process user right click
+					end else begin //process user right click
 						tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
 					end
 				end
@@ -207,6 +206,7 @@ module tile_drawer
 	//ROM vars
 	logic [15:0] image_addr;
 	logic [15:0] image_addr_buf[3:0]; //buffer for 4 clock cycles
+	//assign image_addr = image_addr_buf[0];
 	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
@@ -296,10 +296,12 @@ module tile_drawer
     always_ff @(posedge pixel_clk_in) begin
 		//Buffer image address by two clock cycles, VGA signals are buffered by two cycles in minesweeper module, reading ROM takes 2 cycles
 		////determine where top left corner of each pixel is for image_addr,
+		/*
 		image_addr_buf[3] <= (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; 		
 		image_addr_buf[2] <= image_addr_buf[3];
 		image_addr_buf[1] <= image_addr_buf[2];
 		image_addr_buf[0] <= image_addr_buf[1];
+		*/
 
 		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol

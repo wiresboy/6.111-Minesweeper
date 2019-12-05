@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Wed Dec  4 15:32:33 2019
+| Date             : Wed Dec  4 19:28:24 2019
 | Host             : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.262        |
+| Total On-Chip Power (W)  | 0.260        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.163        |
+| Dynamic (W)              | 0.161        |
 | Device Static (W)        | 0.099        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 83.8         |
@@ -52,21 +52,21 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.003 |        5 |       --- |             --- |
-| Slice Logic             |     0.001 |     1664 |       --- |             --- |
-|   LUT as Logic          |     0.001 |      756 |     63400 |            1.19 |
+| Clocks                  |     0.004 |        5 |       --- |             --- |
+| Slice Logic             |     0.001 |     1638 |       --- |             --- |
+|   LUT as Logic          |     0.001 |      739 |     63400 |            1.17 |
 |   CARRY4                |    <0.001 |       90 |     15850 |            0.57 |
-|   Register              |    <0.001 |      457 |    126800 |            0.36 |
+|   Register              |    <0.001 |      451 |    126800 |            0.36 |
 |   LUT as Shift Register |    <0.001 |       16 |     19000 |            0.08 |
 |   F7/F8 Muxes           |    <0.001 |       19 |     63400 |            0.03 |
 |   Others                |     0.000 |      122 |       --- |             --- |
-| Signals                 |     0.004 |     1288 |       --- |             --- |
+| Signals                 |     0.003 |     1263 |       --- |             --- |
 | Block RAM               |     0.028 |     22.5 |       135 |           16.67 |
 | MMCM                    |     0.122 |        1 |         6 |           16.67 |
 | DSPs                    |    <0.001 |        1 |       240 |            0.42 |
-| I/O                     |     0.004 |       52 |       210 |           24.76 |
+| I/O                     |     0.003 |       52 |       210 |           24.76 |
 | Static Power            |     0.099 |          |           |                 |
-| Total                   |     0.262 |          |           |                 |
+| Total                   |     0.260 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -147,7 +147,7 @@ Table of Contents
 +------------------+-----------+
 | Name             | Power (W) |
 +------------------+-----------+
-| top_level        |     0.163 |
+| top_level        |     0.161 |
 |   MouseCtl       |     0.003 |
 |   clkdivider     |     0.122 |
 |   minesweeper    |     0.032 |
@@ -157,7 +157,7 @@ Table of Contents
 |       flag_rom   |     0.001 |
 |       four_rom   |     0.001 |
 |       one_rom    |     0.001 |
-|       three_rom  |     0.002 |
+|       three_rom  |     0.001 |
 |       two_rom    |     0.001 |
 |       zero_rom   |     0.001 |
 +------------------+-----------+
