@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Wed Dec  4 19:53:36 2019
+| Date             : Wed Dec  4 23:14:40 2019
 | Host             : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -53,18 +53,18 @@ Table of Contents
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
 | Clocks                  |     0.003 |        5 |       --- |             --- |
-| Slice Logic             |     0.001 |     1670 |       --- |             --- |
-|   LUT as Logic          |     0.001 |      780 |     63400 |            1.23 |
-|   CARRY4                |    <0.001 |       90 |     15850 |            0.57 |
-|   Register              |    <0.001 |      451 |    126800 |            0.36 |
+| Slice Logic             |     0.001 |     1775 |       --- |             --- |
+|   LUT as Logic          |     0.001 |      804 |     63400 |            1.27 |
+|   CARRY4                |    <0.001 |       97 |     15850 |            0.61 |
+|   Register              |    <0.001 |      494 |    126800 |            0.39 |
 |   LUT as Shift Register |    <0.001 |       16 |     19000 |            0.08 |
-|   F7/F8 Muxes           |    <0.001 |       19 |     63400 |            0.03 |
-|   Others                |     0.000 |      122 |       --- |             --- |
-| Signals                 |     0.003 |     1299 |       --- |             --- |
-| Block RAM               |     0.028 |     22.5 |       135 |           16.67 |
+|   F7/F8 Muxes           |    <0.001 |       18 |     63400 |            0.03 |
+|   Others                |     0.000 |      129 |       --- |             --- |
+| Signals                 |     0.004 |     1393 |       --- |             --- |
+| Block RAM               |     0.030 |       24 |       135 |           17.78 |
 | MMCM                    |     0.122 |        1 |         6 |           16.67 |
 | DSPs                    |    <0.001 |        1 |       240 |            0.42 |
-| I/O                     |     0.003 |       52 |       210 |           24.76 |
+| I/O                     |    <0.001 |       52 |       210 |           24.76 |
 | Static Power            |     0.099 |          |           |                 |
 | Total                   |     0.260 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
@@ -76,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.050 |       0.034 |      0.016 |
+| Vccint    |       1.000 |     0.053 |       0.037 |      0.016 |
 | Vccaux    |       1.800 |     0.086 |       0.068 |      0.018 |
-| Vcco33    |       3.300 |     0.005 |       0.001 |      0.004 |
+| Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -150,12 +150,13 @@ Table of Contents
 | top_level        |     0.161 |
 |   MouseCtl       |     0.003 |
 |   clkdivider     |     0.122 |
-|   minesweeper    |     0.032 |
-|     td           |     0.031 |
+|   minesweeper    |     0.035 |
+|     td           |     0.034 |
+|       bomb_rom   |     0.001 |
 |       fd_img_rom |     0.001 |
 |       five_rom   |     0.001 |
 |       flag_rom   |     0.001 |
-|       four_rom   |     0.001 |
+|       four_rom   |     0.002 |
 |       one_rom    |     0.001 |
 |       three_rom  |     0.001 |
 |       two_rom    |     0.001 |

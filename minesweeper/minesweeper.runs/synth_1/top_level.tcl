@@ -19,6 +19,7 @@ proc create_report { reportName command } {
 }
 set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -76,6 +77,7 @@ add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_bcm.coe}}
 read_verilog -library xil_defaultlib -sv {
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv}
+  {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/timer.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv}
 }

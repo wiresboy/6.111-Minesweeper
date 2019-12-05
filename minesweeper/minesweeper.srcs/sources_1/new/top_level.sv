@@ -73,6 +73,9 @@ assign reset = ~reset_n;
 	wire [10:0] ms_hcount; 
 	wire [9:0] ms_vcount;
 	wire [11:0] ms_pixel;
+	//Low frequency clock nets
+	logic start_timer,stop_timer;
+	logic [5:0] count_out; 
 	minesweeper minesweeper(
 			.clk_65mhz(clk_65mhz),.reset(reset),
 			.up_in(up_pressed),.down_in(down_pressed),
@@ -88,9 +91,11 @@ assign reset = ~reset_n;
 			.pixel_out(ms_pixel),
 			.hsync_out(ms_hsync),.vsync_out(ms_vsync),.blank_out(ms_blank),
 			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
-			.seven_seg_out(ms_seven_segment_data)
+			.seven_seg_out(ms_seven_segment_data),
+			.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer)
 			//,  TODO sound
 			);
+	timer timer(.clock(clk_65mhz),.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer));
 
 
 	// ***** Mouse Video Gen *****
