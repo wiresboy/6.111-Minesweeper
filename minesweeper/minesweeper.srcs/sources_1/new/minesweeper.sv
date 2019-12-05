@@ -101,7 +101,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			mouse_left_edge <= mouse_left_click & !left_old_clean;
 			mouse_right_edge <= mouse_right_click & !right_old_clean;
         end
-		//
 		//Buffer VGA timing signals for ROM access
 		vsync[3] <= vsync_in;
 		hsync[3] <= hsync_in;
@@ -174,7 +173,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 							end
 						end
 					end else begin //process user right click
-						tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
+						if(tile_status[y_bin][x_bin] == 2'b00) begin
+							tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
+						end else if(tile_status[y_bin][x_bin] == 2'b11) begin
+							tile_status[y_bin][x_bin] <= 2'b00; //Turn flag into empty tile
+						end
 					end
 				end
 
@@ -205,8 +208,6 @@ module tile_drawer
     logic [2:0] curr_tile; //0-6 are possible tile numbers, temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	logic [15:0] image_addr_buf[3:0]; //buffer for 4 clock cycles
-	//assign image_addr = image_addr_buf[0];
 	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
@@ -294,15 +295,6 @@ module tile_drawer
 	//Given the tile_numbers and tile_status array, draws the tiles
 	
     always_ff @(posedge pixel_clk_in) begin
-		//Buffer image address by two clock cycles, VGA signals are buffered by two cycles in minesweeper module, reading ROM takes 2 cycles
-		////determine where top left corner of each pixel is for image_addr,
-		/*
-		image_addr_buf[3] <= (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; 		
-		image_addr_buf[2] <= image_addr_buf[3];
-		image_addr_buf[1] <= image_addr_buf[2];
-		image_addr_buf[0] <= image_addr_buf[1];
-		*/
-
 		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
