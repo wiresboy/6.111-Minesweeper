@@ -75,9 +75,10 @@ set rc [catch {
   set_property parent.project_path D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.xpr [current_project]
   set_property ip_output_repo D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/top_level.dcp
   read_ip -quiet d:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  read_ip -quiet d:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci
   read_xdc D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc
   link_design -top top_level -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb
@@ -174,7 +175,7 @@ start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   catch { write_mem_info -force top_level.mmi }
   write_bitstream -force top_level.bit 
   catch {write_debug_probes -quiet -force top_level}

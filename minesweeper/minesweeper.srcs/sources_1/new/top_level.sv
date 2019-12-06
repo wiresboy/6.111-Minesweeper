@@ -18,6 +18,10 @@ module top_level(
 	inout ps2_clk, ps2_data //Mouse
 	);
 
+	wire reset;
+	assign reset = ~reset_n;
+	
+	
 	// ***** CLOCK *****
 	wire clk_25mhz;
 	wire clk_65mhz;
@@ -25,35 +29,39 @@ module top_level(
 	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
 	// create 200mhz clock for ddram
 	// 25mhz for SD card
-	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_200mhz)/*, .clk_out2(clk_65mhz)*/, .clk_out2(clk_25mhz));
+	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .reset(reset), .clk_out1(clk_200mhz)/*, .clk_out2(clk_65mhz)*/, .clk_out2(clk_25mhz));
 	
-	wire reset;
-	assign reset = ~reset_n;
-	
-
 	// ***** SEVEN SEGMENT *****
 	wire [31:0] ms_seven_segment_data;	// data from minesweeper module
 	wire [31:0] seven_segment_data;		// sent to display - (8) 4-bit hex
 	wire [6:0] segments;
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
-	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
+	display_8hex display(.clk_in(clk_100mhz/*clk_65mhz*/),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
 	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	assign led = sw;		// turn leds on based on switches
-
+	assign led[15:10] = sw[15:10];		// turn leds on based on switches
+	
 
 	// ***** Button Debounce *****
 	// all button uses are TBD
 	wire center_pressed,up_pressed,down_pressed,left_pressed,right_pressed;
-	debounce db1(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnc),.clean_out(center_pressed));
-	debounce db2(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnu),.clean_out(up_pressed));
-	debounce db3(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnd),.clean_out(down_pressed));
-	debounce db4(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnl),.clean_out(left_pressed));
-	debounce db5(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnr),.clean_out(right_pressed));
+	debounce db1(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnc),.clean_out(center_pressed));
+	debounce db2(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnu),.clean_out(up_pressed));
+	debounce db3(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnd),.clean_out(down_pressed));
+	debounce db4(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnl),.clean_out(left_pressed));
+	debounce db5(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnr),.clean_out(right_pressed));
 	
 	
+	// ***** Sound *****
+	sound_effect_manager sfx_manager(.clk_100mhz(clk_100mhz), .clk_25mhz(clk_25mhz), .reset(reset), .sw(sw), 
+			.sound_effect_select(0), .sound_effect_start(center_pressed), 
+			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
+			.sd_reset(sd_reset), .sd_cd(sd_cd), .sd_sck(sd_sck), .sd_cmd(sd_cmd), .sd_dat(sd_dat),
+			.audio(led[7:0]), .debug(ms_seven_segment_data) );
+	assign led[8] = aud_pwm;
+	assign led[9] = center_pressed;
 
 /*
 	// ***** Random *****
