@@ -24,7 +24,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	input vsync_in,			// XVGA vertical sync signal (active low)
 	input blank_in,			// XVGA blanking (1 means output black pixel)
 
-	input [5:0] count_out,       // low frequency counter
 
 	output [10:0] hcount_out,    // buffered hindex
 	output [9:0] vcount_out,     // buffered vindex
@@ -32,40 +31,35 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	output vsync_out,		 //buff vsync 
 	output blank_out,		 // buff blank
 
-
 	input [15:0] sw,
+
+	input [15:0] count_out,       // low frequency counter
+
+	output logic start_timer,stop_timer,
 
 	output [11:0] pixel_out,	// pixel r=11:8, g=7:4, b=3:0 
 
 	output [31:0] seven_seg_out,	// seven segment display. Each nibble is 1 7 segment output
 
-	output [2:0] sound_effect_select,	//indices and meanings TBD
-	output sound_effect_start,			//start the selected sound effect. Strobe for only 1 clock.
-	output logic start_timer,stop_timer
+	output logic [2:0] sound_effect_select,	//indices and meanings 001 = bomb, 011 = flag
+	output logic sound_effect_start			//start the selected sound effect. 1 cycle
 	);
+
 	parameter GAME_SIZE = 3'd4;
 	parameter BOMBS = 4'd6; //Number of bombs in the game board
-	//parameter HORIZ_DIV = 1024/GAME_SIZE;
-	//parameter VERT_DIV = 768/GAME_SIZE;
-
-
-	//TODO: replace with real logic
-	assign sound_effect_select = 0;
-	assign sound_effect_start = 0;
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
 	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1]='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully, 2'b11 if flagged
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
-	logic [5:0] flag_counter=20; //counts how many flags have been placed
+	logic [5:0] flag_counter=BOMBS; //counts how many flags have been placed
 	logic [5:0] tile_cleared_count = 0; //Game is over when tile_cleared_count == num_tiles-bombs
 
 	logic[15:0] dec_clk_data,dec_flag_data;
 	hex_2_dec h2d_clk(.hex_in(count_out),.dec_out(dec_clk_data));
-	hex_2_dec h2d_flag(.hex_in(count_out),.dec_out(dec_flag_data));
+	hex_2_dec h2d_flag(.hex_in(flag_counter),.dec_out(dec_flag_data));
 
-	assign seven_seg_out = {flag_counter,11'b0,count_out}; 
-	//assign seven_seg_out = {dec_flag_data,11'b0,dec_clk_data}; //eventually will put low frequency timer here
+	assign seven_seg_out = {dec_flag_data,dec_clk_data}; //eventually will put low frequency timer here
 
 	logic[3:0] x_bin, y_bin;
 	assign x_bin = mouse_x/48;
@@ -151,16 +145,13 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
+		if(sound_effect_start) sound_effect_start <= 0; //make sound effect start one pulse
+
 		if(state == GAME_OVER||state == GG) begin
 				tile_status <='{'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01}};  //show all tile numbers and bombs
 				stop_timer <= 1'b1;
 		end
 
-		/*
-		if(tile_cleared_count == 16-BOMBS) begin
-			state <= GG;
-		end
-		*/
 		if(state == GG) begin
 			stop_timer <= 1'b1;
 		end
@@ -176,6 +167,10 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 					tile_status <= '{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //set all tiles to not be cleared
 					start_timer <= 1; //Start the 1 Hz counter
 					tile_cleared_count <= 0;
+					flag_counter <= BOMBS;
+					sound_effect_start <= 1;
+				end
+				GAME_OVER: begin
 				end
 				
 				IN_GAME: begin
@@ -185,6 +180,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 						//Do game logic!
 							if(bomb_locations[y_bin][x_bin]) begin //if tile is not a flag and there's a bomb, end the game
 								state <= GAME_OVER;
+								sound_effect_start <= 1;
+								sound_effect_select <= 3'b1;
 							end
 							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
 							tile_cleared_count <= tile_cleared_count+1;
@@ -221,6 +218,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 							tile_status[y_bin][x_bin] <= 2'b00; //Turn flag into empty tile
 							flag_counter <= flag_counter+1;
 						end
+						sound_effect_start <= 1;
+						sound_effect_select <= 2'b011;
 					end
 				end
 
@@ -381,5 +380,12 @@ module hex_2_dec (
 	output [15:0] dec_out
 );
 	//Converts a hex number to decimal form for both flags and low freq timer
-	
+	logic [3:0] digit_3,digit_2,digit_1,digit_0; //0-9, one for each seven seg digit
+	assign dec_out = {digit_3,digit_2,digit_1,digit_0};
+	always_comb begin
+		digit_0 = hex_in%10;
+		digit_1 = (hex_in/10)%10;
+		digit_2 = (hex_in/100)%10;
+		digit_3 = (hex_in/1000)%10;
+	end
 endmodule //hex_2_dec

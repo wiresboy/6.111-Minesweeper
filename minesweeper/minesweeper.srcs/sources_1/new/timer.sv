@@ -2,7 +2,7 @@ module timer(clock, start_timer, count_out, reset, stop_timer);
  //lab 3 low frequency timer.
     input clock, start_timer, stop_timer, reset; //clock is system 65 MHz clock, start_timer is input from FSM
 
-    output logic [5:0] count_out=0;
+    output logic [15:0] count_out=0;
     logic counting=0; 
     logic one_hz;
 

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Thu Dec  5 20:46:06 2019
+| Date             : Thu Dec  5 21:38:31 2019
 | Host             : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.260        |
+| Total On-Chip Power (W)  | 0.273        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.161        |
+| Dynamic (W)              | 0.174        |
 | Device Static (W)        | 0.099        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 83.8         |
@@ -52,21 +52,21 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.003 |        5 |       --- |             --- |
-| Slice Logic             |     0.002 |     1796 |       --- |             --- |
-|   LUT as Logic          |     0.001 |      819 |     63400 |            1.29 |
-|   CARRY4                |    <0.001 |       97 |     15850 |            0.61 |
-|   Register              |    <0.001 |      499 |    126800 |            0.39 |
+| Clocks                  |     0.004 |        5 |       --- |             --- |
+| Slice Logic             |     0.003 |     2226 |       --- |             --- |
+|   LUT as Logic          |     0.003 |     1114 |     63400 |            1.76 |
+|   CARRY4                |    <0.001 |      150 |     15850 |            0.95 |
+|   Register              |    <0.001 |      509 |    126800 |            0.40 |
 |   LUT as Shift Register |    <0.001 |       16 |     19000 |            0.08 |
-|   F7/F8 Muxes           |    <0.001 |       18 |     63400 |            0.03 |
+|   F7/F8 Muxes           |    <0.001 |       16 |     63400 |            0.03 |
 |   Others                |     0.000 |      129 |       --- |             --- |
-| Signals                 |     0.004 |     1413 |       --- |             --- |
+| Signals                 |     0.005 |     1704 |       --- |             --- |
 | Block RAM               |     0.030 |       24 |       135 |           17.78 |
 | MMCM                    |     0.122 |        1 |         6 |           16.67 |
 | DSPs                    |    <0.001 |        1 |       240 |            0.42 |
-| I/O                     |    <0.001 |       52 |       210 |           24.76 |
+| I/O                     |     0.010 |       52 |       210 |           24.76 |
 | Static Power            |     0.099 |          |           |                 |
-| Total                   |     0.260 |          |           |                 |
+| Total                   |     0.273 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.053 |       0.037 |      0.016 |
+| Vccint    |       1.000 |     0.056 |       0.040 |      0.016 |
 | Vccaux    |       1.800 |     0.086 |       0.068 |      0.018 |
-| Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |
+| Vcco33    |       3.300 |     0.007 |       0.003 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -147,20 +147,21 @@ Table of Contents
 +------------------+-----------+
 | Name             | Power (W) |
 +------------------+-----------+
-| top_level        |     0.161 |
+| top_level        |     0.174 |
 |   MouseCtl       |     0.003 |
 |   clkdivider     |     0.122 |
 |   minesweeper    |     0.035 |
-|     td           |     0.034 |
-|       bomb_rom   |     0.002 |
+|     td           |     0.033 |
+|       bomb_rom   |     0.001 |
 |       fd_img_rom |     0.001 |
 |       five_rom   |     0.001 |
 |       flag_rom   |     0.001 |
 |       four_rom   |     0.002 |
 |       one_rom    |     0.001 |
-|       three_rom  |     0.002 |
+|       three_rom  |     0.001 |
 |       two_rom    |     0.001 |
 |       zero_rom   |     0.001 |
+|   timer          |     0.003 |
 +------------------+-----------+
 
 

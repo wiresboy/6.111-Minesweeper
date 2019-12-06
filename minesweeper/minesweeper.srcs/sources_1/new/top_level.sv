@@ -75,7 +75,7 @@ assign reset = ~reset_n;
 	wire [11:0] ms_pixel;
 	//Low frequency clock nets
 	logic start_timer,stop_timer;
-	logic [5:0] count_out; 
+	logic [15:0] count_out; 
 	minesweeper minesweeper(
 			.clk_65mhz(clk_65mhz),.reset(reset),
 			.up_in(up_pressed),.down_in(down_pressed),
