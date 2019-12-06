@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`default_nettype wire
 
 module synchronize #(parameter NSYNC = 3)  // number of sync flops.  must be >= 2
                    (input clk,in,

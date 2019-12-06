@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Thu Dec  5 22:05:51 2019
+| Date         : Fri Dec  6 00:47:05 2019
 | Host         : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_level_drc_opted.rpt -pb top_level_drc_opted.pb -rpx top_level_drc_opted.rpx
 | Design       : top_level
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 7
+             Violations found: 8
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| RPBF-3   | Warning  | IO port buffering is incomplete                     | 6          |
+| RPBF-3   | Warning  | IO port buffering is incomplete                     | 7          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -49,30 +49,35 @@ Related violations: <none>
 
 RPBF-3#1 Warning
 IO port buffering is incomplete  
-Device port sd_dat[0] expects both input and output buffering but the buffers are incomplete.
+Device port sd_cmd expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 RPBF-3#2 Warning
 IO port buffering is incomplete  
-Device port sd_dat[1] expects both input and output buffering but the buffers are incomplete.
+Device port sd_dat[0] expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 RPBF-3#3 Warning
 IO port buffering is incomplete  
-Device port sd_dat[2] expects both input and output buffering but the buffers are incomplete.
+Device port sd_dat[1] expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 RPBF-3#4 Warning
 IO port buffering is incomplete  
-Device port sd_dat[3] expects both input and output buffering but the buffers are incomplete.
+Device port sd_dat[2] expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 RPBF-3#5 Warning
 IO port buffering is incomplete  
-Device port sd_reset expects both input and output buffering but the buffers are incomplete.
+Device port sd_dat[3] expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>
 
 RPBF-3#6 Warning
+IO port buffering is incomplete  
+Device port sd_reset expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#7 Warning
 IO port buffering is incomplete  
 Device port sd_sck expects both input and output buffering but the buffers are incomplete.
 Related violations: <none>

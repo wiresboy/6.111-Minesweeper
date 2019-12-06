@@ -1,21 +1,22 @@
 `timescale 1ns / 1ps
+`default_nettype none
 
 module top_level(
-	input clk_100mhz,
-	input[15:0] sw,
-	input btnc, btnu, btnl, btnr, btnd, reset_n, //reset is active low 
-	output[15:0] led,
-	output[3:0] vga_r,
-	output[3:0] vga_b,
-	output[3:0] vga_g,
-	output vga_hs,
-	output vga_vs,
-	output ca, cb, cc, cd, ce, cf, cg, dp,  // segments a-g, dp
-	output[7:0] an,    // Display location 0-7
-	inout sd_reset, sd_cd, sd_sck, sd_cmd, //SD control
-	inout[3:0] sd_dat, //SD data
-	output aud_pwm, aud_sd, //audio output
-	inout ps2_clk, ps2_data //Mouse
+	input wire clk_100mhz,
+	input wire [15:0] sw,
+	input wire btnc, btnu, btnl, btnr, btnd, reset_n, //reset is active low 
+	output logic [15:0] led,
+	output logic [3:0] vga_r,
+	output logic [3:0] vga_b,
+	output logic [3:0] vga_g,
+	output logic vga_hs,
+	output logic vga_vs,
+	output logic ca, cb, cc, cd, ce, cf, cg, dp,  // segments a-g, dp
+	output logic [7:0] an,    // Display location 0-7
+	inout wire sd_reset, sd_cd, sd_sck, sd_cmd, //SD control
+	inout wire [3:0] sd_dat, //SD data
+	output logic aud_pwm, aud_sd, //audio output
+	inout wire ps2_clk, ps2_data //Mouse
 	);
 
 	wire reset;

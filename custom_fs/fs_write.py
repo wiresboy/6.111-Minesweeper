@@ -35,12 +35,12 @@ sd = open("\\\\.\\PhysicalDrive2", mode="rb+")
 
 def sd_write_bytes(b):
     global sector_count, sd
-    sd.seek(sector_count*512)
-    blist = [b[n:n+512] for n in range(0,int(ceil(len(b)/512)),512 )]
-    for sect in blist:
-        x = (sect+b'\x00'*512)[:512]
-        sd.write(x)
-        sector_count += 1
+    #sd.seek(sector_count*512)
+    #blist = [b[n:n+512] for n in range(0,int(ceil(len(b)/512)),512 )]
+    #for sect in blist:
+    x = (b+b'\x00'*512)[:512]
+    sd.write(x)
+    sector_count += 1
 
 waves_data=list()
 sector_count = 2
@@ -55,10 +55,12 @@ for name in filenames:
     print("Num samples:  ", w.getnframes())
     
     sd.seek(sector_count*512)
-    sd_write_bytes(w.readframes(w.getnframes()))
+    for z in range(int(ceil(w.getnframes()/512))):
+        sd_write_bytes(w.readframes(512))
 
     w.close()
 
+print(sector_count)
 
 print()
 sect0 = b"Brandon'sFS 1.0\x00"
