@@ -67,6 +67,9 @@ assign reset = ~reset_n;
 	xvga xvga1(.vclock_in(clk_65mhz),.hcount_out(hcount),.vcount_out(vcount),
 		  .hsync_out(hsync),.vsync_out(vsync),.blank_out(blank));
 
+	//Random
+	logic [15:0] random_number;
+	random random(clk_65mhz,reset,random_number);
 
 	// ***** Minesweeper Game *****
 	wire ms_hsync,ms_vsync,ms_blank;//delayed timing signals
@@ -84,7 +87,7 @@ assign reset = ~reset_n;
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
-			.sw(sw),
+			.sw(sw),.random(random_number),
 			//TODO random
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),

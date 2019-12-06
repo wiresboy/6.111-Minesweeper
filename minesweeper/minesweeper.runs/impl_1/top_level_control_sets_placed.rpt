@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Thu Dec  5 21:37:33 2019
+| Date         : Fri Dec  6 01:58:50 2019
 | Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
 | Design       : top_level
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    30 |
-|    Minimum number of control sets                        |    30 |
+| Total control sets                                       |    28 |
+|    Minimum number of control sets                        |    28 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   115 |
+| Unused register locations in slices containing registers |    92 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    30 |
-| >= 0 to < 4        |     4 |
-| >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     3 |
-| >= 8 to < 10       |     5 |
+| Total control sets |    28 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     5 |
+| >= 8 to < 10       |     4 |
 | >= 10 to < 12      |     5 |
-| >= 12 to < 14      |     3 |
+| >= 12 to < 14      |     4 |
 | >= 14 to < 16      |     1 |
-| >= 16              |     6 |
+| >= 16              |     7 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,51 +58,49 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             178 |           81 |
-| No           | No                    | Yes                    |              59 |           19 |
-| No           | Yes                   | No                     |             120 |           37 |
-| Yes          | No                    | No                     |              61 |           21 |
-| Yes          | No                    | Yes                    |              22 |            5 |
-| Yes          | Yes                   | No                     |              69 |           22 |
+| No           | No                    | No                     |             629 |          406 |
+| No           | No                    | Yes                    |              59 |           18 |
+| No           | Yes                   | No                     |             112 |           33 |
+| Yes          | No                    | No                     |              74 |           25 |
+| Yes          | No                    | Yes                    |              22 |            8 |
+| Yes          | Yes                   | No                     |              68 |           22 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
-|     Clock Signal     |                      Enable Signal                      |                     Set/Reset Signal                    | Slice Load Count | Bel Load Count |
-+----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
-|  clkdivider/clk_out1 |                                                         | display/p_0_in[2]                                       |                1 |              1 |
-|  clkdivider/clk_out1 | minesweeper/flag_counter[5]_i_1_n_0                     | minesweeper/flag_counter[4]_i_1_n_0                     |                1 |              1 |
-|  clkdivider/clk_out1 |                                                         | display/strobe_out[3]_i_1_n_0                           |                2 |              3 |
-|  clkdivider/clk_out1 | minesweeper/flag_counter[5]_i_1_n_0                     |                                                         |                3 |              3 |
-|  clkdivider/clk_out1 |                                                         | MouseCtl/Inst_Ps2Interface/data_inter0                  |                1 |              4 |
-|  clkdivider/clk_out1 |                                                         | MouseCtl/Inst_Ps2Interface/clk_inter0                   |                1 |              4 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/shift_frame                  | MouseCtl/Inst_Ps2Interface/reset_bit_count              |                1 |              4 |
-|  clkdivider/clk_out1 | minesweeper/tile_cleared_count[5]_i_2_n_0               | minesweeper/tile_cleared_count[5]_i_1_n_0               |                2 |              6 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_2    | MouseCtl/Inst_Ps2Interface/reset                        |                1 |              6 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                2 |              7 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/load_rx_data                 |                                                         |                1 |              8 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_1[0] | MouseCtl/Inst_Ps2Interface/reset                        |                2 |              8 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/E[0]                         | MouseCtl/Inst_Ps2Interface/reset                        |                2 |              8 |
-|  clkdivider/clk_out1 | MouseCtl/tx_data0                                       |                                                         |                2 |              8 |
-|  clkdivider/clk_out1 | reset_n_IBUF                                            |                                                         |                5 |              9 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                         |                2 |             10 |
-|  clkdivider/clk_out1 | xvga1/E[0]                                              | xvga1/vcount_out0                                       |                5 |             10 |
-|  clkdivider/clk_out1 |                                                         | xvga1/E[0]                                              |                6 |             11 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                3 |             11 |
-|  clkdivider/clk_out1 | MouseCtl/x_new_reg_n_0                                  |                                                         |                4 |             11 |
-|  clkdivider/clk_out1 |                                                         | mouse_renderer/pixel_out[11]_i_1__0_n_0                 |                3 |             12 |
-|  clkdivider/clk_out1 |                                                         | xvga1/vcount_out_reg[8]_0                               |                5 |             12 |
-|  clkdivider/clk_out1 | MouseCtl/y_new_reg_n_0                                  |                                                         |                4 |             12 |
-|  clkdivider/clk_out1 | MouseCtl/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/clear                        |                4 |             14 |
-|  clkdivider/clk_out1 | timer/count_out_n_0                                     | minesweeper/start_timer_reg_0                           |                4 |             16 |
-|  clkdivider/clk_out1 |                                                         | MouseCtl/reset_timeout_cnt_reg_n_0                      |                5 |             23 |
-|  clkdivider/clk_out1 |                                                         | timer/internal_count[25]_i_1_n_0                        |                7 |             25 |
-|  clkdivider/clk_out1 |                                                         | MouseCtl/reset_periodic_check_cnt__0                    |                6 |             25 |
-|  clkdivider/clk_out1 |                                                         | MouseCtl/Inst_Ps2Interface/reset                        |               19 |             59 |
-|  clkdivider/clk_out1 |                                                         |                                                         |               81 |            202 |
-+----------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
++---------------------------------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|                 Clock Signal                |                      Enable Signal                      |                     Set/Reset Signal                    | Slice Load Count | Bel Load Count |
++---------------------------------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
+|  clkdivider/clk_65mhz                       |                                                         | display/strobe_out[3]_i_1_n_0                           |                1 |              4 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/shift_frame                  | MouseCtl/Inst_Ps2Interface/reset_bit_count              |                2 |              4 |
+|  clkdivider/clk_65mhz                       | minesweeper/BOMBS[5]_i_1_n_0                            |                                                         |                2 |              6 |
+|  clkdivider/clk_65mhz                       | minesweeper/flag_counter[5]_i_1_n_0                     |                                                         |                3 |              6 |
+|  clkdivider/clk_65mhz                       | minesweeper/tile_cleared_count[5]_i_2_n_0               | minesweeper/tile_cleared_count[5]_i_1_n_0               |                2 |              6 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_1    | MouseCtl/Inst_Ps2Interface/reset                        |                2 |              6 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_63clk_count[6]_i_1_n_0 |                3 |              7 |
+|  clkdivider/clk_65mhz                       | MouseCtl/tx_data0                                       |                                                         |                3 |              8 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/load_rx_data                 |                                                         |                3 |              8 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/E[0]                         | MouseCtl/Inst_Ps2Interface/reset                        |                4 |              8 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]_0[0] | MouseCtl/Inst_Ps2Interface/reset                        |                2 |              8 |
+|  clkdivider/clk_65mhz                       | xvga1/hreset                                            | xvga1/vcount_out0                                       |                4 |             10 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/frame[9]_i_1_n_0             |                                                         |                2 |             10 |
+|  clkdivider/clk_65mhz                       |                                                         | xvga1/hreset                                            |                5 |             11 |
+|  clkdivider/clk_65mhz                       | MouseCtl/x_new_reg_n_0                                  |                                                         |                4 |             11 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/delay_20us_count[10]_i_1_n_0 |                4 |             11 |
+|  clkdivider/clk_65mhz                       |                                                         | mouse_renderer/pixel_out[11]_i_1_n_0                    |                3 |             12 |
+|  clkdivider/clk_65mhz                       |                                                         | xvga1/vcount_out_reg[9]_1                               |                5 |             12 |
+|  clkdivider/clk_65mhz                       | MouseCtl/y_new_reg_n_0                                  |                                                         |                3 |             12 |
+|  clkdivider/clk_65mhz                       | reset_n_IBUF                                            |                                                         |                5 |             13 |
+|  clkdivider/clk_65mhz                       | MouseCtl/Inst_Ps2Interface/delay_100us_count[0]_i_2_n_0 | MouseCtl/Inst_Ps2Interface/clear                        |                4 |             14 |
+|  clkdivider/clk_65mhz                       | timer/count_out__0_n_0                                  | minesweeper/start_timer_reg_0                           |                3 |             16 |
+|  clkdivider/clk_65mhz                       |                                                         | MouseCtl/reset_timeout_cnt_reg_n_0                      |                5 |             23 |
+|  clkdivider/clk_65mhz                       |                                                         | MouseCtl/reset_periodic_check_cnt__0                    |                7 |             25 |
+|  clkdivider/clk_65mhz                       |                                                         | timer/internal_count[25]_i_1_n_0                        |                7 |             25 |
+|  minesweeper/seven_seg_data_reg[31]_i_1_n_0 |                                                         |                                                         |               12 |             28 |
+|  clkdivider/clk_65mhz                       |                                                         | MouseCtl/Inst_Ps2Interface/reset                        |               18 |             59 |
+|  clkdivider/clk_65mhz                       |                                                         |                                                         |              394 |            625 |
++---------------------------------------------+---------------------------------------------------------+---------------------------------------------------------+------------------+----------------+
 
 

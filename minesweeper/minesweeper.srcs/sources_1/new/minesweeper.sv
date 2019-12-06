@@ -42,14 +42,19 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	output [31:0] seven_seg_out,	// seven segment display. Each nibble is 1 7 segment output
 
 	output logic [2:0] sound_effect_select,	//indices and meanings 001 = bomb, 011 = flag
-	output logic sound_effect_start			//start the selected sound effect. 1 cycle
+	output logic sound_effect_start,			//start the selected sound effect. 1 cycle
+
+	output logic gg_pulse // One cycle pulse for leaderboard
 	);
 
-	parameter GAME_SIZE = 3'd4;
-	parameter BOMBS = 4'd6; //Number of bombs in the game board
+	parameter GAME_SIZE = 4'd15; 
+	logic [5:0] BOMBS = 6'd90; //Number of bombs in the game board
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
-	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1]='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully, 2'b11 if flagged
+	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1]='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully, 2'b11 if flagged
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic [5:0] flag_counter=BOMBS; //counts how many flags have been placed
@@ -59,7 +64,9 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	hex_2_dec h2d_clk(.hex_in(count_out),.dec_out(dec_clk_data));
 	hex_2_dec h2d_flag(.hex_in(flag_counter),.dec_out(dec_flag_data));
 
-	assign seven_seg_out = {dec_flag_data,dec_clk_data}; //eventually will put low frequency timer here
+	//assign seven_seg_out = {dec_flag_data,dec_clk_data}; //eventually will put low frequency timer here
+	logic [31:0] seven_seg_data;
+	assign seven_seg_out = seven_seg_data;
 
 	logic[3:0] x_bin, y_bin;
 	assign x_bin = mouse_x/48;
@@ -71,8 +78,14 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	parameter GG = 3'b111;
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
-	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
-	assign tile_numbers = '{'{1,2,7,1},'{7,5,4,3},'{7,7,7,7},'{2,3,3,2}};
+	assign bomb_locations ='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+	assign tile_numbers = '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 	//assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
 	
@@ -89,6 +102,16 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	//Mouse debouncing module
 	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
+	
+	always_comb begin
+		if(state == IN_GAME) begin
+			seven_seg_data = {dec_flag_data,dec_clk_data}; //eventually will put low frequency timer here
+		end else if(state == GG) begin
+			seven_seg_data = {16'hFFFF,dec_clk_data};
+		end else if(state == GAME_OVER) begin
+			seven_seg_data = {16'h0000,dec_clk_data};
+		end
+	end
 
     always_ff @(posedge clk_65mhz)begin
         if (reset)begin
@@ -140,16 +163,25 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		//Draw game board
 		if(reset) begin
 			state <= IDLE;
-			tile_status <='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; 
+			tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 			tile_cleared_count <= 0;
 		end
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
 		if(sound_effect_start) sound_effect_start <= 0; //make sound effect start one pulse
+		if(gg_pulse) gg_pulse <= 1;
 
 		if(state == GAME_OVER||state == GG) begin
-				tile_status <='{'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01}};  //show all tile numbers and bombs
+				tile_status <= '{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}}; //show all tile numbers and bombs
 				stop_timer <= 1'b1;
+				gg_pulse <= 1;
 		end
 
 		if(state == GG) begin
@@ -157,22 +189,28 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
-			if(mouse_left_edge && mouse_x>192) begin
+			if(mouse_left_edge && mouse_x>720) begin
 				state <= IDLE;
 			end
 			case(state)
 				IDLE: begin
 					//if (user clicks start game)
 					state <= IN_GAME;
-					tile_status <= '{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //set all tiles to not be cleared
+					tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 					start_timer <= 1; //Start the 1 Hz counter
 					tile_cleared_count <= 0;
+					case(sw[1:0])
+						00: BOMBS = 45;
+						01: BOMBS = 60;
+						10: BOMBS = 75;
+						11: BOMBS = 90;
+					endcase
 					flag_counter <= BOMBS;
 					sound_effect_start <= 1;
 				end
-				GAME_OVER: begin
-				end
-				
 				IN_GAME: begin
 					start_timer <= 0;
 					if(mouse_left_edge) begin
@@ -227,18 +265,16 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 	end
 
-	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),
-		.sw(sw),.pixel_out(pixel_out));
+	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
 endmodule
 
 module tile_drawer
-	#(parameter WIDTH = 48, HEIGHT = 48,GAME_SIZE = 4)
+	#(parameter WIDTH = 48, HEIGHT = 48,GAME_SIZE = 15)
 	(input pixel_clk_in,
     input [10:0] hcount_in,
     input [9:0] vcount_in,
-	input [0:3] [2:0] tile_numbers[0:3],
+	input [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1],
 	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1],
-	input [15:0] sw,
     output logic [11:0] pixel_out
 	);
     
@@ -332,13 +368,13 @@ module tile_drawer
 	//Given the tile_numbers and tile_status array, draws the tiles
 	
     always_ff @(posedge pixel_clk_in) begin
-		if(hcount_in<=192&&vcount_in<=192) begin //only draw in the game tile region
+		if(hcount_in<=720&&vcount_in<=720) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
 			end else if (tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]==2'b11) begin //draw flag if flagged
 				pixel_out <= {flag_red_mapped[7:4], flag_green_mapped[7:4], flag_blue_mapped[7:4]}; 
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; //curr_tile <= sw[2:0];
+				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; 
 				case(curr_tile)
 					0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 

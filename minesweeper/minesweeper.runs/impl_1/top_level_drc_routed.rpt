@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Thu Dec  5 21:38:26 2019
+| Date         : Fri Dec  6 01:59:55 2019
 | Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_level_drc_routed.rpt -pb top_level_drc_routed.pb -rpx top_level_drc_routed.rpx
 | Design       : top_level
@@ -24,7 +24,7 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 4
+             Violations found: 5
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
@@ -32,6 +32,7 @@ Table of Contents
 | DPIP-1   | Warning  | Input pipelining                                    | 1          |
 | DPOP-1   | Warning  | PREG Output pipelining                              | 1          |
 | DPOP-2   | Warning  | MREG Output pipelining                              | 1          |
+| PDRC-153 | Warning  | Gated clock check                                   | 1          |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -62,6 +63,11 @@ Related violations: <none>
 DPOP-2#1 Warning
 MREG Output pipelining  
 DSP minesweeper/td/image_addr multiplier stage minesweeper/td/image_addr/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net minesweeper/seven_seg_data_reg[31]_i_1_n_0 is a gated clock net sourced by a combinational pin minesweeper/seven_seg_data_reg[31]_i_1/O, cell minesweeper/seven_seg_data_reg[31]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
