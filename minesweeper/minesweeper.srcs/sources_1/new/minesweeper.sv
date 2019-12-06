@@ -44,6 +44,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	output logic start_timer,stop_timer
 	);
 	parameter GAME_SIZE = 3'd4;
+	parameter BOMBS = 4'd6; //Number of bombs in the game board
 	//parameter HORIZ_DIV = 1024/GAME_SIZE;
 	//parameter VERT_DIV = 768/GAME_SIZE;
 
@@ -57,25 +58,29 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
 
 	logic [5:0] flag_counter=20; //counts how many flags have been placed
-	assign seven_seg_out = {flag_counter,11'b0,count_out}; //eventually will put low frequency timer here
+	logic [5:0] tile_cleared_count = 0; //Game is over when tile_cleared_count == num_tiles-bombs
+
+	logic[15:0] dec_clk_data,dec_flag_data;
+	hex_2_dec h2d_clk(.hex_in(count_out),.dec_out(dec_clk_data));
+	hex_2_dec h2d_flag(.hex_in(count_out),.dec_out(dec_flag_data));
+
+	assign seven_seg_out = {flag_counter,11'b0,count_out}; 
+	//assign seven_seg_out = {dec_flag_data,11'b0,dec_clk_data}; //eventually will put low frequency timer here
 
 	logic[3:0] x_bin, y_bin;
 	assign x_bin = mouse_x/48;
 	assign y_bin = mouse_y/48;
-	//assign seven_seg_out = {x_bin,4'b0,y_bin};
 
 	parameter IDLE = 3'b000;
 	parameter IN_GAME = 3'b010;
 	parameter GAME_OVER = 3'b011;
+	parameter GG = 3'b111;
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations = {4'b0010,4'b1000,4'b1111,4'b0000};
 	assign tile_numbers = '{'{1,2,7,1},'{7,5,4,3},'{7,7,7,7},'{2,3,3,2}};
 	//assign tile_status = {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
 
-	//Every 65 MHz tick, draw pixel, every mouse click update tile_status
-	logic [11:0] grid_pixel;
-	logic [11:0] tile_pixel,tile_pixel_2;
 	
 	//VGA Buffer vars
 	logic vsync[5:0], hsync[5:0], blank [5:0];
@@ -90,12 +95,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	//Mouse debouncing module
 	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
-
-
-    //clean&!old_clean is a signal that indicates a "rising edge":
-    //assign mouse_left_edge = mouse_left_click & !left_old_clean;
-    //assign mouse_right_edge = mouse_right_click & !right_old_clean;
-
 
     always_ff @(posedge clk_65mhz)begin
         if (reset)begin
@@ -148,39 +147,49 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		if(reset) begin
 			state <= IDLE;
 			tile_status <='{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; 
-			//tile_status <= {{4'hF},{4'hF},{4'hF},{4'hF}}; //set all tiles to be cleared for checking viz
+			tile_cleared_count <= 0;
 		end
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
-		if(state == GAME_OVER) begin
+		if(state == GAME_OVER||state == GG) begin
 				tile_status <='{'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01}};  //show all tile numbers and bombs
 				stop_timer <= 1'b1;
-				//make sure screen shows that game is over
-				//after some time transition to idle state?
-				//state <= IDLE;
+		end
+
+		/*
+		if(tile_cleared_count == 16-BOMBS) begin
+			state <= GG;
+		end
+		*/
+		if(state == GG) begin
+			stop_timer <= 1'b1;
 		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
+			if(mouse_left_edge && mouse_x>192) begin
+				state <= IDLE;
+			end
 			case(state)
 				IDLE: begin
 					//if (user clicks start game)
 					state <= IN_GAME;
 					tile_status <= '{'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00},'{2'b00,2'b00,2'b00,2'b00}}; //set all tiles to not be cleared
 					start_timer <= 1; //Start the 1 Hz counter
+					tile_cleared_count <= 0;
 				end
 				
 				IN_GAME: begin
 					start_timer <= 0;
 					if(mouse_left_edge) begin
-						if(mouse_x>192) begin//on reset button, reset game
-							state <= IDLE;
-						end
 						if(tile_status[y_bin][x_bin]!=2'b11) begin //if user left clicks on a non-flag tile
 						//Do game logic!
 							if(bomb_locations[y_bin][x_bin]) begin //if tile is not a flag and there's a bomb, end the game
 								state <= GAME_OVER;
 							end
 							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_cleared_count == 16-BOMBS-1)
+								state <= GG;
 
 							if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
 								if(y_bin>0) begin
@@ -366,3 +375,11 @@ module tile_drawer
 		end
 	end
 endmodule //tile_drawer
+ 
+module hex_2_dec (
+	input[15:0] hex_in,
+	output [15:0] dec_out
+);
+	//Converts a hex number to decimal form for both flags and low freq timer
+	
+endmodule //hex_2_dec
