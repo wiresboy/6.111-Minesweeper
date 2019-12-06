@@ -107,6 +107,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			mouse_left_edge <= mouse_left_click & !left_old_clean;
 			mouse_right_edge <= mouse_right_click & !right_old_clean;
         end
+
 		//Buffer VGA timing signals for ROM access
 		vsync[5] <= vsync_in;
 		hsync[5] <= hsync_in;
@@ -174,30 +175,32 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 						if(mouse_x>192) begin//on reset button, reset game
 							state <= IDLE;
 						end
+						if(tile_status[y_bin][x_bin]!=2'b11) begin //if user left clicks on a non-flag tile
 						//Do game logic!
-						if(bomb_locations[y_bin][x_bin]) begin
-							state <= GAME_OVER;
-						end
-						tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
+							if(bomb_locations[y_bin][x_bin]) begin //if tile is not a flag and there's a bomb, end the game
+								state <= GAME_OVER;
+							end
+							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
 
-						if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
-							if(y_bin>0) begin
-								tile_status[y_bin-1][x_bin] <= 1;
-								if(x_bin>0) begin
-									tile_status[y_bin-1][x_bin-1] <= 1;
-									tile_status[y_bin][x_bin-1] <= 1;
-								end else if(x_bin<GAME_SIZE-1) begin
-									tile_status[y_bin-1][x_bin+1] <= 1;
-									tile_status[y_bin][x_bin+1] <= 1;
-								end
-							end else if(y_bin<3) begin
-								tile_status[y_bin+1][x_bin] <= 1;
-								if(x_bin>0) begin
-									tile_status[y_bin+1][x_bin-1] <= 1;
-									tile_status[y_bin][x_bin-1] <= 1;
-								end else if(x_bin<GAME_SIZE-1) begin
-									tile_status[y_bin+1][x_bin+1] <= 1;
-									tile_status[y_bin][x_bin+1] <= 1;
+							if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
+								if(y_bin>0) begin
+									tile_status[y_bin-1][x_bin] <= 1;
+									if(x_bin>0) begin
+										tile_status[y_bin-1][x_bin-1] <= 1;
+										tile_status[y_bin][x_bin-1] <= 1;
+									end else if(x_bin<GAME_SIZE-1) begin
+										tile_status[y_bin-1][x_bin+1] <= 1;
+										tile_status[y_bin][x_bin+1] <= 1;
+									end
+								end else if(y_bin<3) begin
+									tile_status[y_bin+1][x_bin] <= 1;
+									if(x_bin>0) begin
+										tile_status[y_bin+1][x_bin-1] <= 1;
+										tile_status[y_bin][x_bin-1] <= 1;
+									end else if(x_bin<GAME_SIZE-1) begin
+										tile_status[y_bin+1][x_bin+1] <= 1;
+										tile_status[y_bin][x_bin+1] <= 1;
+									end
 								end
 							end
 						end

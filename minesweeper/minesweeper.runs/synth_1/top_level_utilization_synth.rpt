@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Wed Dec  4 23:12:03 2019
+| Date         : Thu Dec  5 19:53:45 2019
 | Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
 | Design       : top_level
@@ -30,8 +30,8 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  840 |     0 |     63400 |  1.32 |
-|   LUT as Logic             |  816 |     0 |     63400 |  1.29 |
+| Slice LUTs*                |  865 |     0 |     63400 |  1.36 |
+|   LUT as Logic             |  841 |     0 |     63400 |  1.33 |
 |   LUT as Memory            |   24 |     0 |     19000 |  0.13 |
 |     LUT as Distributed RAM |    0 |     0 |           |       |
 |     LUT as Shift Register  |   24 |     0 |           |       |
@@ -150,11 +150,11 @@ Table of Contents
 |  Ref Name  | Used | Functional Category |
 +------------+------+---------------------+
 | FDRE       |  399 |        Flop & Latch |
-| LUT6       |  292 |                 LUT |
-| LUT2       |  237 |                 LUT |
-| LUT3       |  152 |                 LUT |
-| LUT4       |  151 |                 LUT |
-| LUT5       |  139 |                 LUT |
+| LUT6       |  313 |                 LUT |
+| LUT2       |  238 |                 LUT |
+| LUT3       |  154 |                 LUT |
+| LUT5       |  147 |                 LUT |
+| LUT4       |  142 |                 LUT |
 | CARRY4     |   97 |          CarryLogic |
 | FDCE       |   77 |        Flop & Latch |
 | OBUF       |   46 |                  IO |
