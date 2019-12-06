@@ -1,0 +1,38 @@
+Custom File System for 6.111
+
+Requirements:
+
+Hold 8 files
+No file names, just index 0..7
+Include start and length of each file
+All files sector-aligned (512 bytes)
+Header easily parsed
+32 bit addressing
+
+
+Outline:
+Sector 0: Include all FS meta data
+Sector 1: Free for use.
+Sectors 2..N: File 1
+Sectors N+1.. : File 2
+
+
+Sector 0 bytes:
+0..15: ASCII "Brandon'sFS 1.0" + \x00
+16..19: A for file 0
+20..23: B for file 0
+24..27: A for file 1
+28..31: B for file 1
+32..35: A for file 2
+36..39: B for file 2
+40..43: A for file 3
+44..47: B for file 3
+...
+72..75: A for file 7
+76..79: B for file 7
+
+
+A: 32bit starting sector of file n. In bytes. Multiply by 512 to get starting address.
+B: 32bit length of file n. In bytes, not necessarily multiple of 512.
+
+All multi-byte values are big-endian
