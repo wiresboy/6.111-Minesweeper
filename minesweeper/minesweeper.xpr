@@ -30,7 +30,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="nexys4_ddr"/>
-    <Option Name="WTXSimLaunchSim" Val="237"/>
+    <Option Name="WTXSimLaunchSim" Val="250"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -59,20 +59,6 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/ip/one_bcm/one_bcm.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/ip/one_rcm/one_rcm.xci">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/6.111/clk_wiz_lab3.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../lab3/lab3.srcs/sources_1/imports/6.111/clk_wiz_lab3.v"/>
@@ -131,6 +117,22 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/top_level.sv">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/one_bcm/one_bcm.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/ip/one_rcm/one_rcm.xci">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -435,6 +437,7 @@
     <FileSet Name="facing_down_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/facing_down_image_rom/facing_down_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -448,6 +451,7 @@
     <FileSet Name="zero_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/zero_bcm">
       <File Path="$PSRCDIR/sources_1/ip/zero_bcm/zero_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -461,6 +465,7 @@
     <FileSet Name="facing_down_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_rcm">
       <File Path="$PSRCDIR/sources_1/ip/facing_down_rcm/facing_down_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -474,6 +479,7 @@
     <FileSet Name="zero_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/zero_gcm">
       <File Path="$PSRCDIR/sources_1/ip/zero_gcm/zero_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -487,6 +493,7 @@
     <FileSet Name="zero_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/zero_rcm">
       <File Path="$PSRCDIR/sources_1/ip/zero_rcm/zero_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -500,6 +507,7 @@
     <FileSet Name="zero_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/zero_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/zero_image_rom/zero_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -513,6 +521,7 @@
     <FileSet Name="one_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/one_gcm">
       <File Path="$PSRCDIR/sources_1/ip/one_gcm/one_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -526,6 +535,7 @@
     <FileSet Name="one_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/one_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/one_image_rom_2/one_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -539,6 +549,7 @@
     <FileSet Name="facing_down_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_gcm">
       <File Path="$PSRCDIR/sources_1/ip/facing_down_gcm/facing_down_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -552,6 +563,7 @@
     <FileSet Name="facing_down_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_bcm">
       <File Path="$PSRCDIR/sources_1/ip/facing_down_bcm/facing_down_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -565,6 +577,7 @@
     <FileSet Name="two_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/two_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/two_image_rom/two_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -578,6 +591,7 @@
     <FileSet Name="two_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/two_rcm">
       <File Path="$PSRCDIR/sources_1/ip/two_rcm/two_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -591,6 +605,7 @@
     <FileSet Name="two_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/two_gcm">
       <File Path="$PSRCDIR/sources_1/ip/two_gcm/two_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -604,6 +619,7 @@
     <FileSet Name="two_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/two_bcm">
       <File Path="$PSRCDIR/sources_1/ip/two_bcm/two_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -617,6 +633,7 @@
     <FileSet Name="three_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/three_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/three_image_rom/three_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -630,6 +647,7 @@
     <FileSet Name="three_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/three_rcm">
       <File Path="$PSRCDIR/sources_1/ip/three_rcm/three_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -643,6 +661,7 @@
     <FileSet Name="three_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/three_gcm">
       <File Path="$PSRCDIR/sources_1/ip/three_gcm/three_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -656,6 +675,7 @@
     <FileSet Name="three_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/three_bcm">
       <File Path="$PSRCDIR/sources_1/ip/three_bcm/three_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -669,6 +689,7 @@
     <FileSet Name="four_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/four_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/four_image_rom/four_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -682,6 +703,7 @@
     <FileSet Name="four_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/four_rcm">
       <File Path="$PSRCDIR/sources_1/ip/four_rcm/four_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -695,6 +717,7 @@
     <FileSet Name="four_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/four_gcm">
       <File Path="$PSRCDIR/sources_1/ip/four_gcm/four_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -708,6 +731,7 @@
     <FileSet Name="four_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/four_bcm">
       <File Path="$PSRCDIR/sources_1/ip/four_bcm/four_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -721,6 +745,7 @@
     <FileSet Name="five_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/five_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/five_image_rom/five_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -734,6 +759,7 @@
     <FileSet Name="five_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/five_rcm">
       <File Path="$PSRCDIR/sources_1/ip/five_rcm/five_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -747,6 +773,7 @@
     <FileSet Name="five_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/five_gcm">
       <File Path="$PSRCDIR/sources_1/ip/five_gcm/five_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -760,6 +787,7 @@
     <FileSet Name="five_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/five_bcm">
       <File Path="$PSRCDIR/sources_1/ip/five_bcm/five_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -773,6 +801,7 @@
     <FileSet Name="six_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/six_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/six_image_rom/six_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -786,6 +815,7 @@
     <FileSet Name="six_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/six_rcm">
       <File Path="$PSRCDIR/sources_1/ip/six_rcm/six_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -799,6 +829,7 @@
     <FileSet Name="six_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/six_gcm">
       <File Path="$PSRCDIR/sources_1/ip/six_gcm/six_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -812,6 +843,7 @@
     <FileSet Name="six_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/six_bcm">
       <File Path="$PSRCDIR/sources_1/ip/six_bcm/six_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -825,6 +857,7 @@
     <FileSet Name="flag_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/flag_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/flag_image_rom/flag_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -838,6 +871,7 @@
     <FileSet Name="flag_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/flag_rcm">
       <File Path="$PSRCDIR/sources_1/ip/flag_rcm/flag_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -851,6 +885,7 @@
     <FileSet Name="flag_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/flag_gcm">
       <File Path="$PSRCDIR/sources_1/ip/flag_gcm/flag_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -864,6 +899,7 @@
     <FileSet Name="flag_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/flag_bcm">
       <File Path="$PSRCDIR/sources_1/ip/flag_bcm/flag_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -877,6 +913,7 @@
     <FileSet Name="bomb_image_rom" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bomb_image_rom">
       <File Path="$PSRCDIR/sources_1/ip/bomb_image_rom/bomb_image_rom.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -890,6 +927,7 @@
     <FileSet Name="bomb_rcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bomb_rcm">
       <File Path="$PSRCDIR/sources_1/ip/bomb_rcm/bomb_rcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -903,6 +941,7 @@
     <FileSet Name="bomb_gcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bomb_gcm">
       <File Path="$PSRCDIR/sources_1/ip/bomb_gcm/bomb_gcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -916,6 +955,7 @@
     <FileSet Name="bomb_bcm" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bomb_bcm">
       <File Path="$PSRCDIR/sources_1/ip/bomb_bcm/bomb_bcm.xci">
         <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>

@@ -49,6 +49,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 
 	parameter GAME_SIZE = 4'd15; 
 	logic [5:0] BOMBS = 6'd90; //Number of bombs in the game board
+	logic [5:0] temp_bomb_counter = 0; //variable for setting up random game array
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]; // if 1, there is a bomb, if 0, no bomb
 	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1]='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -69,6 +70,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	assign seven_seg_out = seven_seg_data;
 
 	logic[3:0] x_bin, y_bin;
+	logic[3:0] x_temp=0, y_temp=0; //temporary indexing vars for initializing the bomb counter array
+
 	assign x_bin = mouse_x/48;
 	assign y_bin = mouse_y/48;
 
@@ -76,6 +79,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	parameter IN_GAME = 3'b010;
 	parameter GAME_OVER = 3'b011;
 	parameter GG = 3'b111;
+	parameter MAKE_GAME = 3'b110;
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 
 	assign bomb_locations ='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -187,6 +191,31 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		if(state == GG) begin
 			stop_timer <= 1'b1;
 		end
+		if(state == MAKE_GAME) begin
+			if(random> 32768) begin 
+				bomb_locations[y_temp][x_temp] <= 1;
+				temp_bomb_counter <= temp_bomb_counter +1;
+			end
+			x_temp <= x_temp+1;
+			if(x_temp == 15) begin 
+				x_temp <= 0;
+				y_temp <= y_temp+1;
+			end
+			if(y_temp == 15) begin 
+				y_temp <= 0;
+				x_temp <= 0;
+			end
+		/*
+			while(y_temp<15) begin //create tile_numbers array after creating bomb_locations array
+				tile_numbers [y_temp][x_temp] = 0;
+			end
+			*/
+			//state <= IN_GAME;
+			if(temp_bomb_counter == BOMBS) begin
+				state <= IN_GAME;
+				start_timer <= 1; //Start the 1 Hz counter
+			end
+		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
 			if(mouse_left_edge && mouse_x>720) begin
@@ -194,13 +223,10 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			end
 			case(state)
 				IDLE: begin
-					//if (user clicks start game)
-					state <= IN_GAME;
 					tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-					start_timer <= 1; //Start the 1 Hz counter
 					tile_cleared_count <= 0;
 					case(sw[1:0])
 						00: BOMBS = 45;
@@ -210,12 +236,12 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 					endcase
 					flag_counter <= BOMBS;
 					sound_effect_start <= 1;
+					state <= MAKE_GAME;
 				end
 				IN_GAME: begin
 					start_timer <= 0;
 					if(mouse_left_edge) begin
 						if(tile_status[y_bin][x_bin]!=2'b11) begin //if user left clicks on a non-flag tile
-						//Do game logic!
 							if(bomb_locations[y_bin][x_bin]) begin //if tile is not a flag and there's a bomb, end the game
 								state <= GAME_OVER;
 								sound_effect_start <= 1;
@@ -265,7 +291,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		end
 	end
 
-	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
+	//tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
 endmodule
 
 module tile_drawer

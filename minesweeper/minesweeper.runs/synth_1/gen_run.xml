@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575614455">
   <File Type="PA-TCL" Name="top_level.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="top_level_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="top_level_reports.tcl"/>
   <File Type="RDS-RDS" Name="top_level.vds"/>
   <File Type="RDS-UTIL" Name="top_level_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="top_level_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="top_level.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="top_level_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="top_level_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/ip/one_bcm/one_bcm.xci">
@@ -358,42 +355,42 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="five_gcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="facing_down_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="facing_down_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="facing_down_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="five_gcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="facing_down_rcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="zero_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="zero_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="zero_image_rom"/>
-  <BlockFileSet Type="BlockSrcs" Name="zero_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="zero_gcm"/>
   <BlockFileSet Type="BlockSrcs" Name="one_gcm"/>
   <BlockFileSet Type="BlockSrcs" Name="one_image_rom"/>
-  <BlockFileSet Type="BlockSrcs" Name="two_bcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="two_image_rom"/>
   <BlockFileSet Type="BlockSrcs" Name="facing_down_gcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="two_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="two_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="two_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="two_gcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="three_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="three_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="three_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="three_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="three_gcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="four_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="four_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="four_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="four_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="four_gcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="five_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="five_image_rom"/>
-  <BlockFileSet Type="BlockSrcs" Name="bomb_bcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="bomb_image_rom"/>
-  <BlockFileSet Type="BlockSrcs" Name="six_bcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="six_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="five_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="five_rcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="bomb_rcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="six_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="six_bcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="bomb_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="bomb_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="six_rcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="bomb_gcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="bomb_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="six_gcm"/>
-  <BlockFileSet Type="BlockSrcs" Name="flag_bcm"/>
+  <BlockFileSet Type="BlockSrcs" Name="bomb_gcm"/>
   <BlockFileSet Type="BlockSrcs" Name="flag_image_rom"/>
+  <BlockFileSet Type="BlockSrcs" Name="flag_bcm"/>
   <BlockFileSet Type="BlockSrcs" Name="flag_rcm"/>
   <BlockFileSet Type="BlockSrcs" Name="flag_gcm"/>
 </GenRun>
