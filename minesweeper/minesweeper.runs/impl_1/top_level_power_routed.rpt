@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date             : Fri Dec  6 02:00:00 2019
+| Date             : Sat Dec  7 17:09:44 2019
 | Host             : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.255        |
+| Total On-Chip Power (W)  | 0.249        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.157        |
+| Dynamic (W)              | 0.151        |
 | Device Static (W)        | 0.098        |
 | Effective TJA (C/W)      | 4.6          |
-| Max Ambient (C)          | 83.8         |
-| Junction Temperature (C) | 26.2         |
+| Max Ambient (C)          | 83.9         |
+| Junction Temperature (C) | 26.1         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,21 +52,21 @@ Table of Contents
 +-------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                 | Power (W) | Used     | Available | Utilization (%) |
 +-------------------------+-----------+----------+-----------+-----------------+
-| Clocks                  |     0.007 |        5 |       --- |             --- |
-| Slice Logic             |     0.004 |     4868 |       --- |             --- |
-|   LUT as Logic          |     0.004 |     3222 |     63400 |            5.08 |
+| Clocks                  |     0.006 |        5 |       --- |             --- |
+| Slice Logic             |     0.003 |     4230 |       --- |             --- |
+|   LUT as Logic          |     0.003 |     2563 |     63400 |            4.04 |
 |   CARRY4                |    <0.001 |      153 |     15850 |            0.97 |
-|   Register              |    <0.001 |      964 |    126800 |            0.76 |
+|   Register              |    <0.001 |     1000 |    126800 |            0.79 |
 |   LUT as Shift Register |    <0.001 |       16 |     19000 |            0.08 |
-|   F7/F8 Muxes           |    <0.001 |       37 |     63400 |            0.06 |
-|   Others                |     0.000 |       54 |       --- |             --- |
-| Signals                 |     0.006 |     3817 |       --- |             --- |
+|   F7/F8 Muxes           |    <0.001 |       55 |     63400 |            0.09 |
+|   Others                |     0.000 |       55 |       --- |             --- |
+| Signals                 |     0.004 |     3129 |       --- |             --- |
 | Block RAM               |     0.008 |      6.5 |       135 |            4.81 |
 | MMCM                    |     0.122 |        1 |         6 |           16.67 |
 | DSPs                    |    <0.001 |        1 |       240 |            0.42 |
-| I/O                     |     0.009 |       54 |       210 |           25.71 |
+| I/O                     |     0.008 |       54 |       210 |           25.71 |
 | Static Power            |     0.098 |          |           |                 |
-| Total                   |     0.255 |          |           |                 |
+| Total                   |     0.249 |          |           |                 |
 +-------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -76,9 +76,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.041 |       0.025 |      0.016 |
+| Vccint    |       1.000 |     0.036 |       0.021 |      0.016 |
 | Vccaux    |       1.800 |     0.086 |       0.068 |      0.018 |
-| Vcco33    |       3.300 |     0.007 |       0.003 |      0.004 |
+| Vcco33    |       3.300 |     0.006 |       0.002 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
@@ -144,19 +144,18 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-----------------------+-----------+
-| Name                  | Power (W) |
-+-----------------------+-----------+
-| top_level             |     0.157 |
-|   MouseCtl            |     0.006 |
-|     Inst_Ps2Interface |     0.001 |
-|   clkdivider          |     0.122 |
-|   minesweeper         |     0.016 |
-|     td                |     0.009 |
-|       fd_img_rom      |     0.001 |
-|       flag_rom        |     0.001 |
-|       zero_rom        |     0.001 |
-|   timer               |     0.001 |
-+-----------------------+-----------+
++------------------+-----------+
+| Name             | Power (W) |
++------------------+-----------+
+| top_level        |     0.151 |
+|   MouseCtl       |     0.003 |
+|   clkdivider     |     0.122 |
+|   minesweeper    |     0.015 |
+|     td           |     0.009 |
+|       fd_img_rom |     0.001 |
+|       flag_rom   |     0.001 |
+|       zero_rom   |     0.001 |
+|   timer          |     0.001 |
++------------------+-----------+
 
 

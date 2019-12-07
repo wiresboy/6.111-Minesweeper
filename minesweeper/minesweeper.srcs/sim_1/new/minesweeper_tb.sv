@@ -44,7 +44,7 @@ module minesweeper_tb;
 	mouse_left_click = 0;
 	#60;
 	random = 0;
-	#150;
+	#600;
     $finish;
    end
 endmodule

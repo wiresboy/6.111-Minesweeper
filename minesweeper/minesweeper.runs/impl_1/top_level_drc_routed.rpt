@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Fri Dec  6 01:59:55 2019
+| Date         : Sat Dec  7 17:09:40 2019
 | Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_level_drc_routed.rpt -pb top_level_drc_routed.pb -rpx top_level_drc_routed.rpx
 | Design       : top_level
@@ -67,7 +67,7 @@ Related violations: <none>
 
 PDRC-153#1 Warning
 Gated clock check  
-Net minesweeper/seven_seg_data_reg[31]_i_1_n_0 is a gated clock net sourced by a combinational pin minesweeper/seven_seg_data_reg[31]_i_1/O, cell minesweeper/seven_seg_data_reg[31]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Net minesweeper/seven_seg_data_reg[27]_i_2_n_0 is a gated clock net sourced by a combinational pin minesweeper/seven_seg_data_reg[27]_i_2/O, cell minesweeper/seven_seg_data_reg[27]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 
