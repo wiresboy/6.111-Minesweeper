@@ -128,7 +128,7 @@ endmodule
 	
 
 
-module sound_effect_player#(parameter LOOP = 1)
+module sound_effect_player#(parameter LOOP = 0)
 	(
 		input wire clk_100mhz,
 		input wire reset,
@@ -147,7 +147,7 @@ module sound_effect_player#(parameter LOOP = 1)
 
 	logic [7:0] fifo_out;
 	logic fifo_full;
-	logic fifo_reset = 0;
+	logic fifo_reset;
 	logic playing = 0;
 	fifo_generator_0 fifo(.clk(clk_100mhz), .srst(reset||fifo_reset), .din(data_request_result), 
 				.wr_en(data_ready_strobe), .prog_full(fifo_full), .dout(fifo_out), .rd_en( sample_trigger ));
@@ -156,6 +156,8 @@ module sound_effect_player#(parameter LOOP = 1)
 
 
 	logic [31:0] sample_counter;
+
+	assign fifo_reset = !playing;
 
 
 	always_ff @(posedge clk_100mhz) begin : proc_sample_counter
