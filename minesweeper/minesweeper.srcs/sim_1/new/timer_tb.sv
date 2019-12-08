@@ -3,8 +3,7 @@ module timer_tb;
     logic clk; //~ 65 MHz clock
 
 	logic[5:0] count_out;
-	logic [11:0] pixel_out;
-	logic reset,start_timer;
+	logic reset,start_timer,stop_timer;
     
 	timer uut(.clock(clk),.start_timer(start_timer),.count_out(count_out));
     always begin
@@ -14,12 +13,16 @@ module timer_tb;
    initial begin
     clk = 0;
 	reset = 0;
-	#45;
+	#60;
 	reset = 1;
-	#15;
+	#30;
 	reset=0;
 	start_timer = 1;
-	#100;
+	#30;
+	start_timer = 0;
+	#180;
+	stop_timer = 1;
+	#90;
     $finish;
    end
 endmodule

@@ -31,8 +31,8 @@ module timer(clock, start_timer, count_out, reset, stop_timer);
             one_hz <= 0; //make one_hz one cycle long
         end  
     
-        //if(internal_count==4) begin //Simulation clock
-        if(internal_count == 65_000_000) begin //After 65e6 cycles, give a 1Hz pulse
+        if(internal_count==4) begin //Simulation clock
+        //if(internal_count == 65_000_000) begin //After 65e6 cycles, give a 1Hz pulse
             one_hz <= 1'b1;
             internal_count<=1'b0; //Restart internal counter
         end else begin

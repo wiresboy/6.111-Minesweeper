@@ -83,6 +83,7 @@ module minesweeper(
 	parameter GG = 3'b111;
 	parameter PLACE_BOMBS = 3'b110;
 	parameter TILES = 3'b101;
+	parameter CLEAR = 3'b001;
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 	
 	//VGA Buffer vars
@@ -96,6 +97,11 @@ module minesweeper(
 	assign vsync_out = vsync[0];
 	assign blank_out = blank[0];
 
+	logic [7:0] tile_loc,fifo_tile_out;
+	logic [3:0] fifo_y,fifo_x;
+	logic fifo_empty;
+	clear_fifo clear_fifo(.clk(clk_65mhz),.srst(reset),.din(tile_loc),.dout(fifo_tile_out),.empty(fifo_empty));
+
 	//rising mouse edge detect vars
 	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
 	
@@ -103,7 +109,7 @@ module minesweeper(
 		if(state == IN_GAME) begin
 			seven_seg_data = {dec_flag_data,dec_clk_data}; 
 		end else if(state == GG) begin
-			seven_seg_data = {16'hFFFF,dec_clk_data};
+			seven_seg_data = {16'd1111,dec_clk_data};
 		end else if(state == GAME_OVER) begin
 			seven_seg_data = {16'h0000,dec_clk_data};
 		end
@@ -185,13 +191,8 @@ module minesweeper(
 					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
 					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
 					'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}}; //show all tile numbers and bombs
-				stop_timer <= 1'b1;
-				gg_pulse <= 1;
 		end
 
-		if(state == GG) begin
-			stop_timer <= 1'b1;
-		end
 		if(state == PLACE_BOMBS) begin
 			if(random> 50000 && bomb_locations[y_temp][x_temp] != 1 && y_temp!= y_bin && x_temp!= x_bin && (y_temp!=y_bin-1 && x_temp!=x_bin-1) && (y_temp!=y_bin-1 && x_temp!=x_bin)&&(y_temp!=y_bin-1 && x_temp!=x_bin+1)
 				&&(y_temp!=y_bin && x_temp!=x_bin-1)&&(y_temp!=y_bin && x_temp!=x_bin+1)&&(y_temp!=y_bin+1 && x_temp!=x_bin-1)&&(y_temp!=y_bin+1 && x_temp!=x_bin)&&(y_temp!=y_bin+1 && x_temp!=x_bin+1)) begin //no bombs placed in immedate area surrounding first click
@@ -278,6 +279,41 @@ module minesweeper(
 			tile_cleared_count <= 0;
 			temp_bomb_counter <= 0;
 		end
+		if(state == CLEAR) begin //clearing adjacent tiles
+			fifo_y <= fifo_tile_out[7:4];
+			fifo_x <= fifo_tile_out[3:0]
+			if(fifo_y>0) begin
+				tile_status[fifo_y-1][fifo_x] <= tile_status[fifo_y-1][fifo_x]!=2'b11 ? 1 : 2'b11;
+				if(tile_numbers[fifo_y-1][fifo_x]==0) tile_loc <= {fifo_y-1,fifo_x};
+				if(fifo_x>0) begin
+					tile_status[fifo_y-1][fifo_x-1] <= tile_status[fifo_y-1][fifo_x-1]!=2'b11 ? 1 :2'b11;
+					tile_status[fifo_y][fifo_x-1] <= tile_status[fifo_y][fifo_x-1]!=2'b11 ? 1:2'b11;
+				end else if(fifo_x<GAME_SIZE-1) begin
+					tile_status[fifo_y-1][fifo_x+1] <= tile_status[fifo_y-1][fifo_x+1] != 2'b11 ? 1:2'b11;
+					tile_status[fifo_y][fifo_x+1] <= tile_status[fifo_y][fifo_x+1]!=2'b11 ? 1:2'b11;
+				end
+			end else if(fifo_y<GAME_SIZE-1) begin
+				tile_status[fifo_y+1][fifo_x] <= tile_status[fifo_y+1][fifo_x]!=2'b11 ? 1:2'b11;
+				if(fifo_x>0) begin
+					tile_status[fifo_y+1][fifo_x-1] <= tile_status[fifo_y+1][fifo_x-1]!=2'b11 ? 1:2'b11;
+					tile_status[fifo_y][fifo_x-1] <= tile_status[fifo_y][fifo_x-1]!=2'b11 ? 1:2'b11;
+				end else if(fifo_x<GAME_SIZE-1) begin
+					tile_status[fifo_y+1][fifo_x+1] <=tile_status[fifo_y+1][fifo_x+1]!=2'b11 ? 1:2'b11;
+					tile_status[fifo_y][fifo_x+1] <=tile_status[fifo_y][fifo_x+1]!=2'b11 ? 1:2'b11;
+				end
+			end
+			if(fifo_empty) begin //finished processing fifo
+				state <= IN_GAME;
+			end
+		end
+
+		if(state == IN_GAME) begin
+			if(tile_cleared_count == 225-BOMBS-1)begin
+				stop_timer <= 1'b1;
+				state <= GG;
+				gg_pulse <= 1;
+			end
+		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
 			if(mouse_left_edge && mouse_x>900) begin
@@ -303,44 +339,13 @@ module minesweeper(
 								state <= GAME_OVER;
 								sound_effect_start <= 1;
 								sound_effect_select <= 3'b1;
+								stop_timer <= 1'b1;
 							end
 							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
-							tile_cleared_count = tile_cleared_count+1;
-							if(tile_cleared_count == 225-BOMBS)begin
-								state <= GG;
-							end
-							if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
-								if(y_bin>0) begin
-									tile_status[y_bin-1][x_bin] <= tile_status[y_bin-1][x_bin]!=2'b11 ? 1 : 2'b11;
-									if(x_bin>0) begin
-										tile_status[y_bin-1][x_bin-1] <= tile_status[y_bin-1][x_bin-1]!=2'b11 ? 1 :2'b11;
-										tile_status[y_bin][x_bin-1] <= tile_status[y_bin][x_bin-1]!=2'b11 ? 1:2'b11;
-									end else if(x_bin<GAME_SIZE-1) begin
-										tile_status[y_bin-1][x_bin+1] <= tile_status[y_bin-1][x_bin+1] != 2'b11 ? 1:2'b11;
-										tile_status[y_bin][x_bin+1] <= tile_status[y_bin][x_bin+1]!=2'b11 ? 1:2'b11;
-									end
-								end else if(y_bin<3) begin
-									tile_status[y_bin+1][x_bin] <= tile_status[y_bin+1][x_bin]!=2'b11 ? 1:2'b11;
-									if(x_bin>0) begin
-										tile_status[y_bin+1][x_bin-1] <= tile_status[y_bin+1][x_bin-1]!=2'b11 ? 1:2'b11;
-										tile_status[y_bin][x_bin-1] <= tile_status[y_bin][x_bin-1]!=2'b11 ? 1:2'b11;
-									end else if(x_bin<GAME_SIZE-1) begin
-										tile_status[y_bin+1][x_bin+1] <=tile_status[y_bin+1][x_bin+1]!=2'b11 ? 1:2'b11;
-										tile_status[y_bin][x_bin+1] <=tile_status[y_bin][x_bin+1]!=2'b11 ? 1:2'b11;
-									end
-								end
-								/*
-								if(y_bin>0 && y_bin<14 && x_bin>0 && x_bin<14) begin //clear all adjacent tiles
-									tile_status[y_bin-1][x_bin-1] <= 1;
-									tile_status[y_bin-1][x_bin] <= 1;
-									tile_status[y_bin-1][x_bin+1] <= 1;
-									tile_status[y_bin][x_bin-1] <= 1;
-									tile_status[y_bin][x_bin+1] <= 1;
-									tile_status[y_bin+1][x_bin-1] <= 1;
-									tile_status[y_bin+1][x_bin] <= 1;
-									tile_status[y_bin-1][x_bin+1] <= 1;
-								end
-								*/
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[y_bin][x_bin] == 0&&tile_status[y_bin][x_bin]==0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
+								state <= CLEAR;
+								tile_loc <= {y_bin,x_bin}; //put the clicked-on, 0-tile coords into fifo and start clearing adjacent tiles
 							end
 						end
 					end else begin //process user right click

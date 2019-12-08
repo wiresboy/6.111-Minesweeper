@@ -9,3 +9,4 @@
 # Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/top_level.vds
 # Journal file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
+source top_level.tcl -notrace
