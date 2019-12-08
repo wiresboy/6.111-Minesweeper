@@ -2,7 +2,7 @@
 %Edgar Twigg bwayr@mit.edu
 %4/1/2008 (But I swear this file isn't a joke)
 close all
-Number = '1';
+Number = 'Raindrop_Pixel';
 
 %% How to use this file
 %Notice how %% divides up sections?  If you hit ctrl+enter, then MATLAB 
@@ -80,42 +80,42 @@ colormap(color_table)   %This command tells MATLAB to use the image's color tabl
 colorbar                %This command tells MATLAB to draw the color table it is using
 title('8 bit bitmap displayed using color table')
 
-%% More about the color table
-%The color table is in the format:
-%
-%color_table(color_index,1=r 2=g 3=b)
-%
-%So to get the r g b values for color index 3, we only need to say:
-disp('         r    g              b    for color 3 is:')
-disp(color_table(3,:))      %disp = print to console
-
-%Although in the bitmap file the colors are indexed as 0-255 and each rgb
-%value is an integer between 0-255, MATLAB images don't work like that, so
-%MATLAB has automatically scaled them to be indexed 1-256 and to have a
-%floating point value between 0 and 1.  To turn the floats into integer 
-%values between 0 and 256:
-
-color_table_8bit = uint8(round(256*color_table));
-
-disp('    r    g    b    for color 3 in integers is:')
-disp(color_table_8bit(3,:)) 
-
-%Note that this doesn't fix the indexing (and it can't, since MATLAB won't
-%let you have indexes below 1)
-
-%another way to look at the color table is like this (don't worry about how
-%to make this graph)
-figure
-stem3(color_table_8bit)
-set(gca,'XTick',1:3);
-set(gca,'YTick',[1,65,129,193,256]);
-set(gca,'YTickLabel',['  0';' 64';'128';'192';'255']);
-set(gca,'ZTick',[0,64,128,192,255]);
-
-xlabel('red = 1, green = 2, blue = 3')
-ylabel('color index')
-zlabel('value')
-title('Another way to see the color table')
+% %% More about the color table
+% %The color table is in the format:
+% %
+% %color_table(color_index,1=r 2=g 3=b)
+% %
+% %So to get the r g b values for color index 3, we only need to say:
+% disp('         r    g              b    for color 3 is:')
+% disp(color_table(3,:))      %disp = print to console
+% 
+% %Although in the bitmap file the colors are indexed as 0-255 and each rgb
+% %value is an integer between 0-255, MATLAB images don't work like that, so
+% %MATLAB has automatically scaled them to be indexed 1-256 and to have a
+% %floating point value between 0 and 1.  To turn the floats into integer 
+% %values between 0 and 256:
+% 
+% color_table_8bit = uint8(round(256*color_table));
+% 
+% disp('    r    g    b    for color 3 in integers is:')
+% disp(color_table_8bit(3,:)) 
+% 
+% %Note that this doesn't fix the indexing (and it can't, since MATLAB won't
+% %let you have indexes below 1)
+% 
+% %another way to look at the color table is like this (don't worry about how
+% %to make this graph)
+% figure
+% stem3(color_table_8bit)
+% set(gca,'XTick',1:3);
+% set(gca,'YTick',[1,65,129,193,256]);
+% set(gca,'YTickLabel',['  0';' 64';'128';'192';'255']);
+% set(gca,'ZTick',[0,64,128,192,255]);
+% 
+% xlabel('red = 1, green = 2, blue = 3')
+% ylabel('color index')
+% zlabel('value')
+% title('Another way to see the color table')
 
 %% Even smaller bitmaps
 %You can extend what we did for 8-bit bitmaps to even more compressed 

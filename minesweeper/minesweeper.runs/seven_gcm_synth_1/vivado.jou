@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Sun Dec  8 10:22:55 2019
+# Process ID: 29152
+# Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/seven_gcm_synth_1
+# Command line: vivado.exe -log seven_gcm.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source seven_gcm.tcl
+# Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/seven_gcm_synth_1/seven_gcm.vds
+# Journal file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/seven_gcm_synth_1\vivado.jou
+#-----------------------------------------------------------
+source seven_gcm.tcl -notrace

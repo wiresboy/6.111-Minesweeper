@@ -61,11 +61,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; //if 0 tile has not been cleared, if 1 tile has been cleared succesfully, 2'b11 if flagged
-	logic [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1]= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+	logic [0:GAME_SIZE-1] [3:0] tile_numbers[0:GAME_SIZE-1]= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; //3 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 3-bit numbers 
+		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; //4 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 4-bit numbers 
 
 	logic [5:0] flag_counter=BOMBS; //counts how many flags have been placed
 	logic [5:0] tile_cleared_count = 0; //Game is over when tile_cleared_count == num_tiles-bombs
@@ -94,9 +94,9 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
 	
 	//VGA Buffer vars
-	logic vsync[5:0], hsync[5:0], blank [5:0];
-	logic [10:0] hcount[5:0];
-	logic [9:0] vcount[5:0]; 
+	logic vsync[7:0], hsync[7:0], blank [7:0];
+	logic [10:0] hcount[7:0];
+	logic [9:0] vcount[7:0]; 
 	//buffering
 	assign hcount_out = hcount[0];
 	assign vcount_out = vcount[0];
@@ -129,11 +129,23 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
         end
 
 		//Buffer VGA timing signals for ROM access
-		vsync[5] <= vsync_in;
-		hsync[5] <= hsync_in;
-		blank[5] <= blank_in;
-		hcount[5] <= hcount_in;
-		vcount[5] <= vcount_in;
+		vsync[7] <= vsync_in;
+		hsync[7] <= hsync_in;
+		blank[7] <= blank_in;
+		hcount[7] <= hcount_in;
+		vcount[7] <= vcount_in;
+
+		vsync[6] <= vsync[7];
+		hsync[6] <= hsync[7];
+		blank[6] <= blank[7];
+		hcount[6] <= hcount[7];
+		vcount[6] <= vcount[7];
+
+		vsync[5] <= vsync[6];
+		hsync[5] <= hsync[6];
+		blank[5] <= blank[6];
+		hcount[5] <= hcount[6];
+		vcount[5] <= vcount[6];
 
 		vsync[4] <= vsync[5];
 		hsync[4] <= hsync[5];
@@ -164,20 +176,10 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		blank[0] <= blank[1];
 		hcount[0] <= hcount[1];
 		vcount[0] <= vcount[1];
+
 		//Draw game board
 		if(reset) begin
 			state <= IDLE;
-			tile_status <='{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
-			/*
-			tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-			*/
-			tile_cleared_count <= 0;
 		end
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
@@ -216,16 +218,11 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				state <= TILES;
 				x_temp <= 0;
 				y_temp <= 0;
-				//testing tile state
-			bomb_locations <='{'{1,0,1,0,1,0,0,0,0,0,0,0,0,1,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 			end
 		end
 		if(state == TILES) begin // calculate tile_numbers
 			if (bomb_locations[y_temp][x_temp]) begin
-				tile_numbers[y_temp][x_temp] <= 3'd7; //mark tile as a bomb tile
+				tile_numbers[y_temp][x_temp] <= 4'hF; //mark tile as a bomb tile
 			end else begin
 				if(y_temp>0 && x_temp >0&&x_temp<14&&y_temp<14) begin //if tile is not on edge of board
 					local_bombs = bomb_locations[y_temp-1][x_temp-1]+bomb_locations[y_temp-1][x_temp]+bomb_locations[y_temp-1][x_temp+1]
@@ -273,6 +270,26 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				start_timer <= 1; //Start the 1 Hz counter
 			end
 		end
+		if(state == IDLE) begin
+			x_temp <= 0;
+			y_temp <= 0;
+			tile_status <='{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
+			/*
+			tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
+					*/
+			tile_numbers[0:GAME_SIZE-1]= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; 
+			tile_cleared_count <= 0;
+		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
 			if(mouse_left_edge && mouse_x>720) begin
@@ -280,17 +297,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			end
 			case(state)
 				IDLE: begin
-			tile_status <='{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
-			/*
-					tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-						'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-					*/
-					tile_cleared_count <= 0;
 					case(sw[1:0])
 						00: BOMBS = 45;
 						01: BOMBS = 60;
@@ -362,18 +368,18 @@ module tile_drawer
 	(input pixel_clk_in,
     input [10:0] hcount_in,
     input [9:0] vcount_in,
-	input [0:GAME_SIZE-1] [2:0] tile_numbers[0:GAME_SIZE-1],
+	input [0:GAME_SIZE-1] [3:0] tile_numbers[0:GAME_SIZE-1],
 	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1],
     output logic [11:0] pixel_out
 	);
     
-    logic [2:0] curr_tile; //0-6 are possible tile numbers, 7 is a bomb temporary variable for indexing into tile_numbers array
+    logic [2:0] curr_tile; //0-8 are possible tile numbers, F is a bomb temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
-	logic [10:0] hcount_temp;
-	logic [9:0] vcount_temp;
-	//assign image_addr = (hcount_in-hcount_temp*WIDTH) + (vcount_in-HEIGHT*vcount_temp) * WIDTH; //determine where top left corner of each pixel is for image_addr 
-	assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
+	logic [10:0] hcount_temp[1:0];
+	logic [9:0] vcount_temp[1:0];
+	assign image_addr = (hcount_in-hcount_temp[0]) + (vcount_in-vcount_temp[0]) * WIDTH; //determine where top left corner of each pixel is for image_addr 
+	//assign image_addr = (hcount_in-(hcount_in/WIDTH)*WIDTH) + (vcount_in-HEIGHT*(vcount_in/HEIGHT)) * WIDTH; //determine where top left corner of each pixel is for image_addr 
 	//ROM Instantiations
 	
 	//Facing Down tile ROMs
@@ -440,6 +446,24 @@ module tile_drawer
 	six_gcm six_gcm (.clka(pixel_clk_in), .addra(six_image_bits), .douta(six_green_mapped));
 	six_bcm six_bcm (.clka(pixel_clk_in), .addra(six_image_bits), .douta(six_blue_mapped));
 	
+	//Seven tile ROMs
+	
+	logic[15:0] seven_pixel_out;
+	logic [7:0] seven_image_bits, seven_red_mapped, seven_green_mapped, seven_blue_mapped;
+	seven_image_rom  seven_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(seven_image_bits));
+	seven_rcm seven_rcm (.clka(pixel_clk_in), .addra(seven_image_bits), .douta(seven_red_mapped));
+	seven_gcm seven_gcm (.clka(pixel_clk_in), .addra(seven_image_bits), .douta(seven_green_mapped));
+	seven_bcm seven_bcm (.clka(pixel_clk_in), .addra(seven_image_bits), .douta(seven_blue_mapped));
+	
+	//Eight tile ROMs
+	
+	logic[15:0] eight_pixel_out;
+	logic [7:0] eight_image_bits, eight_red_mapped, eight_green_mapped, eight_blue_mapped;
+	eight_image_rom  eight_rom(.clka(pixel_clk_in), .addra(image_addr), .douta(eight_image_bits));
+	eight_rcm eight_rcm (.clka(pixel_clk_in), .addra(eight_image_bits), .douta(eight_red_mapped));
+	eight_gcm eight_gcm (.clka(pixel_clk_in), .addra(eight_image_bits), .douta(eight_green_mapped));
+	eight_bcm eight_bcm (.clka(pixel_clk_in), .addra(eight_image_bits), .douta(eight_blue_mapped));
+
 	//flag tile ROMs
 	logic[15:0] flag_pixel_out;
 	logic [7:0] flag_image_bits, flag_red_mapped, flag_green_mapped, flag_blue_mapped;
@@ -460,8 +484,12 @@ module tile_drawer
 	//Given the tile_numbers and tile_status array, draws the tiles
 	
     always_ff @(posedge pixel_clk_in) begin
-		//hcount_temp <= hcount_in/WIDTH;
-		//vcount_temp <= vcount_in/HEIGHT;
+		
+		hcount_temp[1] <= hcount_in/WIDTH;
+		vcount_temp[1] <= vcount_in/HEIGHT;
+		hcount_temp[0] <= hcount_temp[1]*WIDTH;
+		vcount_temp[0] <= vcount_temp[1]*HEIGHT;
+		
 		if(hcount_in<=720&&vcount_in<=720) begin //only draw in the game tile region
 			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
@@ -492,6 +520,12 @@ module tile_drawer
 						pixel_out <= {six_red_mapped[7:4], six_green_mapped[7:4], six_blue_mapped[7:4]}; 
 					end
 					7: begin
+						pixel_out <= {seven_red_mapped[7:4], seven_green_mapped[7:4], seven_blue_mapped[7:4]}; 
+					end
+					8: begin
+						pixel_out <= {eight_red_mapped[7:4], eight_green_mapped[7:4], eight_blue_mapped[7:4]}; 
+					end
+					4'hF: begin
 						pixel_out <= {bomb_red_mapped[7:4], bomb_green_mapped[7:4], bomb_blue_mapped[7:4]}; 
 					end
 					default: begin
