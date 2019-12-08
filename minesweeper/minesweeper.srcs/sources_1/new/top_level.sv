@@ -33,7 +33,7 @@ assign reset = ~reset_n;
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
 	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
-	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
+	assign seven_segment_data = ms_seven_segment_data; 
 
 	// ***** LED outputs *****
 
@@ -58,7 +58,6 @@ assign reset = ~reset_n;
 						.left(mouse_left_click), .right(mouse_right_click)
 						);
 	assign led = {mouse_left_click, mouse_right_click};
-	//assign seven_segment_data = {mouse_x,4'b0,mouse_y};
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
@@ -81,14 +80,10 @@ assign reset = ~reset_n;
 	logic [15:0] count_out; 
 	minesweeper minesweeper(
 			.clk_65mhz(clk_65mhz),.reset(reset),
-			.up_in(up_pressed),.down_in(down_pressed),
-			.center_in(center_pressed),.left_in(left_pressed),
-			.right_in(right_pressed),
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
 			.sw(sw),.random(random_number),
-			//TODO random
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.pixel_out(ms_pixel),
@@ -96,8 +91,8 @@ assign reset = ~reset_n;
 			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
 			.seven_seg_out(ms_seven_segment_data),
 			.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer)
-			//,  TODO sound
 			);
+
 	timer timer(.clock(clk_65mhz),.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer));
 
 

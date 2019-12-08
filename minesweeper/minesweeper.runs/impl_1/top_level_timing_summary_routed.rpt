@@ -1,0 +1,1917 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Sun Dec  8 12:33:16 2019
+| Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -file top_level_timing_summary_routed.rpt -pb top_level_timing_summary_routed.pb -rpx top_level_timing_summary_routed.rpx -warn_on_violation
+| Design       : top_level
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock
+2. checking constant_clock
+3. checking pulse_width_clock
+4. checking unconstrained_internal_endpoints
+5. checking no_input_delay
+6. checking no_output_delay
+7. checking multiple_clock
+8. checking generated_clocks
+9. checking loops
+10. checking partial_input_delay
+11. checking partial_output_delay
+12. checking latch_loops
+
+1. checking no_clock
+--------------------
+ There are 29 register/latch pins with no clock driven by root clock pin: minesweeper/state_reg[0]/Q (HIGH)
+
+ There are 29 register/latch pins with no clock driven by root clock pin: minesweeper/state_reg[1]/Q (HIGH)
+
+ There are 29 register/latch pins with no clock driven by root clock pin: minesweeper/state_reg[2]/Q (HIGH)
+
+
+2. checking constant_clock
+--------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock
+-----------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints
+--------------------------------------------
+ There are 29 pins that are not constrained for maximum delay. (HIGH)
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay
+--------------------------
+ There are 5 input ports with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay
+---------------------------
+ There are 33 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock
+--------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks
+----------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops
+-----------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay
+--------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay
+---------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops
+------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+     -0.781     -130.087                    374                 5938        0.079        0.000                      0                 5938        3.000        0.000                       0                  2275  
+
+
+Timing constraints are not met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock                 Waveform(ns)       Period(ns)      Frequency(MHz)
+-----                 ------------       ----------      --------------
+sys_clk_pin           {0.000 5.000}      10.000          100.000         
+  clk_out1_clk_wiz_0  {0.000 7.692}      15.385          65.000          
+  clkfbout_clk_wiz_0  {0.000 25.000}     50.000          20.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock                     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----                     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+sys_clk_pin                                                                                                                                                             3.000        0.000                       0                     1  
+  clk_out1_clk_wiz_0       -0.781     -130.087                    374                 5938        0.079        0.000                      0                 5938        6.442        0.000                       0                  2271  
+  clkfbout_clk_wiz_0                                                                                                                                                   47.845        0.000                       0                     3  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk_pin
+  To Clock:  sys_clk_pin
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        3.000ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk_pin
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { clk_100mhz }
+
+Check Type        Corner  Lib Pin            Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
+Min Period        n/a     MMCME2_ADV/CLKIN1  n/a            1.249         10.000      8.751      MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+Max Period        n/a     MMCME2_ADV/CLKIN1  n/a            100.000       10.000      90.000     MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+Low Pulse Width   Slow    MMCME2_ADV/CLKIN1  n/a            2.000         5.000       3.000      MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+Low Pulse Width   Fast    MMCME2_ADV/CLKIN1  n/a            2.000         5.000       3.000      MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+High Pulse Width  Fast    MMCME2_ADV/CLKIN1  n/a            2.000         5.000       3.000      MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+High Pulse Width  Slow    MMCME2_ADV/CLKIN1  n/a            2.000         5.000       3.000      MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKIN1
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clk_out1_clk_wiz_0
+  To Clock:  clk_out1_clk_wiz_0
+
+Setup :          374  Failing Endpoints,  Worst Slack       -0.781ns,  Total Violation     -130.087ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.079ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        6.442ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (VIOLATED) :        -0.781ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[12][5][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.938ns  (logic 4.984ns (31.271%)  route 10.954ns (68.729%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.126ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.513ns = ( 13.871 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.143    14.098    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X61Y53         LUT6 (Prop_lut6_I1_O)        0.124    14.222 r  MouseCtl/tile_status[12][5][1]_i_4/O
+                         net (fo=2, routed)           0.692    14.914    MouseCtl/tile_status[12][5][1]_i_4_n_0
+    SLICE_X61Y59         LUT6 (Prop_lut6_I4_O)        0.124    15.038 r  MouseCtl/tile_status[12][5][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.038    minesweeper/tile_status_reg[12][5][1]_1
+    SLICE_X61Y59         FDRE                                         r  minesweeper/tile_status_reg[12][5][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.507    13.871    minesweeper/clk_65mhz
+    SLICE_X61Y59         FDRE                                         r  minesweeper/tile_status_reg[12][5][1]/C
+                         clock pessimism              0.487    14.359    
+                         clock uncertainty           -0.130    14.229    
+    SLICE_X61Y59         FDRE (Setup_fdre_C_D)        0.029    14.258    minesweeper/tile_status_reg[12][5][1]
+  -------------------------------------------------------------------
+                         required time                         14.258    
+                         arrival time                         -15.038    
+  -------------------------------------------------------------------
+                         slack                                 -0.781    
+
+Slack (VIOLATED) :        -0.778ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[12][5][0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.943ns  (logic 4.984ns (31.262%)  route 10.959ns (68.738%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.121ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.508ns = ( 13.876 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.143    14.098    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X61Y53         LUT6 (Prop_lut6_I1_O)        0.124    14.222 r  MouseCtl/tile_status[12][5][1]_i_4/O
+                         net (fo=2, routed)           0.697    14.919    MouseCtl/tile_status[12][5][1]_i_4_n_0
+    SLICE_X65Y55         LUT6 (Prop_lut6_I4_O)        0.124    15.043 r  MouseCtl/tile_status[12][5][0]_i_1/O
+                         net (fo=1, routed)           0.000    15.043    minesweeper/tile_status_reg[12][5][0]_1
+    SLICE_X65Y55         FDRE                                         r  minesweeper/tile_status_reg[12][5][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.512    13.876    minesweeper/clk_65mhz
+    SLICE_X65Y55         FDRE                                         r  minesweeper/tile_status_reg[12][5][0]/C
+                         clock pessimism              0.487    14.364    
+                         clock uncertainty           -0.130    14.234    
+    SLICE_X65Y55         FDRE (Setup_fdre_C_D)        0.031    14.265    minesweeper/tile_status_reg[12][5][0]
+  -------------------------------------------------------------------
+                         required time                         14.265    
+                         arrival time                         -15.043    
+  -------------------------------------------------------------------
+                         slack                                 -0.778    
+
+Slack (VIOLATED) :        -0.775ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[9][12][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        16.155ns  (logic 4.984ns (30.851%)  route 11.171ns (69.149%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        0.045ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.343ns = ( 14.042 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 r  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 r  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 f  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 f  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 f  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 r  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 f  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.486    12.567    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X57Y52         LUT3 (Prop_lut3_I0_O)        0.124    12.691 f  minesweeper/tile_status[3][0][1]_i_11/O
+                         net (fo=146, routed)         1.648    14.338    MouseCtl/tile_status_reg[4][2][0]_1
+    SLICE_X66Y50         LUT6 (Prop_lut6_I3_O)        0.124    14.462 r  MouseCtl/tile_status[9][12][1]_i_4/O
+                         net (fo=2, routed)           0.669    15.131    MouseCtl/tile_status[9][12][1]_i_4_n_0
+    SLICE_X66Y47         LUT6 (Prop_lut6_I4_O)        0.124    15.255 r  MouseCtl/tile_status[9][12][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.255    minesweeper/tile_status_reg[9][12][1]_1
+    SLICE_X66Y47         FDRE                                         r  minesweeper/tile_status_reg[9][12][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.678    14.042    minesweeper/clk_65mhz
+    SLICE_X66Y47         FDRE                                         r  minesweeper/tile_status_reg[9][12][1]/C
+                         clock pessimism              0.487    14.530    
+                         clock uncertainty           -0.130    14.399    
+    SLICE_X66Y47         FDRE (Setup_fdre_C_D)        0.081    14.480    minesweeper/tile_status_reg[9][12][1]
+  -------------------------------------------------------------------
+                         required time                         14.480    
+                         arrival time                         -15.255    
+  -------------------------------------------------------------------
+                         slack                                 -0.775    
+
+Slack (VIOLATED) :        -0.771ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[3][7][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.934ns  (logic 4.984ns (31.278%)  route 10.950ns (68.722%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.120ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.507ns = ( 13.877 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.243    14.198    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X64Y51         LUT6 (Prop_lut6_I1_O)        0.124    14.322 r  MouseCtl/tile_status[3][7][1]_i_4/O
+                         net (fo=2, routed)           0.588    14.911    MouseCtl/tile_status[3][7][1]_i_4_n_0
+    SLICE_X69Y50         LUT6 (Prop_lut6_I4_O)        0.124    15.035 r  MouseCtl/tile_status[3][7][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.035    minesweeper/tile_status_reg[3][7][1]_1
+    SLICE_X69Y50         FDRE                                         r  minesweeper/tile_status_reg[3][7][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.513    13.877    minesweeper/clk_65mhz
+    SLICE_X69Y50         FDRE                                         r  minesweeper/tile_status_reg[3][7][1]/C
+                         clock pessimism              0.487    14.365    
+                         clock uncertainty           -0.130    14.235    
+    SLICE_X69Y50         FDRE (Setup_fdre_C_D)        0.029    14.264    minesweeper/tile_status_reg[3][7][1]
+  -------------------------------------------------------------------
+                         required time                         14.264    
+                         arrival time                         -15.035    
+  -------------------------------------------------------------------
+                         slack                                 -0.771    
+
+Slack (VIOLATED) :        -0.769ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[2][5][0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        16.135ns  (logic 4.984ns (30.889%)  route 11.151ns (69.111%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        0.035ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.353ns = ( 14.032 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.524    14.479    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X56Y42         LUT6 (Prop_lut6_I1_O)        0.124    14.603 r  MouseCtl/tile_status[2][5][1]_i_4/O
+                         net (fo=2, routed)           0.508    15.111    MouseCtl/tile_status[2][5][1]_i_4_n_0
+    SLICE_X56Y40         LUT6 (Prop_lut6_I4_O)        0.124    15.235 r  MouseCtl/tile_status[2][5][0]_i_1/O
+                         net (fo=1, routed)           0.000    15.235    minesweeper/tile_status_reg[2][5][0]_1
+    SLICE_X56Y40         FDRE                                         r  minesweeper/tile_status_reg[2][5][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.668    14.032    minesweeper/clk_65mhz
+    SLICE_X56Y40         FDRE                                         r  minesweeper/tile_status_reg[2][5][0]/C
+                         clock pessimism              0.487    14.520    
+                         clock uncertainty           -0.130    14.389    
+    SLICE_X56Y40         FDRE (Setup_fdre_C_D)        0.077    14.466    minesweeper/tile_status_reg[2][5][0]
+  -------------------------------------------------------------------
+                         required time                         14.466    
+                         arrival time                         -15.235    
+  -------------------------------------------------------------------
+                         slack                                 -0.769    
+
+Slack (VIOLATED) :        -0.765ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[12][7][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.974ns  (logic 4.984ns (31.202%)  route 10.990ns (68.798%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.123ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.510ns = ( 13.874 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.339    14.294    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X61Y52         LUT6 (Prop_lut6_I1_O)        0.124    14.418 r  MouseCtl/tile_status[12][7][1]_i_4/O
+                         net (fo=2, routed)           0.532    14.950    MouseCtl/tile_status[12][7][1]_i_4_n_0
+    SLICE_X60Y52         LUT6 (Prop_lut6_I4_O)        0.124    15.074 r  MouseCtl/tile_status[12][7][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.074    minesweeper/tile_status_reg[12][7][1]_1
+    SLICE_X60Y52         FDRE                                         r  minesweeper/tile_status_reg[12][7][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.510    13.874    minesweeper/clk_65mhz
+    SLICE_X60Y52         FDRE                                         r  minesweeper/tile_status_reg[12][7][1]/C
+                         clock pessimism              0.487    14.362    
+                         clock uncertainty           -0.130    14.232    
+    SLICE_X60Y52         FDRE (Setup_fdre_C_D)        0.077    14.309    minesweeper/tile_status_reg[12][7][1]
+  -------------------------------------------------------------------
+                         required time                         14.309    
+                         arrival time                         -15.074    
+  -------------------------------------------------------------------
+                         slack                                 -0.765    
+
+Slack (VIOLATED) :        -0.756ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[5][12][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.919ns  (logic 4.984ns (31.308%)  route 10.935ns (68.692%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=1 LUT4=2 LUT5=2 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.122ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.509ns = ( 13.875 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 r  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 r  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 f  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 f  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 f  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 r  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 f  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         1.490    13.571    MouseCtl/tile_status[1][0][1]_i_12
+    SLICE_X72Y57         LUT6 (Prop_lut6_I0_O)        0.124    13.695 f  MouseCtl/tile_status[5][12][1]_i_4/O
+                         net (fo=1, routed)           0.528    14.222    MouseCtl/tile_status[5][12][1]_i_4_n_0
+    SLICE_X68Y57         LUT5 (Prop_lut5_I3_O)        0.124    14.346 r  MouseCtl/tile_status[5][12][1]_i_2/O
+                         net (fo=2, routed)           0.549    14.895    MouseCtl/tile_status[5][12][1]_i_2_n_0
+    SLICE_X68Y57         LUT6 (Prop_lut6_I4_O)        0.124    15.019 r  MouseCtl/tile_status[5][12][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.019    minesweeper/tile_status_reg[5][12][1]_1
+    SLICE_X68Y57         FDRE                                         r  minesweeper/tile_status_reg[5][12][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.511    13.875    minesweeper/clk_65mhz
+    SLICE_X68Y57         FDRE                                         r  minesweeper/tile_status_reg[5][12][1]/C
+                         clock pessimism              0.487    14.363    
+                         clock uncertainty           -0.130    14.233    
+    SLICE_X68Y57         FDRE (Setup_fdre_C_D)        0.031    14.264    minesweeper/tile_status_reg[5][12][1]
+  -------------------------------------------------------------------
+                         required time                         14.264    
+                         arrival time                         -15.019    
+  -------------------------------------------------------------------
+                         slack                                 -0.756    
+
+Slack (VIOLATED) :        -0.753ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[12][7][0]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.967ns  (logic 4.984ns (31.214%)  route 10.983ns (68.786%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        -0.121ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.508ns = ( 13.876 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.339    14.294    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X61Y52         LUT6 (Prop_lut6_I1_O)        0.124    14.418 r  MouseCtl/tile_status[12][7][1]_i_4/O
+                         net (fo=2, routed)           0.525    14.943    MouseCtl/tile_status[12][7][1]_i_4_n_0
+    SLICE_X62Y52         LUT6 (Prop_lut6_I4_O)        0.124    15.067 r  MouseCtl/tile_status[12][7][0]_i_1/O
+                         net (fo=1, routed)           0.000    15.067    minesweeper/tile_status_reg[12][7][0]_1
+    SLICE_X62Y52         FDRE                                         r  minesweeper/tile_status_reg[12][7][0]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.512    13.876    minesweeper/clk_65mhz
+    SLICE_X62Y52         FDRE                                         r  minesweeper/tile_status_reg[12][7][0]/C
+                         clock pessimism              0.487    14.364    
+                         clock uncertainty           -0.130    14.234    
+    SLICE_X62Y52         FDRE (Setup_fdre_C_D)        0.081    14.315    minesweeper/tile_status_reg[12][7][0]
+  -------------------------------------------------------------------
+                         required time                         14.315    
+                         arrival time                         -15.067    
+  -------------------------------------------------------------------
+                         slack                                 -0.753    
+
+Slack (VIOLATED) :        -0.744ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[11][6][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        15.954ns  (logic 4.979ns (31.208%)  route 10.975ns (68.792%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=1 LUT4=4 LUT5=2 LUT6=5 MUXF7=1)
+  Clock Path Skew:        -0.121ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.508ns = ( 13.876 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.173     6.727    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X41Y54         LUT4 (Prop_lut4_I1_O)        0.124     6.851 f  MouseCtl/tile_status[2][0][1]_i_8/O
+                         net (fo=110, routed)         0.991     7.841    MouseCtl/ypos_reg[11]_12
+    SLICE_X45Y54         LUT6 (Prop_lut6_I0_O)        0.124     7.965 r  MouseCtl/tile_status[0][0][1]_i_50/O
+                         net (fo=2, routed)           0.592     8.557    MouseCtl/tile_status[0][0][1]_i_50_n_0
+    SLICE_X47Y54         LUT4 (Prop_lut4_I0_O)        0.124     8.681 r  MouseCtl/tile_status[0][0][0]_i_76/O
+                         net (fo=1, routed)           0.639     9.320    MouseCtl/tile_status[0][0][0]_i_76_n_0
+    SLICE_X47Y53         LUT6 (Prop_lut6_I1_O)        0.124     9.444 r  MouseCtl/tile_status[0][0][0]_i_31/O
+                         net (fo=1, routed)           0.000     9.444    MouseCtl/tile_status[0][0][0]_i_31_n_0
+    SLICE_X47Y53         MUXF7 (Prop_muxf7_I0_O)      0.212     9.656 r  MouseCtl/tile_status_reg[0][0][0]_i_10/O
+                         net (fo=1, routed)           0.744    10.400    MouseCtl/tile_status_reg[0][0][0]_i_10_n_0
+    SLICE_X54Y55         LUT5 (Prop_lut5_I2_O)        0.299    10.699 f  MouseCtl/tile_status[0][0][0]_i_3/O
+                         net (fo=6, routed)           0.713    11.412    MouseCtl/tile_status[0][0][0]_i_3_n_0
+    SLICE_X55Y55         LUT6 (Prop_lut6_I0_O)        0.124    11.536 f  MouseCtl/tile_status[4][0][0]_i_2/O
+                         net (fo=98, routed)          0.929    12.465    minesweeper/tile_status_reg[2][9][0]_2
+    SLICE_X56Y54         LUT4 (Prop_lut4_I0_O)        0.124    12.589 r  minesweeper/tile_status[2][4][1]_i_4/O
+                         net (fo=86, routed)          1.785    14.374    MouseCtl/tile_status_reg[2][6][0]_0
+    SLICE_X70Y54         LUT6 (Prop_lut6_I0_O)        0.124    14.498 r  MouseCtl/tile_status[11][6][1]_i_4/O
+                         net (fo=2, routed)           0.432    14.930    MouseCtl/tile_status[11][6][1]_i_4_n_0
+    SLICE_X70Y55         LUT6 (Prop_lut6_I4_O)        0.124    15.054 r  MouseCtl/tile_status[11][6][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.054    minesweeper/tile_status_reg[11][6][1]_1
+    SLICE_X70Y55         FDRE                                         r  minesweeper/tile_status_reg[11][6][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.512    13.876    minesweeper/clk_65mhz
+    SLICE_X70Y55         FDRE                                         r  minesweeper/tile_status_reg[11][6][1]/C
+                         clock pessimism              0.487    14.364    
+                         clock uncertainty           -0.130    14.234    
+    SLICE_X70Y55         FDRE (Setup_fdre_C_D)        0.077    14.311    minesweeper/tile_status_reg[11][6][1]
+  -------------------------------------------------------------------
+                         required time                         14.311    
+                         arrival time                         -15.054    
+  -------------------------------------------------------------------
+                         slack                                 -0.744    
+
+Slack (VIOLATED) :        -0.708ns  (required time - arrival time)
+  Source:                 MouseCtl/ypos_reg[1]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            minesweeper/tile_status_reg[8][12][1]/D
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            15.385ns  (clk_out1_clk_wiz_0 rise@15.385ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        16.032ns  (logic 4.984ns (31.088%)  route 11.048ns (68.912%))
+  Logic Levels:           20  (CARRY4=6 LUT1=1 LUT3=2 LUT4=2 LUT5=1 LUT6=7 MUXF7=1)
+  Clock Path Skew:        0.041ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -1.347ns = ( 14.038 - 15.385 ) 
+    Source Clock Delay      (SCD):    -0.900ns
+    Clock Pessimism Removal (CPR):    0.487ns
+  Clock Uncertainty:      0.130ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.251ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.482     1.482 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.233     2.715    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.070    -4.355 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.719    -2.636    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.096    -2.540 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.640    -0.900    MouseCtl/clk_65mhz
+    SLICE_X39Y51         FDRE                                         r  MouseCtl/ypos_reg[1]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y51         FDRE (Prop_fdre_C_Q)         0.456    -0.444 r  MouseCtl/ypos_reg[1]/Q
+                         net (fo=6, routed)           0.601     0.157    MouseCtl/Q[1]
+    SLICE_X41Y51         LUT3 (Prop_lut3_I0_O)        0.124     0.281 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69/O
+                         net (fo=3, routed)           0.559     0.840    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_69_n_0
+    SLICE_X39Y51         LUT5 (Prop_lut5_I3_O)        0.124     0.964 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43/O
+                         net (fo=1, routed)           0.646     1.610    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_43_n_0
+    SLICE_X38Y51         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     2.014 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10/CO[3]
+                         net (fo=1, routed)           0.000     2.014    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_10_n_0
+    SLICE_X38Y52         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.131 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5/CO[3]
+                         net (fo=1, routed)           0.000     2.131    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_5_n_0
+    SLICE_X38Y53         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     2.350 f  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_8/O[0]
+                         net (fo=203, routed)         0.593     2.943    MouseCtl_n_458
+    SLICE_X39Y53         LUT1 (Prop_lut1_I0_O)        0.295     3.238 r  bomb_locations_reg_r7_0_15_0_0_i_63/O
+                         net (fo=1, routed)           0.000     3.238    bomb_locations_reg_r7_0_15_0_0_i_63_n_0
+    SLICE_X39Y53         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     3.788 r  bomb_locations_reg_r7_0_15_0_0_i_28/CO[3]
+                         net (fo=1, routed)           0.000     3.788    bomb_locations_reg_r7_0_15_0_0_i_28_n_0
+    SLICE_X39Y54         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     4.122 r  bomb_locations_reg_r7_0_15_0_0_i_7/O[1]
+                         net (fo=3, routed)           0.579     4.701    MouseCtl/tile_status_reg[6][13][0]_1[1]
+    SLICE_X40Y54         LUT4 (Prop_lut4_I2_O)        0.303     5.004 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26/O
+                         net (fo=1, routed)           0.000     5.004    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_26_n_0
+    SLICE_X40Y54         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.550     5.554 r  MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6/CO[3]
+                         net (fo=94, routed)          1.223     6.777    MouseCtl/bomb_locations_reg_r7_0_15_0_0_i_6_n_0
+    SLICE_X37Y50         LUT4 (Prop_lut4_I1_O)        0.124     6.901 f  MouseCtl/tile_status[1][0][1]_i_117/O
+                         net (fo=154, routed)         1.219     8.120    MouseCtl/y_bin_0[0]
+    SLICE_X44Y49         LUT6 (Prop_lut6_I4_O)        0.124     8.244 f  MouseCtl/tile_status[1][0][1]_i_277/O
+                         net (fo=1, routed)           0.643     8.887    MouseCtl/tile_status[1][0][1]_i_277_n_0
+    SLICE_X45Y49         LUT6 (Prop_lut6_I4_O)        0.124     9.011 r  MouseCtl/tile_status[1][0][1]_i_128/O
+                         net (fo=1, routed)           0.636     9.647    MouseCtl/tile_status[1][0][1]_i_128_n_0
+    SLICE_X45Y51         LUT6 (Prop_lut6_I0_O)        0.124     9.771 r  MouseCtl/tile_status[1][0][1]_i_49/O
+                         net (fo=1, routed)           0.000     9.771    MouseCtl/tile_status[1][0][1]_i_49_n_0
+    SLICE_X45Y51         MUXF7 (Prop_muxf7_I1_O)      0.217     9.988 r  MouseCtl/tile_status_reg[1][0][1]_i_18/O
+                         net (fo=1, routed)           0.821    10.808    MouseCtl/tile_status_reg[1][0][1]_i_18_n_0
+    SLICE_X47Y51         LUT6 (Prop_lut6_I4_O)        0.299    11.107 f  MouseCtl/tile_status[1][0][1]_i_8/O
+                         net (fo=1, routed)           0.849    11.957    MouseCtl/tile_status[1][0][1]_i_8_n_0
+    SLICE_X54Y52         LUT6 (Prop_lut6_I1_O)        0.124    12.081 r  MouseCtl/tile_status[1][0][1]_i_4/O
+                         net (fo=103, routed)         0.751    12.831    minesweeper/tile_status_reg[1][0][0]_1
+    SLICE_X56Y52         LUT3 (Prop_lut3_I2_O)        0.124    12.955 f  minesweeper/tile_status[3][0][1]_i_9/O
+                         net (fo=82, routed)          1.343    14.298    MouseCtl/tile_status_reg[6][0][0]_1
+    SLICE_X61Y45         LUT6 (Prop_lut6_I0_O)        0.124    14.422 r  MouseCtl/tile_status[8][12][1]_i_4/O
+                         net (fo=2, routed)           0.586    15.008    MouseCtl/tile_status[8][12][1]_i_4_n_0
+    SLICE_X61Y46         LUT6 (Prop_lut6_I4_O)        0.124    15.132 r  MouseCtl/tile_status[8][12][1]_i_1/O
+                         net (fo=1, routed)           0.000    15.132    minesweeper/tile_status_reg[8][12][1]_1
+    SLICE_X61Y46         FDRE                                         r  minesweeper/tile_status_reg[8][12][1]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                     15.385    15.385 r  
+    E3                                                0.000    15.385 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000    15.385    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         1.411    16.796 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           1.162    17.958    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -7.324    10.634 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           1.639    12.273    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.091    12.364 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        1.674    14.038    minesweeper/clk_65mhz
+    SLICE_X61Y46         FDRE                                         r  minesweeper/tile_status_reg[8][12][1]/C
+                         clock pessimism              0.487    14.526    
+                         clock uncertainty           -0.130    14.395    
+    SLICE_X61Y46         FDRE (Setup_fdre_C_D)        0.029    14.424    minesweeper/tile_status_reg[8][12][1]
+  -------------------------------------------------------------------
+                         required time                         14.424    
+                         arrival time                         -15.132    
+  -------------------------------------------------------------------
+                         slack                                 -0.708    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+                            (rising edge-triggered cell FDPE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/bit_count_reg[0]/R
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.412ns  (logic 0.164ns (39.806%)  route 0.248ns (60.194%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.324ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.741ns
+    Source Clock Delay      (SCD):    -0.561ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.603    -0.561    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X80Y50         FDPE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X80Y50         FDPE (Prop_fdpe_C_Q)         0.164    -0.397 r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/Q
+                         net (fo=8, routed)           0.248    -0.149    MouseCtl/Inst_Ps2Interface/reset_bit_count
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.932    -0.741    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[0]/C
+                         clock pessimism              0.504    -0.237    
+    SLICE_X78Y49         FDRE (Hold_fdre_C_R)         0.009    -0.228    MouseCtl/Inst_Ps2Interface/bit_count_reg[0]
+  -------------------------------------------------------------------
+                         required time                          0.228    
+                         arrival time                          -0.149    
+  -------------------------------------------------------------------
+                         slack                                  0.079    
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+                            (rising edge-triggered cell FDPE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/bit_count_reg[1]/R
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.412ns  (logic 0.164ns (39.806%)  route 0.248ns (60.194%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.324ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.741ns
+    Source Clock Delay      (SCD):    -0.561ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.603    -0.561    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X80Y50         FDPE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X80Y50         FDPE (Prop_fdpe_C_Q)         0.164    -0.397 r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/Q
+                         net (fo=8, routed)           0.248    -0.149    MouseCtl/Inst_Ps2Interface/reset_bit_count
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[1]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.932    -0.741    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[1]/C
+                         clock pessimism              0.504    -0.237    
+    SLICE_X78Y49         FDRE (Hold_fdre_C_R)         0.009    -0.228    MouseCtl/Inst_Ps2Interface/bit_count_reg[1]
+  -------------------------------------------------------------------
+                         required time                          0.228    
+                         arrival time                          -0.149    
+  -------------------------------------------------------------------
+                         slack                                  0.079    
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+                            (rising edge-triggered cell FDPE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/R
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.412ns  (logic 0.164ns (39.806%)  route 0.248ns (60.194%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.324ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.741ns
+    Source Clock Delay      (SCD):    -0.561ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.603    -0.561    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X80Y50         FDPE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X80Y50         FDPE (Prop_fdpe_C_Q)         0.164    -0.397 r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/Q
+                         net (fo=8, routed)           0.248    -0.149    MouseCtl/Inst_Ps2Interface/reset_bit_count
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.932    -0.741    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/C
+                         clock pessimism              0.504    -0.237    
+    SLICE_X78Y49         FDRE (Hold_fdre_C_R)         0.009    -0.228    MouseCtl/Inst_Ps2Interface/bit_count_reg[2]
+  -------------------------------------------------------------------
+                         required time                          0.228    
+                         arrival time                          -0.149    
+  -------------------------------------------------------------------
+                         slack                                  0.079    
+
+Slack (MET) :             0.079ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+                            (rising edge-triggered cell FDPE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/bit_count_reg[3]/R
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.412ns  (logic 0.164ns (39.806%)  route 0.248ns (60.194%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.324ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.741ns
+    Source Clock Delay      (SCD):    -0.561ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.603    -0.561    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X80Y50         FDPE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X80Y50         FDPE (Prop_fdpe_C_Q)         0.164    -0.397 r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[0]/Q
+                         net (fo=8, routed)           0.248    -0.149    MouseCtl/Inst_Ps2Interface/reset_bit_count
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[3]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.932    -0.741    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[3]/C
+                         clock pessimism              0.504    -0.237    
+    SLICE_X78Y49         FDRE (Hold_fdre_C_R)         0.009    -0.228    MouseCtl/Inst_Ps2Interface/bit_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                          0.228    
+                         arrival time                          -0.149    
+  -------------------------------------------------------------------
+                         slack                                  0.079    
+
+Slack (MET) :             0.108ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[3]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.440ns  (logic 0.209ns (47.451%)  route 0.231ns (52.549%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.211ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.800ns
+    Source Clock Delay      (SCD):    -0.508ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.656    -0.508    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y49         FDRE                                         r  MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X78Y49         FDRE (Prop_fdre_C_Q)         0.164    -0.344 r  MouseCtl/Inst_Ps2Interface/bit_count_reg[2]/Q
+                         net (fo=8, routed)           0.231    -0.112    MouseCtl/Inst_Ps2Interface/bit_count_reg[2]
+    SLICE_X78Y51         LUT6 (Prop_lut6_I2_O)        0.045    -0.067 r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state[3]_i_1/O
+                         net (fo=1, routed)           0.000    -0.067    MouseCtl/Inst_Ps2Interface/FSM_onehot_state[3]_i_1_n_0
+    SLICE_X78Y51         FDCE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.873    -0.800    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X78Y51         FDCE                                         r  MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[3]/C
+                         clock pessimism              0.504    -0.296    
+    SLICE_X78Y51         FDCE (Hold_fdce_C_D)         0.121    -0.175    MouseCtl/Inst_Ps2Interface/FSM_onehot_state_reg[3]
+  -------------------------------------------------------------------
+                         required time                          0.175    
+                         arrival time                          -0.067    
+  -------------------------------------------------------------------
+                         slack                                  0.108    
+
+Slack (MET) :             0.110ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/rx_data_reg[0]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.663%)  route 0.278ns (66.337%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.325ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.742ns
+    Source Clock Delay      (SCD):    -0.563ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.601    -0.563    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X79Y50         FDRE                                         r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X79Y50         FDRE (Prop_fdre_C_Q)         0.141    -0.422 r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/Q
+                         net (fo=8, routed)           0.278    -0.144    MouseCtl/Inst_Ps2Interface/load_rx_data
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.931    -0.742    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[0]/C
+                         clock pessimism              0.504    -0.238    
+    SLICE_X74Y47         FDRE (Hold_fdre_C_CE)       -0.016    -0.254    MouseCtl/Inst_Ps2Interface/rx_data_reg[0]
+  -------------------------------------------------------------------
+                         required time                          0.254    
+                         arrival time                          -0.144    
+  -------------------------------------------------------------------
+                         slack                                  0.110    
+
+Slack (MET) :             0.110ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/rx_data_reg[1]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.663%)  route 0.278ns (66.337%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.325ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.742ns
+    Source Clock Delay      (SCD):    -0.563ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.601    -0.563    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X79Y50         FDRE                                         r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X79Y50         FDRE (Prop_fdre_C_Q)         0.141    -0.422 r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/Q
+                         net (fo=8, routed)           0.278    -0.144    MouseCtl/Inst_Ps2Interface/load_rx_data
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.931    -0.742    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[1]/C
+                         clock pessimism              0.504    -0.238    
+    SLICE_X74Y47         FDRE (Hold_fdre_C_CE)       -0.016    -0.254    MouseCtl/Inst_Ps2Interface/rx_data_reg[1]
+  -------------------------------------------------------------------
+                         required time                          0.254    
+                         arrival time                          -0.144    
+  -------------------------------------------------------------------
+                         slack                                  0.110    
+
+Slack (MET) :             0.110ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/rx_data_reg[2]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.663%)  route 0.278ns (66.337%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.325ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.742ns
+    Source Clock Delay      (SCD):    -0.563ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.601    -0.563    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X79Y50         FDRE                                         r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X79Y50         FDRE (Prop_fdre_C_Q)         0.141    -0.422 r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/Q
+                         net (fo=8, routed)           0.278    -0.144    MouseCtl/Inst_Ps2Interface/load_rx_data
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.931    -0.742    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[2]/C
+                         clock pessimism              0.504    -0.238    
+    SLICE_X74Y47         FDRE (Hold_fdre_C_CE)       -0.016    -0.254    MouseCtl/Inst_Ps2Interface/rx_data_reg[2]
+  -------------------------------------------------------------------
+                         required time                          0.254    
+                         arrival time                          -0.144    
+  -------------------------------------------------------------------
+                         slack                                  0.110    
+
+Slack (MET) :             0.110ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/rx_data_reg[3]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.663%)  route 0.278ns (66.337%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.325ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.742ns
+    Source Clock Delay      (SCD):    -0.563ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.601    -0.563    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X79Y50         FDRE                                         r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X79Y50         FDRE (Prop_fdre_C_Q)         0.141    -0.422 r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/Q
+                         net (fo=8, routed)           0.278    -0.144    MouseCtl/Inst_Ps2Interface/load_rx_data
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.931    -0.742    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[3]/C
+                         clock pessimism              0.504    -0.238    
+    SLICE_X74Y47         FDRE (Hold_fdre_C_CE)       -0.016    -0.254    MouseCtl/Inst_Ps2Interface/rx_data_reg[3]
+  -------------------------------------------------------------------
+                         required time                          0.254    
+                         arrival time                          -0.144    
+  -------------------------------------------------------------------
+                         slack                                  0.110    
+
+Slack (MET) :             0.110ns  (arrival time - required time)
+  Source:                 MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Destination:            MouseCtl/Inst_Ps2Interface/rx_data_reg[5]/CE
+                            (rising edge-triggered cell FDRE clocked by clk_out1_clk_wiz_0  {rise@0.000ns fall@7.692ns period=15.385ns})
+  Path Group:             clk_out1_clk_wiz_0
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (clk_out1_clk_wiz_0 rise@0.000ns - clk_out1_clk_wiz_0 rise@0.000ns)
+  Data Path Delay:        0.419ns  (logic 0.141ns (33.663%)  route 0.278ns (66.337%))
+  Logic Levels:           0  
+  Clock Path Skew:        0.325ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    -0.742ns
+    Source Clock Delay      (SCD):    -0.563ns
+    Clock Pessimism Removal (CPR):    -0.504ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.250     0.250 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.440     0.690    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -2.379    -1.689 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.499    -1.190    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.026    -1.164 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.601    -0.563    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X79Y50         FDRE                                         r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X79Y50         FDRE (Prop_fdre_C_Q)         0.141    -0.422 r  MouseCtl/Inst_Ps2Interface/load_rx_data_reg/Q
+                         net (fo=8, routed)           0.278    -0.144    MouseCtl/Inst_Ps2Interface/load_rx_data
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[5]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk_out1_clk_wiz_0 rise edge)
+                                                      0.000     0.000 r  
+    E3                                                0.000     0.000 r  clk_100mhz (IN)
+                         net (fo=0)                   0.000     0.000    clkdivider/clk_100mhz
+    E3                   IBUF (Prop_ibuf_I_O)         0.438     0.438 r  clkdivider/clkin1_ibufg/O
+                         net (fo=1, routed)           0.480     0.918    clkdivider/clk_in1_clk_wiz_0
+    MMCME2_ADV_X1Y2      MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -3.163    -2.245 r  clkdivider/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, routed)           0.544    -1.702    clkdivider/clk_out1_clk_wiz_0
+    BUFGCTRL_X0Y16       BUFG (Prop_bufg_I_O)         0.029    -1.673 r  clkdivider/clkout1_buf/O
+                         net (fo=2270, routed)        0.931    -0.742    MouseCtl/Inst_Ps2Interface/clk_65mhz
+    SLICE_X74Y47         FDRE                                         r  MouseCtl/Inst_Ps2Interface/rx_data_reg[5]/C
+                         clock pessimism              0.504    -0.238    
+    SLICE_X74Y47         FDRE (Hold_fdre_C_CE)       -0.016    -0.254    MouseCtl/Inst_Ps2Interface/rx_data_reg[5]
+  -------------------------------------------------------------------
+                         required time                          0.254    
+                         arrival time                          -0.144    
+  -------------------------------------------------------------------
+                         slack                                  0.110    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clk_out1_clk_wiz_0
+Waveform(ns):       { 0.000 7.692 }
+Period(ns):         15.385
+Sources:            { clkdivider/mmcm_adv_inst/CLKOUT0 }
+
+Check Type        Corner  Lib Pin             Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y35     minesweeper/td/fd_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y35     minesweeper/td/fd_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y14     minesweeper/td/four_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y14     minesweeper/td/four_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         15.385      12.809     RAMB18_X2Y22     minesweeper/td/one_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         15.385      12.809     RAMB18_X2Y22     minesweeper/td/one_bcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         15.385      12.809     RAMB18_X3Y28     minesweeper/td/zero_rcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         15.385      12.809     RAMB18_X3Y28     minesweeper/td/zero_rcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKBWRCLK
+Min Period        n/a     RAMB18E1/CLKARDCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y38     minesweeper/td/fd_gcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKARDCLK
+Min Period        n/a     RAMB18E1/CLKBWRCLK  n/a            2.576         15.385      12.809     RAMB18_X1Y38     minesweeper/td/fd_gcm/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.WIDE_PRIM18.ram/CLKBWRCLK
+Max Period        n/a     MMCME2_ADV/CLKOUT0  n/a            213.360       15.385      197.975    MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKOUT0
+Low Pulse Width   Slow    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMA/CLK
+Low Pulse Width   Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMA/CLK
+Low Pulse Width   Slow    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMA_D1/CLK
+Low Pulse Width   Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMA_D1/CLK
+Low Pulse Width   Slow    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMB/CLK
+Low Pulse Width   Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMB/CLK
+Low Pulse Width   Slow    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMB_D1/CLK
+Low Pulse Width   Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMB_D1/CLK
+Low Pulse Width   Slow    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMC/CLK
+Low Pulse Width   Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y60     minesweeper/bomb_locations_reg_0_15_0_1/RAMC/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X34Y67     minesweeper/bomb_locations_reg_r4_0_15_11_11/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X34Y67     minesweeper/bomb_locations_reg_r4_0_15_11_11/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X34Y66     minesweeper/bomb_locations_reg_r4_0_15_12_12/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X34Y66     minesweeper/bomb_locations_reg_r4_0_15_12_12/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y65     minesweeper/bomb_locations_reg_r4_0_15_14_14/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X38Y65     minesweeper/bomb_locations_reg_r4_0_15_14_14/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X42Y64     minesweeper/bomb_locations_reg_r4_0_15_2_2/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X42Y64     minesweeper/bomb_locations_reg_r4_0_15_2_2/SP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X46Y66     minesweeper/bomb_locations_reg_r4_0_15_3_3/DP/CLK
+High Pulse Width  Fast    RAMD32/CLK          n/a            1.250         7.692       6.442      SLICE_X46Y66     minesweeper/bomb_locations_reg_r4_0_15_3_3/SP/CLK
+
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  clkfbout_clk_wiz_0
+  To Clock:  clkfbout_clk_wiz_0
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack       47.845ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         clkfbout_clk_wiz_0
+Waveform(ns):       { 0.000 25.000 }
+Period(ns):         50.000
+Sources:            { clkdivider/mmcm_adv_inst/CLKFBOUT }
+
+Check Type  Corner  Lib Pin              Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location         Pin
+Min Period  n/a     BUFG/I               n/a            2.155         50.000      47.845     BUFGCTRL_X0Y17   clkdivider/clkf_buf/I
+Min Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            1.249         50.000      48.751     MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKFBOUT
+Min Period  n/a     MMCME2_ADV/CLKFBIN   n/a            1.249         50.000      48.751     MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKFBIN
+Max Period  n/a     MMCME2_ADV/CLKFBIN   n/a            100.000       50.000      50.000     MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKFBIN
+Max Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            213.360       50.000      163.360    MMCME2_ADV_X1Y2  clkdivider/mmcm_adv_inst/CLKFBOUT
+
+
+

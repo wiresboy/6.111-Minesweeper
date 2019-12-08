@@ -1,15 +1,8 @@
 `timescale 1ns / 1ps
 
-module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
-	(
+module minesweeper(
 	input clk_65mhz,		// 65MHz clock
 	input reset,			// 1 to initialize module
-
-	input center_in,		// unused?
-	input up_in,			// unused?
-	input down_in,			// unused?
-	input left_in,			// unused?
-	input right_in,			// unused?
 
 	input [11:0] mouse_x,	// Mouse X coord.
 	input [11:0] mouse_y,	// Mouse Y coord.
@@ -48,9 +41,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 	);
 
 	parameter GAME_SIZE = 4'd15; 
-	logic [5:0] BOMBS = 6'd90; //Number of bombs in the game board
-	logic [5:0] temp_bomb_counter = BOMBS; //variable for setting up random game array
-	//logic [5:0] temp_bomb_counter = 0; //variable for setting up random game array
+	logic [6:0] BOMBS = 7'd90; //Number of bombs in the game board
+	logic [6:0] temp_bomb_counter = 0; //variable for setting up random game array
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -67,8 +59,8 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 		'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; //4 bit representation of each tile's adjacent bombs game_sizexgame_size aray of 4-bit numbers 
 
-	logic [5:0] flag_counter=BOMBS; //counts how many flags have been placed
-	logic [5:0] tile_cleared_count = 0; //Game is over when tile_cleared_count == num_tiles-bombs
+	logic [6:0] flag_counter=BOMBS; //counts how many flags have been placed
+	logic [7:0] tile_cleared_count = 0; //Game is over when tile_cleared_count == num_tiles-bombs
 
 	logic[15:0] dec_clk_data,dec_flag_data;
 	hex_2_dec h2d_clk(.hex_in(count_out),.dec_out(dec_clk_data));
@@ -128,7 +120,7 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			mouse_right_edge <= mouse_right_click & !right_old_clean;
         end
 
-		//Buffer VGA timing signals for ROM access
+		//Buffer VGA timing signals for tile_drawer module
 		vsync[7] <= vsync_in;
 		hsync[7] <= hsync_in;
 		blank[7] <= blank_in;
@@ -283,12 +275,13 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 					*/
-			tile_numbers[0:GAME_SIZE-1]= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+			tile_numbers[0:GAME_SIZE-1]<= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; 
 			tile_cleared_count <= 0;
+			temp_bomb_counter <= 0;
 		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
@@ -298,10 +291,10 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 			case(state)
 				IDLE: begin
 					case(sw[1:0])
-						00: BOMBS = 45;
-						01: BOMBS = 60;
-						10: BOMBS = 75;
-						11: BOMBS = 90;
+						2'b00: BOMBS = 45;
+						2'b01: BOMBS = 60;
+						2'b10: BOMBS = 75;
+						2'b11: BOMBS = 90;
 					endcase
 					flag_counter <= BOMBS;
 					sound_effect_start <= 1;
@@ -317,10 +310,10 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 								sound_effect_select <= 3'b1;
 							end
 							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
-							tile_cleared_count <= tile_cleared_count+1;
-							if(tile_cleared_count == 16-BOMBS-1)
+							tile_cleared_count = tile_cleared_count+1;
+							if(tile_cleared_count == 225-BOMBS)begin
 								state <= GG;
-
+							end
 							if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
 								if(y_bin>0) begin
 									tile_status[y_bin-1][x_bin] <= 1;
@@ -355,7 +348,6 @@ module minesweeper#(parameter SCREEN_WIDTH=1024, parameter SCREEN_HEIGHT=768)
 						sound_effect_select <= 2'b011;
 					end
 				end
-
 			endcase
 		end
 	end
@@ -373,7 +365,7 @@ module tile_drawer
     output logic [11:0] pixel_out
 	);
     
-    logic [2:0] curr_tile; //0-8 are possible tile numbers, F is a bomb temporary variable for indexing into tile_numbers array
+    logic [3:0] curr_tile; //0-8 are possible tile numbers, F is a bomb temporary variable for indexing into tile_numbers array
 	//ROM vars
 	logic [15:0] image_addr;
 	logic [10:0] hcount_temp[1:0];
@@ -498,31 +490,31 @@ module tile_drawer
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
 				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; 
 				case(curr_tile)
-					0: begin
+					4'd0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
 					end
-					1: begin
+					4'd1: begin
 						pixel_out <= {one_red_mapped[7:4], one_green_mapped[7:4], one_blue_mapped[7:4]}; 
 					end
-					2: begin
+					4'd2: begin
 						pixel_out <= {two_red_mapped[7:4], two_green_mapped[7:4], two_blue_mapped[7:4]}; 
 					end
-					3: begin
+					4'd3: begin
 						pixel_out <= {three_red_mapped[7:4], three_green_mapped[7:4], three_blue_mapped[7:4]}; 
 					end
-					4: begin
+					4'd4: begin
 						pixel_out <= {four_red_mapped[7:4], four_green_mapped[7:4], four_blue_mapped[7:4]}; 
 					end
-					5: begin
+					4'd5: begin
 						pixel_out <= {five_red_mapped[7:4], five_green_mapped[7:4], five_blue_mapped[7:4]}; 
 					end
-					6: begin
+					4'd6: begin
 						pixel_out <= {six_red_mapped[7:4], six_green_mapped[7:4], six_blue_mapped[7:4]}; 
 					end
-					7: begin
+					4'd7: begin
 						pixel_out <= {seven_red_mapped[7:4], seven_green_mapped[7:4], seven_blue_mapped[7:4]}; 
 					end
-					8: begin
+					4'd8: begin
 						pixel_out <= {eight_red_mapped[7:4], eight_green_mapped[7:4], eight_blue_mapped[7:4]}; 
 					end
 					4'hF: begin
