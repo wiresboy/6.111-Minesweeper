@@ -41,7 +41,7 @@ module minesweeper(
 	);
 
 	parameter GAME_SIZE = 4'd15; 
-	logic [6:0] BOMBS = 7'd90; //Number of bombs in the game board
+	logic [6:0] BOMBS = 7'd25; //Number of bombs in the game board
 	logic [6:0] temp_bomb_counter = 0; //variable for setting up random game array
 
 	logic [0:GAME_SIZE-1] bomb_locations [0:GAME_SIZE-1]='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -193,7 +193,8 @@ module minesweeper(
 			stop_timer <= 1'b1;
 		end
 		if(state == PLACE_BOMBS) begin
-			if(random> 50000 && bomb_locations[y_temp][x_temp] != 1&& (y_temp<y_bin-1 || y_temp>y_bin+1) && (x_temp>x_bin+1 || x_temp <x_bin-1)) begin 
+			if(random> 50000 && bomb_locations[y_temp][x_temp] != 1 && y_temp!= y_bin && x_temp!= x_bin && (y_temp!=y_bin-1 && x_temp!=x_bin-1) && (y_temp!=y_bin-1 && x_temp!=x_bin)&&(y_temp!=y_bin-1 && x_temp!=x_bin+1)
+				&&(y_temp!=y_bin && x_temp!=x_bin-1)&&(y_temp!=y_bin && x_temp!=x_bin+1)&&(y_temp!=y_bin+1 && x_temp!=x_bin-1)&&(y_temp!=y_bin+1 && x_temp!=x_bin)&&(y_temp!=y_bin+1 && x_temp!=x_bin+1)) begin //no bombs placed in immedate area surrounding first click
 				bomb_locations[y_temp][x_temp] <= 1;
 				temp_bomb_counter <= temp_bomb_counter +1;
 			end
@@ -260,19 +261,10 @@ module minesweeper(
 		end
 		if(state == IDLE) begin
 			x_temp <= 0;
-			y_temp <= 0;
-			tile_status <='{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
-			/*
 			tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
-					*/
 			tile_numbers[0:GAME_SIZE-1]<= '{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -288,16 +280,16 @@ module minesweeper(
 		end
 
 		if(mouse_left_edge||mouse_right_edge) begin //process a user action
-			if(mouse_left_edge && mouse_x>720) begin
+			if(mouse_left_edge && mouse_x>900) begin
 				state <= IDLE;
 			end
 			case(state)
 				IDLE: begin
 					case(sw[1:0])
-						2'b00: BOMBS = 45;
-						2'b01: BOMBS = 60;
-						2'b10: BOMBS = 75;
-						2'b11: BOMBS = 90;
+						2'b00: BOMBS = 25;
+						2'b01: BOMBS = 35;
+						2'b10: BOMBS = 45;
+						2'b11: BOMBS = 55;
 					endcase
 					flag_counter <= BOMBS;
 					sound_effect_start <= 1;
@@ -319,22 +311,22 @@ module minesweeper(
 							end
 							if(tile_numbers[y_bin][x_bin] == 0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
 								if(y_bin>0) begin
-									tile_status[y_bin-1][x_bin] <= 1;
+									tile_status[y_bin-1][x_bin] <= tile_status[y_bin-1][x_bin]!=2'b11 ? 1 : 2'b11;
 									if(x_bin>0) begin
-										tile_status[y_bin-1][x_bin-1] <= 1;
-										tile_status[y_bin][x_bin-1] <= 1;
+										tile_status[y_bin-1][x_bin-1] <= tile_status[y_bin-1][x_bin-1]!=2'b11 ? 1 :2'b11;
+										tile_status[y_bin][x_bin-1] <= tile_status[y_bin][x_bin-1]!=2'b11 ? 1:2'b11;
 									end else if(x_bin<GAME_SIZE-1) begin
-										tile_status[y_bin-1][x_bin+1] <= 1;
-										tile_status[y_bin][x_bin+1] <= 1;
+										tile_status[y_bin-1][x_bin+1] <= tile_status[y_bin-1][x_bin+1] != 2'b11 ? 1:2'b11;
+										tile_status[y_bin][x_bin+1] <= tile_status[y_bin][x_bin+1]!=2'b11 ? 1:2'b11;
 									end
 								end else if(y_bin<3) begin
-									tile_status[y_bin+1][x_bin] <= 1;
+									tile_status[y_bin+1][x_bin] <= tile_status[y_bin+1][x_bin]!=2'b11 ? 1:2'b11;
 									if(x_bin>0) begin
-										tile_status[y_bin+1][x_bin-1] <= 1;
-										tile_status[y_bin][x_bin-1] <= 1;
+										tile_status[y_bin+1][x_bin-1] <= tile_status[y_bin+1][x_bin-1]!=2'b11 ? 1:2'b11;
+										tile_status[y_bin][x_bin-1] <= tile_status[y_bin][x_bin-1]!=2'b11 ? 1:2'b11;
 									end else if(x_bin<GAME_SIZE-1) begin
-										tile_status[y_bin+1][x_bin+1] <= 1;
-										tile_status[y_bin][x_bin+1] <= 1;
+										tile_status[y_bin+1][x_bin+1] <=tile_status[y_bin+1][x_bin+1]!=2'b11 ? 1:2'b11;
+										tile_status[y_bin][x_bin+1] <=tile_status[y_bin][x_bin+1]!=2'b11 ? 1:2'b11;
 									end
 								end
 								/*
