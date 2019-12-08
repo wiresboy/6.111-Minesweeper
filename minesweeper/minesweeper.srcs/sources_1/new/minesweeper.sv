@@ -96,12 +96,12 @@ module minesweeper(
 	assign vsync_out = vsync[0];
 	assign blank_out = blank[0];
 
-	//Mouse debouncing module
+	//rising mouse edge detect vars
 	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
 	
 	always_comb begin
 		if(state == IN_GAME) begin
-			seven_seg_data = {dec_flag_data,dec_clk_data}; //eventually will put low frequency timer here
+			seven_seg_data = {dec_flag_data,dec_clk_data}; 
 		end else if(state == GG) begin
 			seven_seg_data = {16'hFFFF,dec_clk_data};
 		end else if(state == GAME_OVER) begin
@@ -110,6 +110,7 @@ module minesweeper(
 	end
 
     always_ff @(posedge clk_65mhz)begin
+		//rising edge detector
         if (reset)begin
             left_old_clean <= 1'b0;
             right_old_clean <= 1'b0;
@@ -176,7 +177,7 @@ module minesweeper(
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
 		if(sound_effect_start) sound_effect_start <= 0; //make sound effect start one pulse
-		if(gg_pulse) gg_pulse <= 1;
+		if(gg_pulse) gg_pulse <= 0;
 
 		if(state == GAME_OVER||state == GG) begin
 				tile_status <= '{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
@@ -192,7 +193,7 @@ module minesweeper(
 			stop_timer <= 1'b1;
 		end
 		if(state == PLACE_BOMBS) begin
-			if(random> 50000 && bomb_locations[y_temp][x_temp] != 1) begin 
+			if(random> 50000 && bomb_locations[y_temp][x_temp] != 1&& (y_temp<y_bin-1 || y_temp>y_bin+1) && (x_temp>x_bin+1 || x_temp <x_bin-1)) begin 
 				bomb_locations[y_temp][x_temp] <= 1;
 				temp_bomb_counter <= temp_bomb_counter +1;
 			end
@@ -216,7 +217,7 @@ module minesweeper(
 			if (bomb_locations[y_temp][x_temp]) begin
 				tile_numbers[y_temp][x_temp] <= 4'hF; //mark tile as a bomb tile
 			end else begin
-				if(y_temp>0 && x_temp >0&&x_temp<14&&y_temp<14) begin //if tile is not on edge of board
+				if(y_temp>0 && x_temp >0 && x_temp<14 && y_temp<14) begin //if tile is not on edge of board
 					local_bombs = bomb_locations[y_temp-1][x_temp-1]+bomb_locations[y_temp-1][x_temp]+bomb_locations[y_temp-1][x_temp+1]
 						+ bomb_locations[y_temp][x_temp-1] +  bomb_locations[y_temp][x_temp+1]+ bomb_locations[y_temp+1][x_temp-1]
 						+ bomb_locations[y_temp+1][x_temp] + bomb_locations[y_temp+1][x_temp+1];
@@ -232,8 +233,7 @@ module minesweeper(
 					local_bombs = bomb_locations[y_temp-1][x_temp]+bomb_locations[y_temp-1][x_temp+1]
 						 +  bomb_locations[y_temp][x_temp+1]
 						+ bomb_locations[y_temp+1][x_temp] + bomb_locations[y_temp+1][x_temp+1];
-				end
-				else if(y_temp ==0) begin // if tile is on top rim
+				end else if(y_temp ==0) begin // if tile is on top rim
 					local_bombs = bomb_locations[y_temp][x_temp-1] +  bomb_locations[y_temp][x_temp+1]+ bomb_locations[y_temp+1][x_temp-1]
 						+ bomb_locations[y_temp+1][x_temp] + bomb_locations[y_temp+1][x_temp+1];
 				end else if(y_temp == 14) begin //if tile is on bottom rim
@@ -247,19 +247,15 @@ module minesweeper(
 				tile_numbers[y_temp][x_temp] <= local_bombs;
 			end
 			x_temp = x_temp+1;
-			if(x_temp == 15) begin 
-				x_temp <= 0;
-				y_temp <= y_temp+1;
-			end
-			if(y_temp == 15) begin 
-				y_temp <= 0;
-				x_temp <= 0;
-			end
 			if(y_temp == 15 && x_temp == 15) begin
 				x_temp <= 0;
 				y_temp <= 0;
 				state <= IN_GAME;
 				start_timer <= 1; //Start the 1 Hz counter
+			end
+			if(x_temp == 15) begin 
+				x_temp <= 0;
+				y_temp <= y_temp+1;
 			end
 		end
 		if(state == IDLE) begin
@@ -267,8 +263,10 @@ module minesweeper(
 			y_temp <= 0;
 			tile_status <='{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
 				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
-				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
+				'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01}};
 			/*
 			tile_status <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -280,6 +278,11 @@ module minesweeper(
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 					'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; 
+			bomb_locations <='{'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; 
 			tile_cleared_count <= 0;
 			temp_bomb_counter <= 0;
 		end
@@ -334,6 +337,18 @@ module minesweeper(
 										tile_status[y_bin][x_bin+1] <= 1;
 									end
 								end
+								/*
+								if(y_bin>0 && y_bin<14 && x_bin>0 && x_bin<14) begin //clear all adjacent tiles
+									tile_status[y_bin-1][x_bin-1] <= 1;
+									tile_status[y_bin-1][x_bin] <= 1;
+									tile_status[y_bin-1][x_bin+1] <= 1;
+									tile_status[y_bin][x_bin-1] <= 1;
+									tile_status[y_bin][x_bin+1] <= 1;
+									tile_status[y_bin+1][x_bin-1] <= 1;
+									tile_status[y_bin+1][x_bin] <= 1;
+									tile_status[y_bin-1][x_bin+1] <= 1;
+								end
+								*/
 							end
 						end
 					end else begin //process user right click
@@ -490,7 +505,7 @@ module tile_drawer
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
 				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; 
 				case(curr_tile)
-					4'd0: begin
+					0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 
 					end
 					4'd1: begin

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="eight_rcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575818877">
   <File Type="PA-TCL" Name="eight_rcm.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="eight_rcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="eight_rcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="eight_rcm.vds"/>
   <File Type="RDS-UTIL" Name="eight_rcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="eight_rcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="eight_rcm.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="eight_rcm_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="eight_rcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/eight_rcm">
     <File Path="$PSRCDIR/sources_1/ip/eight_rcm/eight_rcm.xci">
       <FileInfo>
@@ -42,9 +39,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

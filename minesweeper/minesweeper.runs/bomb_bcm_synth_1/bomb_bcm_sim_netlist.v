@@ -1,7 +1,7 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Tue Dec  3 17:28:22 2019
+// Date        : Sun Dec  8 14:52:44 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix -prefix
 //               decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_ bomb_bcm_sim_netlist.v
@@ -289,7 +289,7 @@ module decalper_eb_ot_sdeen_pot_pi_dehcac_xnilix_blk_mem_gen_prim_wrapper_init
     .INIT_0A(256'h0101020201010200010101030101010201010101010101000101000301010002),
     .INIT_0B(256'h0102010001020003010200020102000101010302010103010101030001010203),
     .INIT_0C(256'h0103020001030001010300000102030301020202010202010102010301020101),
-    .INIT_0D(256'h0000000000000000000000000000000000000000000000000103020201030201),
+    .INIT_0D(256'h0000000000000000000000000000000000000000030303030103020201030201),
     .INIT_0E(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_0F(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_10(256'h0000000000000000000000000000000000000000000000000000000000000000),

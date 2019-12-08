@@ -60,7 +60,6 @@ proc step_failed { step } {
   close $ch
 }
 
-set_msg_config -id {Common 17-41} -limit 10000000
 
 start_step init_design
 set ACTIVE_STEP init_design
@@ -117,14 +116,14 @@ set rc [catch {
   read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm.xci}}
   read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_gcm/bomb_gcm.xci}}
   read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm.xci}}
-  read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm.xci}}
+  read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
   read_xdc {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc}}
   link_design -top top_level -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb

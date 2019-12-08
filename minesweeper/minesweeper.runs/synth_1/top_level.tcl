@@ -17,8 +17,6 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -73,14 +71,14 @@ add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb.coe}}
 add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_rcm.coe}}
 add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_gcm.coe}}
 add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/bomb_bcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_rcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_gcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_bcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_rcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_gcm.coe}}
-add_files {{c:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_bcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_rcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_gcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/7_bcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_rcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_gcm.coe}}
+add_files {{C:/Users/Rod Bayliss III/6.111-Minesweeper/Images/8_bcm.coe}}
 read_verilog -library xil_defaultlib -sv {
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv}
   {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv}
@@ -214,28 +212,28 @@ set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm_ooc.xdc}}]
 
-read_ip -quiet {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm_ooc.xdc}}]
 
 # Mark all dcp files as not used in implementation to prevent them from being
