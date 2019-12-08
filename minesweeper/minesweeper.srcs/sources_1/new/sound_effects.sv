@@ -52,9 +52,9 @@ module sound_effect_manager (
 		.address(sd_address), //32 bit, must be multiple of 512
 		.ready(sd_ready), .status(status));
 
-	logic [3:0] data_request;
+	logic [3:0] data_request_flag;
 	logic [3:0] data_access_granted;
-	data_manager dm(clk_100mhz, reset, data_request, data_access_granted, sd_rd_strobe);
+	data_manager dm(clk_100mhz, reset, data_request_flag, data_access_granted, sd_rd_strobe);
 
 
 	logic [11:0] sample_trigger_count = 0; //max 2083 - fits in 12 bits (4096)
@@ -70,23 +70,74 @@ module sound_effect_manager (
 	end
 	
 	logic sample_trigger;
-	assign sample_trigger = sample_trigger_count ==0; //initialized && 
+	assign sample_trigger = sample_trigger_count == 0; //initialized && 
 
-	logic [25:0] data_request_offset [1:0];
-	logic [1:0] data_request_flag;
-	logic [7:0] audio_single [1:0];
+	logic [25:0] data_request_offset [4];
+	logic [7:0] audio_single [4];
 
 	sound_effect_player sfx0(.clk_100mhz(clk_100mhz), .reset(reset),
-							.sound_effect_start(sound_effect_start/* && sound_effect_select==0*/), .sample_trigger(sample_trigger),
+							.sound_effect_start(sound_effect_start && (sound_effect_select==0)), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[0]), .data_request_flag(data_request_flag[0]),
-							.data_request_result(sd_dout), .data_ready_strobe(/*data_access_granted[0] && */sd_rd_strobe),
-							.duration_samples(9070550),.audio(audio/*audio_single[0]*/));
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[0] && sd_rd_strobe),
+							.duration_samples(9070550),.audio(audio_single[0]));
 
-	//temp
-	assign sd_rd = data_request_flag[0];
-	assign sd_address = 1024+data_request_offset[0];
+	sound_effect_player sfx1(.clk_100mhz(clk_100mhz), .reset(reset),
+							.sound_effect_start(sound_effect_start && (sound_effect_select==1)), .sample_trigger(sample_trigger),
+							.data_request_offset(data_request_offset[1]), .data_request_flag(data_request_flag[1]),
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[1] && sd_rd_strobe),
+							.duration_samples(9070550),.audio(audio_single[1]));
+
+	sound_effect_player sfx2(.clk_100mhz(clk_100mhz), .reset(reset),
+							.sound_effect_start(sound_effect_start && (sound_effect_select==2)), .sample_trigger(sample_trigger),
+							.data_request_offset(data_request_offset[2]), .data_request_flag(data_request_flag[2]),
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[2] && sd_rd_strobe),
+							.duration_samples(9070550),.audio(audio_single[2]));
+
+	sound_effect_player sfx3(.clk_100mhz(clk_100mhz), .reset(reset),
+							.sound_effect_start(sound_effect_start && (sound_effect_select==3)), .sample_trigger(sample_trigger),
+							.data_request_offset(data_request_offset[3]), .data_request_flag(data_request_flag[3]),
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[3] && sd_rd_strobe),
+							.duration_samples(9070550),.audio(audio_single[3]));
+	
+	always_comb begin
+		case (data_access_granted) 
+			4'b0001 : begin 
+				sd_rd = data_request_flag[0];
+				sd_address = 1024+data_request_offset[0]; //TODO: This 1024 should be actual offset of the file
+			end
+			4'b0010 : begin 
+				sd_rd = data_request_flag[1];
+				sd_address = 1024+data_request_offset[1]; //TODO: This 1024 should be actual offset of the file
+			end
+			4'b0100 : begin 
+				sd_rd = data_request_flag[2];
+				sd_address = 1024+data_request_offset[2]; //TODO: This 1024 should be actual offset of the file
+			end
+			4'b1000 : begin 
+				sd_rd = data_request_flag[3];
+				sd_address = 1024+data_request_offset[3]; //TODO: This 1024 should be actual offset of the file
+			end
+			default: begin
+				sd_rd = 0;
+				sd_address = 0;
+			end
+		endcase
+	end
 
 	assign debug = {data_request_flag[0], status, audio, sd_dout, sample_trigger_count[11:4]};
+
+
+	logic [10:0] audio_sum;
+	always_comb begin
+		audio_sum = audio_single[0] + audio_single[1] + audio_single[2] + audio_single[3];
+		if (audio_sum < 'h180)
+			audio = 0;
+		else if (audio_sum > 'h27F)
+			audio = 'hFF;
+		else
+			audio = audio_sum-'h17E;
+	end
+	//assign audio = audio_single[0];
 
 	//ila_0 ila(clk_100mhz, sd_rd_slow, sd_dout, sd_ready, sample_trigger, clk_25mhz, sd_status, sd_state);
 
@@ -96,8 +147,8 @@ module sound_effect_manager (
 	logic [7:0] vol_out;
 	logic pwm_val;
 
-	volume_control vc (.vol_in(sw[15:13]), .signal_in(audio), .signal_out(vol_out));
-	pwm (.clk_in(clk_100mhz), .rst_in(reset), .level_in(audio/*{~vol_out[7],vol_out[6:0]}*/), .pwm_out(pwm_val));
+	//volume_control vc (.vol_in(sw[15:13]), .signal_in(audio), .signal_out(vol_out));
+	pwm (.clk_in(clk_100mhz), .rst_in(reset), .level_in(audio), .pwm_out(pwm_val));
 	assign aud_pwm = pwm_val?1'bZ:1'b0;
 	assign aud_sd = 1;
 
@@ -105,18 +156,38 @@ endmodule
 
 
 
-module data_manager ( //TODO for multi-audio-allowed
+module data_manager (
 	input wire clk_100mhz,
 	input wire reset,
 	input wire [3:0] data_request,
-	output logic [3:0] data_access_granted,
+	output logic [3:0] data_access_granted = 0,
 	input wire sd_rd_strobe
 	);
+
 	logic [8:0] count;
 	
-	assign data_access_granted = 15;
+	always_ff @(posedge clk_100mhz) begin : proc_data_access_granted
+		if (reset) begin
+			data_access_granted <= 0;
+		end else begin
+			if (data_access_granted == 0 || count == 0) begin
+				if (data_request[4])
+					data_access_granted <= 16; //highest priority to the initializer
+				else if (data_request[0])
+					data_access_granted <= 1;
+				else if (data_request[1])
+					data_access_granted <= 2;
+				else if (data_request[2])
+					data_access_granted <= 4;
+				else if (data_request[3])
+					data_access_granted <= 8;
+				else
+					data_access_granted <= 0;
+			end
+		end
+	end
 
-	always_ff @(posedge clk_100mhz) begin : proc_data_manager
+	always_ff @(posedge clk_100mhz) begin : proc_count_data_manager
 		if (reset) begin
 			count <= 0;
 		end else begin
@@ -142,16 +213,17 @@ module sound_effect_player#(parameter LOOP = 0)
 		input wire [7:0] data_request_result,
 		input wire data_ready_strobe, //1 for 1 cycle indicating data is available
 
-		output logic [7:0] audio
+		output logic [7:0] audio = 'h80
 	);
 
 	logic [7:0] fifo_out;
 	logic fifo_full;
 	logic fifo_reset;
+	logic fifo_empty;
 	logic playing = 0;
 	fifo_generator_0 fifo(.clk(clk_100mhz), .srst(reset||fifo_reset), .din(data_request_result), 
-				.wr_en(data_ready_strobe), .prog_full(fifo_full), .dout(fifo_out), .rd_en( sample_trigger ));
-	assign data_request_flag = (!fifo_full) && (data_request_offset[8:0]==9'b0); 
+				.wr_en(data_ready_strobe), .empty(fifo_empty), .prog_full(fifo_full), .dout(fifo_out), .rd_en( sample_trigger ));
+	assign data_request_flag = (playing) && (!fifo_full) && (data_request_offset[8:0]==9'b0); 
 	//always request data while fifo is not full, and when request offset is multiple of 512
 
 
@@ -184,12 +256,12 @@ module sound_effect_player#(parameter LOOP = 0)
 
 	always_ff @(posedge clk_100mhz) begin : proc_audio
 		if (reset) begin
-			audio <= 0;
+			audio <= 'h80;
 		end else begin
-			if (playing) begin
+			if (playing && ~fifo_empty) begin
 				audio <= fifo_out;//read from fifo
 			end else
-				audio <= 0;
+				audio <= 'h80;
 		end
 	end
 

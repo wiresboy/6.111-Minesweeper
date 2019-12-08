@@ -56,8 +56,12 @@ module top_level(
 	
 	
 	// ***** Sound *****
+	logic [1:0] sound_effect_select;
+	logic sound_effect_start;
+	assign sound_effect_select = sw[1:0];
+	assign sound_effect_start = center_pressed;
 	sound_effect_manager sfx_manager(.clk_100mhz(clk_100mhz), .clk_25mhz(clk_25mhz), .reset(reset), .sw(sw), 
-			.sound_effect_select(0), .sound_effect_start(center_pressed), 
+			.sound_effect_select(sound_effect_select), .sound_effect_start(sound_effect_start), 
 			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
 			.sd_reset(sd_reset), .sd_cd(sd_cd), .sd_sck(sd_sck), .sd_cmd(sd_cmd), .sd_dat(sd_dat),
 			.audio(led[7:0]), .debug(ms_seven_segment_data) );
