@@ -32,7 +32,12 @@ Sector 0 bytes:
 76..79: B for file 7
 
 
-A: 32bit starting sector of file n. In bytes. Multiply by 512 to get starting address.
+A: 32bit starting sector of file n. In bytes. Multiple of 512.
 B: 32bit length of file n. In bytes, not necessarily multiple of 512.
 
 All multi-byte values are big-endian
+
+
+
+Example command:
+python fs_write.py Underclocked_mono.wav Music_Thing_mono.wav Gentle_Rain_mono.wav Paper_Towel_beat_mono.wav

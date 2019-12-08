@@ -69,7 +69,7 @@ for w in waves_data:
     start_sector = w[1]
     samples = w[2]
     print(name,": start_sector=",start_sector,", samples=",samples)
-    sect0 += pack('>I', start_sector)
+    sect0 += pack('>I', start_sector*512)
     sect0 += pack('>I', samples)
 
 sect0 = (sect0+b'\x00'*512)[:512]
