@@ -96,7 +96,7 @@ module snowflake_tracker
 	);
 
 	logic [1:0] state;
-	logic [3:0] velocity; //goal velocity of ~7pixels/frame, allowable range of 4 to 11.
+	logic [3:0] velocity; //goal velocity of ~7pixels/frame, allowable range of 3 to 8.
 	//STATE: 0 = init, wait for random chance to initialize drop
 	//STATE: 1 = ready to fall, selecy velocity
 	//STATE: 2 = ready to fall, select x position
@@ -113,11 +113,11 @@ module snowflake_tracker
 						state<=1;
 				end
 				1: begin
-					velocity <= 3+random[2:0];
+					velocity <= 3+((random[0]+random[1])+(random[2]+random[3]));
 					state<=2;
 				end
 				2: begin
-					flake_x <= random[10:0];
+					flake_x <= random[10:0]-20;
 					state<=3;
 				end
 				3: begin
@@ -203,8 +203,8 @@ module snowflake_renderer
 		//pipeline stage 0
 		in_box <= (relative_x>=0) && (relative_x<=20) && (relative_y>=0) && (relative_y<=20);
 
-		x <= relative_x[4:0]; // flake icon pixel offset
-		y <= relative_y[4:0];
+		x <= relative_x[5:0]; // flake icon pixel offset
+		y <= relative_y[5:0];
 
 		//pipeline stage 1
 		if (in_box) begin
