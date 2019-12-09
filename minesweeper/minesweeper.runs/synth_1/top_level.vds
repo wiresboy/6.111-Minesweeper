@@ -2,8 +2,8 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Sun Dec  8 16:36:23 2019
-# Process ID: 19964
+# Start of session at: Mon Dec  9 01:59:04 2019
+# Process ID: 12996
 # Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1
 # Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
 # Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/top_level.vds
@@ -16,9 +16,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 29900 
+INFO: Helper process launched with PID 19752 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 879.184 ; gain = 235.242
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 881.215 ; gain = 234.840
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top_level' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:3]
 INFO: [Synth 8-6157] synthesizing module 'clk_wiz_lab3' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/imports/6.111/clk_wiz_lab3.v:67]
@@ -114,181 +114,185 @@ INFO: [Synth 8-6157] synthesizing module 'random' [C:/Users/Rod Bayliss III/6.11
 INFO: [Synth 8-6155] done synthesizing module 'random' (10#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/random.sv:11]
 INFO: [Synth 8-6157] synthesizing module 'minesweeper' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:3]
 	Parameter GAME_SIZE bound to: 4'b1111 
-	Parameter IDLE bound to: 3'b000 
-	Parameter IN_GAME bound to: 3'b010 
-	Parameter GAME_OVER bound to: 3'b011 
-	Parameter GG bound to: 3'b111 
-	Parameter PLACE_BOMBS bound to: 3'b110 
-	Parameter TILES bound to: 3'b101 
-INFO: [Synth 8-6157] synthesizing module 'hex_2_dec' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:541]
-INFO: [Synth 8-6155] done synthesizing module 'hex_2_dec' (11#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:541]
-WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:208]
-WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:213]
-WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:250]
+	Parameter IDLE bound to: 4'b0000 
+	Parameter IN_GAME bound to: 4'b0010 
+	Parameter GAME_OVER bound to: 4'b0011 
+	Parameter GG bound to: 4'b0111 
+	Parameter PLACE_BOMBS bound to: 4'b0110 
+	Parameter TILES bound to: 4'b0101 
+	Parameter CLEAR bound to: 4'b0100 
+	Parameter CHECK_FIFO bound to: 4'b1111 
+INFO: [Synth 8-6157] synthesizing module 'hex_2_dec' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:679]
+INFO: [Synth 8-6155] done synthesizing module 'hex_2_dec' (11#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:679]
+INFO: [Synth 8-6157] synthesizing module 'clear_fifo' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/clear_fifo_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clear_fifo' (12#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/clear_fifo_stub.v:6]
+WARNING: [Synth 8-7023] instance 'clear_fifo' of module 'clear_fifo' has 8 connections declared, but only 7 given [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:105]
+WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:201]
+WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:206]
+WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:243]
 WARNING: [Synth 8-6090] variable 'x_temp' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:263]
-WARNING: [Synth 8-6090] variable 'tile_cleared_count' is written by both blocking and non-blocking assignments, entire logic could be removed [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:308]
 INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:286]
-INFO: [Synth 8-6157] synthesizing module 'tile_drawer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:365]
+INFO: [Synth 8-155] case statement is not full and has no default [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:449]
+INFO: [Synth 8-6157] synthesizing module 'tile_drawer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:499]
 	Parameter WIDTH bound to: 48 - type: integer 
 	Parameter HEIGHT bound to: 48 - type: integer 
 	Parameter GAME_SIZE bound to: 15 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'facing_down_image_rom' (12#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:387]
-INFO: [Synth 8-6157] synthesizing module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'facing_down_rcm' (13#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:388]
-INFO: [Synth 8-6157] synthesizing module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'facing_down_gcm' (14#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:389]
-INFO: [Synth 8-6157] synthesizing module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'facing_down_bcm' (15#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:390]
-INFO: [Synth 8-6157] synthesizing module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'zero_image_rom' (16#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:395]
-INFO: [Synth 8-6157] synthesizing module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'zero_rcm' (17#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:396]
-INFO: [Synth 8-6157] synthesizing module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'zero_gcm' (18#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:397]
-INFO: [Synth 8-6157] synthesizing module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'zero_bcm' (19#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:398]
-INFO: [Synth 8-6157] synthesizing module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'one_image_rom' (20#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:403]
-INFO: [Synth 8-6157] synthesizing module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'one_rcm' (21#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:404]
-INFO: [Synth 8-6157] synthesizing module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'one_gcm' (22#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:405]
-INFO: [Synth 8-6157] synthesizing module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'one_bcm' (23#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:406]
-INFO: [Synth 8-6157] synthesizing module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'two_image_rom' (24#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:411]
-INFO: [Synth 8-6157] synthesizing module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'two_rcm' (25#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:412]
-INFO: [Synth 8-6157] synthesizing module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'two_gcm' (26#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:413]
-INFO: [Synth 8-6157] synthesizing module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'two_bcm' (27#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:414]
-INFO: [Synth 8-6157] synthesizing module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'three_image_rom' (28#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:419]
-INFO: [Synth 8-6157] synthesizing module 'three_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'three_rcm' (29#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'three_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'three_gcm' (30#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'three_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'three_bcm' (31#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'four_image_rom' (32#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:427]
-INFO: [Synth 8-6157] synthesizing module 'four_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'four_rcm' (33#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'four_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'four_gcm' (34#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'four_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'four_bcm' (35#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'five_image_rom' (36#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:435]
-INFO: [Synth 8-6157] synthesizing module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'five_rcm' (37#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:436]
-INFO: [Synth 8-6157] synthesizing module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'five_gcm' (38#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:437]
-INFO: [Synth 8-6157] synthesizing module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'five_bcm' (39#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:438]
-INFO: [Synth 8-6157] synthesizing module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'six_image_rom' (40#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:443]
-WARNING: [Synth 8-689] width (8) of port connection 'douta' does not match port width (16) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:443]
-INFO: [Synth 8-6157] synthesizing module 'six_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'six_rcm' (41#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'six_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'six_gcm' (42#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'six_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'six_bcm' (43#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'seven_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'seven_image_rom' (44#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'seven_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:452]
-INFO: [Synth 8-6157] synthesizing module 'seven_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'seven_rcm' (45#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:453]
-INFO: [Synth 8-6157] synthesizing module 'seven_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'seven_gcm' (46#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:454]
-INFO: [Synth 8-6157] synthesizing module 'seven_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'seven_bcm' (47#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/seven_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:455]
-INFO: [Synth 8-6157] synthesizing module 'eight_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'eight_image_rom' (48#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'eight_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:461]
-INFO: [Synth 8-6157] synthesizing module 'eight_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'eight_rcm' (49#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:462]
-INFO: [Synth 8-6157] synthesizing module 'eight_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'eight_gcm' (50#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:463]
-INFO: [Synth 8-6157] synthesizing module 'eight_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'eight_bcm' (51#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/eight_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:464]
-INFO: [Synth 8-6157] synthesizing module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'flag_image_rom' (52#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:469]
-INFO: [Synth 8-6157] synthesizing module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'flag_rcm' (53#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:470]
-INFO: [Synth 8-6157] synthesizing module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'flag_gcm' (54#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:471]
-INFO: [Synth 8-6157] synthesizing module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'flag_bcm' (55#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:472]
-INFO: [Synth 8-6157] synthesizing module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'bomb_image_rom' (56#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
-WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:477]
-INFO: [Synth 8-6157] synthesizing module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'bomb_rcm' (57#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:478]
-INFO: [Synth 8-6157] synthesizing module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'bomb_gcm' (58#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:479]
-INFO: [Synth 8-6157] synthesizing module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'bomb_bcm' (59#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-19964-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
-WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:480]
-INFO: [Synth 8-6155] done synthesizing module 'tile_drawer' (60#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:365]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_image_rom' (13#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'facing_down_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:521]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_rcm' (14#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:522]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_gcm' (15#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:523]
+INFO: [Synth 8-6157] synthesizing module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'facing_down_bcm' (16#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/facing_down_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (4) of module 'facing_down_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:524]
+INFO: [Synth 8-6157] synthesizing module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_image_rom' (17#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'zero_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:529]
+INFO: [Synth 8-6157] synthesizing module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_rcm' (18#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:530]
+INFO: [Synth 8-6157] synthesizing module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_gcm' (19#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:531]
+INFO: [Synth 8-6157] synthesizing module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'zero_bcm' (20#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/zero_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (3) of module 'zero_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:532]
+INFO: [Synth 8-6157] synthesizing module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_image_rom' (21#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'one_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:537]
+INFO: [Synth 8-6157] synthesizing module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_rcm' (22#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:538]
+INFO: [Synth 8-6157] synthesizing module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_gcm' (23#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:539]
+INFO: [Synth 8-6157] synthesizing module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'one_bcm' (24#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/one_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (5) of module 'one_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:540]
+INFO: [Synth 8-6157] synthesizing module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_image_rom' (25#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'two_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:545]
+INFO: [Synth 8-6157] synthesizing module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_rcm' (26#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:546]
+INFO: [Synth 8-6157] synthesizing module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_gcm' (27#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:547]
+INFO: [Synth 8-6157] synthesizing module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'two_bcm' (28#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/two_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'two_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:548]
+INFO: [Synth 8-6157] synthesizing module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_image_rom' (29#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'three_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:553]
+INFO: [Synth 8-6157] synthesizing module 'three_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_rcm' (30#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'three_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_gcm' (31#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'three_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'three_bcm' (32#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/three_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_image_rom' (33#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'four_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:561]
+INFO: [Synth 8-6157] synthesizing module 'four_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_rcm' (34#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_gcm' (35#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'four_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'four_bcm' (36#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/four_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_image_rom' (37#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'five_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:569]
+INFO: [Synth 8-6157] synthesizing module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_rcm' (38#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:570]
+INFO: [Synth 8-6157] synthesizing module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_gcm' (39#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:571]
+INFO: [Synth 8-6157] synthesizing module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'five_bcm' (40#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/five_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'five_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:572]
+INFO: [Synth 8-6157] synthesizing module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_image_rom' (41#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:577]
+WARNING: [Synth 8-689] width (8) of port connection 'douta' does not match port width (16) of module 'six_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:577]
+INFO: [Synth 8-6157] synthesizing module 'six_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_rcm' (42#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_rcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'six_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_gcm' (43#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_gcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'six_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'six_bcm' (44#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/six_bcm_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'seven_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'seven_image_rom' (45#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'seven_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:586]
+INFO: [Synth 8-6157] synthesizing module 'seven_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'seven_rcm' (46#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:587]
+INFO: [Synth 8-6157] synthesizing module 'seven_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'seven_gcm' (47#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:588]
+INFO: [Synth 8-6157] synthesizing module 'seven_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'seven_bcm' (48#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/seven_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'seven_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:589]
+INFO: [Synth 8-6157] synthesizing module 'eight_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'eight_image_rom' (49#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'eight_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:595]
+INFO: [Synth 8-6157] synthesizing module 'eight_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'eight_rcm' (50#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:596]
+INFO: [Synth 8-6157] synthesizing module 'eight_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'eight_gcm' (51#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:597]
+INFO: [Synth 8-6157] synthesizing module 'eight_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'eight_bcm' (52#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/eight_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'eight_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:598]
+INFO: [Synth 8-6157] synthesizing module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_image_rom' (53#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'flag_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:603]
+INFO: [Synth 8-6157] synthesizing module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_rcm' (54#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:604]
+INFO: [Synth 8-6157] synthesizing module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_gcm' (55#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:605]
+INFO: [Synth 8-6157] synthesizing module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'flag_bcm' (56#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/flag_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'flag_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:606]
+INFO: [Synth 8-6157] synthesizing module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_image_rom' (57#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_image_rom_stub.v:6]
+WARNING: [Synth 8-689] width (16) of port connection 'addra' does not match port width (12) of module 'bomb_image_rom' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:611]
+INFO: [Synth 8-6157] synthesizing module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_rcm' (58#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_rcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_rcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:612]
+INFO: [Synth 8-6157] synthesizing module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_gcm' (59#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_gcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_gcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:613]
+INFO: [Synth 8-6157] synthesizing module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'bomb_bcm' (60#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/.Xil/Vivado-12996-DESKTOP-RQQ2FB3/realtime/bomb_bcm_stub.v:6]
+WARNING: [Synth 8-689] width (8) of port connection 'addra' does not match port width (7) of module 'bomb_bcm' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:614]
+INFO: [Synth 8-6155] done synthesizing module 'tile_drawer' (61#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:499]
 WARNING: [Synth 8-5856] 3D RAM tile_status_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
 WARNING: [Synth 8-5856] 3D RAM tile_numbers_reg  for this pattern/configuration is not supported. This will most likely be implemented in registers
-WARNING: [Synth 8-6014] Unused sequential element local_bombs_reg was removed.  [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:222]
-WARNING: [Synth 8-87] always_comb on 'seven_seg_data_reg' did not result in combinational logic [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:70]
-INFO: [Synth 8-6155] done synthesizing module 'minesweeper' (61#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:3]
-WARNING: [Synth 8-7023] instance 'minesweeper' of module 'minesweeper' has 26 connections declared, but only 23 given [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:81]
+WARNING: [Synth 8-6014] Unused sequential element local_bombs_reg was removed.  [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:215]
+INFO: [Synth 8-6155] done synthesizing module 'minesweeper' (62#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:3]
+WARNING: [Synth 8-7023] instance 'minesweeper' of module 'minesweeper' has 25 connections declared, but only 23 given [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:81]
 INFO: [Synth 8-6157] synthesizing module 'timer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/timer.sv:1]
-INFO: [Synth 8-6155] done synthesizing module 'timer' (62#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/timer.sv:1]
+INFO: [Synth 8-6155] done synthesizing module 'timer' (63#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/timer.sv:1]
 WARNING: [Synth 8-7023] instance 'timer' of module 'timer' has 5 connections declared, but only 4 given [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:96]
 INFO: [Synth 8-6157] synthesizing module 'mouse_renderer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv:3]
 	Parameter SCREEN_WIDTH bound to: 1024 - type: integer 
 	Parameter SCREEN_HEIGHT bound to: 768 - type: integer 
 	Parameter MOUSE_INNER_COLOR bound to: 4095 - type: integer 
 	Parameter MOUSE_OUTER_COLOR bound to: 0 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'mouse_renderer' (63#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mouse_renderer' (64#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/mouse.sv:3]
 WARNING: [Synth 8-689] width (12) of port connection 'mouse_x' does not match port width (11) of module 'mouse_renderer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:107]
 WARNING: [Synth 8-689] width (12) of port connection 'mouse_y' does not match port width (10) of module 'mouse_renderer' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:107]
 WARNING: [Synth 8-3848] Net aud_pwm in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:17]
 WARNING: [Synth 8-3848] Net aud_sd in module/entity top_level does not have driver. [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:17]
-INFO: [Synth 8-6155] done synthesizing module 'top_level' (64#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'top_level' (65#1) [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:3]
 WARNING: [Synth 8-3917] design top_level has port led[15] driven by constant 0
 WARNING: [Synth 8-3917] design top_level has port led[14] driven by constant 0
 WARNING: [Synth 8-3917] design top_level has port led[13] driven by constant 0
@@ -305,9 +309,7 @@ WARNING: [Synth 8-3917] design top_level has port led[3] driven by constant 0
 WARNING: [Synth 8-3917] design top_level has port led[2] driven by constant 0
 WARNING: [Synth 8-3917] design top_level has port dp driven by constant 0
 WARNING: [Synth 8-3331] design mouse_renderer has unconnected port reset
-WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[15]
 WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[14]
-WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[13]
 WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[12]
 WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[11]
 WARNING: [Synth 8-3331] design minesweeper has unconnected port sw[10]
@@ -330,7 +332,7 @@ WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[2]
 WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[1]
 WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:33 ; elapsed = 00:01:36 . Memory (MB): peak = 1409.625 ; gain = 765.684
+Finished RTL Elaboration : Time (s): cpu = 00:01:28 ; elapsed = 00:01:29 . Memory (MB): peak = 1460.172 ; gain = 813.797
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -343,12 +345,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:39 ; elapsed = 00:01:43 . Memory (MB): peak = 1409.625 ; gain = 765.684
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:34 ; elapsed = 00:01:36 . Memory (MB): peak = 1460.172 ; gain = 813.797
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:39 ; elapsed = 00:01:43 . Memory (MB): peak = 1409.625 ; gain = 765.684
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:34 ; elapsed = 00:01:36 . Memory (MB): peak = 1460.172 ; gain = 813.797
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1409.625 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.733 . Memory (MB): peak = 1460.172 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -451,6 +453,8 @@ Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/mineswe
 Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm/eight_gcm_in_context.xdc] for cell 'minesweeper/td/eight_gcm'
 Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm/eight_bcm_in_context.xdc] for cell 'minesweeper/td/eight_bcm'
 Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm/eight_bcm_in_context.xdc] for cell 'minesweeper/td/eight_bcm'
+Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo/clear_fifo_in_context.xdc] for cell 'minesweeper/clear_fifo'
+Finished Parsing XDC File [c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo/clear_fifo_in_context.xdc] for cell 'minesweeper/clear_fifo'
 Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]
 Finished Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_level_propImpl.xdc].
@@ -460,11 +464,11 @@ Finished Parsing XDC File [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweepe
 INFO: [Timing 38-2] Deriving generated clocks
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1441.242 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1464.758 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.280 . Memory (MB): peak = 1441.242 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.375 . Memory (MB): peak = 1464.758 ; gain = 0.000
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_bcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_gcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/bomb_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
@@ -514,7 +518,7 @@ WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context s
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_rcm' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'minesweeper/td/zero_rom' at clock pin 'clka' is different from the actual clock period '15.385', this can lead to different synthesis results.
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:02:01 ; elapsed = 00:02:04 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished Constraint Validation : Time (s): cpu = 00:01:54 ; elapsed = 00:01:56 . Memory (MB): peak = 1464.758 ; gain = 818.383
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5580] Multithreading enabled for synth_design using a maximum of 2 processes.
 ---------------------------------------------------------------------------------
@@ -522,7 +526,7 @@ Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:02:01 ; elapsed = 00:02:04 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:54 ; elapsed = 00:01:56 . Memory (MB): peak = 1464.758 ; gain = 818.383
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -575,8 +579,9 @@ Applied set_property DONT_TOUCH = true for minesweeper/td/eight_rom. (constraint
 Applied set_property DONT_TOUCH = true for minesweeper/td/eight_rcm. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for minesweeper/td/eight_gcm. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for minesweeper/td/eight_bcm. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for minesweeper/clear_fifo. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:06 ; elapsed = 00:02:09 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:01:59 ; elapsed = 00:02:00 . Memory (MB): peak = 1464.758 ; gain = 818.383
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'Ps2Interface'
 INFO: [Synth 8-5546] ROM "read_data" won't be mapped to RAM because it is too sparse
@@ -585,10 +590,10 @@ INFO: [Synth 8-5546] ROM "ps2_clk_h" won't be mapped to RAM because it is too sp
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'MouseCtl'
 INFO: [Synth 8-5546] ROM "reset_periodic_check_cnt" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "new_event" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:240]
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:237]
 INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:233]
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:347]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:230]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:226]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:480]
 INFO: [Synth 8-5544] ROM "BOMBS" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -654,9 +659,8 @@ reset_enable_reporting_wait_ack | 0000000010000000000000000000000000000 |       
    check_read_id_wait_id | 1000000000000000000000000000000000000 |                           100011
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'MouseCtl'
-WARNING: [Synth 8-327] inferring latch for variable 'seven_seg_data_reg' [C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/minesweeper.sv:70]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:03:17 ; elapsed = 00:03:34 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:43 ; elapsed = 00:02:48 . Memory (MB): peak = 1464.758 ; gain = 818.383
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -664,11 +668,9 @@ Report RTL Partitions:
 |      |RTL Partition     |Replication |Instances |
 +------+------------------+------------+----------+
 |1     |clk_wiz_lab3__GC0 |           1|         3|
-|2     |minesweeper__GB0  |           1|     44967|
-|3     |minesweeper__GB1  |           1|     12753|
-|4     |minesweeper__GB2  |           1|     15905|
-|5     |minesweeper__GB3  |           1|     15994|
-|6     |top_level__GC0    |           1|      6864|
+|2     |minesweeper__GB0  |           1|     40854|
+|3     |minesweeper__GB1  |           1|     11418|
+|4     |top_level__GC0    |           1|      6864|
 +------+------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -689,7 +691,7 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit       Adders := 4     
 	   2 Input      7 Bit       Adders := 3     
 	   2 Input      5 Bit       Adders := 2     
-	   2 Input      4 Bit       Adders := 10    
+	   2 Input      4 Bit       Adders := 15    
 	   7 Input      4 Bit       Adders := 1     
 	   3 Input      4 Bit       Adders := 1     
 	   3 Input      3 Bit       Adders := 7     
@@ -698,6 +700,7 @@ Detailed RTL Component Info :
 +---XORs : 
 	   2 Input      1 Bit         XORs := 1     
 +---Registers : 
+	               32 Bit    Registers := 1     
 	               31 Bit    Registers := 1     
 	               26 Bit    Registers := 1     
 	               25 Bit    Registers := 1     
@@ -705,20 +708,20 @@ Detailed RTL Component Info :
 	               16 Bit    Registers := 1     
 	               15 Bit    Registers := 15    
 	               12 Bit    Registers := 10    
-	               11 Bit    Registers := 13    
-	               10 Bit    Registers := 11    
-	                8 Bit    Registers := 6     
+	               11 Bit    Registers := 11    
+	               10 Bit    Registers := 9     
+	                8 Bit    Registers := 7     
 	                7 Bit    Registers := 5     
-	                6 Bit    Registers := 1     
+	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 1     
-	                4 Bit    Registers := 232   
-	                3 Bit    Registers := 1     
+	                4 Bit    Registers := 233   
 	                2 Bit    Registers := 225   
-	                1 Bit    Registers := 92    
+	                1 Bit    Registers := 89    
 +---Muxes : 
 	  37 Input     37 Bit        Muxes := 1     
 	   2 Input     37 Bit        Muxes := 69    
 	   3 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 1     
 	   2 Input     26 Bit        Muxes := 1     
 	   2 Input     23 Bit        Muxes := 1     
 	  17 Input     17 Bit        Muxes := 1     
@@ -728,22 +731,27 @@ Detailed RTL Component Info :
 	   2 Input     12 Bit        Muxes := 13    
 	   2 Input     11 Bit        Muxes := 1     
 	   2 Input      9 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 23    
+	   3 Input      8 Bit        Muxes := 1     
 	   8 Input      8 Bit        Muxes := 1     
 	  37 Input      8 Bit        Muxes := 3     
 	   2 Input      7 Bit        Muxes := 1     
 	   3 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 17    
+	   3 Input      6 Bit        Muxes := 2     
 	   4 Input      6 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 11    
-	   3 Input      4 Bit        Muxes := 1     
-	  15 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 43    
+	   3 Input      4 Bit        Muxes := 5     
+	  15 Input      4 Bit        Muxes := 8     
+	   4 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 5     
 	  37 Input      4 Bit        Muxes := 1     
 	   2 Input      3 Bit        Muxes := 6     
-	   3 Input      3 Bit        Muxes := 1     
-	   4 Input      3 Bit        Muxes := 2     
-	   2 Input      2 Bit        Muxes := 6010  
+	   2 Input      2 Bit        Muxes := 1351  
 	   3 Input      2 Bit        Muxes := 450   
-	   2 Input      1 Bit        Muxes := 8022  
-	   3 Input      1 Bit        Muxes := 464   
+	   2 Input      1 Bit        Muxes := 7933  
+	   3 Input      1 Bit        Muxes := 690   
+	   6 Input      1 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 1     
 	  17 Input      1 Bit        Muxes := 4     
 	  37 Input      1 Bit        Muxes := 20    
@@ -779,38 +787,45 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit       Adders := 3     
 	   2 Input      7 Bit       Adders := 2     
 	   2 Input      5 Bit       Adders := 2     
-	   2 Input      4 Bit       Adders := 7     
+	   2 Input      4 Bit       Adders := 12    
 	   7 Input      4 Bit       Adders := 1     
 	   3 Input      4 Bit       Adders := 1     
 	   3 Input      3 Bit       Adders := 7     
 	   2 Input      3 Bit       Adders := 1     
 	   2 Input      2 Bit       Adders := 1     
 +---Registers : 
+	               32 Bit    Registers := 1     
 	               15 Bit    Registers := 15    
-	               11 Bit    Registers := 8     
-	               10 Bit    Registers := 8     
-	                8 Bit    Registers := 1     
+	               11 Bit    Registers := 6     
+	               10 Bit    Registers := 6     
+	                8 Bit    Registers := 2     
 	                7 Bit    Registers := 3     
-	                4 Bit    Registers := 226   
-	                3 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 227   
 	                2 Bit    Registers := 225   
-	                1 Bit    Registers := 31    
+	                1 Bit    Registers := 28    
 +---Muxes : 
 	   3 Input     32 Bit        Muxes := 1     
+	   2 Input     32 Bit        Muxes := 1     
 	   2 Input     15 Bit        Muxes := 45    
+	   2 Input      8 Bit        Muxes := 23    
+	   3 Input      8 Bit        Muxes := 1     
 	   2 Input      7 Bit        Muxes := 1     
 	   3 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 17    
+	   3 Input      6 Bit        Muxes := 2     
 	   4 Input      6 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 8     
-	   3 Input      4 Bit        Muxes := 1     
-	  15 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 40    
+	   3 Input      4 Bit        Muxes := 5     
+	  15 Input      4 Bit        Muxes := 8     
+	   4 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 5     
 	   2 Input      3 Bit        Muxes := 6     
-	   3 Input      3 Bit        Muxes := 1     
-	   4 Input      3 Bit        Muxes := 2     
-	   2 Input      2 Bit        Muxes := 6010  
+	   2 Input      2 Bit        Muxes := 1351  
 	   3 Input      2 Bit        Muxes := 450   
-	   2 Input      1 Bit        Muxes := 7989  
-	   3 Input      1 Bit        Muxes := 464   
+	   2 Input      1 Bit        Muxes := 7900  
+	   3 Input      1 Bit        Muxes := 690   
+	   6 Input      1 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 1     
 Module display_8hex 
 Detailed RTL Component Info : 
@@ -977,9 +992,7 @@ WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[3]
 WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[2]
 WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[1]
 WARNING: [Synth 8-3331] design top_level has unconnected port sd_dat[0]
-WARNING: [Synth 8-3331] design top_level has unconnected port sw[15]
 WARNING: [Synth 8-3331] design top_level has unconnected port sw[14]
-WARNING: [Synth 8-3331] design top_level has unconnected port sw[13]
 WARNING: [Synth 8-3331] design top_level has unconnected port sw[12]
 WARNING: [Synth 8-3331] design top_level has unconnected port sw[11]
 WARNING: [Synth 8-3331] design top_level has unconnected port sw[10]
@@ -999,12 +1012,11 @@ INFO: [Synth 8-3886] merging instance 'minesweeperi_2/td/hcount_temp_reg[0][3]' 
 INFO: [Synth 8-3886] merging instance 'minesweeperi_2/td/hcount_temp_reg[0][2]' (FD) to 'minesweeperi_2/td/hcount_temp_reg[0][0]'
 INFO: [Synth 8-3886] merging instance 'minesweeperi_2/td/hcount_temp_reg[0][1]' (FD) to 'minesweeperi_2/td/hcount_temp_reg[0][0]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (minesweeperi_2/td/\hcount_temp_reg[0][0] )
-INFO: [Synth 8-3886] merging instance 'minesweeperi_5/seven_seg_data_reg[28]' (LD) to 'minesweeperi_5/seven_seg_data_reg[29]'
-INFO: [Synth 8-3886] merging instance 'minesweeperi_5/seven_seg_data_reg[29]' (LD) to 'minesweeperi_5/seven_seg_data_reg[30]'
-INFO: [Synth 8-3886] merging instance 'minesweeperi_5/seven_seg_data_reg[30]' (LD) to 'minesweeperi_5/seven_seg_data_reg[31]'
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (minesweeperi_5/\sound_effect_select_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (minesweeperi_5/\BOMBS_reg[6] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (minesweeperi_5/\BOMBS_reg[0] )
+INFO: [Synth 8-3886] merging instance 'minesweeperi_3/seven_seg_data_reg[28]' (FDE) to 'minesweeperi_3/seven_seg_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'minesweeperi_3/seven_seg_data_reg[29]' (FDE) to 'minesweeperi_3/seven_seg_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'minesweeperi_3/seven_seg_data_reg[30]' (FDE) to 'minesweeperi_3/seven_seg_data_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (minesweeperi_3/\seven_seg_data_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (minesweeperi_3/\BOMBS_reg[6] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\MouseCtl/y_max_reg[0] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\MouseCtl/y_max_reg[1] )
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\MouseCtl/y_max_reg[2] )
@@ -1030,7 +1042,7 @@ INFO: [Synth 8-3333] propagating constant 1 across sequential element (i_0/\Mous
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\MouseCtl/x_max_reg[10] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (i_0/\MouseCtl/x_max_reg[11] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:06:13 ; elapsed = 00:06:45 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:04:06 ; elapsed = 00:04:14 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1053,25 +1065,21 @@ Report RTL Partitions:
 |      |RTL Partition     |Replication |Instances |
 +------+------------------+------------+----------+
 |1     |clk_wiz_lab3__GC0 |           1|         3|
-|2     |minesweeper__GB0  |           1|     16120|
-|3     |minesweeper__GB1  |           1|       995|
-|4     |minesweeper__GB2  |           1|      1293|
-|5     |minesweeper__GB3  |           1|      3828|
-|6     |top_level__GC0    |           1|      1870|
+|2     |minesweeper__GB0  |           1|     21242|
+|3     |minesweeper__GB1  |           1|      5084|
+|4     |top_level__GC0    |           1|      1866|
 +------+------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:06:29 ; elapsed = 00:07:01 . Memory (MB): peak = 1441.242 ; gain = 797.301
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:04:21 ; elapsed = 00:04:30 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
-info: optimization accepted worst group hill climbing move (903.0/oG.CP 160.0ps)
-info: optimization accepted worst group hill climbing move (2992.0/oG.CP 700.0ps)
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:07:53 ; elapsed = 00:08:29 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Timing Optimization : Time (s): cpu = 00:05:18 ; elapsed = 00:05:27 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1079,7 +1087,8 @@ Report RTL Partitions:
 |      |RTL Partition     |Replication |Instances |
 +------+------------------+------------+----------+
 |1     |clk_wiz_lab3__GC0 |           1|         3|
-|2     |top_level_GT0     |           1|     20978|
+|2     |minesweeper__GB0  |           1|     21242|
+|3     |top_level_GT0     |           1|      6685|
 +------+------------------+------------+----------+
 ---------------------------------------------------------------------------------
 Start Technology Mapping
@@ -1087,7 +1096,7 @@ Start Technology Mapping
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\MouseCtl/x_pos_reg[11] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\MouseCtl/xpos_reg[11] )
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:08:09 ; elapsed = 00:08:45 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Technology Mapping : Time (s): cpu = 00:05:28 ; elapsed = 00:05:37 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1113,13 +1122,13 @@ INFO: [Synth 8-5365] Flop MouseCtl/Inst_Ps2Interface/ps2_data_h_reg is being inv
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:08:17 ; elapsed = 00:08:53 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished IO Insertion : Time (s): cpu = 00:05:34 ; elapsed = 00:05:43 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:08:17 ; elapsed = 00:08:53 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Renaming Generated Instances : Time (s): cpu = 00:05:34 ; elapsed = 00:05:43 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1138,25 +1147,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:08:18 ; elapsed = 00:08:54 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:05:35 ; elapsed = 00:05:44 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:08:18 ; elapsed = 00:08:54 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Renaming Generated Ports : Time (s): cpu = 00:05:35 ; elapsed = 00:05:44 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:08:19 ; elapsed = 00:08:55 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Handling Custom Attributes : Time (s): cpu = 00:05:36 ; elapsed = 00:05:45 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:08:19 ; elapsed = 00:08:55 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Renaming Generated Nets : Time (s): cpu = 00:05:36 ; elapsed = 00:05:45 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1166,11 +1175,11 @@ Static Shift Register Report:
 +------------+-------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 |Module Name | RTL Name                      | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
 +------------+-------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
-|top_level   | b_reg                         | 12     | 1     | NO           | NO                 | YES               | 1      | 0       | 
-|top_level   | hs_reg                        | 11     | 1     | NO           | NO                 | YES               | 1      | 0       | 
-|top_level   | vs_reg                        | 11     | 1     | NO           | NO                 | YES               | 1      | 0       | 
-|top_level   | minesweeper/vcount_reg[0][9]  | 8      | 10    | NO           | NO                 | YES               | 10     | 0       | 
-|top_level   | minesweeper/hcount_reg[0][10] | 8      | 11    | NO           | NO                 | YES               | 11     | 0       | 
+|top_level   | minesweeper/hcount_reg[0][10] | 6      | 11    | NO           | NO                 | YES               | 11     | 0       | 
+|top_level   | minesweeper/vcount_reg[0][9]  | 6      | 10    | NO           | NO                 | YES               | 10     | 0       | 
+|top_level   | b_reg                         | 10     | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|top_level   | hs_reg                        | 9      | 1     | NO           | NO                 | YES               | 1      | 0       | 
+|top_level   | vs_reg                        | 9      | 1     | NO           | NO                 | YES               | 1      | 0       | 
 +------------+-------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
 
 ---------------------------------------------------------------------------------
@@ -1184,54 +1193,55 @@ Report BlackBoxes:
 +------+----------------------+----------+
 |      |BlackBox name         |Instances |
 +------+----------------------+----------+
-|1     |facing_down_image_rom |         1|
-|2     |facing_down_rcm       |         1|
-|3     |facing_down_gcm       |         1|
-|4     |facing_down_bcm       |         1|
-|5     |zero_image_rom        |         1|
-|6     |zero_rcm              |         1|
-|7     |zero_gcm              |         1|
-|8     |zero_bcm              |         1|
-|9     |one_image_rom         |         1|
-|10    |one_rcm               |         1|
-|11    |one_gcm               |         1|
-|12    |one_bcm               |         1|
-|13    |two_image_rom         |         1|
-|14    |two_rcm               |         1|
-|15    |two_gcm               |         1|
-|16    |two_bcm               |         1|
-|17    |three_image_rom       |         1|
-|18    |three_rcm             |         1|
-|19    |three_gcm             |         1|
-|20    |three_bcm             |         1|
-|21    |four_image_rom        |         1|
-|22    |four_rcm              |         1|
-|23    |four_gcm              |         1|
-|24    |four_bcm              |         1|
-|25    |five_image_rom        |         1|
-|26    |five_rcm              |         1|
-|27    |five_gcm              |         1|
-|28    |five_bcm              |         1|
-|29    |six_image_rom         |         1|
-|30    |six_rcm               |         1|
-|31    |six_gcm               |         1|
-|32    |six_bcm               |         1|
-|33    |seven_image_rom       |         1|
-|34    |seven_rcm             |         1|
-|35    |seven_gcm             |         1|
-|36    |seven_bcm             |         1|
-|37    |eight_image_rom       |         1|
-|38    |eight_rcm             |         1|
-|39    |eight_gcm             |         1|
-|40    |eight_bcm             |         1|
-|41    |flag_image_rom        |         1|
-|42    |flag_rcm              |         1|
-|43    |flag_gcm              |         1|
-|44    |flag_bcm              |         1|
-|45    |bomb_image_rom        |         1|
-|46    |bomb_rcm              |         1|
-|47    |bomb_gcm              |         1|
-|48    |bomb_bcm              |         1|
+|1     |clear_fifo            |         1|
+|2     |facing_down_image_rom |         1|
+|3     |facing_down_rcm       |         1|
+|4     |facing_down_gcm       |         1|
+|5     |facing_down_bcm       |         1|
+|6     |zero_image_rom        |         1|
+|7     |zero_rcm              |         1|
+|8     |zero_gcm              |         1|
+|9     |zero_bcm              |         1|
+|10    |one_image_rom         |         1|
+|11    |one_rcm               |         1|
+|12    |one_gcm               |         1|
+|13    |one_bcm               |         1|
+|14    |two_image_rom         |         1|
+|15    |two_rcm               |         1|
+|16    |two_gcm               |         1|
+|17    |two_bcm               |         1|
+|18    |three_image_rom       |         1|
+|19    |three_rcm             |         1|
+|20    |three_gcm             |         1|
+|21    |three_bcm             |         1|
+|22    |four_image_rom        |         1|
+|23    |four_rcm              |         1|
+|24    |four_gcm              |         1|
+|25    |four_bcm              |         1|
+|26    |five_image_rom        |         1|
+|27    |five_rcm              |         1|
+|28    |five_gcm              |         1|
+|29    |five_bcm              |         1|
+|30    |six_image_rom         |         1|
+|31    |six_rcm               |         1|
+|32    |six_gcm               |         1|
+|33    |six_bcm               |         1|
+|34    |seven_image_rom       |         1|
+|35    |seven_rcm             |         1|
+|36    |seven_gcm             |         1|
+|37    |seven_bcm             |         1|
+|38    |eight_image_rom       |         1|
+|39    |eight_rcm             |         1|
+|40    |eight_gcm             |         1|
+|41    |eight_bcm             |         1|
+|42    |flag_image_rom        |         1|
+|43    |flag_rcm              |         1|
+|44    |flag_gcm              |         1|
+|45    |flag_bcm              |         1|
+|46    |bomb_image_rom        |         1|
+|47    |bomb_rcm              |         1|
+|48    |bomb_gcm              |         1|
+|49    |bomb_bcm              |         1|
 +------+----------------------+----------+
 
 Report Cell Usage: 
@@ -1242,69 +1252,69 @@ Report Cell Usage:
 |2     |bomb_gcm              |     1|
 |3     |bomb_image_rom        |     1|
 |4     |bomb_rcm              |     1|
-|5     |eight_bcm             |     1|
-|6     |eight_gcm             |     1|
-|7     |eight_image_rom       |     1|
-|8     |eight_rcm             |     1|
-|9     |facing_down_bcm       |     1|
-|10    |facing_down_gcm       |     1|
-|11    |facing_down_image_rom |     1|
-|12    |facing_down_rcm       |     1|
-|13    |five_bcm              |     1|
-|14    |five_gcm              |     1|
-|15    |five_image_rom        |     1|
-|16    |five_rcm              |     1|
-|17    |flag_bcm              |     1|
-|18    |flag_gcm              |     1|
-|19    |flag_image_rom        |     1|
-|20    |flag_rcm              |     1|
-|21    |four_bcm              |     1|
-|22    |four_gcm              |     1|
-|23    |four_image_rom        |     1|
-|24    |four_rcm              |     1|
-|25    |one_bcm               |     1|
-|26    |one_gcm               |     1|
-|27    |one_image_rom         |     1|
-|28    |one_rcm               |     1|
-|29    |seven_bcm             |     1|
-|30    |seven_gcm             |     1|
-|31    |seven_image_rom       |     1|
-|32    |seven_rcm             |     1|
-|33    |six_bcm               |     1|
-|34    |six_gcm               |     1|
-|35    |six_image_rom         |     1|
-|36    |six_rcm               |     1|
-|37    |three_bcm             |     1|
-|38    |three_gcm             |     1|
-|39    |three_image_rom       |     1|
-|40    |three_rcm             |     1|
-|41    |two_bcm               |     1|
-|42    |two_gcm               |     1|
-|43    |two_image_rom         |     1|
-|44    |two_rcm               |     1|
-|45    |zero_bcm              |     1|
-|46    |zero_gcm              |     1|
-|47    |zero_image_rom        |     1|
-|48    |zero_rcm              |     1|
-|49    |BUFG                  |     2|
-|50    |CARRY4                |   156|
-|51    |DSP48E1_1             |     1|
-|52    |LUT1                  |    72|
-|53    |LUT2                  |   525|
-|54    |LUT3                  |   520|
-|55    |LUT4                  |   776|
-|56    |LUT5                  |   802|
-|57    |LUT6                  |  3232|
-|58    |MMCME2_ADV            |     1|
-|59    |MUXF7                 |   222|
-|60    |MUXF8                 |    30|
-|61    |SRL16E                |    24|
-|62    |FDCE                  |    96|
-|63    |FDPE                  |    16|
-|64    |FDRE                  |  2017|
-|65    |FDSE                  |     8|
-|66    |LD                    |    29|
-|67    |IBUF                  |     4|
+|5     |clear_fifo            |     1|
+|6     |eight_bcm             |     1|
+|7     |eight_gcm             |     1|
+|8     |eight_image_rom       |     1|
+|9     |eight_rcm             |     1|
+|10    |facing_down_bcm       |     1|
+|11    |facing_down_gcm       |     1|
+|12    |facing_down_image_rom |     1|
+|13    |facing_down_rcm       |     1|
+|14    |five_bcm              |     1|
+|15    |five_gcm              |     1|
+|16    |five_image_rom        |     1|
+|17    |five_rcm              |     1|
+|18    |flag_bcm              |     1|
+|19    |flag_gcm              |     1|
+|20    |flag_image_rom        |     1|
+|21    |flag_rcm              |     1|
+|22    |four_bcm              |     1|
+|23    |four_gcm              |     1|
+|24    |four_image_rom        |     1|
+|25    |four_rcm              |     1|
+|26    |one_bcm               |     1|
+|27    |one_gcm               |     1|
+|28    |one_image_rom         |     1|
+|29    |one_rcm               |     1|
+|30    |seven_bcm             |     1|
+|31    |seven_gcm             |     1|
+|32    |seven_image_rom       |     1|
+|33    |seven_rcm             |     1|
+|34    |six_bcm               |     1|
+|35    |six_gcm               |     1|
+|36    |six_image_rom         |     1|
+|37    |six_rcm               |     1|
+|38    |three_bcm             |     1|
+|39    |three_gcm             |     1|
+|40    |three_image_rom       |     1|
+|41    |three_rcm             |     1|
+|42    |two_bcm               |     1|
+|43    |two_gcm               |     1|
+|44    |two_image_rom         |     1|
+|45    |two_rcm               |     1|
+|46    |zero_bcm              |     1|
+|47    |zero_gcm              |     1|
+|48    |zero_image_rom        |     1|
+|49    |zero_rcm              |     1|
+|50    |BUFG                  |     2|
+|51    |CARRY4                |   156|
+|52    |DSP48E1_1             |     1|
+|53    |LUT1                  |    57|
+|54    |LUT2                  |   709|
+|55    |LUT3                  |   620|
+|56    |LUT4                  |  1131|
+|57    |LUT5                  |  1228|
+|58    |LUT6                  |  4841|
+|59    |MMCME2_ADV            |     1|
+|60    |MUXF7                 |   379|
+|61    |MUXF8                 |    17|
+|62    |SRL16E                |    24|
+|63    |FDCE                  |    96|
+|64    |FDPE                  |    16|
+|65    |FDRE                  |  2122|
+|66    |FDSE                  |     8|
+|67    |IBUF                  |     6|
 |68    |IOBUF                 |     2|
 |69    |OBUF                  |    46|
 |70    |OBUFT                 |     2|
@@ -1314,45 +1324,44 @@ Report Instance Areas:
 +------+----------------------+---------------+------+
 |      |Instance              |Module         |Cells |
 +------+----------------------+---------------+------+
-|1     |top                   |               |  8975|
-|2     |  MouseCtl            |MouseCtl       |  2602|
+|1     |top                   |               | 11866|
+|2     |  MouseCtl            |MouseCtl       |  1849|
 |3     |    Inst_Ps2Interface |Ps2Interface   |   281|
 |4     |  clkdivider          |clk_wiz_lab3   |     4|
-|5     |  display             |display_8hex   |    46|
-|6     |  minesweeper         |minesweeper    |  5623|
-|7     |    h2d_clk           |hex_2_dec      |   146|
-|8     |    h2d_flag          |hex_2_dec_0    |   120|
-|9     |    td                |tile_drawer    |  1048|
+|5     |  display             |display_8hex   |    48|
+|6     |  minesweeper         |minesweeper    |  9378|
+|7     |    h2d_clk           |hex_2_dec      |   144|
+|8     |    h2d_flag          |hex_2_dec_0    |   121|
+|9     |    td                |tile_drawer    |  1115|
 |10    |  mouse_renderer      |mouse_renderer |    72|
-|11    |  random              |random         |    36|
+|11    |  random              |random         |    35|
 |12    |  timer               |timer          |   235|
-|13    |  xvga1               |xvga           |   257|
+|13    |  xvga1               |xvga           |   142|
 +------+----------------------+---------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:08:19 ; elapsed = 00:08:55 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Finished Writing Synthesis Report : Time (s): cpu = 00:05:36 ; elapsed = 00:05:45 . Memory (MB): peak = 1495.875 ; gain = 849.500
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 40 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:06:26 ; elapsed = 00:08:42 . Memory (MB): peak = 1542.391 ; gain = 866.832
-Synthesis Optimization Complete : Time (s): cpu = 00:08:19 ; elapsed = 00:08:56 . Memory (MB): peak = 1542.391 ; gain = 898.449
+Synthesis finished with 0 errors, 0 critical warnings and 37 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:50 ; elapsed = 00:05:34 . Memory (MB): peak = 1495.875 ; gain = 844.914
+Synthesis Optimization Complete : Time (s): cpu = 00:05:36 ; elapsed = 00:05:46 . Memory (MB): peak = 1495.875 ; gain = 849.500
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.263 . Memory (MB): peak = 1542.641 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 441 Unisim elements for replacement
-INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.258 . Memory (MB): peak = 1495.875 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 556 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1544.727 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1495.875 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 31 instances were transformed.
+  A total of 2 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 2 instances
-  LD => LDCE: 29 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-202 Infos, 188 Warnings, 0 Critical Warnings and 0 Errors encountered.
+204 Infos, 182 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:08:28 ; elapsed = 00:09:06 . Memory (MB): peak = 1544.727 ; gain = 1206.504
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1544.727 ; gain = 0.000
+synth_design: Time (s): cpu = 00:05:45 ; elapsed = 00:05:56 . Memory (MB): peak = 1495.875 ; gain = 1157.160
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1495.875 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1/top_level.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Dec  8 16:45:42 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  9 02:05:14 2019...

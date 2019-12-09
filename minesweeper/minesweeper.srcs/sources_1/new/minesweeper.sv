@@ -34,8 +34,7 @@ module minesweeper(
 
 	output [31:0] seven_seg_out,	// seven segment display. Each nibble is 1 7 segment output
 
-	output logic [2:0] sound_effect_select,	//indices and meanings 001 = bomb, 011 = flag
-	output logic sound_effect_start,			//start the selected sound effect. 1 cycle
+	output logic [5:0] sound_effect_select,	//indices and meanings 001 = bomb, 011 = flag
 
 	output logic gg_pulse // One cycle pulse for leaderboard
 	);
@@ -77,19 +76,21 @@ module minesweeper(
 	assign x_bin = mouse_x/48;
 	assign y_bin = mouse_y/48;
 
-	parameter IDLE = 3'b000;
-	parameter IN_GAME = 3'b010;
-	parameter GAME_OVER = 3'b011;
-	parameter GG = 3'b111;
-	parameter PLACE_BOMBS = 3'b110;
-	parameter TILES = 3'b101;
-	parameter CLEAR = 3'b001;
-	logic [2:0] state=IDLE;; //states for resetting game and choosing difficulty
+	parameter IDLE = 4'b000;
+	parameter IN_GAME = 4'b010;
+	parameter GAME_OVER = 4'b011;
+	parameter GG = 4'b111;
+	parameter PLACE_BOMBS = 4'b110;
+	parameter TILES = 4'b101;
+	parameter CLEAR = 4'b100;
+	parameter CHECK_FIFO = 4'hF;
+
+	logic [3:0] state=IDLE;; //states for resetting game and choosing difficulty
 	
 	//VGA Buffer vars
-	logic vsync[7:0], hsync[7:0], blank [7:0];
-	logic [10:0] hcount[7:0];
-	logic [9:0] vcount[7:0]; 
+	logic vsync[5:0], hsync[5:0], blank [5:0];
+	logic [10:0] hcount[5:0];
+	logic [9:0] vcount[5:0]; 
 	//buffering
 	assign hcount_out = hcount[0];
 	assign vcount_out = vcount[0];
@@ -97,25 +98,24 @@ module minesweeper(
 	assign vsync_out = vsync[0];
 	assign blank_out = blank[0];
 
-	logic [7:0] tile_loc,fifo_tile_out;
+	logic [7:0] fifo_tile_in ,fifo_tile_out;
 	logic [3:0] fifo_y,fifo_x;
-	logic fifo_empty;
-	clear_fifo clear_fifo(.clk(clk_65mhz),.srst(reset),.din(tile_loc),.dout(fifo_tile_out),.empty(fifo_empty));
+	logic [3:0] fifo_ind=0;
+	logic fifo_empty,fifo_wr=0,fifo_rd=0,fifo_reset=0;
+	clear_fifo clear_fifo(.clk(clk_65mhz),.srst(reset||fifo_reset),.din(fifo_tile_in),.dout(fifo_tile_out),.empty(fifo_empty),.wr_en(fifo_wr),.rd_en(fifo_rd));
 
 	//rising mouse edge detect vars
 	logic mouse_left_edge, mouse_right_edge, left_old_clean, right_old_clean; //edge triggered mouse inputs 
 	
-	always_comb begin
-		if(state == IN_GAME) begin
-			seven_seg_data = {dec_flag_data,dec_clk_data}; 
-		end else if(state == GG) begin
-			seven_seg_data = {16'd1111,dec_clk_data};
-		end else if(state == GAME_OVER) begin
-			seven_seg_data = {16'h0000,dec_clk_data};
-		end
-	end
 
     always_ff @(posedge clk_65mhz)begin
+		if(state == IN_GAME) begin
+			seven_seg_data <= {dec_flag_data,dec_clk_data}; 
+		end else if(state == GG) begin
+			seven_seg_data <= {16'd1111,dec_clk_data};
+		end else if(state == GAME_OVER) begin
+			seven_seg_data <= {16'h0000,dec_clk_data};
+		end
 		//rising edge detector
         if (reset)begin
             left_old_clean <= 1'b0;
@@ -128,23 +128,11 @@ module minesweeper(
         end
 
 		//Buffer VGA timing signals for tile_drawer module
-		vsync[7] <= vsync_in;
-		hsync[7] <= hsync_in;
-		blank[7] <= blank_in;
-		hcount[7] <= hcount_in;
-		vcount[7] <= vcount_in;
-
-		vsync[6] <= vsync[7];
-		hsync[6] <= hsync[7];
-		blank[6] <= blank[7];
-		hcount[6] <= hcount[7];
-		vcount[6] <= vcount[7];
-
-		vsync[5] <= vsync[6];
-		hsync[5] <= hsync[6];
-		blank[5] <= blank[6];
-		hcount[5] <= hcount[6];
-		vcount[5] <= vcount[6];
+		vsync[5] <= vsync_in;
+		hsync[5] <= hsync_in;
+		blank[5] <= blank_in;
+		hcount[5] <= hcount_in;
+		vcount[5] <= vcount_in;
 
 		vsync[4] <= vsync[5];
 		hsync[4] <= hsync[5];
@@ -182,8 +170,12 @@ module minesweeper(
 		end
 		if(stop_timer) stop_timer <= 1'b0; //make stop_timer a single cycle pulse
 
-		if(sound_effect_start) sound_effect_start <= 0; //make sound effect start one pulse
+		if(sound_effect_select[1]) sound_effect_select[1] <= 0;
+		if(sound_effect_select[3]) sound_effect_select[3] <= 0;
+		if(sound_effect_select[2]) sound_effect_select[2] <= 0;
+		if(sound_effect_select[5]) sound_effect_select[5] <= 0;
 		if(gg_pulse) gg_pulse <= 0;
+		if(fifo_reset) fifo_reset <= 0;
 
 		if(state == GAME_OVER||state == GG) begin
 				tile_status <= '{'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},'{2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01,2'b01},
@@ -254,6 +246,13 @@ module minesweeper(
 				y_temp <= 0;
 				state <= IN_GAME;
 				start_timer <= 1; //Start the 1 Hz counter
+				if(sw[15]) begin
+					sound_effect_select[4] <= 1;
+					sound_effect_select[0] <= 0;
+				end else begin
+					sound_effect_select[0] <= 1;
+					sound_effect_select[4] <= 0;
+				end
 			end
 			if(x_temp == 15) begin 
 				x_temp <= 0;
@@ -278,39 +277,167 @@ module minesweeper(
 				'{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}}; 
 			tile_cleared_count <= 0;
 			temp_bomb_counter <= 0;
+			fifo_reset <= 1;
 		end
+
 		if(state == CLEAR) begin //clearing adjacent tiles
-			fifo_y <= fifo_tile_out[7:4];
-			fifo_x <= fifo_tile_out[3:0]
-			if(fifo_y>0) begin
-				tile_status[fifo_y-1][fifo_x] <= tile_status[fifo_y-1][fifo_x]!=2'b11 ? 1 : 2'b11;
-				if(tile_numbers[fifo_y-1][fifo_x]==0) tile_loc <= {fifo_y-1,fifo_x};
-				if(fifo_x>0) begin
-					tile_status[fifo_y-1][fifo_x-1] <= tile_status[fifo_y-1][fifo_x-1]!=2'b11 ? 1 :2'b11;
-					tile_status[fifo_y][fifo_x-1] <= tile_status[fifo_y][fifo_x-1]!=2'b11 ? 1:2'b11;
-				end else if(fifo_x<GAME_SIZE-1) begin
-					tile_status[fifo_y-1][fifo_x+1] <= tile_status[fifo_y-1][fifo_x+1] != 2'b11 ? 1:2'b11;
-					tile_status[fifo_y][fifo_x+1] <= tile_status[fifo_y][fifo_x+1]!=2'b11 ? 1:2'b11;
+			if (fifo_ind[0] == sw[15]||sw[13]) begin
+			fifo_ind <= fifo_ind + 1;
+			case (fifo_ind) 
+				0: begin
+					if(fifo_y>0 && fifo_x > 0) begin
+						if(tile_status[fifo_y-1][fifo_x-1] != 1) begin
+							tile_status[fifo_y-1][fifo_x-1] <= 1;
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[fifo_y-1][fifo_x-1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y-1;
+								fifo_tile_in[3:0] <= fifo_x-1;
+								//fifo_tile_in <= {fifo_y-1,fifo_x-1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
 				end
-			end else if(fifo_y<GAME_SIZE-1) begin
-				tile_status[fifo_y+1][fifo_x] <= tile_status[fifo_y+1][fifo_x]!=2'b11 ? 1:2'b11;
-				if(fifo_x>0) begin
-					tile_status[fifo_y+1][fifo_x-1] <= tile_status[fifo_y+1][fifo_x-1]!=2'b11 ? 1:2'b11;
-					tile_status[fifo_y][fifo_x-1] <= tile_status[fifo_y][fifo_x-1]!=2'b11 ? 1:2'b11;
-				end else if(fifo_x<GAME_SIZE-1) begin
-					tile_status[fifo_y+1][fifo_x+1] <=tile_status[fifo_y+1][fifo_x+1]!=2'b11 ? 1:2'b11;
-					tile_status[fifo_y][fifo_x+1] <=tile_status[fifo_y][fifo_x+1]!=2'b11 ? 1:2'b11;
+				1: begin
+					if(fifo_y>0) begin
+						if(tile_status[fifo_y-1][fifo_x] != 1) begin
+							tile_status[fifo_y-1][fifo_x] <= 1;
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[fifo_y-1][fifo_x] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y-1;
+								fifo_tile_in[3:0] <= fifo_x;
+								//fifo_tile_in <= {fifo_y-1,fifo_x};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
 				end
+				2: begin
+					if(fifo_y>0 && fifo_x<14) begin
+						if(tile_status[fifo_y-1][fifo_x+1] != 1) begin
+							tile_status[fifo_y-1][fifo_x+1] <= 1;
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[fifo_y-1][fifo_x+1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y-1;
+								fifo_tile_in[3:0] <= fifo_x+1;
+								//fifo_tile_in <= {fifo_y-1,fifo_x+1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+				3: begin
+					if(fifo_x>0) begin
+						if(tile_status[fifo_y][fifo_x-1] != 1) begin
+							tile_status[fifo_y][fifo_x-1] <= 1;
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[fifo_y][fifo_x-1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y;
+								fifo_tile_in[3:0] <= fifo_x-1;
+								//fifo_tile_in <= {fifo_y,fifo_x-1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+				4: begin
+					if(fifo_x<14) begin
+						if(tile_status[fifo_y][fifo_x+1] != 1) begin
+							tile_status[fifo_y][fifo_x+1] <= 1;
+							tile_cleared_count <= tile_cleared_count+1;
+							if(tile_numbers[fifo_y][fifo_x+1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y;
+								fifo_tile_in[3:0] <= fifo_x+1;
+								//fifo_tile_in <= {fifo_y,fifo_x+1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+				5: begin
+					if(fifo_y<14&&fifo_x>0) begin
+						if(tile_status[fifo_y+1][fifo_x-1] != 1) begin
+							tile_status[fifo_y+1][fifo_x-1] <= 1;
+							tile_cleared_count <= tile_cleared_count-1;
+							if(tile_numbers[fifo_y+1][fifo_x-1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y+1;
+								fifo_tile_in[3:0] <= fifo_x-1;
+								//fifo_tile_in <= {fifo_y+1,fifo_x-1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+				6: begin
+					if(fifo_y<14) begin
+						if(tile_status[fifo_y+1][fifo_x] != 1) begin
+							tile_status[fifo_y+1][fifo_x] <= 1;
+							tile_cleared_count <= tile_cleared_count-1;
+							if(tile_numbers[fifo_y+1][fifo_x] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y+1;
+								fifo_tile_in[3:0] <= fifo_x;
+								//fifo_tile_in <= {fifo_y+1,fifo_x};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+				7: begin
+					if(fifo_x<14 && fifo_y<14) begin
+						if(tile_status[fifo_y+1][fifo_x+1] != 1) begin
+							tile_status[fifo_y+1][fifo_x+1] <= 1;
+							tile_cleared_count <= tile_cleared_count-1;
+							if(tile_numbers[fifo_y+1][fifo_x+1] == 0) begin // if top left tile is also a 0-tile
+								fifo_wr <= 1;
+								fifo_tile_in[7:4] <= fifo_y+1;
+								fifo_tile_in[3:0] <= fifo_x+1;
+								//fifo_tile_in <= {fifo_y+1,fifo_x+1};
+							end else begin
+								fifo_wr <= 0;
+							end
+						end
+					end
+				end
+			endcase
+			if(fifo_ind == 8) begin
+				state <= CHECK_FIFO;
+				fifo_rd <= 1;
+				fifo_wr <= 0;
 			end
-			if(fifo_empty) begin //finished processing fifo
+			end
+		end
+
+		if(state == CHECK_FIFO) begin
+			fifo_rd <= 0;
+			fifo_x <= fifo_tile_out[3:0];
+			fifo_y <= fifo_tile_out[7:4];
+			if(fifo_empty)
 				state <= IN_GAME;
+			else begin
+				state <= CLEAR;
+				fifo_ind <= 0;
 			end
 		end
 
 		if(state == IN_GAME) begin
-			if(tile_cleared_count == 225-BOMBS-1)begin
+			if(tile_cleared_count == 225-BOMBS) begin
 				stop_timer <= 1'b1;
 				state <= GG;
+				sound_effect_select[2] <= 1;
 				gg_pulse <= 1;
 			end
 		end
@@ -322,56 +449,58 @@ module minesweeper(
 			case(state)
 				IDLE: begin
 					case(sw[1:0])
-						2'b00: BOMBS = 25;
-						2'b01: BOMBS = 35;
-						2'b10: BOMBS = 45;
-						2'b11: BOMBS = 55;
+						2'b00: BOMBS = 20;
+						2'b01: BOMBS = 25;
+						2'b10: BOMBS = 35;
+						2'b11: BOMBS = 45;
 					endcase
 					flag_counter <= BOMBS;
-					sound_effect_start <= 1;
 					state <= PLACE_BOMBS;
 				end
 				IN_GAME: begin
 					start_timer <= 0;
-					if(mouse_left_edge) begin
+					if(mouse_left_edge && x_bin>=0 && x_bin <= 14 && y_bin>=0 && y_bin<=14) begin
 						if(tile_status[y_bin][x_bin]!=2'b11) begin //if user left clicks on a non-flag tile
 							if(bomb_locations[y_bin][x_bin]) begin //if tile is not a flag and there's a bomb, end the game
 								state <= GAME_OVER;
-								sound_effect_start <= 1;
-								sound_effect_select <= 3'b1;
+								sound_effect_select[1] <= 1;
 								stop_timer <= 1'b1;
 							end
 							tile_status[y_bin][x_bin] <= 2'b1; //Update tile with mouse location
 							tile_cleared_count <= tile_cleared_count+1;
-							if(tile_numbers[y_bin][x_bin] == 0&&tile_status[y_bin][x_bin]==0) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
+							if(tile_numbers[y_bin][x_bin] == 0 && tile_status[y_bin][x_bin]!=2'b11) begin//if clicked on a tile with no adjacent bombs, need to clear all adjacent tiles 
 								state <= CLEAR;
-								tile_loc <= {y_bin,x_bin}; //put the clicked-on, 0-tile coords into fifo and start clearing adjacent tiles
+								fifo_y <= y_bin;
+								fifo_x <= x_bin;
+								fifo_ind <= 0;
 							end
 						end
 					end else begin //process user right click
-						if(tile_status[y_bin][x_bin] == 2'b00) begin
-							tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
-							flag_counter <= flag_counter-1;
-						end else if(tile_status[y_bin][x_bin] == 2'b11) begin
-							tile_status[y_bin][x_bin] <= 2'b00; //Turn flag into empty tile
-							flag_counter <= flag_counter+1;
+						if(x_bin>=0 && x_bin <= 14 && y_bin>=0 && y_bin<=14) begin
+							if(tile_status[y_bin][x_bin] == 2'b00) begin
+								sound_effect_select[3] <= 1;
+								tile_status[y_bin][x_bin] <= 2'b11; //Update tile with flag
+								flag_counter <= flag_counter-1;
+							end else if(tile_status[y_bin][x_bin] == 2'b11) begin
+								sound_effect_select[5] <= 1;
+								tile_status[y_bin][x_bin] <= 2'b00; //Turn flag into empty tile
+								flag_counter <= flag_counter+1;
+							end
 						end
-						sound_effect_start <= 1;
-						sound_effect_select <= 2'b011;
 					end
 				end
 			endcase
 		end
 	end
 
-	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out));
+	tile_drawer td(.pixel_clk_in(clk_65mhz),.hcount_in(hcount_in),.vcount_in(vcount_in),.tile_numbers(tile_numbers),.tile_status(tile_status),.pixel_out(pixel_out),.vcount_out(vcount_out),.hcount_out(hcount_out));
 endmodule
 
 module tile_drawer
 	#(parameter WIDTH = 48, HEIGHT = 48,GAME_SIZE = 15)
 	(input pixel_clk_in,
-    input [10:0] hcount_in,
-    input [9:0] vcount_in,
+    input [10:0] hcount_in,hcount_out,
+    input [9:0] vcount_in,vcount_out,
 	input [0:GAME_SIZE-1] [3:0] tile_numbers[0:GAME_SIZE-1],
 	logic [0:GAME_SIZE-1] [1:0] tile_status [0:GAME_SIZE-1],
     output logic [11:0] pixel_out
@@ -494,13 +623,17 @@ module tile_drawer
 		hcount_temp[0] <= hcount_temp[1]*WIDTH;
 		vcount_temp[0] <= vcount_temp[1]*HEIGHT;
 		
-		if(hcount_in<=720&&vcount_in<=720) begin //only draw in the game tile region
-			if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
+		if(hcount_out<=720&&vcount_out<=720) begin //only draw out the game tile region
+		//if(hcount_in<=720&&vcount_in<=720) begin //only draw in the game tile region
+			//if(!tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]) begin//if tile has not been cleared, draw uncleared tile symbol
+			if(!tile_status[vcount_out/HEIGHT][hcount_out/WIDTH]) begin //if tile has not been cleared, draw uncleared tile symbol
 				pixel_out <= {fd_red_mapped[7:4], fd_red_mapped[7:4], fd_red_mapped[7:4]}; // greyscale
-			end else if (tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]==2'b11) begin //draw flag if flagged
+			end else if (tile_status[vcount_out/HEIGHT][hcount_out/WIDTH]==2'b11) begin //draw flag if flagged
+			//end else if (tile_status[vcount_in/HEIGHT][hcount_in/WIDTH]==2'b11) begin //draw flag if flagged
 				pixel_out <= {flag_red_mapped[7:4], flag_green_mapped[7:4], flag_blue_mapped[7:4]}; 
 			end else begin //if tile has been cleared, draw the number of surrounding bombs
-				curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; 
+				curr_tile <= tile_numbers[vcount_out/HEIGHT][hcount_out/WIDTH]; 
+				//curr_tile <= tile_numbers[vcount_in/HEIGHT][hcount_in/WIDTH]; 
 				case(curr_tile)
 					0: begin
 						pixel_out <= {zero_red_mapped[7:4], zero_green_mapped[7:4], zero_blue_mapped[7:4]}; 

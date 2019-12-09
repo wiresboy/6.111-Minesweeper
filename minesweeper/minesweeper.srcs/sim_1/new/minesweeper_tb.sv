@@ -33,7 +33,7 @@ module minesweeper_tb;
 	//mouse_left_click = 0;
 	mouse_right_click = 0;
 	reset = 0;
-	random = 33333;
+	random = 60333;
 	#30;
 	hcount_in = 10;
 	vcount_in = 0;
@@ -43,8 +43,7 @@ module minesweeper_tb;
 	mouse_right_click = 0;
 	mouse_left_click = 0;
 	#60;
-	random = 0;
-	#600;
-    $finish;
+	//random = 0;
+    //$finish;
    end
 endmodule

@@ -19,7 +19,6 @@ proc create_report { reportName command } {
 }
 set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
-set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -28,7 +27,7 @@ set_param synth.vivado.isSynthRun true
 set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
 set_property webtalk.parent_dir {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.cache/wt} [current_project]
 set_property parent.project_path {C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.xpr} [current_project]
-set_property XPM_LIBRARIES XPM_MEMORY [current_project]
+set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
@@ -238,6 +237,10 @@ set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss
 
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm_ooc.xdc}}]
+
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo_ooc.xdc}}]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="bomb_gcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575834511">
   <File Type="PA-TCL" Name="bomb_gcm.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="bomb_gcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="bomb_gcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="bomb_gcm.vds"/>
   <File Type="RDS-UTIL" Name="bomb_gcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="bomb_gcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="bomb_gcm.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="bomb_gcm_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="bomb_gcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/bomb_gcm">
     <File Path="$PSRCDIR/sources_1/ip/bomb_gcm/bomb_gcm.xci">
       <FileInfo>
