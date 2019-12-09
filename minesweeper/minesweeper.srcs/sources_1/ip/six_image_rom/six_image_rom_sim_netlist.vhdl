@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Thu Nov 21 20:04:21 2019
--- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_image_rom/six_image_rom_sim_netlist.vhdl
+-- Date        : Tue Nov 19 20:01:57 2019
+-- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top six_image_rom -prefix
+--               six_image_rom_ six_image_rom_sim_netlist.vhdl
 -- Design      : six_image_rom
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -23,8 +23,6 @@ entity six_image_rom_blk_mem_gen_mux is
     ram_douta : in STD_LOGIC_VECTOR ( 8 downto 0 );
     \douta[15]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_mux : entity is "blk_mem_gen_mux";
 end six_image_rom_blk_mem_gen_mux;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_mux is
@@ -263,8 +261,6 @@ entity six_image_rom_blk_mem_gen_prim_wrapper_init is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
 end six_image_rom_blk_mem_gen_prim_wrapper_init;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_prim_wrapper_init is
@@ -743,8 +739,6 @@ entity six_image_rom_blk_mem_gen_prim_width is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end six_image_rom_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_prim_width is
@@ -817,8 +811,6 @@ entity six_image_rom_blk_mem_gen_generic_cstr is
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 );
     clka : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end six_image_rom_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_generic_cstr is
@@ -930,8 +922,6 @@ entity six_image_rom_blk_mem_gen_top is
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 );
     clka : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end six_image_rom_blk_mem_gen_top;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_top is
@@ -953,8 +943,6 @@ entity six_image_rom_blk_mem_gen_v8_4_4_synth is
     addra : in STD_LOGIC_VECTOR ( 11 downto 0 );
     clka : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end six_image_rom_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of six_image_rom_blk_mem_gen_v8_4_4_synth is
@@ -1186,8 +1174,6 @@ entity six_image_rom_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of six_image_rom_blk_mem_gen_v8_4_4 : entity is 16;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of six_image_rom_blk_mem_gen_v8_4_4 : entity is "artix7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of six_image_rom_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of six_image_rom_blk_mem_gen_v8_4_4 : entity is "yes";
 end six_image_rom_blk_mem_gen_v8_4_4;

@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Thu Nov 21 20:06:50 2019
--- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm_sim_netlist.vhdl
+-- Date        : Tue Nov 19 10:42:29 2019
+-- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top one_bcm -prefix
+--               one_bcm_ one_bcm_sim_netlist.vhdl
 -- Design      : one_bcm
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,8 +20,6 @@ entity one_bcm_blk_mem_gen_prim_wrapper_init is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_prim_wrapper_init : entity is "blk_mem_gen_prim_wrapper_init";
 end one_bcm_blk_mem_gen_prim_wrapper_init;
 
 architecture STRUCTURE of one_bcm_blk_mem_gen_prim_wrapper_init is
@@ -225,8 +223,6 @@ entity one_bcm_blk_mem_gen_prim_width is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end one_bcm_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of one_bcm_blk_mem_gen_prim_width is
@@ -248,8 +244,6 @@ entity one_bcm_blk_mem_gen_generic_cstr is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end one_bcm_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of one_bcm_blk_mem_gen_generic_cstr is
@@ -271,8 +265,6 @@ entity one_bcm_blk_mem_gen_top is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end one_bcm_blk_mem_gen_top;
 
 architecture STRUCTURE of one_bcm_blk_mem_gen_top is
@@ -294,8 +286,6 @@ entity one_bcm_blk_mem_gen_v8_4_4_synth is
     clka : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 4 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end one_bcm_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of one_bcm_blk_mem_gen_v8_4_4_synth is
@@ -527,8 +517,6 @@ entity one_bcm_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of one_bcm_blk_mem_gen_v8_4_4 : entity is 8;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of one_bcm_blk_mem_gen_v8_4_4 : entity is "artix7";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of one_bcm_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of one_bcm_blk_mem_gen_v8_4_4 : entity is "yes";
 end one_bcm_blk_mem_gen_v8_4_4;
