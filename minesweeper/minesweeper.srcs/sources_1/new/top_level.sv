@@ -37,27 +37,26 @@ module top_level(
 	wire [31:0] seven_segment_data;		// sent to display - (8) 4-bit hex
 	wire [6:0] segments;
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
-	display_8hex display(.clk_in(clk_100mhz/*clk_65mhz*/),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
+	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
 	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	assign led[15:10] = sw[15:10];		// turn leds on based on switches
+	assign led[15:12] = sw[15:12];		// turn leds on based on switches
 	
 
 	// ***** Button Debounce *****
 	// all button uses are TBD
 	wire center_pressed,up_pressed,down_pressed,left_pressed,right_pressed;
-	debounce db1(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnc),.clean_out(center_pressed));
-	debounce db2(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnu),.clean_out(up_pressed));
-	debounce db3(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnd),.clean_out(down_pressed));
-	debounce db4(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnl),.clean_out(left_pressed));
-	debounce db5(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnr),.clean_out(right_pressed));
+	debounce db1(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnc),.clean_out(center_pressed));
+	debounce db2(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnu),.clean_out(up_pressed));
+	debounce db3(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnd),.clean_out(down_pressed));
+	debounce db4(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnl),.clean_out(left_pressed));
+	debounce db5(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnr),.clean_out(right_pressed));
 	
 	
 	// ***** Sound *****
 	logic [5:0] sound_effect;
-	assign sound_effect = sw[5:0];
 	sound_effect_manager sfx_manager(.clk_100mhz(clk_100mhz), .clk_25mhz(clk_25mhz), .reset(reset), .sw(sw), 
 			.sound_effect(sound_effect),
 			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
@@ -66,7 +65,7 @@ module top_level(
 	assign led[8] = aud_pwm;
 	assign led[9] = center_pressed;
 
-/*
+
 	// ***** Random *****
 	logic [15:0] random_number;
 	random random(clk_65mhz, reset, random_number);
@@ -76,20 +75,14 @@ module top_level(
 	logic [11:0] mouse_x;
 	logic [11:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
-*/
 
-	/*mouse mouse(.clk_65mhz(clk_65mhz), .rst(reset),
-				.ps2_clk(ps2_clk), .ps2_data(ps2_data),
-				.mouse_x(mouse_x), .mouse_y(mouse_y),
-				.mouse_left_click(mouse_left_click),
-				.mouse_right_click(mouse_right_click));*/
-/*	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
+
+	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
 						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 						.xpos(mouse_x), .ypos(mouse_y),
 						.left(mouse_left_click), .right(mouse_right_click)
 						);
-	assign led = {mouse_left_click, mouse_right_click};
-	//assign seven_segment_data = {mouse_x, 4'b0, mouse_y}; 
+	assign led[11:10] = {mouse_left_click, mouse_right_click};
 
 	// ***** VGA Gen *****
 	wire [10:0] hcount;    // pixel on current line
@@ -117,8 +110,8 @@ module top_level(
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.pixel_out(ms_pixel),
-			.seven_seg_out(ms_seven_segment_data)
-			//,  TODO sound
+			.seven_seg_out(ms_seven_segment_data),
+			.sound_effect_select(sound_effect)
 			);
 
 
@@ -158,7 +151,7 @@ module top_level(
 	assign vga_b = ~b ? rgb[3:0] : 0;
 	assign vga_hs = ~hs;
 	assign vga_vs = ~vs;
-*/
+
 	
 	
 endmodule
