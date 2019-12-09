@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Tue Nov 19 21:34:57 2019
--- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top six_gcm -prefix
---               six_gcm_ six_gcm_stub.vhdl
+-- Date        : Mon Dec  9 04:30:13 2019
+-- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub
+--               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_gcm/six_gcm_stub.vhdl
 -- Design      : six_gcm
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

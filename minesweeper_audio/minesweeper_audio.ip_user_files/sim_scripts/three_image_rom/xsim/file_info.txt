@@ -1,0 +1,2 @@
+three_image_rom.v,verilog,xil_defaultlib,../../../../../minesweeper/minesweeper.srcs/sources_1/ip/three_image_rom/sim/three_image_rom.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

@@ -1,7 +1,7 @@
 Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-| Date         : Mon Dec  9 01:17:06 2019
+| Date         : Mon Dec  9 05:01:52 2019
 | Host         : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_level_methodology_drc_routed.rpt -pb top_level_methodology_drc_routed.pb -rpx top_level_methodology_drc_routed.rpx
 | Design       : top_level
@@ -23,15 +23,18 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 56
+             Violations found: 35
 +-----------+------------------+----------------------------------------------------+------------+
 | Rule      | Severity         | Description                                        | Violations |
 +-----------+------------------+----------------------------------------------------+------------+
 | TIMING-4  | Critical Warning | Invalid primary clock redefinition on a clock tree | 1          |
-| TIMING-6  | Critical Warning | No common primary clock between related clocks     | 2          |
-| TIMING-7  | Critical Warning | No common node between related clocks              | 2          |
+| TIMING-6  | Critical Warning | No common primary clock between related clocks     | 3          |
+| TIMING-7  | Critical Warning | No common node between related clocks              | 3          |
 | TIMING-27 | Critical Warning | Invalid primary clock on hierarchical pin          | 1          |
-| TIMING-18 | Warning          | Missing input or output delay                      | 50         |
+| SYNTH-9   | Warning          | Small multiplier                                   | 2          |
+| SYNTH-11  | Warning          | DSP output not registered                          | 1          |
+| TIMING-16 | Warning          | Large setup violation                              | 6          |
+| TIMING-18 | Warning          | Missing input or output delay                      | 18         |
 +-----------+------------------+----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -43,22 +46,32 @@ Related violations: <none>
 
 TIMING-6#1 Critical Warning
 No common primary clock between related clocks  
-The clocks clk_out2_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out2_clk_wiz_0] -to [get_clocks sys_clk_pin]
+The clocks clk_25mhz_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_25mhz_clk_wiz_0] -to [get_clocks sys_clk_pin]
 Related violations: <none>
 
 TIMING-6#2 Critical Warning
 No common primary clock between related clocks  
-The clocks sys_clk_pin and clk_out2_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_pin] -to [get_clocks clk_out2_clk_wiz_0]
+The clocks clk_65mhz_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_65mhz_clk_wiz_0] -to [get_clocks sys_clk_pin]
+Related violations: <none>
+
+TIMING-6#3 Critical Warning
+No common primary clock between related clocks  
+The clocks sys_clk_pin and clk_25mhz_clk_wiz_0 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_pin] -to [get_clocks clk_25mhz_clk_wiz_0]
 Related violations: <none>
 
 TIMING-7#1 Critical Warning
 No common node between related clocks  
-The clocks clk_out2_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_out2_clk_wiz_0] -to [get_clocks sys_clk_pin]
+The clocks clk_25mhz_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_25mhz_clk_wiz_0] -to [get_clocks sys_clk_pin]
 Related violations: <none>
 
 TIMING-7#2 Critical Warning
 No common node between related clocks  
-The clocks sys_clk_pin and clk_out2_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_pin] -to [get_clocks clk_out2_clk_wiz_0]
+The clocks clk_65mhz_clk_wiz_0 and sys_clk_pin are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_65mhz_clk_wiz_0] -to [get_clocks sys_clk_pin]
+Related violations: <none>
+
+TIMING-7#3 Critical Warning
+No common node between related clocks  
+The clocks sys_clk_pin and clk_25mhz_clk_wiz_0 are related (timed together) but they have no common node. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks sys_clk_pin] -to [get_clocks clk_25mhz_clk_wiz_0]
 Related violations: <none>
 
 TIMING-27#1 Critical Warning
@@ -66,252 +79,137 @@ Invalid primary clock on hierarchical pin
 A primary clock clkdivider/inst/clk_in1 is created on an inappropriate internal pin clkdivider/inst/clk_in1. It is not recommended to create a primary clock on a hierarchical pin when its driver pin has a fanout connected to multiple clock pins
 Related violations: <none>
 
-TIMING-18#1 Warning
-Missing input or output delay  
-An input delay is missing on btnc relative to clock(s) sys_clk_pin
+SYNTH-9#1 Warning
+Small multiplier  
+Detected multiplier at minesweeper/td/hcount_temp_reg[0][10]_i_1 of size 6x6, it is implemented as LUTs due to its small size. To force the multiplier onto a DSP block, use the USE_DSP48 attribute.
 Related violations: <none>
 
-TIMING-18#2 Warning
+SYNTH-9#2 Warning
+Small multiplier  
+Detected multiplier at td/hcount_temp_reg[0][7]_i_1 of size 6x6, it is implemented as LUTs due to its small size. To force the multiplier onto a DSP block, use the USE_DSP48 attribute.
+Related violations: <none>
+
+SYNTH-11#1 Warning
+DSP output not registered  
+DSP instance minesweeper/td/image_addr is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.685 ns between minesweeper/sound_effect_select_reg[4]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx4/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.756 ns between minesweeper/sound_effect_select_reg[5]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx5/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.841 ns between minesweeper/sound_effect_select_reg[2]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx2/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.968 ns between minesweeper/sound_effect_select_reg[0]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx0/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -2.247 ns between minesweeper/sound_effect_select_reg[1]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx1/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -3.056 ns between minesweeper/sound_effect_select_reg[3]/C (clocked by clk_65mhz_clk_wiz_0) and sfx_manager/sfx3/playing_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on reset_n relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#3 Warning
-Missing input or output delay  
-An input delay is missing on sw[0] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#4 Warning
-Missing input or output delay  
-An input delay is missing on sw[10] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#5 Warning
-Missing input or output delay  
-An input delay is missing on sw[11] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#6 Warning
-Missing input or output delay  
-An input delay is missing on sw[12] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#7 Warning
-Missing input or output delay  
-An input delay is missing on sw[13] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#8 Warning
-Missing input or output delay  
-An input delay is missing on sw[14] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#9 Warning
-Missing input or output delay  
-An input delay is missing on sw[15] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#10 Warning
-Missing input or output delay  
-An input delay is missing on sw[1] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#11 Warning
-Missing input or output delay  
-An input delay is missing on sw[2] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#12 Warning
-Missing input or output delay  
-An input delay is missing on sw[3] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#13 Warning
-Missing input or output delay  
-An input delay is missing on sw[4] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#14 Warning
-Missing input or output delay  
-An input delay is missing on sw[5] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#15 Warning
-Missing input or output delay  
-An input delay is missing on sw[6] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#16 Warning
-Missing input or output delay  
-An input delay is missing on sw[7] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#17 Warning
-Missing input or output delay  
-An input delay is missing on sw[8] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#18 Warning
-Missing input or output delay  
-An input delay is missing on sw[9] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#19 Warning
-Missing input or output delay  
-An output delay is missing on an[0] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#20 Warning
-Missing input or output delay  
-An output delay is missing on an[1] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#21 Warning
-Missing input or output delay  
-An output delay is missing on an[2] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#22 Warning
-Missing input or output delay  
-An output delay is missing on an[3] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#23 Warning
-Missing input or output delay  
-An output delay is missing on an[4] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#24 Warning
-Missing input or output delay  
-An output delay is missing on an[5] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#25 Warning
-Missing input or output delay  
-An output delay is missing on an[6] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#26 Warning
-Missing input or output delay  
-An output delay is missing on an[7] relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#27 Warning
+TIMING-18#2 Warning
 Missing input or output delay  
 An output delay is missing on aud_pwm relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#28 Warning
-Missing input or output delay  
-An output delay is missing on ca relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#29 Warning
-Missing input or output delay  
-An output delay is missing on cb relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#30 Warning
-Missing input or output delay  
-An output delay is missing on cc relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#31 Warning
-Missing input or output delay  
-An output delay is missing on cd relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#32 Warning
-Missing input or output delay  
-An output delay is missing on ce relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#33 Warning
-Missing input or output delay  
-An output delay is missing on cf relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#34 Warning
-Missing input or output delay  
-An output delay is missing on cg relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#35 Warning
+TIMING-18#3 Warning
 Missing input or output delay  
 An output delay is missing on led[0] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#36 Warning
+TIMING-18#4 Warning
 Missing input or output delay  
 An output delay is missing on led[10] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#37 Warning
+TIMING-18#5 Warning
 Missing input or output delay  
 An output delay is missing on led[11] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#38 Warning
+TIMING-18#6 Warning
 Missing input or output delay  
 An output delay is missing on led[12] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#39 Warning
+TIMING-18#7 Warning
 Missing input or output delay  
 An output delay is missing on led[13] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#40 Warning
+TIMING-18#8 Warning
 Missing input or output delay  
 An output delay is missing on led[14] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#41 Warning
+TIMING-18#9 Warning
 Missing input or output delay  
 An output delay is missing on led[15] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#42 Warning
+TIMING-18#10 Warning
 Missing input or output delay  
 An output delay is missing on led[1] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#43 Warning
+TIMING-18#11 Warning
 Missing input or output delay  
 An output delay is missing on led[2] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#44 Warning
+TIMING-18#12 Warning
 Missing input or output delay  
 An output delay is missing on led[3] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#45 Warning
+TIMING-18#13 Warning
 Missing input or output delay  
 An output delay is missing on led[4] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#46 Warning
+TIMING-18#14 Warning
 Missing input or output delay  
 An output delay is missing on led[5] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#47 Warning
+TIMING-18#15 Warning
 Missing input or output delay  
 An output delay is missing on led[6] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#48 Warning
+TIMING-18#16 Warning
 Missing input or output delay  
 An output delay is missing on led[7] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#49 Warning
+TIMING-18#17 Warning
 Missing input or output delay  
 An output delay is missing on led[8] relative to clock(s) sys_clk_pin
 Related violations: <none>
 
-TIMING-18#50 Warning
+TIMING-18#18 Warning
 Missing input or output delay  
 An output delay is missing on led[9] relative to clock(s) sys_clk_pin
 Related violations: <none>

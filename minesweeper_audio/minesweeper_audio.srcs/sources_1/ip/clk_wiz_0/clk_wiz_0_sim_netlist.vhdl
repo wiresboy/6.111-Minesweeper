@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Thu Dec  5 20:49:30 2019
+-- Date        : Mon Dec  9 03:51:48 2019
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
---               d:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.vhdl
+--               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0_sim_netlist.vhdl
 -- Design      : clk_wiz_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,8 +16,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_0_clk_wiz_0_clk_wiz is
   port (
-    clk_out1 : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
+    clk_65mhz : out STD_LOGIC;
+    clk_25mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
@@ -26,9 +26,9 @@ entity clk_wiz_0_clk_wiz_0_clk_wiz is
 end clk_wiz_0_clk_wiz_0_clk_wiz;
 
 architecture STRUCTURE of clk_wiz_0_clk_wiz_0_clk_wiz is
+  signal clk_25mhz_clk_wiz_0 : STD_LOGIC;
+  signal clk_65mhz_clk_wiz_0 : STD_LOGIC;
   signal clk_in1_clk_wiz_0 : STD_LOGIC;
-  signal clk_out1_clk_wiz_0 : STD_LOGIC;
-  signal clk_out2_clk_wiz_0 : STD_LOGIC;
   signal clkfbout_buf_clk_wiz_0 : STD_LOGIC;
   signal clkfbout_clk_wiz_0 : STD_LOGIC;
   signal NLW_mmcm_adv_inst_CLKFBOUTB_UNCONNECTED : STD_LOGIC;
@@ -75,27 +75,27 @@ clkin1_ibufg: unisim.vcomponents.IBUF
     );
 clkout1_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out1_clk_wiz_0,
-      O => clk_out1
+      I => clk_65mhz_clk_wiz_0,
+      O => clk_65mhz
     );
 clkout2_buf: unisim.vcomponents.BUFG
      port map (
-      I => clk_out2_clk_wiz_0,
-      O => clk_out2
+      I => clk_25mhz_clk_wiz_0,
+      O => clk_25mhz
     );
 mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
     generic map(
       BANDWIDTH => "OPTIMIZED",
-      CLKFBOUT_MULT_F => 10.000000,
+      CLKFBOUT_MULT_F => 9.750000,
       CLKFBOUT_PHASE => 0.000000,
       CLKFBOUT_USE_FINE_PS => false,
       CLKIN1_PERIOD => 10.000000,
       CLKIN2_PERIOD => 0.000000,
-      CLKOUT0_DIVIDE_F => 5.000000,
+      CLKOUT0_DIVIDE_F => 15.000000,
       CLKOUT0_DUTY_CYCLE => 0.500000,
       CLKOUT0_PHASE => 0.000000,
       CLKOUT0_USE_FINE_PS => false,
-      CLKOUT1_DIVIDE => 40,
+      CLKOUT1_DIVIDE => 39,
       CLKOUT1_DUTY_CYCLE => 0.500000,
       CLKOUT1_PHASE => 0.000000,
       CLKOUT1_USE_FINE_PS => false,
@@ -143,9 +143,9 @@ mmcm_adv_inst: unisim.vcomponents.MMCME2_ADV
       CLKIN2 => '0',
       CLKINSEL => '1',
       CLKINSTOPPED => NLW_mmcm_adv_inst_CLKINSTOPPED_UNCONNECTED,
-      CLKOUT0 => clk_out1_clk_wiz_0,
+      CLKOUT0 => clk_65mhz_clk_wiz_0,
       CLKOUT0B => NLW_mmcm_adv_inst_CLKOUT0B_UNCONNECTED,
-      CLKOUT1 => clk_out2_clk_wiz_0,
+      CLKOUT1 => clk_25mhz_clk_wiz_0,
       CLKOUT1B => NLW_mmcm_adv_inst_CLKOUT1B_UNCONNECTED,
       CLKOUT2 => NLW_mmcm_adv_inst_CLKOUT2_UNCONNECTED,
       CLKOUT2B => NLW_mmcm_adv_inst_CLKOUT2B_UNCONNECTED,
@@ -176,8 +176,8 @@ library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
 entity clk_wiz_0 is
   port (
-    clk_out1 : out STD_LOGIC;
-    clk_out2 : out STD_LOGIC;
+    clk_65mhz : out STD_LOGIC;
+    clk_25mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
@@ -189,9 +189,9 @@ architecture STRUCTURE of clk_wiz_0 is
 begin
 inst: entity work.clk_wiz_0_clk_wiz_0_clk_wiz
      port map (
+      clk_25mhz => clk_25mhz,
+      clk_65mhz => clk_65mhz,
       clk_in1 => clk_in1,
-      clk_out1 => clk_out1,
-      clk_out2 => clk_out2,
       reset => reset
     );
 end STRUCTURE;

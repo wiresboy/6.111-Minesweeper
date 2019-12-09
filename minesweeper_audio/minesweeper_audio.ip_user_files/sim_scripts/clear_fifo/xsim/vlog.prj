@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../../../minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/sim/clear_fifo.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

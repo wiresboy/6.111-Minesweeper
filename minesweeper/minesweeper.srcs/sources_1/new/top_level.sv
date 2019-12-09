@@ -1,5 +1,5 @@
 `timescale 1ns / 1ps
-`default_nettype none
+//`default_nettype none
 
 module top_level(
 	input wire clk_100mhz,
@@ -26,14 +26,10 @@ module top_level(
 	// ***** CLOCK *****
 	wire clk_25mhz;
 	wire clk_65mhz;
-	wire clk_200mhz;
 	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
-	// create 200mhz clock for ddram
 	// 25mhz for SD card
-	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .reset(reset), .clk_out1(clk_200mhz)/*, .clk_out2(clk_65mhz)*/, .clk_out2(clk_25mhz));
+	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .reset(reset), .clk_65mhz(clk_65mhz), .clk_25mhz(clk_25mhz));
 	
-	wire reset;
-	assign reset = ~reset_n;	
 
 	// ***** SEVEN SEGMENT *****
 	wire [31:0] ms_seven_segment_data;	// data from minesweeper module
@@ -64,7 +60,7 @@ module top_level(
 			.sound_effect(sound_effect),
 			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
 			.sd_reset(sd_reset), .sd_cd(sd_cd), .sd_sck(sd_sck), .sd_cmd(sd_cmd), .sd_dat(sd_dat),
-			.audio(led[7:0]), .debug(ms_seven_segment_data) );
+			.audio(led[7:0]));
 	assign led[8] = aud_pwm;
 	assign led[9] = center_pressed;
 
@@ -84,13 +80,6 @@ module top_level(
 						.xpos(mouse_x), .ypos(mouse_y),
 						.left(mouse_left_click), .right(mouse_right_click)
 						);
-	assign led = {mouse_left_click, mouse_right_click};
-
-	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
-						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
-						.xpos(mouse_x), .ypos(mouse_y),
-						.left(mouse_left_click), .right(mouse_right_click)
-						);
 	assign led[11:10] = {mouse_left_click, mouse_right_click};
 
 	// ***** VGA Gen *****
@@ -99,10 +88,6 @@ module top_level(
 	wire hsync, vsync, blank;
 	xvga xvga1(.vclock_in(clk_65mhz),.hcount_out(hcount),.vcount_out(vcount),
 		  .hsync_out(hsync),.vsync_out(vsync),.blank_out(blank));
-
-	//Random
-	logic [15:0] random_number;
-	random random(clk_65mhz,reset,random_number);
 
 	// ***** Minesweeper Game *****
 	wire ms_hsync,ms_vsync,ms_blank;//delayed timing signals
@@ -117,7 +102,6 @@ module top_level(
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
-
 			.sw(sw),.random(random_number),
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),

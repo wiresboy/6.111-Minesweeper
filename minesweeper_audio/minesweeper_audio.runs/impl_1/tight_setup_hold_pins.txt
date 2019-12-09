@@ -1,0 +1,10 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx1/playing_reg/D|
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx2/playing_reg/D|
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx5/playing_reg/D|
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx4/playing_reg/D|
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx3/playing_reg/D|
+|      clk_65mhz_clk_wiz_0 |              sys_clk_pin |                                                                            sfx_manager/sfx0/playing_reg/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

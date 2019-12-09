@@ -1,4 +1,4 @@
-`default_nettype none
+//`default_nettype none
 //00001: Music
 //00010: Bomb
 //00100: Win

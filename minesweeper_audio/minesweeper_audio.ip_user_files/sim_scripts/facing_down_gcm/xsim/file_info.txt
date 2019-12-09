@@ -1,0 +1,2 @@
+facing_down_gcm.v,verilog,xil_defaultlib,../../../../../minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/sim/facing_down_gcm.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

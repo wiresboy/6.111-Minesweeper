@@ -60,13 +60,15 @@ proc step_failed { step } {
   close $ch
 }
 
+set_msg_config  -id {Common 17-576}  -suppress 
+set_msg_config  -id {Synth 8-3331}  -suppress 
+set_msg_config  -id {Constraints 18-5210}  -suppress 
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 2
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a100tcsg324-1
   set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
   set_property design_mode GateLvl [current_fileset]
@@ -77,8 +79,57 @@ set rc [catch {
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES {XPM_CDC XPM_MEMORY} [current_project]
   add_files -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/top_level.dcp
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xci
   read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/fifo_generator_0/fifo_generator_0.xci
+  read_ip -quiet d:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.srcs/sources_1/ip/one_image_rom/one_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_gcm/five_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_bcm/six_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_bcm/three_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_gcm/four_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_gcm/three_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_image_rom/two_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_gcm/zero_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_rcm/facing_down_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_rcm/three_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_gcm/two_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_gcm/flag_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_image_rom/facing_down_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_image_rom/bomb_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/three_image_rom/three_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_gcm/eight_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_image_rom/four_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_image_rom/five_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_gcm/seven_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_image_rom/zero_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_bcm/four_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/four_rcm/four_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_rcm/seven_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_gcm/one_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_rcm/six_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_rcm/two_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_bcm/zero_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_gcm/six_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_rcm/zero_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_rcm/eight_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_rcm/five_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_bcm/flag_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/five_bcm/five_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_rcm/flag_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_bcm/facing_down_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_gcm/bomb_gcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_image_rom/seven_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_rcm/one_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_image_rom/eight_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/six_image_rom/six_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/seven_bcm/seven_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/two_bcm/two_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/flag_image_rom/flag_image_rom.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_bcm/one_bcm.xci
+  read_ip -quiet D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm.xci
   read_xdc D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/constrs_1/imports/6.111/nexys4_ddr_lab3.xdc
   link_design -top top_level -part xc7a100tcsg324-1
   close_msg_db -file init_design.pb

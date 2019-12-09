@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Tue Nov 19 18:39:37 2019
-// Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim -rename_top zero_rcm -prefix
-//               zero_rcm_ zero_rcm_sim_netlist.v
+// Date        : Mon Dec  9 04:30:16 2019
+// Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim
+//               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/zero_rcm/zero_rcm_sim_netlist.v
 // Design      : zero_rcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -188,6 +188,7 @@ module zero_rcm
         .web(1'b0));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module zero_rcm_blk_mem_gen_generic_cstr
    (douta,
     clka,
@@ -206,6 +207,7 @@ module zero_rcm_blk_mem_gen_generic_cstr
         .douta(douta));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module zero_rcm_blk_mem_gen_prim_width
    (douta,
     clka,
@@ -224,6 +226,7 @@ module zero_rcm_blk_mem_gen_prim_width
         .douta(douta));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper_init" *) 
 module zero_rcm_blk_mem_gen_prim_wrapper_init
    (douta,
     clka,
@@ -390,6 +393,7 @@ module zero_rcm_blk_mem_gen_prim_wrapper_init
         .WEBWE({1'b0,1'b0,1'b0,1'b0}));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module zero_rcm_blk_mem_gen_top
    (douta,
     clka,
@@ -433,7 +437,7 @@ endmodule
 (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) (* C_WRITE_DEPTH_A = "6" *) 
 (* C_WRITE_DEPTH_B = "6" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "8" *) (* C_WRITE_WIDTH_B = "8" *) (* C_XDEVICEFAMILY = "artix7" *) 
-(* downgradeipidentifiedwarnings = "yes" *) 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
 module zero_rcm_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -621,6 +625,7 @@ module zero_rcm_blk_mem_gen_v8_4_4
         .douta(douta));
 endmodule
 
+(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module zero_rcm_blk_mem_gen_v8_4_4_synth
    (douta,
     clka,
