@@ -101,7 +101,7 @@ module minesweeper(
 	logic [7:0] fifo_tile_in ,fifo_tile_out;
 	logic [3:0] fifo_y,fifo_x;
 	logic [3:0] fifo_ind=0;
-	logic fifo_empty,fifo_wr=0,fifo_rd=0,fifo_reset=0;
+	logic fifo_empty,fifo_wr=0,fifo_rd=0,fifo_reset=0,fifo_flag=1;
 	clear_fifo clear_fifo(.clk(clk_65mhz),.srst(reset||fifo_reset),.din(fifo_tile_in),.dout(fifo_tile_out),.empty(fifo_empty),.wr_en(fifo_wr),.rd_en(fifo_rd));
 
 	//rising mouse edge detect vars
@@ -278,10 +278,15 @@ module minesweeper(
 			tile_cleared_count <= 0;
 			temp_bomb_counter <= 0;
 			fifo_reset <= 1;
+			fifo_flag <= 1;
 		end
 
 		if(state == CLEAR) begin //clearing adjacent tiles
 			fifo_ind <= fifo_ind + 1;
+			/*
+			if(fifo_x == 0 && fifo_y ==0 && tile_status[0][0] == 0&&tile_numbers[0][0]==0)
+				fifo_ind = 8;
+			*/
 			case (fifo_ind) 
 				0: begin
 					if(fifo_y>0 && fifo_x > 0) begin
@@ -413,15 +418,20 @@ module minesweeper(
 		end
 
 		if(state == CHECK_FIFO) begin
-			fifo_rd <= 0;
-			fifo_x <= fifo_tile_out[3:0];
-			fifo_y <= fifo_tile_out[7:4];
-			if(fifo_empty)
-				state <= IN_GAME;
-			else begin
-				state <= CLEAR;
-				fifo_ind <= 0;
-			end
+			if(fifo_flag)begin
+				fifo_flag <= 0;
+				fifo_rd <= 1;
+			end else begin
+				fifo_rd <= 0;
+				fifo_x <= fifo_tile_out[3:0];
+				fifo_y <= fifo_tile_out[7:4];
+				if(fifo_empty)
+					state <= IN_GAME;
+				else begin
+					state <= CLEAR;
+					fifo_ind <= 0;
+				end
+            end
 		end
 
 		if(state == IN_GAME) begin
