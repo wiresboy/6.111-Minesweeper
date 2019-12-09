@@ -452,7 +452,8 @@ module sound_effect_player#(parameter LOOP = 0)
 	logic fifo_empty;
 	logic playing = 0;
 	fifo_generator_0 fifo(.clk(clk_100mhz), .srst(reset||fifo_reset), .din(data_request_result), 
-				.wr_en(data_ready_strobe), .empty(fifo_empty), .prog_full(fifo_full), .dout(fifo_out), .rd_en( sample_trigger ));
+				.wr_en(data_ready_strobe), .empty(fifo_empty), .prog_full(fifo_full),
+				.dout(fifo_out), .rd_en( sample_trigger && ~fifo_empty ));
 	assign data_request_flag = (playing) && (!fifo_full) && (data_request_offset[8:0]==9'b0); 
 	//always request data while fifo is not full, and when request offset is multiple of 512
 

@@ -2,8 +2,8 @@
 # Vivado v2019.2 (64-bit)
 # SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
 # IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
-# Start of session at: Mon Dec  9 00:24:40 2019
-# Process ID: 11032
+# Start of session at: Mon Dec  9 01:14:37 2019
+# Process ID: 5720
 # Current directory: D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1
 # Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
 # Log file: D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/top_level.vds
@@ -16,13 +16,13 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 3136 
+INFO: Helper process launched with PID 12976 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 886.008 ; gain = 234.031
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 885.996 ; gain = 234.207
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'top_level' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:4]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-11032-LAPTOP-LHCIPRAJ/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-11032-LAPTOP-LHCIPRAJ/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-5720-LAPTOP-LHCIPRAJ/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (1#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-5720-LAPTOP-LHCIPRAJ/realtime/clk_wiz_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'display_8hex' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:47]
 	Parameter bits bound to: 15 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'display_8hex' (2#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/utils.sv:47]
@@ -113,12 +113,12 @@ INFO: [Synth 8-155] case statement is not full and has no default [D:/MIT/Class/
 INFO: [Synth 8-6155] done synthesizing module 'brandon_fs_reader' (6#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:241]
 INFO: [Synth 8-6157] synthesizing module 'sound_effect_player' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:432]
 	Parameter LOOP bound to: 0 - type: integer 
-INFO: [Synth 8-6157] synthesizing module 'fifo_generator_0' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-11032-LAPTOP-LHCIPRAJ/realtime/fifo_generator_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'fifo_generator_0' (7#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-11032-LAPTOP-LHCIPRAJ/realtime/fifo_generator_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'fifo_generator_0' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-5720-LAPTOP-LHCIPRAJ/realtime/fifo_generator_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_generator_0' (7#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/.Xil/Vivado-5720-LAPTOP-LHCIPRAJ/realtime/fifo_generator_0_stub.v:6]
 WARNING: [Synth 8-7023] instance 'fifo' of module 'fifo_generator_0' has 10 connections declared, but only 8 given [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:454]
 INFO: [Synth 8-6155] done synthesizing module 'sound_effect_player' (8#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:432]
-INFO: [Synth 8-6157] synthesizing module 'pwm' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:526]
-INFO: [Synth 8-6155] done synthesizing module 'pwm' (9#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:526]
+INFO: [Synth 8-6157] synthesizing module 'pwm' [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:527]
+INFO: [Synth 8-6155] done synthesizing module 'pwm' (9#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:527]
 INFO: [Synth 8-6155] done synthesizing module 'sound_effect_manager' (10#1) [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/sound_effects.sv:8]
 WARNING: [Synth 8-3848] Net vga_r in module/entity top_level does not have driver. [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:9]
 WARNING: [Synth 8-3848] Net vga_b in module/entity top_level does not have driver. [D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/new/top_level.sv:10]
@@ -157,7 +157,7 @@ WARNING: [Synth 8-3331] design top_level has unconnected port vga_vs
 WARNING: [Synth 8-3331] design top_level has unconnected port ps2_clk
 WARNING: [Synth 8-3331] design top_level has unconnected port ps2_data
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 961.820 ; gain = 309.844
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 961.953 ; gain = 310.164
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -170,12 +170,12 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 961.820 ; gain = 309.844
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 961.953 ; gain = 310.164
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 961.820 ; gain = 309.844
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 961.953 ; gain = 310.164
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 961.820 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.040 . Memory (MB): peak = 961.953 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -247,20 +247,20 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_level_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1077.879 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1090.664 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1077.879 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 1090.664 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -275,7 +275,7 @@ Applied set_property DONT_TOUCH = true for sfx_manager/sfx3/fifo. (constraint fi
 Applied set_property DONT_TOUCH = true for sfx_manager/sfx4/fifo. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for sfx_manager/sfx5/fifo. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "duration_samples" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "duration_samples" won't be mapped to RAM because it is too sparse
@@ -291,7 +291,7 @@ INFO: [Synth 8-5546] ROM "start_offset" won't be mapped to RAM because it is too
 INFO: [Synth 8-5546] ROM "start_offset" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "data_request_flag" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -569,7 +569,7 @@ INFO: [Synth 8-3886] merging instance 'sfx_manager/fs/data_request_offset_reg[23
 INFO: [Synth 8-3886] merging instance 'sfx_manager/fs/data_request_offset_reg[24]' (FDRE) to 'sfx_manager/fs/data_request_offset_reg[25]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\sfx_manager/fs/data_request_offset_reg[25] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -581,13 +581,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:00:31 . Memory (MB): peak = 1077.879 ; gain = 425.902
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 1090.664 ; gain = 438.875
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 1169.918 ; gain = 517.941
+Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1161.234 ; gain = 509.445
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -599,7 +599,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:38 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Technology Mapping : Time (s): cpu = 00:00:38 ; elapsed = 00:00:39 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -623,13 +623,13 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:42 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -648,25 +648,25 @@ Report Check Netlist:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -693,13 +693,13 @@ Report Cell Usage:
 |7     |fifo_generator_0__9  |     1|
 |8     |CARRY4               |   207|
 |9     |LUT1                 |    41|
-|10    |LUT2                 |   241|
-|11    |LUT3                 |   147|
-|12    |LUT4                 |   307|
-|13    |LUT5                 |   120|
-|14    |LUT6                 |   399|
-|15    |MUXF7                |    27|
-|16    |MUXF8                |     8|
+|10    |LUT2                 |   246|
+|11    |LUT3                 |   153|
+|12    |LUT4                 |   300|
+|13    |LUT5                 |   102|
+|14    |LUT6                 |   416|
+|15    |MUXF7                |    31|
+|16    |MUXF8                |    12|
 |17    |FDRE                 |   991|
 |18    |FDSE                 |    37|
 |19    |IBUF                 |    19|
@@ -711,45 +711,45 @@ Report Instance Areas:
 +------+--------------------+-------------------------------+------+
 |      |Instance            |Module                         |Cells |
 +------+--------------------+-------------------------------+------+
-|1     |top                 |                               |  2672|
+|1     |top                 |                               |  2683|
 |2     |  db1               |debounce                       |    36|
-|3     |  display           |display_8hex                   |    45|
-|4     |  sfx_manager       |sound_effect_manager           |  2516|
-|5     |    dm              |data_manager                   |   152|
-|6     |    fs              |brandon_fs_reader              |   931|
+|3     |  display           |display_8hex                   |    44|
+|4     |  sfx_manager       |sound_effect_manager           |  2528|
+|5     |    dm              |data_manager                   |   151|
+|6     |    fs              |brandon_fs_reader              |   938|
 |7     |    nolabel_line188 |pwm                            |    40|
 |8     |    sd              |sd_controller                  |   353|
-|9     |    sfx0            |sound_effect_player__xdcDup__1 |   137|
-|10    |    sfx1            |sound_effect_player__xdcDup__2 |   154|
-|11    |    sfx2            |sound_effect_player__xdcDup__3 |   135|
-|12    |    sfx3            |sound_effect_player__xdcDup__4 |   133|
-|13    |    sfx4            |sound_effect_player__xdcDup__5 |   132|
-|14    |    sfx5            |sound_effect_player            |   148|
+|9     |    sfx0            |sound_effect_player__xdcDup__1 |   141|
+|10    |    sfx1            |sound_effect_player__xdcDup__2 |   155|
+|11    |    sfx2            |sound_effect_player__xdcDup__3 |   136|
+|12    |    sfx3            |sound_effect_player__xdcDup__4 |   134|
+|13    |    sfx4            |sound_effect_player__xdcDup__5 |   133|
+|14    |    sfx5            |sound_effect_player            |   146|
 +------+--------------------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 30 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:40 . Memory (MB): peak = 1170.934 ; gain = 402.898
-Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1170.934 ; gain = 518.957
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:41 . Memory (MB): peak = 1162.246 ; gain = 381.746
+Synthesis Optimization Complete : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1162.246 ; gain = 510.457
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.048 . Memory (MB): peak = 1182.805 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 242 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.051 . Memory (MB): peak = 1162.246 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 250 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1182.805 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1162.246 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
 90 Infos, 115 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 1182.805 ; gain = 822.348
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1182.805 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 1162.246 ; gain = 801.348
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1162.246 ; gain = 0.000
 WARNING: [Constraints 18-5210] No constraints selected for write.
 Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
 INFO: [Common 17-1381] The checkpoint 'D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper_audio/minesweeper_audio.runs/synth_1/top_level.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Dec  9 00:25:35 2019...
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  9 01:15:34 2019...
