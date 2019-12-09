@@ -1,55 +1,72 @@
 `timescale 1ns / 1ps
+`default_nettype none
 
 module top_level(
-	input clk_100mhz,
-	input[15:0] sw,
-	input btnc, btnu, btnl, btnr, btnd, reset_n, //reset is active low 
-	output[15:0] led,
-	output[3:0] vga_r,
-	output[3:0] vga_b,
-	output[3:0] vga_g,
-	output vga_hs,
-	output vga_vs,
-	output ca, cb, cc, cd, ce, cf, cg, dp,  // segments a-g, dp
-	output[7:0] an,    // Display location 0-7
-	inout sd_reset, sd_cd, sd_sck, sd_cmd, //SD control
-	inout[3:0] sd_dat, //SD data
-	output aud_pwm, aud_sd, //audio output
-	inout ps2_clk, ps2_data //Mouse
+	input wire clk_100mhz,
+	input wire [15:0] sw,
+	input wire btnc, btnu, btnl, btnr, btnd, reset_n, //reset is active low 
+	output logic [15:0] led,
+	output logic [3:0] vga_r,
+	output logic [3:0] vga_b,
+	output logic [3:0] vga_g,
+	output logic vga_hs,
+	output logic vga_vs,
+	output logic ca, cb, cc, cd, ce, cf, cg, dp,  // segments a-g, dp
+	output logic [7:0] an,    // Display location 0-7
+	inout wire sd_reset, sd_cd, sd_sck, sd_cmd, //SD control
+	inout wire [3:0] sd_dat, //SD data
+	output logic aud_pwm, aud_sd, //audio output
+	inout wire ps2_clk, ps2_data //Mouse
 	);
 
-	// ***** CLOCK *****
-	wire clk_65mhz;
-	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
-	clk_wiz_lab3 clkdivider(.clk_in1(clk_100mhz), .clk_out1(clk_65mhz));
-	
 	wire reset;
 	assign reset = ~reset_n;
 	
-
+	
+	// ***** CLOCK *****
+	wire clk_25mhz;
+	wire clk_65mhz;
+	wire clk_200mhz;
+	// create 65mhz system clock, happens to match 1024 x 768 XVGA timing
+	// create 200mhz clock for ddram
+	// 25mhz for SD card
+	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .reset(reset), .clk_out1(clk_200mhz)/*, .clk_out2(clk_65mhz)*/, .clk_out2(clk_25mhz));
+	
 	// ***** SEVEN SEGMENT *****
 	wire [31:0] ms_seven_segment_data;	// data from minesweeper module
 	wire [31:0] seven_segment_data;		// sent to display - (8) 4-bit hex
 	wire [6:0] segments;
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
-	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
+	display_8hex display(.clk_in(clk_100mhz/*clk_65mhz*/),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
 	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
 
 	// ***** LED outputs *****
-	//assign led = sw;		// turn leds on based on switches
-
+	assign led[15:10] = sw[15:10];		// turn leds on based on switches
+	
 
 	// ***** Button Debounce *****
 	// all button uses are TBD
 	wire center_pressed,up_pressed,down_pressed,left_pressed,right_pressed;
-	debounce db1(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnc),.clean_out(center_pressed));
-	debounce db2(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnu),.clean_out(up_pressed));
-	debounce db3(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnd),.clean_out(down_pressed));
-	debounce db4(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnl),.clean_out(left_pressed));
-	debounce db5(.reset_in(reset),.clock_in(clk_65mhz),.noisy_in(btnr),.clean_out(right_pressed));
+	debounce db1(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnc),.clean_out(center_pressed));
+	debounce db2(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnu),.clean_out(up_pressed));
+	debounce db3(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnd),.clean_out(down_pressed));
+	debounce db4(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnl),.clean_out(left_pressed));
+	debounce db5(.reset_in(reset),.clock_in(clk_100mhz),.noisy_in(btnr),.clean_out(right_pressed));
+	
+	
+	// ***** Sound *****
+	logic [5:0] sound_effect;
+	assign sound_effect = sw[5:0];
+	sound_effect_manager sfx_manager(.clk_100mhz(clk_100mhz), .clk_25mhz(clk_25mhz), .reset(reset), .sw(sw), 
+			.sound_effect(sound_effect),
+			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
+			.sd_reset(sd_reset), .sd_cd(sd_cd), .sd_sck(sd_sck), .sd_cmd(sd_cmd), .sd_dat(sd_dat),
+			.audio(led[7:0]), .debug(ms_seven_segment_data) );
+	assign led[8] = aud_pwm;
+	assign led[9] = center_pressed;
 
-
+/*
 	// ***** Random *****
 	logic [15:0] random_number;
 	random random(clk_65mhz, reset, random_number);
@@ -59,13 +76,14 @@ module top_level(
 	logic [11:0] mouse_x;
 	logic [11:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
+*/
 
 	/*mouse mouse(.clk_65mhz(clk_65mhz), .rst(reset),
 				.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 				.mouse_x(mouse_x), .mouse_y(mouse_y),
 				.mouse_left_click(mouse_left_click),
 				.mouse_right_click(mouse_right_click));*/
-	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
+/*	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
 						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
 						.xpos(mouse_x), .ypos(mouse_y),
 						.left(mouse_left_click), .right(mouse_right_click)
@@ -140,7 +158,7 @@ module top_level(
 	assign vga_b = ~b ? rgb[3:0] : 0;
 	assign vga_hs = ~hs;
 	assign vga_vs = ~vs;
-
+*/
 	
 	
 endmodule

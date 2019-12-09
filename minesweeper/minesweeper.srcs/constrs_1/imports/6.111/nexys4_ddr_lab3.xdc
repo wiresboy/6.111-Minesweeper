@@ -178,14 +178,14 @@ set_property -dict { PACKAGE_PIN B12   IOSTANDARD LVCMOS33 } [get_ports { vga_vs
 
 ##Micro SD Connector
 
-#set_property -dict { PACKAGE_PIN E2    IOSTANDARD LVCMOS33 } [get_ports { sd_reset }]; #IO_L14P_T2_SRCC_35 Sch=sd_reset
-#set_property -dict { PACKAGE_PIN A1    IOSTANDARD LVCMOS33 } [get_ports { sd_cd }]; #IO_L9N_T1_DQS_AD7N_35 Sch=sd_cd
-#set_property -dict { PACKAGE_PIN B1    IOSTANDARD LVCMOS33 } [get_ports { sd_sck }]; #IO_L9P_T1_DQS_AD7P_35 Sch=sd_sck
-#set_property -dict { PACKAGE_PIN C1    IOSTANDARD LVCMOS33 } [get_ports { sd_cmd }]; #IO_L16N_T2_35 Sch=sd_cmd
-#set_property -dict { PACKAGE_PIN C2    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[0] }]; #IO_L16P_T2_35 Sch=sd_dat[0]
-#set_property -dict { PACKAGE_PIN E1    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[1] }]; #IO_L18N_T2_35 Sch=sd_dat[1]
-#set_property -dict { PACKAGE_PIN F1    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[2] }]; #IO_L18P_T2_35 Sch=sd_dat[2]
-#set_property -dict { PACKAGE_PIN D2    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[3] }]; #IO_L14N_T2_SRCC_35 Sch=sd_dat[3]
+set_property -dict { PACKAGE_PIN E2    IOSTANDARD LVCMOS33 } [get_ports { sd_reset }]; #IO_L14P_T2_SRCC_35 Sch=sd_reset
+set_property -dict { PACKAGE_PIN A1    IOSTANDARD LVCMOS33 } [get_ports { sd_cd }]; #IO_L9N_T1_DQS_AD7N_35 Sch=sd_cd
+set_property -dict { PACKAGE_PIN B1    IOSTANDARD LVCMOS33 } [get_ports { sd_sck }]; #IO_L9P_T1_DQS_AD7P_35 Sch=sd_sck
+set_property -dict { PACKAGE_PIN C1    IOSTANDARD LVCMOS33 } [get_ports { sd_cmd }]; #IO_L16N_T2_35 Sch=sd_cmd
+set_property -dict { PACKAGE_PIN C2    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[0] }]; #IO_L16P_T2_35 Sch=sd_dat[0]
+set_property -dict { PACKAGE_PIN E1    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[1] }]; #IO_L18N_T2_35 Sch=sd_dat[1]
+set_property -dict { PACKAGE_PIN F1    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[2] }]; #IO_L18P_T2_35 Sch=sd_dat[2]
+set_property -dict { PACKAGE_PIN D2    IOSTANDARD LVCMOS33 } [get_ports { sd_dat[3] }]; #IO_L14N_T2_SRCC_35 Sch=sd_dat[3]
 
 
 ##Accelerometer
@@ -260,7 +260,53 @@ set_property -dict { PACKAGE_PIN B2    IOSTANDARD LVCMOS33 } [get_ports { ps2_da
 
 
 
-
+##DRAM
+set_property -dict { PACKAGE_PIN M4 } [get_ports { ddr2_addr[0] }];
+set_property -dict { PACKAGE_PIN P4 } [get_ports { ddr2_addr[1] }];
+set_property -dict { PACKAGE_PIN M6 } [get_ports { ddr2_addr[2] }];
+set_property -dict { PACKAGE_PIN T1 } [get_ports { ddr2_addr[3] }];
+set_property -dict { PACKAGE_PIN L3 } [get_ports { ddr2_addr[4] }];
+set_property -dict { PACKAGE_PIN P5 } [get_ports { ddr2_addr[5] }];
+set_property -dict { PACKAGE_PIN M2 } [get_ports { ddr2_addr[6] }];
+set_property -dict { PACKAGE_PIN N1 } [get_ports { ddr2_addr[7] }];
+set_property -dict { PACKAGE_PIN L4 } [get_ports { ddr2_addr[8] }];
+set_property -dict { PACKAGE_PIN N5 } [get_ports { ddr2_addr[9] }];
+set_property -dict { PACKAGE_PIN R2 } [get_ports { ddr2_addr[10] }];
+set_property -dict { PACKAGE_PIN K5 } [get_ports { ddr2_addr[11] }];
+set_property -dict { PACKAGE_PIN N6 } [get_ports { ddr2_addr[12] }];
+set_property -dict { PACKAGE_PIN P2 } [get_ports { ddr2_ba[0] }];
+set_property -dict { PACKAGE_PIN P3 } [get_ports { ddr2_ba[1] }];
+set_property -dict { PACKAGE_PIN R1 } [get_ports { ddr2_ba[2] }];
+set_property -dict { PACKAGE_PIN L1 } [get_ports { ddr2_cas_n }];
+set_property -dict { PACKAGE_PIN L5 } [get_ports { ddr2_ck_n[0] }];
+set_property -dict { PACKAGE_PIN L6 } [get_ports { ddr2_ck_p[0] }];
+set_property -dict { PACKAGE_PIN M1 } [get_ports { ddr2_cke[0] }];
+set_property -dict { PACKAGE_PIN K6 } [get_ports { ddr2_cs_n[0] }];
+set_property -dict { PACKAGE_PIN T6 } [get_ports { ddr2_dm[0] }];
+set_property -dict { PACKAGE_PIN U1 } [get_ports { ddr2_dm[1] }];
+set_property -dict { PACKAGE_PIN R7 } [get_ports { ddr2_dq[0] }];
+set_property -dict { PACKAGE_PIN V6 } [get_ports { ddr2_dq[1] }];
+set_property -dict { PACKAGE_PIN R8 } [get_ports { ddr2_dq[2] }];
+set_property -dict { PACKAGE_PIN U7 } [get_ports { ddr2_dq[3] }];
+set_property -dict { PACKAGE_PIN V7 } [get_ports { ddr2_dq[4] }];
+set_property -dict { PACKAGE_PIN R6 } [get_ports { ddr2_dq[5] }];
+set_property -dict { PACKAGE_PIN U6 } [get_ports { ddr2_dq[6] }];
+set_property -dict { PACKAGE_PIN R5 } [get_ports { ddr2_dq[7] }];
+set_property -dict { PACKAGE_PIN T5 } [get_ports { ddr2_dq[8] }];
+set_property -dict { PACKAGE_PIN U3 } [get_ports { ddr2_dq[9] }];
+set_property -dict { PACKAGE_PIN V5 } [get_ports { ddr2_dq[10] }];
+set_property -dict { PACKAGE_PIN U4 } [get_ports { ddr2_dq[11] }];
+set_property -dict { PACKAGE_PIN V4 } [get_ports { ddr2_dq[12] }];
+set_property -dict { PACKAGE_PIN T4 } [get_ports { ddr2_dq[13] }];
+set_property -dict { PACKAGE_PIN V1 } [get_ports { ddr2_dq[14] }];
+set_property -dict { PACKAGE_PIN T3 } [get_ports { ddr2_dq[15] }];
+set_property -dict { PACKAGE_PIN V9 } [get_ports { ddr2_dqs_n[0] }];
+set_property -dict { PACKAGE_PIN V2 } [get_ports { ddr2_dqs_n[1] }];
+set_property -dict { PACKAGE_PIN U9 } [get_ports { ddr2_dqs_p[0] }];
+set_property -dict { PACKAGE_PIN U2 } [get_ports { ddr2_dqs_p[1] }];
+set_property -dict { PACKAGE_PIN M3 } [get_ports { ddr2_odt[0] }];
+set_property -dict { PACKAGE_PIN N4 } [get_ports { ddr2_ras_n }];
+set_property -dict { PACKAGE_PIN N2 } [get_ports { ddr2_we_n }];
 
 
 
