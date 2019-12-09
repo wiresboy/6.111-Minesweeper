@@ -57,7 +57,7 @@ module top_level(
 	// ***** Sound *****
 	logic [5:0] sound_effect;
 	sound_effect_manager sfx_manager(.clk_100mhz(clk_100mhz), .clk_25mhz(clk_25mhz), .reset(reset), .sw(sw), 
-			.sound_effect(sound_effect),
+			.sound_effect(sound_effect), .stop(center_pressed),
 			.aud_pwm(aud_pwm), .aud_sd(aud_sd),
 			.sd_reset(sd_reset), .sd_cd(sd_cd), .sd_sck(sd_sck), .sd_cmd(sd_cmd), .sd_dat(sd_dat),
 			.audio(led[7:0]));
@@ -132,14 +132,31 @@ module top_level(
 			.pixel_in(ms_pixel),.pixel_out(mouse_pixel));
 
 
+	snowflakes snowflakes(
+			.clk_65mhz(clk_65mhz),.reset(reset),
+			.random(random_number),
+			.hcount_in(mouse_hcount),.vcount_in(mouse_vcount),
+			.hsync_in(mouse_hsync),.vsync_in(mouse_vsync),.blank_in(mouse_blank),
+			.hcount_out(flake_hcount),.vcount_out(flake_vcount),
+			.hsync_out(flake_hsync),.vsync_out(flake_vsync),.blank_out(flake_blank),
+			.pixel_in(mouse_pixel),.pixel_out(flake_pixel));
+
+
 	// ***** VIDEO OUT *****
 	reg [11:0] rgb;    
 	logic hs, vs, b;
 	always_ff @(posedge clk_65mhz) begin
-		hs <= mouse_hsync;
-		vs <= mouse_vsync;
-		b <= mouse_blank;
-		rgb <= mouse_pixel;
+		if (sw[14]) begin
+			hs <= flake_hsync;
+			vs <= flake_vsync;
+			b <= flake_blank;
+			rgb <= flake_pixel;
+		end else begin
+			hs <= mouse_hsync;
+			vs <= mouse_vsync;
+			b <= mouse_blank;
+			rgb <= mouse_blank;
+		end
 	end
 
 	assign vga_r = ~b ? rgb[11:8]: 0;

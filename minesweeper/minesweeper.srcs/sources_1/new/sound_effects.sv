@@ -16,7 +16,8 @@ module sound_effect_manager (
 	inout wire sd_reset, sd_cd, sd_sck, sd_cmd,
 	inout wire [3:0] sd_dat,
 	output logic [7:0] audio,
-	output logic [31:0] debug
+	output logic [31:0] debug,
+	input wire stop
 );
 	parameter SAMPLE_PERIOD = 2083;//100000000/48000=2083.333;
 	parameter SOUND_1_START_BLOCK = 512*2;
@@ -87,37 +88,37 @@ module sound_effect_manager (
 
 	logic [7:0] audio_single [6];
 
-	sound_effect_player sfx0(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx0(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[0]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[0]), .data_request_flag(data_request_flag[0]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[0] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[0]),.audio(audio_single[0]));
 
-	sound_effect_player sfx1(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx1(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[1]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[1]), .data_request_flag(data_request_flag[1]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[1] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[1]),.audio(audio_single[1]));
 
-	sound_effect_player sfx2(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx2(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[2]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[2]), .data_request_flag(data_request_flag[2]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[2] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[2]),.audio(audio_single[2]));
 
-	sound_effect_player sfx3(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx3(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[3]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[3]), .data_request_flag(data_request_flag[3]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[3] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[3]),.audio(audio_single[3]));
 
-	sound_effect_player sfx4(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx4(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[4]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[4]), .data_request_flag(data_request_flag[4]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[4] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[4]),.audio(audio_single[4]));
 
-	sound_effect_player sfx5(.clk_100mhz(clk_100mhz), .reset(reset),
+	sound_effect_player sfx5(.clk_100mhz(clk_100mhz), .reset(reset|stop),
 							.sound_effect_start(sound_effect[5]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[5]), .data_request_flag(data_request_flag[5]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[5] && sd_rd_strobe),
