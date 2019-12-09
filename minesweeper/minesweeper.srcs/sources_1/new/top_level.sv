@@ -93,7 +93,7 @@ assign reset = ~reset_n;
 			.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer)
 			);
 
-	timer timer(.clock(clk_65mhz),.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer));
+	timer timer(.clock(clk_65mhz),.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer),.reset(reset));
 
 
 	// ***** Mouse Video Gen *****

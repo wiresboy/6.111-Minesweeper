@@ -8,3 +8,6 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==one_bcm || ORIG
 
 # IP: ip/one_rcm/one_rcm.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==one_rcm || ORIG_REF_NAME==one_rcm} -quiet] -quiet
+
+# IP: ip/clear_fifo/clear_fifo.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==clear_fifo || ORIG_REF_NAME==clear_fifo} -quiet] -quiet

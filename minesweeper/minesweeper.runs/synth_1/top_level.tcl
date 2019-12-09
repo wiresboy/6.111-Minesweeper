@@ -100,6 +100,10 @@ set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_rcm/one_rcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/one_rcm/one_rcm_ooc.xdc}}]
 
+read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xci}}
+set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xdc}}]
+set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo_ooc.xdc}}]
+
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_image_rom/facing_down_image_rom.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_image_rom/facing_down_image_rom_ooc.xdc}}]
 
@@ -237,10 +241,6 @@ set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss
 
 read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm.xci}}
 set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/eight_bcm/eight_bcm_ooc.xdc}}]
-
-read_ip -quiet {{C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xci}}
-set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo.xdc}}]
-set_property used_in_implementation false [get_files -all {{c:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo_ooc.xdc}}]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

@@ -2,7 +2,7 @@
 %Edgar Twigg bwayr@mit.edu
 %4/1/2008 (But I swear this file isn't a joke)
 close all
-Number = 'Snowflake_Pixel';
+Number = 'raindrop_Pixel';
 
 %% How to use this file
 %Notice how %% divides up sections?  If you hit ctrl+enter, then MATLAB 

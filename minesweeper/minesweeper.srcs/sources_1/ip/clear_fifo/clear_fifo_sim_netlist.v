@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Mon Dec  9 00:31:42 2019
+// Date        : Mon Dec  9 00:31:41 2019
 // Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim {c:/Users/Rod Bayliss
-//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/clear_fifo/clear_fifo_sim_netlist.v}
+// Command     : write_verilog -force -mode funcsim -rename_top clear_fifo -prefix
+//               clear_fifo_ clear_fifo_sim_netlist.v
 // Design      : clear_fifo
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -600,7 +600,6 @@ module clear_fifo
         .wr_rst_busy(NLW_U0_wr_rst_busy_UNCONNECTED));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module clear_fifo_blk_mem_gen_generic_cstr
    (dout,
     clk,
@@ -639,7 +638,6 @@ module clear_fifo_blk_mem_gen_generic_cstr
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module clear_fifo_blk_mem_gen_prim_width
    (dout,
     clk,
@@ -678,7 +676,6 @@ module clear_fifo_blk_mem_gen_prim_width
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module clear_fifo_blk_mem_gen_prim_wrapper
    (dout,
     clk,
@@ -860,7 +857,6 @@ module clear_fifo_blk_mem_gen_prim_wrapper
         .WEBWE({E,E,E,E}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module clear_fifo_blk_mem_gen_top
    (dout,
     clk,
@@ -899,7 +895,6 @@ module clear_fifo_blk_mem_gen_top
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) 
 module clear_fifo_blk_mem_gen_v8_4_4
    (dout,
     clk,
@@ -938,7 +933,6 @@ module clear_fifo_blk_mem_gen_v8_4_4
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module clear_fifo_blk_mem_gen_v8_4_4_synth
    (dout,
     clk,
@@ -977,7 +971,6 @@ module clear_fifo_blk_mem_gen_v8_4_4_synth
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "compare" *) 
 module clear_fifo_compare
    (comp0,
     \gmux.gm[4].gms.ms_0 ,
@@ -1214,7 +1207,6 @@ module clear_fifo_compare_2
         .O(rd_en_0));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_ramfifo" *) 
 module clear_fifo_fifo_generator_ramfifo
    (dout,
     empty,
@@ -1299,7 +1291,6 @@ module clear_fifo_fifo_generator_ramfifo
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_top" *) 
 module clear_fifo_fifo_generator_top
    (dout,
     empty,
@@ -1405,7 +1396,7 @@ endmodule
 (* C_WR_DEPTH_WRCH = "16" *) (* C_WR_FREQ = "1" *) (* C_WR_PNTR_WIDTH = "9" *) 
 (* C_WR_PNTR_WIDTH_AXIS = "10" *) (* C_WR_PNTR_WIDTH_RACH = "4" *) (* C_WR_PNTR_WIDTH_RDCH = "10" *) 
 (* C_WR_PNTR_WIDTH_WACH = "4" *) (* C_WR_PNTR_WIDTH_WDCH = "10" *) (* C_WR_PNTR_WIDTH_WRCH = "4" *) 
-(* C_WR_RESPONSE_LATENCY = "1" *) (* ORIG_REF_NAME = "fifo_generator_v13_2_5" *) 
+(* C_WR_RESPONSE_LATENCY = "1" *) 
 module clear_fifo_fifo_generator_v13_2_5
    (backup,
     backup_marker,
@@ -2418,7 +2409,6 @@ module clear_fifo_fifo_generator_v13_2_5
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "fifo_generator_v13_2_5_synth" *) 
 module clear_fifo_fifo_generator_v13_2_5_synth
    (dout,
     empty,
@@ -2457,7 +2447,6 @@ module clear_fifo_fifo_generator_v13_2_5_synth
         .wr_en(wr_en));
 endmodule
 
-(* ORIG_REF_NAME = "memory" *) 
 module clear_fifo_memory
    (dout,
     clk,
@@ -2496,7 +2485,6 @@ module clear_fifo_memory
         .tmp_ram_rd_en(tmp_ram_rd_en));
 endmodule
 
-(* ORIG_REF_NAME = "rd_bin_cntr" *) 
 module clear_fifo_rd_bin_cntr
    (Q,
     v1_reg,
@@ -2901,7 +2889,6 @@ module clear_fifo_rd_bin_cntr
         .O(\gc0.count_d1_reg[6]_0 ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_logic" *) 
 module clear_fifo_rd_logic
    (out,
     empty,
@@ -2993,7 +2980,6 @@ module clear_fifo_rd_logic
         .v1_reg_1(\c2/v1_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "rd_status_flags_ss" *) 
 module clear_fifo_rd_status_flags_ss
    (out,
     empty,
@@ -3102,7 +3088,6 @@ module clear_fifo_rd_status_flags_ss
         .S(srst));
 endmodule
 
-(* ORIG_REF_NAME = "reset_blk_ramfifo" *) 
 module clear_fifo_reset_blk_ramfifo
    ();
 
@@ -3115,7 +3100,6 @@ module clear_fifo_reset_blk_ramfifo
         .O(rst_wr_reg2));
 endmodule
 
-(* ORIG_REF_NAME = "wr_bin_cntr" *) 
 module clear_fifo_wr_bin_cntr
    (Q,
     v1_reg,
@@ -3407,7 +3391,6 @@ module clear_fifo_wr_bin_cntr
         .O(\gcc0.gc0.count_d1_reg[8]_2 ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_logic" *) 
 module clear_fifo_wr_logic
    (out,
     full,
@@ -3488,7 +3471,6 @@ module clear_fifo_wr_logic
         .v1_reg_0(\c1/v1_reg ));
 endmodule
 
-(* ORIG_REF_NAME = "wr_status_flags_ss" *) 
 module clear_fifo_wr_status_flags_ss
    (out,
     full,

@@ -281,7 +281,6 @@ module minesweeper(
 		end
 
 		if(state == CLEAR) begin //clearing adjacent tiles
-			if (fifo_ind[0] == sw[15]||sw[13]) begin
 			fifo_ind <= fifo_ind + 1;
 			case (fifo_ind) 
 				0: begin
@@ -293,7 +292,6 @@ module minesweeper(
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y-1;
 								fifo_tile_in[3:0] <= fifo_x-1;
-								//fifo_tile_in <= {fifo_y-1,fifo_x-1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -309,7 +307,6 @@ module minesweeper(
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y-1;
 								fifo_tile_in[3:0] <= fifo_x;
-								//fifo_tile_in <= {fifo_y-1,fifo_x};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -325,7 +322,6 @@ module minesweeper(
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y-1;
 								fifo_tile_in[3:0] <= fifo_x+1;
-								//fifo_tile_in <= {fifo_y-1,fifo_x+1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -341,7 +337,6 @@ module minesweeper(
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y;
 								fifo_tile_in[3:0] <= fifo_x-1;
-								//fifo_tile_in <= {fifo_y,fifo_x-1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -357,7 +352,6 @@ module minesweeper(
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y;
 								fifo_tile_in[3:0] <= fifo_x+1;
-								//fifo_tile_in <= {fifo_y,fifo_x+1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -368,12 +362,11 @@ module minesweeper(
 					if(fifo_y<14&&fifo_x>0) begin
 						if(tile_status[fifo_y+1][fifo_x-1] != 1) begin
 							tile_status[fifo_y+1][fifo_x-1] <= 1;
-							tile_cleared_count <= tile_cleared_count-1;
+							tile_cleared_count <= tile_cleared_count+1;
 							if(tile_numbers[fifo_y+1][fifo_x-1] == 0) begin // if top left tile is also a 0-tile
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y+1;
 								fifo_tile_in[3:0] <= fifo_x-1;
-								//fifo_tile_in <= {fifo_y+1,fifo_x-1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -384,12 +377,11 @@ module minesweeper(
 					if(fifo_y<14) begin
 						if(tile_status[fifo_y+1][fifo_x] != 1) begin
 							tile_status[fifo_y+1][fifo_x] <= 1;
-							tile_cleared_count <= tile_cleared_count-1;
+							tile_cleared_count <= tile_cleared_count+1;
 							if(tile_numbers[fifo_y+1][fifo_x] == 0) begin // if top left tile is also a 0-tile
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y+1;
 								fifo_tile_in[3:0] <= fifo_x;
-								//fifo_tile_in <= {fifo_y+1,fifo_x};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -400,12 +392,11 @@ module minesweeper(
 					if(fifo_x<14 && fifo_y<14) begin
 						if(tile_status[fifo_y+1][fifo_x+1] != 1) begin
 							tile_status[fifo_y+1][fifo_x+1] <= 1;
-							tile_cleared_count <= tile_cleared_count-1;
+							tile_cleared_count <= tile_cleared_count+1;
 							if(tile_numbers[fifo_y+1][fifo_x+1] == 0) begin // if top left tile is also a 0-tile
 								fifo_wr <= 1;
 								fifo_tile_in[7:4] <= fifo_y+1;
 								fifo_tile_in[3:0] <= fifo_x+1;
-								//fifo_tile_in <= {fifo_y+1,fifo_x+1};
 							end else begin
 								fifo_wr <= 0;
 							end
@@ -413,11 +404,11 @@ module minesweeper(
 					end
 				end
 			endcase
+
 			if(fifo_ind == 8) begin
 				state <= CHECK_FIFO;
 				fifo_rd <= 1;
 				fifo_wr <= 0;
-			end
 			end
 		end
 
