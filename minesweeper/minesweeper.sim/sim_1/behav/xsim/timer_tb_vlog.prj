@@ -1,0 +1,10 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../minesweeper.srcs/sources_1/new/timer.sv" \
+"../../../../minesweeper.srcs/sim_1/imports/new/timer_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -32,6 +32,9 @@ module top_level(
 	// 25mhz for SD card
 	clk_wiz_0 clkdivider(.clk_in1(clk_100mhz), .reset(reset), .clk_out1(clk_200mhz)/*, .clk_out2(clk_65mhz)*/, .clk_out2(clk_25mhz));
 	
+	wire reset;
+	assign reset = ~reset_n;	
+
 	// ***** SEVEN SEGMENT *****
 	wire [31:0] ms_seven_segment_data;	// data from minesweeper module
 	wire [31:0] seven_segment_data;		// sent to display - (8) 4-bit hex
@@ -39,11 +42,11 @@ module top_level(
 	assign {cg, cf, ce, cd, cc, cb, ca} = segments[6:0];
 	display_8hex display(.clk_in(clk_65mhz),.data_in(seven_segment_data), .seg_out(segments), .strobe_out(an));
 	assign  dp = 0; //decimal is off
-	assign seven_segment_data = ms_seven_segment_data; //TODO: can be muxed 
+	assign seven_segment_data = ms_seven_segment_data; 
 
 	// ***** LED outputs *****
 	assign led[15:12] = sw[15:12];		// turn leds on based on switches
-	
+
 
 	// ***** Button Debounce *****
 	// all button uses are TBD
@@ -76,6 +79,12 @@ module top_level(
 	logic [11:0] mouse_y;
 	logic mouse_left_click, mouse_right_click;
 
+	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
+						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
+						.xpos(mouse_x), .ypos(mouse_y),
+						.left(mouse_left_click), .right(mouse_right_click)
+						);
+	assign led = {mouse_left_click, mouse_right_click};
 
 	MouseCtl MouseCtl(	.clk(clk_65mhz), .rst(reset),
 						.ps2_clk(ps2_clk), .ps2_data(ps2_data),
@@ -91,28 +100,36 @@ module top_level(
 	xvga xvga1(.vclock_in(clk_65mhz),.hcount_out(hcount),.vcount_out(vcount),
 		  .hsync_out(hsync),.vsync_out(vsync),.blank_out(blank));
 
+	//Random
+	logic [15:0] random_number;
+	random random(clk_65mhz,reset,random_number);
 
 	// ***** Minesweeper Game *****
 	wire ms_hsync,ms_vsync,ms_blank;//delayed timing signals
 	wire [10:0] ms_hcount; 
 	wire [9:0] ms_vcount;
 	wire [11:0] ms_pixel;
+	//Low frequency clock nets
+	logic start_timer,stop_timer;
+	logic [15:0] count_out; 
 	minesweeper minesweeper(
 			.clk_65mhz(clk_65mhz),.reset(reset),
-			.up_in(up_pressed),.down_in(down_pressed),
-			.center_in(center_pressed),.left_in(left_pressed),
-			.right_in(right_pressed),
 			.mouse_x(mouse_x),.mouse_y(mouse_y),
 			.mouse_left_click(mouse_left_click),
 			.mouse_right_click(mouse_right_click),
-			.sw(sw),
-			.random(random_number),
+
+			.sw(sw),.random(random_number),
 			.hcount_in(hcount),.vcount_in(vcount),
 			.hsync_in(hsync),.vsync_in(vsync),.blank_in(blank),
 			.pixel_out(ms_pixel),
+			.hsync_out(ms_hsync),.vsync_out(ms_vsync),.blank_out(ms_blank),
+			.hcount_out(ms_hcount),.vcount_out(ms_vcount),
 			.seven_seg_out(ms_seven_segment_data),
+			.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer),
 			.sound_effect_select(sound_effect)
 			);
+
+	timer timer(.clock(clk_65mhz),.start_timer(start_timer),.count_out(count_out),.stop_timer(stop_timer),.reset(reset));
 
 
 	// ***** Mouse Video Gen *****
@@ -121,11 +138,6 @@ module top_level(
 	wire [9:0] mouse_vcount;
 	wire [11:0] mouse_pixel;
 
-	assign ms_hsync = hsync;
-	assign ms_vsync = vsync;
-	assign ms_blank = blank;
-	assign ms_vcount = vcount;
-	assign ms_hcount = hcount;
 	mouse_renderer mouse_renderer(
 			.clk_65mhz(clk_65mhz),.reset(reset),
 			.mouse_x(mouse_x),.mouse_y(mouse_y),

@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Thu Nov 21 20:00:00 2019
-// Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_bcm/facing_down_bcm_sim_netlist.v
+// Date        : Sun Dec  1 12:25:41 2019
+// Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim {C:/Users/Rod Bayliss
+//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_bcm/facing_down_bcm_sim_netlist.v}
 // Design      : facing_down_bcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

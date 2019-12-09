@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Thu Nov 21 20:06:59 2019
--- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm_sim_netlist.vhdl
+-- Date        : Sun Dec  8 14:52:44 2019
+-- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim {C:/Users/Rod Bayliss
+--               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_bcm/bomb_bcm_sim_netlist.vhdl}
 -- Design      : bomb_bcm
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -81,7 +81,7 @@ begin
       INIT_0A => X"0101020201010200010101030101010201010101010101000101000301010002",
       INIT_0B => X"0102010001020003010200020102000101010302010103010101030001010203",
       INIT_0C => X"0103020001030001010300000102030301020202010202010102010301020101",
-      INIT_0D => X"0000000000000000000000000000000000000000000000000103020201030201",
+      INIT_0D => X"0000000000000000000000000000000000000000030303030103020201030201",
       INIT_0E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_0F => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_10 => X"0000000000000000000000000000000000000000000000000000000000000000",

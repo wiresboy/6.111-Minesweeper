@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.2 (64-bit)
+# SW Build 2708876 on Wed Nov  6 21:40:23 MST 2019
+# IP Build 2700528 on Thu Nov  7 00:09:20 MST 2019
+# Start of session at: Tue Dec  3 17:25:54 2019
+# Process ID: 22712
+# Current directory: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/three_bcm_synth_1
+# Command line: vivado.exe -log three_bcm.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source three_bcm.tcl
+# Log file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/three_bcm_synth_1/three_bcm.vds
+# Journal file: C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/three_bcm_synth_1\vivado.jou
+#-----------------------------------------------------------
+source three_bcm.tcl -notrace

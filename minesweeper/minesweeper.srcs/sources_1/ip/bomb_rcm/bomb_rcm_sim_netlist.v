@@ -1,10 +1,10 @@
 // Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
-// Date        : Thu Nov 21 19:59:46 2019
-// Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm_sim_netlist.v
+// Date        : Sun Dec  8 14:50:45 2019
+// Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+// Command     : write_verilog -force -mode funcsim {C:/Users/Rod Bayliss
+//               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/bomb_rcm/bomb_rcm_sim_netlist.v}
 // Design      : bomb_rcm
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -292,7 +292,7 @@ module bomb_rcm_blk_mem_gen_prim_wrapper_init
     .INIT_0A(256'h0101020201010200010101030101010201010101010101000101000301010002),
     .INIT_0B(256'h0102010001020003010200020102000101010302010103010101030001010203),
     .INIT_0C(256'h0103020001030001010300000102030301020202010202010102010301020101),
-    .INIT_0D(256'h0000000000000000000000000000000000000000000000000103020201030201),
+    .INIT_0D(256'h0000000000000000000000000000000000000000030303030103020201030201),
     .INIT_0E(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_0F(256'h0000000000000000000000000000000000000000000000000000000000000000),
     .INIT_10(256'h0000000000000000000000000000000000000000000000000000000000000000),

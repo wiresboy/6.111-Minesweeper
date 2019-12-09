@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="facing_down_bcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575231660">
+  <File Type="PA-TCL" Name="facing_down_bcm.tcl"/>
+  <File Type="REPORTS-TCL" Name="facing_down_bcm_reports.tcl"/>
+  <File Type="RDS-RDS" Name="facing_down_bcm.vds"/>
+  <File Type="RDS-UTIL" Name="facing_down_bcm_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="facing_down_bcm_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="facing_down_bcm.dcp"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_bcm">
+    <File Path="$PSRCDIR/sources_1/ip/facing_down_bcm/facing_down_bcm.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="facing_down_bcm"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/facing_down_bcm">
+    <File Path="$PSRCDIR/sources_1/ip/facing_down_bcm/facing_down_bcm.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="facing_down_bcm"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

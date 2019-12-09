@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="one_color_map_synth_1" LaunchDir="C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/one_color_map_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="green_coe_synth_1" LaunchDir="C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/green_coe_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="one_color_map_synth_1"/>
+	</Run>
+	<Run Id="blue_coe_synth_1" LaunchDir="C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/blue_coe_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="one_color_map_synth_1"/>
+		<Parent Id="green_coe_synth_1"/>
+		<Parent Id="blue_coe_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="C:/Users/Rod Bayliss III/6.111-Minesweeper/minesweeper/minesweeper.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="one_color_map_synth_1"/>
+		<Parent Id="green_coe_synth_1"/>
+		<Parent Id="blue_coe_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

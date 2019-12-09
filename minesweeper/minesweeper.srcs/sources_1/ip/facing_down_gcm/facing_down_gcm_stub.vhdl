@@ -1,10 +1,10 @@
 -- Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
--- Date        : Thu Nov 21 19:59:53 2019
--- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               D:/MIT/Class/6.111/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl
+-- Date        : Sun Dec  1 12:25:44 2019
+-- Host        : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode synth_stub {C:/Users/Rod Bayliss
+--               III/6.111-Minesweeper/minesweeper/minesweeper.srcs/sources_1/ip/facing_down_gcm/facing_down_gcm_stub.vhdl}
 -- Design      : facing_down_gcm
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tcsg324-1

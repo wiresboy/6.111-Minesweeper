@@ -1,0 +1,51 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Mon Dec  9 03:00:49 2019
+| Host         : DESKTOP-RQQ2FB3 running 64-bit major release  (build 9200)
+| Command      : report_methodology -file top_level_methodology_drc_routed.rpt -pb top_level_methodology_drc_routed.pb -rpx top_level_methodology_drc_routed.rpx
+| Design       : top_level
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 3
++----------+----------+---------------------------+------------+
+| Rule     | Severity | Description               | Violations |
++----------+----------+---------------------------+------------+
+| SYNTH-9  | Warning  | Small multiplier          | 2          |
+| SYNTH-11 | Warning  | DSP output not registered | 1          |
++----------+----------+---------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+SYNTH-9#1 Warning
+Small multiplier  
+Detected multiplier at minesweeper/td/hcount_temp_reg[0][10]_i_1 of size 6x6, it is implemented as LUTs due to its small size. To force the multiplier onto a DSP block, use the USE_DSP48 attribute.
+Related violations: <none>
+
+SYNTH-9#2 Warning
+Small multiplier  
+Detected multiplier at minesweeper/td/hcount_temp_reg[0][7]_i_1 of size 6x6, it is implemented as LUTs due to its small size. To force the multiplier onto a DSP block, use the USE_DSP48 attribute.
+Related violations: <none>
+
+SYNTH-11#1 Warning
+DSP output not registered  
+DSP instance minesweeper/td/image_addr is not fully pipelined on the output side. MREG/PREG are not used.
+Related violations: <none>
+
+
