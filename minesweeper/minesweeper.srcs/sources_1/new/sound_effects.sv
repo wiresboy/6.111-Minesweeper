@@ -1,12 +1,16 @@
 `default_nettype none
+//00001: Music
+//00010: Bomb
+//00100: Win
+//01000: Place flag
+//10000: Music 2: Holiday.
 
 module sound_effect_manager (
 	input wire clk_100mhz,
 	input wire clk_25mhz,
 	input wire reset,
 	input wire [15:0] sw, //TEMP
-	input wire [1:0] sound_effect_select,	//indices and meanings TBD
-	input wire sound_effect_start,			//start the selected sound effect. Strobe for only 1 clock.
+	input wire [5:0] sound_effect,	//1 hot = start
 	output logic aud_pwm,
 	output logic aud_sd,
 	inout wire sd_reset, sd_cd, sd_sck, sd_cmd,
@@ -52,17 +56,17 @@ module sound_effect_manager (
 		.address(sd_address), //32 bit, must be multiple of 512
 		.ready(sd_ready), .status(status));
 
-	logic [4:0] data_request_flag;
-	logic [4:0] data_access_granted;
+	logic [6:0] data_request_flag;
+	logic [6:0] data_access_granted;
 	data_manager dm(clk_100mhz, reset, data_request_flag, data_access_granted, sd_rd_strobe);
 	
 	
-	logic [25:0] data_request_offset [5];
-	logic [31:0] song_duration_samples [4];
-	logic [31:0] song_start_offset [4];
+	logic [25:0] data_request_offset [7];
+	logic [31:0] song_duration_samples [6];
+	logic [31:0] song_start_offset [6];
 	brandon_fs_reader fs(.clk_100mhz(clk_100mhz), .reset(reset),
-						.data_request_offset(data_request_offset[4]), .data_request_flag(data_request_flag[4]),
-						.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[4] && sd_rd_strobe),
+						.data_request_offset(data_request_offset[6]), .data_request_flag(data_request_flag[6]),
+						.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[6] && sd_rd_strobe),
 						.start_offset(song_start_offset), .duration_samples(song_duration_samples));
 
 
@@ -81,53 +85,73 @@ module sound_effect_manager (
 	logic sample_trigger;
 	assign sample_trigger = sample_trigger_count == 0; //initialized && 
 
-	logic [7:0] audio_single [4];
+	logic [7:0] audio_single [6];
 
 	sound_effect_player sfx0(.clk_100mhz(clk_100mhz), .reset(reset),
-							.sound_effect_start(sound_effect_start && (sound_effect_select==0)), .sample_trigger(sample_trigger),
+							.sound_effect_start(sound_effect[0]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[0]), .data_request_flag(data_request_flag[0]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[0] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[0]),.audio(audio_single[0]));
 
 	sound_effect_player sfx1(.clk_100mhz(clk_100mhz), .reset(reset),
-							.sound_effect_start(sound_effect_start && (sound_effect_select==1)), .sample_trigger(sample_trigger),
+							.sound_effect_start(sound_effect[1]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[1]), .data_request_flag(data_request_flag[1]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[1] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[1]),.audio(audio_single[1]));
 
 	sound_effect_player sfx2(.clk_100mhz(clk_100mhz), .reset(reset),
-							.sound_effect_start(sound_effect_start && (sound_effect_select==2)), .sample_trigger(sample_trigger),
+							.sound_effect_start(sound_effect[2]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[2]), .data_request_flag(data_request_flag[2]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[2] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[2]),.audio(audio_single[2]));
 
 	sound_effect_player sfx3(.clk_100mhz(clk_100mhz), .reset(reset),
-							.sound_effect_start(sound_effect_start && (sound_effect_select==3)), .sample_trigger(sample_trigger),
+							.sound_effect_start(sound_effect[3]), .sample_trigger(sample_trigger),
 							.data_request_offset(data_request_offset[3]), .data_request_flag(data_request_flag[3]),
 							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[3] && sd_rd_strobe),
 							.duration_samples(song_duration_samples[3]),.audio(audio_single[3]));
+
+	sound_effect_player sfx4(.clk_100mhz(clk_100mhz), .reset(reset),
+							.sound_effect_start(sound_effect[4]), .sample_trigger(sample_trigger),
+							.data_request_offset(data_request_offset[4]), .data_request_flag(data_request_flag[4]),
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[4] && sd_rd_strobe),
+							.duration_samples(song_duration_samples[4]),.audio(audio_single[4]));
+
+	sound_effect_player sfx5(.clk_100mhz(clk_100mhz), .reset(reset),
+							.sound_effect_start(sound_effect[5]), .sample_trigger(sample_trigger),
+							.data_request_offset(data_request_offset[5]), .data_request_flag(data_request_flag[5]),
+							.data_request_result(sd_dout), .data_ready_strobe(data_access_granted[5] && sd_rd_strobe),
+							.duration_samples(song_duration_samples[5]),.audio(audio_single[5]));
 	
 	always_comb begin
 		case (data_access_granted) 
-			5'b00001 : begin 
+			7'b0000001 : begin 
 				sd_rd = data_request_flag[0];
 				sd_address = song_start_offset[0]+data_request_offset[0];
 			end
-			5'b00010 : begin 
+			7'b0000010 : begin 
 				sd_rd = data_request_flag[1];
 				sd_address = song_start_offset[1]+data_request_offset[1];
 			end
-			5'b00100 : begin 
+			7'b0000100 : begin 
 				sd_rd = data_request_flag[2];
 				sd_address = song_start_offset[2]+data_request_offset[2];
 			end
-			5'b01000 : begin 
+			7'b0001000 : begin 
 				sd_rd = data_request_flag[3];
 				sd_address = song_start_offset[3]+data_request_offset[3];
 			end
-			5'b10000 : begin //special - is fs loader
+			7'b0010000 : begin 
 				sd_rd = data_request_flag[4];
-				sd_address = data_request_offset[4];
+				sd_address = song_start_offset[4]+data_request_offset[4];
+			end
+			7'b0100000 : begin 
+				sd_rd = data_request_flag[5];
+				sd_address = song_start_offset[5]+data_request_offset[5];
+			end
+			7'b1000000 : begin //special - is fs loader
+				sd_rd = data_request_flag[6];
+				sd_address = data_request_offset[6];
 			end
 			default: begin
 				sd_rd = 0;
@@ -137,18 +161,18 @@ module sound_effect_manager (
 	end
 
 	//assign debug = {data_request_flag[0], status, audio, sd_dout, sample_trigger_count[11:4]};
-	assign debug = sw[2]? song_start_offset[sw[1:0]]: song_duration_samples[sw[1:0]];
+	assign debug = sw[9]? song_start_offset[sw[8:6]]: song_duration_samples[sw[8:6]];
 
 
-	logic [10:0] audio_sum;
+	logic [11:0] audio_sum;
 	always_comb begin
-		audio_sum = audio_single[0] + audio_single[1] + audio_single[2] + audio_single[3];
-		if (audio_sum < 'h17E)
+		audio_sum = audio_single[0] + audio_single[1] + audio_single[2] + audio_single[3] + audio_single[4] + audio_single[5];
+		if (audio_sum < 'h27B)
 			audio = 0;
-		else if (audio_sum >= 'h27D)
-			audio = 'hFF;
+		else if (audio_sum >= 'h37A)
+			audio = 8'hFF;
 		else
-			audio = audio_sum-'h17E;
+			audio = audio_sum-'h27B;
 	end
 	//assign audio = audio_single[0];
 
@@ -172,8 +196,8 @@ endmodule
 module data_manager (
 	input wire clk_100mhz,
 	input wire reset,
-	input wire [4:0] data_request,
-	output logic [4:0] data_access_granted = 0,
+	input wire [6:0] data_request,
+	output logic [6:0] data_access_granted = 0,
 	input wire sd_rd_strobe
 	);
 
@@ -184,8 +208,8 @@ module data_manager (
 			data_access_granted <= 0;
 		end else begin
 			if (data_access_granted == 0 || count == 0) begin
-				if (data_request[4])
-					data_access_granted <= 16; //highest priority to the initializer
+				if (data_request[6])
+					data_access_granted <= 64; //highest priority to the initializer
 				else if (data_request[0])
 					data_access_granted <= 1;
 				else if (data_request[1])
@@ -194,6 +218,10 @@ module data_manager (
 					data_access_granted <= 4;
 				else if (data_request[3])
 					data_access_granted <= 8;
+				else if (data_request[4])
+					data_access_granted <= 16;
+				else if (data_request[5])
+					data_access_granted <= 32;
 				else
 					data_access_granted <= 0;
 			end
@@ -214,8 +242,8 @@ module brandon_fs_reader (
 		input wire clk_100mhz,
 		input wire reset,
 
-		output logic [31:0] start_offset [4] = {0,0,0,0}, // where each file starts. In 
-		output logic [31:0] duration_samples [4] = {0,0,0,0},
+		output logic [31:0] start_offset [6] = {0,0,0,0,0,0}, // where each file starts. In 
+		output logic [31:0] duration_samples [6] = {0,0,0,0,0,0},
 		output logic data_request_flag = 1, //1 for more data needed. Start in this state.
 		output logic [25:0] data_request_offset = 0,
 		input wire [7:0] data_request_result,
@@ -253,7 +281,23 @@ module brandon_fs_reader (
 	parameter STATE_S3_LENGTH_0  = 'h02C;
 	parameter STATE_S3_LENGTH_1  = 'h02D;
 	parameter STATE_S3_LENGTH_2  = 'h02E;
-	parameter STATE_S3_LENGTH_3  = 'h02F; //TODO is there a cleaner way to do all this???
+	parameter STATE_S3_LENGTH_3  = 'h02F; 
+	parameter STATE_S4_ADDRESS_0 = 'h030;
+	parameter STATE_S4_ADDRESS_1 = 'h031;
+	parameter STATE_S4_ADDRESS_2 = 'h032;
+	parameter STATE_S4_ADDRESS_3 = 'h033;
+	parameter STATE_S4_LENGTH_0  = 'h034;
+	parameter STATE_S4_LENGTH_1  = 'h035;
+	parameter STATE_S4_LENGTH_2  = 'h036;
+	parameter STATE_S4_LENGTH_3  = 'h037;
+	parameter STATE_S5_ADDRESS_0 = 'h038;
+	parameter STATE_S5_ADDRESS_1 = 'h039;
+	parameter STATE_S5_ADDRESS_2 = 'h03A;
+	parameter STATE_S5_ADDRESS_3 = 'h03B;
+	parameter STATE_S5_LENGTH_0  = 'h03C;
+	parameter STATE_S5_LENGTH_1  = 'h03D;
+	parameter STATE_S5_LENGTH_2  = 'h03E;
+	parameter STATE_S5_LENGTH_3  = 'h03F; //TODO is there a cleaner way to do all this???
 	parameter STATE_LOADED		 = 'h1FE;
 
 	logic [9:0] state = STATE_INIT;
@@ -263,8 +307,8 @@ module brandon_fs_reader (
 			state <= STATE_INIT;
 			data_request_flag <= 1;
 			data_request_offset <= 0;
-			duration_samples <= {0,0,0,0};
-			start_offset <= {0,0,0,0};
+			duration_samples <= {0,0,0,0,0,0};
+			start_offset <= {0,0,0,0,0,0};
 			
 		end else begin
 			case (state)
@@ -347,6 +391,38 @@ module brandon_fs_reader (
 					duration_samples[3][15:8] <= data_request_result;
 				STATE_S3_LENGTH_3 :
 					duration_samples[3][7:0] <= data_request_result;
+				STATE_S4_ADDRESS_0:
+					start_offset[4][31:24] <= data_request_result;
+				STATE_S4_ADDRESS_1:
+					start_offset[4][23:16] <= data_request_result;
+				STATE_S4_ADDRESS_2:
+					start_offset[4][15:8] <= data_request_result;
+				STATE_S4_ADDRESS_3:
+					start_offset[4][7:0] <= data_request_result;
+				STATE_S4_LENGTH_0 :
+					duration_samples[4][31:24] <= data_request_result;
+				STATE_S4_LENGTH_1 :
+					duration_samples[4][23:16] <= data_request_result;
+				STATE_S4_LENGTH_2 :
+					duration_samples[4][15:8] <= data_request_result;
+				STATE_S4_LENGTH_3 :
+					duration_samples[4][7:0] <= data_request_result;
+				STATE_S5_ADDRESS_0:
+					start_offset[5][31:24] <= data_request_result;
+				STATE_S5_ADDRESS_1:
+					start_offset[5][23:16] <= data_request_result;
+				STATE_S5_ADDRESS_2:
+					start_offset[5][15:8] <= data_request_result;
+				STATE_S5_ADDRESS_3:
+					start_offset[5][7:0] <= data_request_result;
+				STATE_S5_LENGTH_0 :
+					duration_samples[5][31:24] <= data_request_result;
+				STATE_S5_LENGTH_1 :
+					duration_samples[5][23:16] <= data_request_result;
+				STATE_S5_LENGTH_2 :
+					duration_samples[5][15:8] <= data_request_result;
+				STATE_S5_LENGTH_3 :
+					duration_samples[5][7:0] <= data_request_result;
 			endcase
 		end
 	end

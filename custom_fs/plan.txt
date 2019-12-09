@@ -38,6 +38,16 @@ B: 32bit length of file n. In bytes, not necessarily multiple of 512.
 All multi-byte values are big-endian
 
 
+Order of files per current Minesweeper implementation:
+1. Music
+2. Bomb
+3. Win
+4. Place flag
+5. Music 2: Holiday.
+6. Unplace flag
 
 Example command:
 python fs_write.py Underclocked_mono.wav Music_Thing_mono.wav Gentle_Rain_mono.wav Paper_Towel_beat_mono.wav
+
+Useful: wmic diskdrive list brief
+
