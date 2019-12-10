@@ -1,0 +1,254 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Mon Dec  9 14:44:18 2019
+| Host         : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
+| Command      : report_drc -file top_level_drc_opted.rpt -pb top_level_drc_opted.pb -rpx top_level_drc_opted.rpx
+| Design       : top_level
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Synthesized
+------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 36
++-------------+----------+-------------------------------------------------------------+------------+
+| Rule        | Severity | Description                                                 | Violations |
++-------------+----------+-------------------------------------------------------------+------------+
+| CFGBVS-1    | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties         | 1          |
+| DPIP-1      | Warning  | Input pipelining                                            | 1          |
+| DPOP-1      | Warning  | PREG Output pipelining                                      | 1          |
+| DPOP-2      | Warning  | MREG Output pipelining                                      | 1          |
+| PLHOLDVIO-2 | Warning  | Non-Optimal connections which could lead to hold violations | 25         |
+| RPBF-3      | Warning  | IO port buffering is incomplete                             | 7          |
++-------------+----------+-------------------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+CFGBVS-1#1 Warning
+Missing CFGBVS and CONFIG_VOLTAGE Design Properties  
+Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
+
+ set_property CFGBVS value1 [current_design]
+ #where value1 is either VCCO or GND
+
+ set_property CONFIG_VOLTAGE value2 [current_design]
+ #where value2 is the voltage provided to configuration bank 0
+
+Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+DPIP-1#1 Warning
+Input pipelining  
+DSP minesweeper/td/image_addr input minesweeper/td/image_addr/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
+Related violations: <none>
+
+DPOP-1#1 Warning
+PREG Output pipelining  
+DSP minesweeper/td/image_addr output minesweeper/td/image_addr/P[47:0] is not pipelined (PREG=0). Pipelining the DSP48 output will improve performance and often saves power so it is suggested whenever possible to fully pipeline this function.  If this DSP48 function was inferred, it is suggested to describe an additional register stage after this function.  If the DSP48 was instantiated in the design, it is suggested to set the PREG attribute to 1.
+Related violations: <none>
+
+DPOP-2#1 Warning
+MREG Output pipelining  
+DSP minesweeper/td/image_addr multiplier stage minesweeper/td/image_addr/P[47:0] is not pipelined (MREG=0). Pipelining the multiplier function will improve performance and will save significant power so it is suggested whenever possible to fully pipeline this function.  If this multiplier was inferred, it is suggested to describe an additional register stage after this function.  If there is no registered adder/accumulator following the multiply function, two pipeline stages are suggested to allow both the MREG and PREG registers to be used.  If the DSP48 was instantiated in the design, it is suggested to set both the MREG and PREG attributes to 1 when performing multiply functions.
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[0].sf/FSM_onehot_state[3]_i_2 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[0].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[0].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[0].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[0].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[0].sf/flake_x_reg[0], snowflakes/generated_snowflakes[0].sf/flake_x_reg[10], snowflakes/generated_snowflakes[0].sf/flake_x_reg[1], snowflakes/generated_snowflakes[0].sf/flake_x_reg[2], snowflakes/generated_snowflakes[0].sf/flake_x_reg[3], snowflakes/generated_snowflakes[0].sf/flake_x_reg[4], snowflakes/generated_snowflakes[0].sf/flake_x_reg[5], snowflakes/generated_snowflakes[0].sf/flake_x_reg[6], snowflakes/generated_snowflakes[0].sf/flake_x_reg[7], snowflakes/generated_snowflakes[0].sf/flake_x_reg[8], snowflakes/generated_snowflakes[0].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#2 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[10].sf/FSM_onehot_state[3]_i_2__21 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[10].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[10].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[10].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[10].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[10].sf/flake_x_reg[0], snowflakes/generated_snowflakes[10].sf/flake_x_reg[10], snowflakes/generated_snowflakes[10].sf/flake_x_reg[1], snowflakes/generated_snowflakes[10].sf/flake_x_reg[2], snowflakes/generated_snowflakes[10].sf/flake_x_reg[3], snowflakes/generated_snowflakes[10].sf/flake_x_reg[4], snowflakes/generated_snowflakes[10].sf/flake_x_reg[5], snowflakes/generated_snowflakes[10].sf/flake_x_reg[6], snowflakes/generated_snowflakes[10].sf/flake_x_reg[7], snowflakes/generated_snowflakes[10].sf/flake_x_reg[8], snowflakes/generated_snowflakes[10].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#3 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[11].sf/FSM_onehot_state[3]_i_2__22 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[11].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[11].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[11].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[11].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[11].sf/flake_x_reg[0], snowflakes/generated_snowflakes[11].sf/flake_x_reg[10], snowflakes/generated_snowflakes[11].sf/flake_x_reg[1], snowflakes/generated_snowflakes[11].sf/flake_x_reg[2], snowflakes/generated_snowflakes[11].sf/flake_x_reg[3], snowflakes/generated_snowflakes[11].sf/flake_x_reg[4], snowflakes/generated_snowflakes[11].sf/flake_x_reg[5], snowflakes/generated_snowflakes[11].sf/flake_x_reg[6], snowflakes/generated_snowflakes[11].sf/flake_x_reg[7], snowflakes/generated_snowflakes[11].sf/flake_x_reg[8], snowflakes/generated_snowflakes[11].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#4 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[12].sf/FSM_onehot_state[3]_i_2__8 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[12].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[12].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[12].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[12].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[12].sf/flake_x_reg[0], snowflakes/generated_snowflakes[12].sf/flake_x_reg[10], snowflakes/generated_snowflakes[12].sf/flake_x_reg[1], snowflakes/generated_snowflakes[12].sf/flake_x_reg[2], snowflakes/generated_snowflakes[12].sf/flake_x_reg[3], snowflakes/generated_snowflakes[12].sf/flake_x_reg[4], snowflakes/generated_snowflakes[12].sf/flake_x_reg[5], snowflakes/generated_snowflakes[12].sf/flake_x_reg[6], snowflakes/generated_snowflakes[12].sf/flake_x_reg[7], snowflakes/generated_snowflakes[12].sf/flake_x_reg[8], snowflakes/generated_snowflakes[12].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#5 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[13].sf/FSM_onehot_state[3]_i_2__9 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[13].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[13].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[13].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[13].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[13].sf/flake_x_reg[0], snowflakes/generated_snowflakes[13].sf/flake_x_reg[10], snowflakes/generated_snowflakes[13].sf/flake_x_reg[1], snowflakes/generated_snowflakes[13].sf/flake_x_reg[2], snowflakes/generated_snowflakes[13].sf/flake_x_reg[3], snowflakes/generated_snowflakes[13].sf/flake_x_reg[4], snowflakes/generated_snowflakes[13].sf/flake_x_reg[5], snowflakes/generated_snowflakes[13].sf/flake_x_reg[6], snowflakes/generated_snowflakes[13].sf/flake_x_reg[7], snowflakes/generated_snowflakes[13].sf/flake_x_reg[8], snowflakes/generated_snowflakes[13].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#6 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[14].sf/FSM_onehot_state[3]_i_2__10 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[14].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[14].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[14].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[14].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[14].sf/flake_x_reg[0], snowflakes/generated_snowflakes[14].sf/flake_x_reg[10], snowflakes/generated_snowflakes[14].sf/flake_x_reg[1], snowflakes/generated_snowflakes[14].sf/flake_x_reg[2], snowflakes/generated_snowflakes[14].sf/flake_x_reg[3], snowflakes/generated_snowflakes[14].sf/flake_x_reg[4], snowflakes/generated_snowflakes[14].sf/flake_x_reg[5], snowflakes/generated_snowflakes[14].sf/flake_x_reg[6], snowflakes/generated_snowflakes[14].sf/flake_x_reg[7], snowflakes/generated_snowflakes[14].sf/flake_x_reg[8], snowflakes/generated_snowflakes[14].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#7 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[15].sf/FSM_onehot_state[3]_i_2__11 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[15].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[15].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[15].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[15].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[15].sf/flake_x_reg[0], snowflakes/generated_snowflakes[15].sf/flake_x_reg[10], snowflakes/generated_snowflakes[15].sf/flake_x_reg[1], snowflakes/generated_snowflakes[15].sf/flake_x_reg[2], snowflakes/generated_snowflakes[15].sf/flake_x_reg[3], snowflakes/generated_snowflakes[15].sf/flake_x_reg[4], snowflakes/generated_snowflakes[15].sf/flake_x_reg[5], snowflakes/generated_snowflakes[15].sf/flake_x_reg[6], snowflakes/generated_snowflakes[15].sf/flake_x_reg[7], snowflakes/generated_snowflakes[15].sf/flake_x_reg[8], snowflakes/generated_snowflakes[15].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#8 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[16].sf/FSM_onehot_state[3]_i_2__12 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[16].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[16].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[16].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[16].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[16].sf/flake_x_reg[0], snowflakes/generated_snowflakes[16].sf/flake_x_reg[10], snowflakes/generated_snowflakes[16].sf/flake_x_reg[1], snowflakes/generated_snowflakes[16].sf/flake_x_reg[2], snowflakes/generated_snowflakes[16].sf/flake_x_reg[3], snowflakes/generated_snowflakes[16].sf/flake_x_reg[4], snowflakes/generated_snowflakes[16].sf/flake_x_reg[5], snowflakes/generated_snowflakes[16].sf/flake_x_reg[6], snowflakes/generated_snowflakes[16].sf/flake_x_reg[7], snowflakes/generated_snowflakes[16].sf/flake_x_reg[8], snowflakes/generated_snowflakes[16].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#9 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[17].sf/FSM_onehot_state[3]_i_2__2 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[17].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[17].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[17].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[17].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[17].sf/flake_x_reg[0], snowflakes/generated_snowflakes[17].sf/flake_x_reg[10], snowflakes/generated_snowflakes[17].sf/flake_x_reg[1], snowflakes/generated_snowflakes[17].sf/flake_x_reg[2], snowflakes/generated_snowflakes[17].sf/flake_x_reg[3], snowflakes/generated_snowflakes[17].sf/flake_x_reg[4], snowflakes/generated_snowflakes[17].sf/flake_x_reg[5], snowflakes/generated_snowflakes[17].sf/flake_x_reg[6], snowflakes/generated_snowflakes[17].sf/flake_x_reg[7], snowflakes/generated_snowflakes[17].sf/flake_x_reg[8], snowflakes/generated_snowflakes[17].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#10 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[18].sf/FSM_onehot_state[3]_i_2__3 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[18].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[18].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[18].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[18].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[18].sf/flake_x_reg[0], snowflakes/generated_snowflakes[18].sf/flake_x_reg[10], snowflakes/generated_snowflakes[18].sf/flake_x_reg[1], snowflakes/generated_snowflakes[18].sf/flake_x_reg[2], snowflakes/generated_snowflakes[18].sf/flake_x_reg[3], snowflakes/generated_snowflakes[18].sf/flake_x_reg[4], snowflakes/generated_snowflakes[18].sf/flake_x_reg[5], snowflakes/generated_snowflakes[18].sf/flake_x_reg[6], snowflakes/generated_snowflakes[18].sf/flake_x_reg[7], snowflakes/generated_snowflakes[18].sf/flake_x_reg[8], snowflakes/generated_snowflakes[18].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#11 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[19].sf/FSM_onehot_state[3]_i_2__4 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[19].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[19].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[19].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[19].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[19].sf/flake_x_reg[0], snowflakes/generated_snowflakes[19].sf/flake_x_reg[10], snowflakes/generated_snowflakes[19].sf/flake_x_reg[1], snowflakes/generated_snowflakes[19].sf/flake_x_reg[2], snowflakes/generated_snowflakes[19].sf/flake_x_reg[3], snowflakes/generated_snowflakes[19].sf/flake_x_reg[4], snowflakes/generated_snowflakes[19].sf/flake_x_reg[5], snowflakes/generated_snowflakes[19].sf/flake_x_reg[6], snowflakes/generated_snowflakes[19].sf/flake_x_reg[7], snowflakes/generated_snowflakes[19].sf/flake_x_reg[8], snowflakes/generated_snowflakes[19].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#12 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[1].sf/FSM_onehot_state[3]_i_2__13 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[1].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[1].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[1].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[1].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[1].sf/flake_x_reg[0], snowflakes/generated_snowflakes[1].sf/flake_x_reg[10], snowflakes/generated_snowflakes[1].sf/flake_x_reg[1], snowflakes/generated_snowflakes[1].sf/flake_x_reg[2], snowflakes/generated_snowflakes[1].sf/flake_x_reg[3], snowflakes/generated_snowflakes[1].sf/flake_x_reg[4], snowflakes/generated_snowflakes[1].sf/flake_x_reg[5], snowflakes/generated_snowflakes[1].sf/flake_x_reg[6], snowflakes/generated_snowflakes[1].sf/flake_x_reg[7], snowflakes/generated_snowflakes[1].sf/flake_x_reg[8], snowflakes/generated_snowflakes[1].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#13 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[20].sf/FSM_onehot_state[3]_i_2__5 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[20].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[20].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[20].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[20].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[20].sf/flake_x_reg[0], snowflakes/generated_snowflakes[20].sf/flake_x_reg[10], snowflakes/generated_snowflakes[20].sf/flake_x_reg[1], snowflakes/generated_snowflakes[20].sf/flake_x_reg[2], snowflakes/generated_snowflakes[20].sf/flake_x_reg[3], snowflakes/generated_snowflakes[20].sf/flake_x_reg[4], snowflakes/generated_snowflakes[20].sf/flake_x_reg[5], snowflakes/generated_snowflakes[20].sf/flake_x_reg[6], snowflakes/generated_snowflakes[20].sf/flake_x_reg[7], snowflakes/generated_snowflakes[20].sf/flake_x_reg[8], snowflakes/generated_snowflakes[20].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#14 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[21].sf/FSM_onehot_state[3]_i_2__6 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[21].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[21].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[21].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[21].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[21].sf/flake_x_reg[0], snowflakes/generated_snowflakes[21].sf/flake_x_reg[10], snowflakes/generated_snowflakes[21].sf/flake_x_reg[1], snowflakes/generated_snowflakes[21].sf/flake_x_reg[2], snowflakes/generated_snowflakes[21].sf/flake_x_reg[3], snowflakes/generated_snowflakes[21].sf/flake_x_reg[4], snowflakes/generated_snowflakes[21].sf/flake_x_reg[5], snowflakes/generated_snowflakes[21].sf/flake_x_reg[6], snowflakes/generated_snowflakes[21].sf/flake_x_reg[7], snowflakes/generated_snowflakes[21].sf/flake_x_reg[8], snowflakes/generated_snowflakes[21].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#15 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[22].sf/FSM_onehot_state[3]_i_2__7 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[22].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[22].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[22].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[22].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[22].sf/flake_x_reg[0], snowflakes/generated_snowflakes[22].sf/flake_x_reg[10], snowflakes/generated_snowflakes[22].sf/flake_x_reg[1], snowflakes/generated_snowflakes[22].sf/flake_x_reg[2], snowflakes/generated_snowflakes[22].sf/flake_x_reg[3], snowflakes/generated_snowflakes[22].sf/flake_x_reg[4], snowflakes/generated_snowflakes[22].sf/flake_x_reg[5], snowflakes/generated_snowflakes[22].sf/flake_x_reg[6], snowflakes/generated_snowflakes[22].sf/flake_x_reg[7], snowflakes/generated_snowflakes[22].sf/flake_x_reg[8], snowflakes/generated_snowflakes[22].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#16 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[23].sf/FSM_onehot_state[3]_i_2__0 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[23].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[23].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[23].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[23].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[23].sf/flake_x_reg[0], snowflakes/generated_snowflakes[23].sf/flake_x_reg[10], snowflakes/generated_snowflakes[23].sf/flake_x_reg[1], snowflakes/generated_snowflakes[23].sf/flake_x_reg[2], snowflakes/generated_snowflakes[23].sf/flake_x_reg[3], snowflakes/generated_snowflakes[23].sf/flake_x_reg[4], snowflakes/generated_snowflakes[23].sf/flake_x_reg[5], snowflakes/generated_snowflakes[23].sf/flake_x_reg[6], snowflakes/generated_snowflakes[23].sf/flake_x_reg[7], snowflakes/generated_snowflakes[23].sf/flake_x_reg[8], snowflakes/generated_snowflakes[23].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#17 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[24].sf/FSM_onehot_state[3]_i_2__1 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[24].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[24].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[24].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[24].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[24].sf/flake_x_reg[0], snowflakes/generated_snowflakes[24].sf/flake_x_reg[10], snowflakes/generated_snowflakes[24].sf/flake_x_reg[1], snowflakes/generated_snowflakes[24].sf/flake_x_reg[2], snowflakes/generated_snowflakes[24].sf/flake_x_reg[3], snowflakes/generated_snowflakes[24].sf/flake_x_reg[4], snowflakes/generated_snowflakes[24].sf/flake_x_reg[5], snowflakes/generated_snowflakes[24].sf/flake_x_reg[6], snowflakes/generated_snowflakes[24].sf/flake_x_reg[7], snowflakes/generated_snowflakes[24].sf/flake_x_reg[8], snowflakes/generated_snowflakes[24].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#18 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[2].sf/FSM_onehot_state[3]_i_2__23 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[2].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[2].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[2].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[2].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[2].sf/flake_x_reg[0], snowflakes/generated_snowflakes[2].sf/flake_x_reg[10], snowflakes/generated_snowflakes[2].sf/flake_x_reg[1], snowflakes/generated_snowflakes[2].sf/flake_x_reg[2], snowflakes/generated_snowflakes[2].sf/flake_x_reg[3], snowflakes/generated_snowflakes[2].sf/flake_x_reg[4], snowflakes/generated_snowflakes[2].sf/flake_x_reg[5], snowflakes/generated_snowflakes[2].sf/flake_x_reg[6], snowflakes/generated_snowflakes[2].sf/flake_x_reg[7], snowflakes/generated_snowflakes[2].sf/flake_x_reg[8], snowflakes/generated_snowflakes[2].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#19 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[3].sf/FSM_onehot_state[3]_i_2__14 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[3].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[3].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[3].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[3].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[3].sf/flake_x_reg[0], snowflakes/generated_snowflakes[3].sf/flake_x_reg[10], snowflakes/generated_snowflakes[3].sf/flake_x_reg[1], snowflakes/generated_snowflakes[3].sf/flake_x_reg[2], snowflakes/generated_snowflakes[3].sf/flake_x_reg[3], snowflakes/generated_snowflakes[3].sf/flake_x_reg[4], snowflakes/generated_snowflakes[3].sf/flake_x_reg[5], snowflakes/generated_snowflakes[3].sf/flake_x_reg[6], snowflakes/generated_snowflakes[3].sf/flake_x_reg[7], snowflakes/generated_snowflakes[3].sf/flake_x_reg[8], snowflakes/generated_snowflakes[3].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#20 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[4].sf/FSM_onehot_state[3]_i_2__15 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[4].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[4].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[4].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[4].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[4].sf/flake_x_reg[0], snowflakes/generated_snowflakes[4].sf/flake_x_reg[10], snowflakes/generated_snowflakes[4].sf/flake_x_reg[1], snowflakes/generated_snowflakes[4].sf/flake_x_reg[2], snowflakes/generated_snowflakes[4].sf/flake_x_reg[3], snowflakes/generated_snowflakes[4].sf/flake_x_reg[4], snowflakes/generated_snowflakes[4].sf/flake_x_reg[5], snowflakes/generated_snowflakes[4].sf/flake_x_reg[6], snowflakes/generated_snowflakes[4].sf/flake_x_reg[7], snowflakes/generated_snowflakes[4].sf/flake_x_reg[8], snowflakes/generated_snowflakes[4].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#21 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[5].sf/FSM_onehot_state[3]_i_2__19 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[5].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[5].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[5].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[5].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[5].sf/flake_x_reg[0], snowflakes/generated_snowflakes[5].sf/flake_x_reg[10], snowflakes/generated_snowflakes[5].sf/flake_x_reg[1], snowflakes/generated_snowflakes[5].sf/flake_x_reg[2], snowflakes/generated_snowflakes[5].sf/flake_x_reg[3], snowflakes/generated_snowflakes[5].sf/flake_x_reg[4], snowflakes/generated_snowflakes[5].sf/flake_x_reg[5], snowflakes/generated_snowflakes[5].sf/flake_x_reg[6], snowflakes/generated_snowflakes[5].sf/flake_x_reg[7], snowflakes/generated_snowflakes[5].sf/flake_x_reg[8], snowflakes/generated_snowflakes[5].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#22 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[6].sf/FSM_onehot_state[3]_i_2__16 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[6].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[6].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[6].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[6].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[6].sf/flake_x_reg[0], snowflakes/generated_snowflakes[6].sf/flake_x_reg[10], snowflakes/generated_snowflakes[6].sf/flake_x_reg[1], snowflakes/generated_snowflakes[6].sf/flake_x_reg[2], snowflakes/generated_snowflakes[6].sf/flake_x_reg[3], snowflakes/generated_snowflakes[6].sf/flake_x_reg[4], snowflakes/generated_snowflakes[6].sf/flake_x_reg[5], snowflakes/generated_snowflakes[6].sf/flake_x_reg[6], snowflakes/generated_snowflakes[6].sf/flake_x_reg[7], snowflakes/generated_snowflakes[6].sf/flake_x_reg[8], snowflakes/generated_snowflakes[6].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#23 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[7].sf/FSM_onehot_state[3]_i_2__17 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[7].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[7].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[7].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[7].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[7].sf/flake_x_reg[0], snowflakes/generated_snowflakes[7].sf/flake_x_reg[10], snowflakes/generated_snowflakes[7].sf/flake_x_reg[1], snowflakes/generated_snowflakes[7].sf/flake_x_reg[2], snowflakes/generated_snowflakes[7].sf/flake_x_reg[3], snowflakes/generated_snowflakes[7].sf/flake_x_reg[4], snowflakes/generated_snowflakes[7].sf/flake_x_reg[5], snowflakes/generated_snowflakes[7].sf/flake_x_reg[6], snowflakes/generated_snowflakes[7].sf/flake_x_reg[7], snowflakes/generated_snowflakes[7].sf/flake_x_reg[8], snowflakes/generated_snowflakes[7].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#24 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[8].sf/FSM_onehot_state[3]_i_2__20 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[8].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[8].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[8].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[8].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[8].sf/flake_x_reg[0], snowflakes/generated_snowflakes[8].sf/flake_x_reg[10], snowflakes/generated_snowflakes[8].sf/flake_x_reg[1], snowflakes/generated_snowflakes[8].sf/flake_x_reg[2], snowflakes/generated_snowflakes[8].sf/flake_x_reg[3], snowflakes/generated_snowflakes[8].sf/flake_x_reg[4], snowflakes/generated_snowflakes[8].sf/flake_x_reg[5], snowflakes/generated_snowflakes[8].sf/flake_x_reg[6], snowflakes/generated_snowflakes[8].sf/flake_x_reg[7], snowflakes/generated_snowflakes[8].sf/flake_x_reg[8], snowflakes/generated_snowflakes[8].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+PLHOLDVIO-2#25 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT snowflakes/generated_snowflakes[9].sf/FSM_onehot_state[3]_i_2__18 is driving clock pin of 28 cells. This could lead to large hold time violations. Involved cells are:
+snowflakes/generated_snowflakes[9].sf/FSM_onehot_state_reg[0], snowflakes/generated_snowflakes[9].sf/FSM_onehot_state_reg[1], snowflakes/generated_snowflakes[9].sf/FSM_onehot_state_reg[2], snowflakes/generated_snowflakes[9].sf/FSM_onehot_state_reg[3], snowflakes/generated_snowflakes[9].sf/flake_x_reg[0], snowflakes/generated_snowflakes[9].sf/flake_x_reg[10], snowflakes/generated_snowflakes[9].sf/flake_x_reg[1], snowflakes/generated_snowflakes[9].sf/flake_x_reg[2], snowflakes/generated_snowflakes[9].sf/flake_x_reg[3], snowflakes/generated_snowflakes[9].sf/flake_x_reg[4], snowflakes/generated_snowflakes[9].sf/flake_x_reg[5], snowflakes/generated_snowflakes[9].sf/flake_x_reg[6], snowflakes/generated_snowflakes[9].sf/flake_x_reg[7], snowflakes/generated_snowflakes[9].sf/flake_x_reg[8], snowflakes/generated_snowflakes[9].sf/flake_x_reg[9] (the first 15 of 28 listed)
+Related violations: <none>
+
+RPBF-3#1 Warning
+IO port buffering is incomplete  
+Device port sd_cmd expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#2 Warning
+IO port buffering is incomplete  
+Device port sd_dat[0] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#3 Warning
+IO port buffering is incomplete  
+Device port sd_dat[1] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#4 Warning
+IO port buffering is incomplete  
+Device port sd_dat[2] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#5 Warning
+IO port buffering is incomplete  
+Device port sd_dat[3] expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#6 Warning
+IO port buffering is incomplete  
+Device port sd_reset expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+RPBF-3#7 Warning
+IO port buffering is incomplete  
+Device port sd_sck expects both input and output buffering but the buffers are incomplete.
+Related violations: <none>
+
+

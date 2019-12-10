@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="one_image_rom_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575883074">
   <File Type="PA-TCL" Name="one_image_rom.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="one_image_rom_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="one_image_rom_reports.tcl"/>
   <File Type="RDS-RDS" Name="one_image_rom.vds"/>
   <File Type="RDS-UTIL" Name="one_image_rom_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="one_image_rom_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="one_image_rom.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="one_image_rom_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="one_image_rom_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/one_image_rom">
     <File Path="$PSRCDIR/sources_1/ip/one_image_rom/one_image_rom.xci">
       <FileInfo>
@@ -42,9 +39,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

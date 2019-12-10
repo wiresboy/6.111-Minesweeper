@@ -2,7 +2,7 @@
 
 module snowflakes
 	#(	parameter RANDOM_RANGE = 2100, 
-		parameter MAX_FLAKES = 20,
+		parameter MAX_FLAKES = 25,
 		parameter UPDATE_PERIOD_CLOCKS = 1083333) //60fps ish
 	(
 		input clk_65mhz,
@@ -96,7 +96,7 @@ module snowflake_tracker
 	);
 
 	logic [1:0] state;
-	logic [3:0] velocity; //goal velocity of ~7pixels/frame, allowable range of 3 to 8.
+	logic [2:0] velocity; //goal velocity of ~7pixels/frame, allowable range of 3 to 10.
 	//STATE: 0 = init, wait for random chance to initialize drop
 	//STATE: 1 = ready to fall, selecy velocity
 	//STATE: 2 = ready to fall, select x position
@@ -113,7 +113,7 @@ module snowflake_tracker
 						state<=1;
 				end
 				1: begin
-					velocity <= 3+((random[0]+random[1])+(random[2]+random[3]));
+					velocity <= random[2:0];//{3'b0,random[0]}+{3'b0,random[1]}+{3'b0,random[2]}+{3'b0,random[3]};
 					state<=2;
 				end
 				2: begin
@@ -121,7 +121,7 @@ module snowflake_tracker
 					state<=3;
 				end
 				3: begin
-					flake_y <= flake_y + velocity;
+					flake_y <= flake_y + velocity + 3;
 					if (flake_y > 768)
 						state<=0;
 				end
@@ -180,8 +180,8 @@ module snowflake_renderer
 	assign relative_x = hcount_in - flake_x;
 	assign relative_y = vcount_in - flake_y;
 
-	logic [3:0] x; //flake pixel x
-	logic [4:0] y; //flake pixel y
+	logic [5:0] x; //flake pixel x
+	logic [5:0] y; //flake pixel y
 	logic in_box;
 
 	always_ff @(posedge clk_65mhz) begin

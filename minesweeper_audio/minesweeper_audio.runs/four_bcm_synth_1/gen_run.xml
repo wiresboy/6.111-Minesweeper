@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="four_bcm_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1575883184">
   <File Type="PA-TCL" Name="four_bcm.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="four_bcm_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="four_bcm_reports.tcl"/>
   <File Type="RDS-RDS" Name="four_bcm.vds"/>
   <File Type="RDS-UTIL" Name="four_bcm_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="four_bcm_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="four_bcm.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="four_bcm_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="four_bcm_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/four_bcm">
     <File Path="$PPRDIR/../minesweeper/minesweeper.srcs/sources_1/ip/four_bcm/four_bcm.xci">
       <FileInfo>
@@ -42,9 +39,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

@@ -131,7 +131,11 @@ module top_level(
 			.hsync_out(mouse_hsync),.vsync_out(mouse_vsync),.blank_out(mouse_blank),
 			.pixel_in(ms_pixel),.pixel_out(mouse_pixel));
 
-
+	// ***** Snowflake Video Gen *****
+	wire flake_hsync,flake_vsync,flake_blank;//delayed timing signals
+	wire [10:0] flake_hcount; 
+	wire [9:0] flake_vcount;
+	wire [11:0] flake_pixel;
 	snowflakes snowflakes(
 			.clk_65mhz(clk_65mhz),.reset(reset),
 			.random(random_number),
@@ -155,7 +159,7 @@ module top_level(
 			hs <= mouse_hsync;
 			vs <= mouse_vsync;
 			b <= mouse_blank;
-			rgb <= mouse_blank;
+			rgb <= mouse_pixel;
 		end
 	end
 
