@@ -7,6 +7,8 @@ https://docs.google.com/document/d/1kpicSI_NTm1OP2iNs3wL2pfns05RuejjrBN7lXaf5ao/
 ### Proposal: 
 https://docs.google.com/document/d/18RjtbRTTLjeQtlkCTbx3Tp7d5UVSjf1g_FCGGwVLvWc/edit
 
+### Final Report:
+https://docs.google.com/document/d/1n6WVwXXZGvtCIoMLb7JsAOKgYQCiDlrt2eCBduVLAUw/edit
 
 # Abstract
 Our project will be to create the classic arcade game “minesweeper” on an FPGA. Minesweeper traditionally involves a grid upon which the player can click to guess whether a cell is an empty cell or contains a mine. If they click on a mine, then the game is over. If they click on an empty cell, the cell will reveal how many neighboring cells have mines.
