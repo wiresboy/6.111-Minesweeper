@@ -1,9 +1,10 @@
 //`default_nettype none
-//00001: Music
-//00010: Bomb
-//00100: Win
-//01000: Place flag
-//10000: Music 2: Holiday.
+//000001: Music
+//000010: Bomb
+//000100: Win
+//001000: Place flag
+//010000: Music 2: Holiday.
+//100000: Unflag
 
 module sound_effect_manager (
 	input wire clk_100mhz,
